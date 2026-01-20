@@ -1,0 +1,152 @@
+# S4Carlisle Pre-Editor v3 - Docker Compose
+# Production deployment with all services
+
+version: '3.8'
+
+services:
+  # ============================================
+  # Redis - Message Broker & Result Backend
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: preeditor-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - preeditor-network
+
+  # ============================================
+  # Backend API (Flask + Gunicorn)
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: preeditor-backend
+    restart: unless-stopped
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - QUEUE_MODE=celery
+      - REDIS_URL=redis://redis:6379/0
+      - DATABASE_PATH=/app/data/preeditor.db
+      - UPLOAD_FOLDER=/app/data/uploads
+      - OUTPUT_FOLDER=/app/data/outputs
+      - FLASK_DEBUG=false
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - preeditor-network
+
+  # ============================================
+  # Celery Worker - Document Processing
+  # ============================================
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: preeditor-worker
+    restart: unless-stopped
+    command: celery -A celery_worker worker --loglevel=info --concurrency=2
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - QUEUE_MODE=celery
+      - REDIS_URL=redis://redis:6379/0
+      - DATABASE_PATH=/app/data/preeditor.db
+      - UPLOAD_FOLDER=/app/data/uploads
+      - OUTPUT_FOLDER=/app/data/outputs
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    networks:
+      - preeditor-network
+
+  # ============================================
+  # Celery Beat - Scheduled Tasks (Optional)
+  # ============================================
+  # celery-beat:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: preeditor-beat
+  #   restart: unless-stopped
+  #   command: celery -A celery_worker beat --loglevel=info
+  #   environment:
+  #     - REDIS_URL=redis://redis:6379/0
+  #   depends_on:
+  #     - redis
+  #     - celery-worker
+  #   networks:
+  #     - preeditor-network
+
+  # ============================================
+  # Flower - Celery Monitoring (Optional)
+  # ============================================
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: preeditor-flower
+    restart: unless-stopped
+    command: celery -A celery_worker flower --port=5555
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - QUEUE_MODE=celery
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - celery-worker
+    networks:
+      - preeditor-network
+
+  # ============================================
+  # Frontend (React + Nginx)
+  # ============================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: preeditor-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - preeditor-network
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  redis_data:
+    driver: local
+  app_data:
+    driver: local
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  preeditor-network:
+    driver: bridge
