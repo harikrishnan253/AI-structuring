@@ -880,13 +880,32 @@ class DocumentIngestion:
             if run.font.all_caps:
                 metadata['is_all_caps'] = True
         
-        # Check for numbering/bullets in text
+        # Check for numbering/bullets in text (manual lists)
         text = para.text.strip()
         if re.match(r'^\d+\.?\s', text):
             metadata['has_numbering'] = True
         if re.match(r'^[•\-\*]\s', text):
             metadata['has_bullet'] = True
-        
+            
+        # Check for XML numbering (automatic Word lists)
+        # This catches lists that don't have bullets/numbers in the text property
+        try:
+            if hasattr(para, '_p') and para._p.pPr is not None and para._p.pPr.numPr is not None:
+                # It has a numbering property -> it is a list
+                # Try to guess type from style name
+                style_name = para.style.name.lower() if para.style else ""
+                
+                if 'bullet' in style_name:
+                    metadata['has_bullet'] = True
+                elif 'number' in style_name:
+                    metadata['has_numbering'] = True
+                else:
+                    # Ambiguous list - mark as generic list
+                    # DO NOT default to numbering as it causes false positives (BL becoming NL)
+                    metadata['has_xml_list'] = True
+        except Exception:
+            pass  # Fail gracefully if XML access fails
+            
         # Check paragraph format for indentation
         if para.paragraph_format.left_indent:
             indent_inches = para.paragraph_format.left_indent.inches

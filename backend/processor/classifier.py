@@ -289,11 +289,13 @@ ZONE_STYLE_CONSTRAINTS = {
     'METADATA': ['PMI'],
     'FRONT_MATTER': [
         'CN', 'CT', 'CST', 'CAU', 'CHAP',
-        'OBJ1', 'OBJ-BL-FIRST', 'OBJ-BL-MID', 'OBJ-BL-LAST',
-        'OBJ-NL-FIRST', 'OBJ-NL-MID', 'OBJ-NL-LAST',
-        'COUT-1', 'COUT-2', 'KT1', 'KT-BL-*', 'KT-NL-*',
-        'TXT', 'TXT-FLUSH', 'H2', 'H3',
-        'PMI',
+        'OBJ1', 'OBJ-*',
+        'COUT-1', 'COUT-2', 'KT1', 'KT-*',
+        'TXT', 'TXT-*', 'H1', 'H2', 'H3', 'H11', 'H12',
+        'BL-*', 'NL-*', 'UL-*',
+        'BX1-*', 'BX2-*', 'BX3-*', 'BX4-*',
+        'PMI', 'QUO', 'TSN',
+        'SR*', 'REF*', 'REFH*',
     ],
     'TABLE': [
         'T', 'T1', 'T2', 'T2-C', 'T3', 'T4', 'T5',
@@ -303,20 +305,20 @@ ZONE_STYLE_CONSTRAINTS = {
         'PMI',
     ],
     'BOX_NBX': [
-        'NBX-TTL', 'NBX-TXT', 'NBX-TXT-FIRST',
-        'NBX-BL-FIRST', 'NBX-BL-MID', 'NBX-BL-LAST',
-        'NBX-NL-FIRST', 'NBX-NL-MID', 'NBX-NL-LAST',
-        'NBX-UL-FIRST', 'NBX-UL-MID', 'NBX-UL-LAST',
+        'NBX-*', 'Box-01-*',
+        'H1', 'H2', 'H3',
+        'TXT', 'TXT-*', 'BL-*', 'NL-*', 'UL-*',
         'PMI',
     ],
-    'BOX_BX1': ['BX1-TTL', 'BX1-TXT', 'BX1-TXT-FIRST', 'BX1-BL-*', 'BX1-NL-*', 'PMI'],
-    'BOX_BX2': ['BX2-TTL', 'BX2-TXT', 'BX2-TXT-FIRST', 'BX2-BL-*', 'BX2-NL-*', 'PMI'],
-    'BOX_BX3': ['BX3-TTL', 'BX3-TXT', 'BX3-TXT-FIRST', 'BX3-BL-*', 'BX3-NL-*', 'PMI'],
-    'BOX_BX4': ['BX4-TTL', 'BX4-TXT', 'BX4-TXT-FIRST', 'BX4-BL-*', 'BX4-NL-*', 'PMI'],
+    'BOX_BX1': ['BX1-*', 'H1', 'H2', 'H3', 'TXT', 'TXT-*', 'BL-*', 'NL-*', 'UL-*', 'PMI'],
+    'BOX_BX2': ['BX2-*', 'H1', 'H2', 'H3', 'TXT', 'TXT-*', 'BL-*', 'NL-*', 'UL-*', 'PMI'],
+    'BOX_BX3': ['BX3-*', 'H1', 'H2', 'H3', 'TXT', 'TXT-*', 'BL-*', 'NL-*', 'UL-*', 'PMI'],
+    'BOX_BX4': ['BX4-*', 'H1', 'H2', 'H3', 'TXT', 'TXT-*', 'BL-*', 'NL-*', 'UL-*', 'PMI'],
     'BACK_MATTER': [
         'REF-N', 'REF-U', 'REFH1', 'REFH2', 'SR', 'SRH1',
-        'EOC-NL-FIRST', 'EOC-NL-MID', 'EOC-NL-LAST',
-        'EOC-BL-*', 'GLOS-*', 'IDX-*', 'APX-*',
+        'EOC-*',
+        'BL-*', 'NL-*', 'UL-*',
+        'GLOS-*', 'IDX-*', 'APX-*',
         'PMI',
     ],
     'BODY': None,  # No constraints - full style range
@@ -372,7 +374,7 @@ class GeminiClassifier:
         self, 
         api_key: str, 
         model_name: str = "gemini-2.5-flash-lite",
-        fallback_model_name: str = "gemini-2.5-flash-preview-05-20",
+        fallback_model_name: str = "gemini-2.0-flash",
         fallback_threshold: int = FLASH_FALLBACK_THRESHOLD,
         enable_fallback: bool = True
     ):
@@ -387,6 +389,11 @@ class GeminiClassifier:
             enable_fallback: Whether to enable the fallback system
         """
         genai.configure(api_key=api_key)
+        
+        # FIX: Override deprecated/invalid model name if passed from stale cache or defaults
+        if fallback_model_name == "gemini-2.5-flash-preview-05-20":
+            logger.warning(f"Overriding invalid fallback model '{fallback_model_name}' with 'gemini-2.0-flash'")
+            fallback_model_name = "gemini-2.0-flash"
         
         # Load system prompt
         system_prompt = self._load_system_prompt()
@@ -515,11 +522,22 @@ T2 (table header), T4 (row header), T (table cell), TBL-MID (table bullet), TFN 
         # Format paragraphs with zone context hints
         lines = []
         for para in paragraphs:
-            text = para.get('text_truncated', para['text'])
-            if len(text) > 200:
-                text = text[:200] + "..."
-            
+            text = para.get('text', '')
             metadata = para.get('metadata', {})
+            
+            # Prepend visual cue for LLM if metadata indicates list but text doesn't show it
+            # This helps detection of automatic Word lists that don't have bullets in .text
+            if metadata.get('has_bullet') and not text.lstrip().startswith(('•', '-', '*', '●', '○', '▪')):
+                text = f"• {text}"
+            elif metadata.get('has_numbering') and not re.match(r'^\s*[\d\w]+\.', text):
+                text = f"1. {text}"
+            
+            # Handle generic XML list items (ambiguous type)
+            if metadata.get('has_xml_list'):
+                # Don't modify text, just add to context
+                # This prevents forcing NL/BL bias
+                # But we'll add it to context_parts below
+                pass
             context_parts = []
             
             # Add context zone hint (primary identifier)
@@ -554,6 +572,10 @@ T2 (table header), T4 (row header), T (table cell), TBL-MID (table bullet), TFN 
             box_type = metadata.get('box_type')
             if box_type:
                 context_parts.append(f"box:{box_type}")
+            
+            # Add generic list hint
+            if metadata.get('has_xml_list'):
+                context_parts.append("LIST_ITEM")
             
             # Build context hint string
             if context_parts:
@@ -792,7 +814,7 @@ Classify each paragraph below:
             item_id = result.get('id')
             para = para_by_id.get(item_id, {})
             
-            text = para.get('text', '')[:300]
+            text = para.get('text', '')
             zone = para.get('metadata', {}).get('context_zone', 'BODY')
             current_tag = result.get('tag', 'TXT')
             current_conf = result.get('confidence', 0)

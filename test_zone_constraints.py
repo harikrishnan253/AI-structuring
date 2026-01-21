@@ -10,9 +10,15 @@ def test_validation_logic():
     assert validate_style_for_zone("T", "TABLE") == True
     
     # Test wildcard cases
-    assert validate_style_for_zone("NBX-BL-MID", "BOX_NBX") == True
-    assert validate_style_for_zone("NBX-BL-CUSTOM", "BOX_NBX") == True
+    assert validate_style_for_zone("BX1-BL-CUSTOM", "BOX_BX1") == True # BX1 has wildcards
     assert validate_style_for_zone("KT-BL-FIRST", "FRONT_MATTER") == True
+    
+    # Test relaxed constraints
+    assert validate_style_for_zone("H1", "FRONT_MATTER") == True
+    assert validate_style_for_zone("H2", "BOX_NBX") == True
+    assert validate_style_for_zone("SR", "FRONT_MATTER") == True
+    assert validate_style_for_zone("REF-N", "FRONT_MATTER") == True
+    assert validate_style_for_zone("TXT", "BOX_NBX") == True
     
     # Test invalid cases
     assert validate_style_for_zone("H1", "TABLE") == False
