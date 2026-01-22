@@ -51,6 +51,7 @@ export interface Batch {
   name: string | null;
   created_at: string | null;
   completed_at: string | null;
+  total_processing_time?:number;
   document_type: string;
   use_markers: boolean;
   total_jobs: number;

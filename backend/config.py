@@ -12,9 +12,23 @@ BASE_DIR = Path(__file__).parent.absolute()
 UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', str(BASE_DIR / 'uploads'))
 OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER', str(BASE_DIR / 'outputs'))
 
-# Database (SQLite - no external service needed)
-DATABASE_PATH = os.getenv('DATABASE_PATH', str(BASE_DIR / 'preeditor.db'))
-SQLALCHEMY_DATABASE_URI = f'sqlite:///{DATABASE_PATH}'
+# =====================================================
+# Database configuration
+# =====================================================
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # Production (PostgreSQL, etc.)
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+else:
+    # Development fallback (SQLite)
+    DATABASE_PATH = os.getenv(
+        "DATABASE_PATH",
+        str(BASE_DIR / "dev.db")
+    )
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{DATABASE_PATH}"
+
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # API Keys

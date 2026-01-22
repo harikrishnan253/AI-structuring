@@ -54,8 +54,9 @@ export function UploadPage() {
     if (files.length === 0) return;
     
     const options: UploadOptions = {
+      document_type: "Medical Textbook",
       use_markers: useMarkers,
-      batch_name: batchName || undefined,
+      batch_name: batchName,
     };
     
     try {
