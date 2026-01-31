@@ -1,0 +1,142 @@
+version: "3.8"
+
+services:
+  # ============================================
+  # Redis - Message Broker
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-structuring-network
+
+  # ============================================
+  # PostgreSQL - Production Database
+  # ============================================
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ai_structuring
+      POSTGRES_USER: ai_structuring
+      POSTGRES_PASSWORD: ai_structuring_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_structuring"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-structuring-network
+
+  # ============================================
+  # Backend API (Flask + Gunicorn)
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - backend/.env
+    ports:
+      - "5000:5000"
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - ai-structuring-network
+
+  # ============================================
+  # Celery Worker - Document Processing
+  # ============================================
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: celery -A celery_worker worker --loglevel=info --concurrency=2
+    stop_grace_period: 600s
+    env_file:
+      - backend/.env
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    networks:
+      - ai-structuring-network
+
+  # ============================================
+  # Flower - Celery Monitoring
+  # ============================================
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: celery -A celery_worker flower --port=5555 --basic_auth=${FLOWER_BASIC_AUTH}
+    env_file:
+      - backend/.env
+    ports:
+      - "5555:5555"
+    depends_on:
+      redis:
+        condition: service_healthy
+      celery-worker:
+        condition: service_started
+    networks:
+      - ai-structuring-network
+
+  # ============================================
+  # Frontend (React + Nginx)
+  # ============================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ai-structuring-network
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  redis_data:
+  postgres_data:
+  app_data:
+
+# ============================================
+# Network
+# ============================================
+networks:
+  ai-structuring-network:
+    driver: bridge
+

@@ -1,0 +1,2141 @@
+{
+  "document_name": "Bittner9781975243012-sec6.9 org.docx",
+  "processed_at": "2026-01-31T10:40:38.196482",
+  "summary": {
+    "total_paragraphs": 335,
+    "auto_applied": 335,
+    "needs_review": 0,
+    "auto_apply_percentage": 100.0,
+    "average_confidence": 97.61194029850746
+  },
+  "classifications": [
+    {
+      "id": 1,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 2,
+      "tag": "CN",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 3,
+      "tag": "CT",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 4,
+      "tag": "CAU",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 5,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 6,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 7,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 8,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 9,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 10,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 11,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 12,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 13,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 14,
+      "tag": "BL1-FIRST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is followed by a nested list (ID 15 is BL2-FIRST), indicating it's the first item of its level in this sequence.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 15,
+      "tag": "BL2-FIRST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 2. It follows a level 1 item (ID 14) and is followed by another level 2 item (implied by BL3-MID context), making it the first item of a nested list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 16,
+      "tag": "BL3-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 17,
+      "tag": "BL3-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 18,
+      "tag": "BL3-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 19,
+      "tag": "BL2-LAST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 2. It is preceded by a level 2 item (implied by BL3-MID context) and followed by a level 1 item (ID 22), indicating it's the last item of the nested list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 20,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 21,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 22,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a level 2 item (ID 19, BL2-LAST) and followed by another level 1 item (implied by BL-MID context), placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 23,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 24,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL2-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 25,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 26,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 27,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 28,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL2-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 29,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 30,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 31,
+      "tag": "NL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a number list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 32,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 33,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL2-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 34,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 35,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 36,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 37,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 38,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 39,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 40,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 41,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 42,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 43,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 44,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL2-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 45,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 46,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 47,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 48,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 49,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 50,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 51,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 52,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 53,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 54,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 55,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 56,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 57,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 58,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 59,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 60,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 61,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 62,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 63,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 64,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 65,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 66,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 67,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 68,
+      "tag": "NL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 69,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 70,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 71,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 72,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 73,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 74,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 75,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 76,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 77,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 78,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 79,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 80,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 81,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 82,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 83,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 84,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 85,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 86,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 87,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 88,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 89,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 90,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 91,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 92,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 93,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 94,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 95,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 96,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 97,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 98,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 99,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 100,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 101,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 102,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 103,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 104,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 105,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 106,
+      "tag": "BL1-FIRST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-LAST, indicating the end of a previous list, thus this item starts a new level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 107,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 108,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 109,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 110,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 111,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 112,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-MID and followed by another level 1 item (ID 113), placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 113,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by another level 1 item (ID 112) and followed by a BL-MID, placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 114,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 115,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-MID and followed by another level 1 item (ID 116), placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 116,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by another level 1 item (ID 115) and followed by a BL-MID, placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 117,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 118,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL2-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 119,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 120,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 121,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 122,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 123,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 124,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 125,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 126,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 127,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 128,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 129,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 130,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 131,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 132,
+      "tag": "BL1-FIRST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-LAST, indicating the end of a previous list, thus this item starts a new level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 133,
+      "tag": "BL2-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 134,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL2-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 135,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 136,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 137,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 138,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 139,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 140,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 141,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 142,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 143,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 144,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 145,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 146,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 147,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 148,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 149,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 150,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 151,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 152,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 153,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 154,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 155,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 156,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. Both preceding (BL-MID) and succeeding (BL-MID) contexts indicate it is a middle item in a level 1 list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 157,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 158,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 159,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 160,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 161,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 162,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 163,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 164,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 165,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 166,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 167,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 168,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 169,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 170,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 171,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 172,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 173,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 174,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 175,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 176,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 177,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 178,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 179,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-MID and followed by another level 1 item (ID 180), placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 180,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by another level 1 item (ID 179) and followed by a BL-MID, placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 181,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 182,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 183,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 184,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 185,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 186,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by a BL-MID and followed by another level 1 item (ID 187), placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 187,
+      "tag": "BL1-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 1. It is preceded by another level 1 item (ID 186) and followed by a BL-MID, placing it in the middle of a list block.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 188,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 189,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 190,
+      "tag": "NL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 191,
+      "tag": "NL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 192,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 193,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 194,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 195,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 196,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 197,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 198,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 199,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 200,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 201,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 202,
+      "tag": "NL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 203,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 204,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 205,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 206,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 207,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 208,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 209,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 210,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 211,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 212,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 213,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 214,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 215,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 216,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 217,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 218,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 219,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 220,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 221,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 222,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 223,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 224,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 225,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 226,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 227,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 228,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 229,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 230,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 231,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 232,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 233,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 234,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 235,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 236,
+      "tag": "NL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 237,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "XML marker indicating end of body content."
+    },
+    {
+      "id": 238,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "XML marker indicating start of reference section."
+    },
+    {
+      "id": 239,
+      "tag": "SRH1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 240,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 241,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 242,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 243,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 244,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 245,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 246,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 247,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 248,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 249,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 250,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 251,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 252,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 253,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 254,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 255,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 256,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 257,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 258,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 259,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 260,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 261,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 262,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 263,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 264,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 265,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 266,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 267,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 268,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 269,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 270,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 271,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 272,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 273,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 274,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 275,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 276,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 277,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 278,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 279,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 280,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 281,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 282,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 283,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 284,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 285,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 286,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 287,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 288,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 289,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 290,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 291,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 292,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 293,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 294,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 295,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 296,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 297,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 298,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 299,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 300,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 301,
+      "tag": "SR-FIRST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 0, indicating a source reference. It is followed by another source reference (ID 302), making it the first in a block of references.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 302,
+      "tag": "SR-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text is a bullet list item at level 0, indicating a source reference. It is preceded by another source reference (ID 301) and followed by a TXT (implying another SR item or end of block), placing it in the middle of a block of references.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 303,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and the preceding context ([SR-MID]) indicates it is a middle item in a series of references.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 304,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 305,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 306,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 307,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 308,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 309,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 310,
+      "tag": "BL-MID",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and is surrounded by other bulleted references, making it a middle item in the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 311,
+      "tag": "BL-LAST",
+      "confidence": 95,
+      "reasoning": "[Flash] Text contains a bullet list indicator ([BULLET_LIST_L0]) and the following context ([PMI]) indicates it is the last item in this list or section, consistent with the primary classifier's 'SR-LAST' hint.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 312,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 313,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 314,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 315,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 316,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 317,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 318,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 319,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 320,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 321,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 322,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 323,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 324,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 325,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 326,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 327,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 328,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 329,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 330,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 331,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 332,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 333,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 334,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 335,
+      "tag": "T",
+      "confidence": 96,
+      "reasoning": null
+    }
+  ],
+  "flagged_items": []
+}

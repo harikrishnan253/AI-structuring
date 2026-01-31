@@ -1,0 +1,2738 @@
+{
+  "document_name": "Acharya9781975261764-ch002_org.docx",
+  "processed_at": "2026-01-31T10:40:31.176835",
+  "summary": {
+    "total_paragraphs": 454,
+    "auto_applied": 454,
+    "needs_review": 0,
+    "auto_apply_percentage": 100.0,
+    "average_confidence": 98.23348017621146
+  },
+  "classifications": [
+    {
+      "id": 1,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 2,
+      "tag": "CN",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 3,
+      "tag": "CT",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 4,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 5,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 6,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 7,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 8,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 9,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 10,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 11,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 12,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 13,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 14,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 15,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 16,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 17,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 18,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 19,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 20,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 21,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 22,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 23,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 24,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 25,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 26,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 27,
+      "tag": "H3",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 28,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 29,
+      "tag": "H3",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 30,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 31,
+      "tag": "H3",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 32,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 33,
+      "tag": "TXT",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 34,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 35,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 36,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 37,
+      "tag": "TXT",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 38,
+      "tag": "H3",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 39,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 40,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 41,
+      "tag": "BL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 42,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 43,
+      "tag": "BL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 44,
+      "tag": "BL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 45,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 46,
+      "tag": "H3",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 47,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 48,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 49,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 50,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 51,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 52,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 53,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 54,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 55,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 56,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 57,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 58,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 59,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 60,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 61,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 62,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 63,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 64,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 65,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 66,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 67,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 68,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 69,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 70,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 71,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 72,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 73,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 74,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 75,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 76,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 77,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 78,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 79,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 80,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 81,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 82,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 83,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 84,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 85,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 86,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 87,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 88,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 89,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 90,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 91,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 92,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 93,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 94,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 95,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 96,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 97,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 98,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 99,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 100,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 101,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 102,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 103,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 104,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 105,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 106,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 107,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 108,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 109,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 110,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 111,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 112,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 113,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 114,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 115,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 116,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 117,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 118,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 119,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 120,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 121,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 122,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 123,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 124,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 125,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 126,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 127,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 128,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 129,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 130,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 131,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 132,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 133,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 134,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 135,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 136,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 137,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 138,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 139,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 140,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 141,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 142,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 143,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 144,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 145,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 146,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 147,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 148,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 149,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 150,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 151,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 152,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 153,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 154,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 155,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 156,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 157,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 158,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 159,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 160,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 161,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 162,
+      "tag": "TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 163,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 164,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 165,
+      "tag": "SRH1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 166,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 167,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 168,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 169,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 170,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 171,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 172,
+      "tag": "SR",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 173,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 174,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 175,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 176,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 177,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 178,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 179,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 180,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 181,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 182,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 183,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 184,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 185,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 186,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 187,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 188,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 189,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 190,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 191,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 192,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 193,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 194,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 195,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 196,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 197,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 198,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 199,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 200,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 201,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 202,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 203,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 204,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 205,
+      "tag": "T2",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 206,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 207,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 208,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 209,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 210,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 211,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 212,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 213,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 214,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 215,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 216,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 217,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 218,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 219,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 220,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 221,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 222,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 223,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 224,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 225,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 226,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 227,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 228,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 229,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 230,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 231,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 232,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 233,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 234,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 235,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 236,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 237,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 238,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 239,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 240,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 241,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 242,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 243,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 244,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 245,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 246,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 247,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 248,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 249,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 250,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 251,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 252,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 253,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 254,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 255,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 256,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 257,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 258,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 259,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 260,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 261,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 262,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 263,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 264,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 265,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 266,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 267,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 268,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 269,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 270,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 271,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 272,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 273,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 274,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 275,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 276,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 277,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 278,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 279,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 280,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 281,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 282,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 283,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 284,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 285,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 286,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 287,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 288,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 289,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 290,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 291,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 292,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 293,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 294,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 295,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 296,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 297,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 298,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 299,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 300,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 301,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 302,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 303,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 304,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 305,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 306,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 307,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 308,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 309,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 310,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 311,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 312,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 313,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 314,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 315,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 316,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 317,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 318,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 319,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 320,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 321,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 322,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 323,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 324,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 325,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 326,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 327,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 328,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 329,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 330,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 331,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 332,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 333,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 334,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 335,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 336,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 337,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 338,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 339,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 340,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 341,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 342,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 343,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 344,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 345,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 346,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 347,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 348,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 349,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 350,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 351,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 352,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 353,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 354,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 355,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 356,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 357,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 358,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 359,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 360,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 361,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 362,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 363,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 364,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 365,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 366,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 367,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 368,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 369,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 370,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 371,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 372,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 373,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 374,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 375,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 376,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 377,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 378,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 379,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 380,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 381,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 382,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 383,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 384,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 385,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 386,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 387,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 388,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 389,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 390,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 391,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 392,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 393,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 394,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 395,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 396,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 397,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 398,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 399,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 400,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 401,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 402,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 403,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 404,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 405,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 406,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 407,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 408,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 409,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 410,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 411,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 412,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 413,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 414,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 415,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 416,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 417,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 418,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 419,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 420,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 421,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 422,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 423,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 424,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 425,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 426,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 427,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 428,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 429,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 430,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 431,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 432,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 433,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 434,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 435,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 436,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 437,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 438,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 439,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 440,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 441,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 442,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 443,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 444,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 445,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 446,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 447,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 448,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 449,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 450,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 451,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 452,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 453,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 454,
+      "tag": "T",
+      "confidence": 98,
+      "reasoning": null
+    }
+  ],
+  "flagged_items": []
+}
