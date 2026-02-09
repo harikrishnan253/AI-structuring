@@ -1,0 +1,2140 @@
+{
+  "document_name": "Bittner9781975243012-sec6.9 org.docx",
+  "processed_at": "2026-02-07T12:25:43.336268",
+  "summary": {
+    "total_paragraphs": 335,
+    "auto_applied": 326,
+    "needs_review": 9,
+    "auto_apply_percentage": 97.3,
+    "average_confidence": 96.8
+  },
+  "classifications": [
+    {
+      "id": 1,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Front matter marker"
+    },
+    {
+      "id": 2,
+      "tag": "CN",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 3,
+      "tag": "CT",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 4,
+      "tag": "CAU",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 5,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Front matter marker"
+    },
+    {
+      "id": 6,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Front matter marker"
+    },
+    {
+      "id": 7,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 8,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 9,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Table caption marker"
+    },
+    {
+      "id": 10,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 11,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 12,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 13,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 14,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 15,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 16,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 17,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 18,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 19,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 20,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 21,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 22,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 23,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 24,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 25,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 26,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 27,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 28,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 29,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 30,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 31,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 32,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 33,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 34,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 35,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 36,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 37,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 38,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 39,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 40,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 41,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 42,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 43,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 44,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 45,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 46,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 47,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 48,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 49,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 50,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 51,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 52,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 53,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 54,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 55,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 56,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 57,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 58,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 59,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 60,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 61,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 62,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 63,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 64,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 65,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Table caption marker"
+    },
+    {
+      "id": 66,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 67,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 68,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 69,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 70,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 71,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 72,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 73,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 74,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 75,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 76,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 77,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 78,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 79,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 80,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 81,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 82,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 83,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 84,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 85,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 86,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 87,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 88,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 89,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 90,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 91,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 92,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 93,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 94,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 95,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 96,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 97,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 98,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 99,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 100,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 101,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 102,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 103,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 104,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 105,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 106,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 107,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 108,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 109,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 110,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 111,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 112,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 113,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 114,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 115,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 116,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 117,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 118,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 119,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 120,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 121,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 122,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 123,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 124,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 125,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 126,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 127,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 128,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 129,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 130,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 131,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 132,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 133,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 134,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 135,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 136,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 137,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 138,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 139,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 140,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 141,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 142,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 143,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 144,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 145,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 146,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 147,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 148,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 149,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 150,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 151,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 152,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 153,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 154,
+      "tag": "BL-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 155,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 156,
+      "tag": "BL-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 157,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 158,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 159,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 160,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 161,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 162,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 163,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 164,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 165,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 166,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 167,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 168,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 169,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 170,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 171,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 172,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 173,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 174,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 175,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 176,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 177,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 178,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 179,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 180,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 181,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 182,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 183,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 184,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 185,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 186,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 187,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 188,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 189,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 190,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 191,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 192,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 193,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 194,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 195,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 196,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 197,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 198,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 199,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 200,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 201,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 202,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 203,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 204,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 205,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 206,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 207,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 208,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 209,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 210,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 211,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 212,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 213,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 214,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 215,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 216,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 217,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 218,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 219,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 220,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 221,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 222,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 223,
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 224,
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 225,
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 226,
+      "tag": "UL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 227,
+      "tag": "UL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 228,
+      "tag": "UL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 229,
+      "tag": "UL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 230,
+      "tag": "UL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 231,
+      "tag": "UL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 232,
+      "tag": "UL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 233,
+      "tag": "UL-FIRST",
+      "confidence": 80,
+      "reasoning": "[Flash] The text 'Outcomes' appears to be a heading within a list. Given the surrounding context of UL-FIRST items, UL-H1 is the most appropriate style. The original TXT classification is incorrect as it doesn't reflect the heading nature within the list.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50,
+      "repaired": true,
+      "repair_reason": "list-position"
+    },
+    {
+      "id": 234,
+      "tag": "UL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 235,
+      "tag": "UL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 236,
+      "tag": "UL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 237,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 238,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 239,
+      "tag": "SRH1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 240,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 241,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 242,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 243,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 244,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 245,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 246,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 247,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 248,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 249,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 250,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 251,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 252,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 253,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 254,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 255,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 256,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 257,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 258,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 259,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 260,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 261,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 262,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 263,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 264,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 265,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 266,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 267,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 268,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 269,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 270,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 271,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 272,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 273,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 274,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 275,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 276,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 277,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 278,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 279,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 280,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 281,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 282,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 283,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 284,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 285,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 286,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 287,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 288,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 289,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 290,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 291,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 292,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 293,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 294,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 295,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 296,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 297,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 298,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 299,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 300,
+      "tag": "SR",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 301,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 302,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 303,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 304,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 305,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 306,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 307,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 308,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 309,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 310,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 311,
+      "tag": "REF-U",
+      "confidence": 99.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 312,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Reference closing marker"
+    },
+    {
+      "id": 313,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Float opening marker"
+    },
+    {
+      "id": 314,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": "Table caption"
+    },
+    {
+      "id": 315,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Float closing marker"
+    },
+    {
+      "id": 316,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": "Table header row"
+    },
+    {
+      "id": 317,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": "Table header row"
+    },
+    {
+      "id": 318,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 319,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 320,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 321,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 322,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 323,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 324,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 325,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 326,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": "Table caption"
+    },
+    {
+      "id": 327,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": "Table caption"
+    },
+    {
+      "id": 328,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 329,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 330,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 331,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 332,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 333,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 334,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 335,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    }
+  ],
+  "flagged_items": [
+    {
+      "id": 233,
+      "tag": "UL-FIRST",
+      "confidence": 80,
+      "original_text": "Outcomes",
+      "needs_review": true,
+      "reasoning": "[Flash] The text 'Outcomes' appears to be a heading within a list. Given the surrounding context of UL-FIRST items, UL-H1 is the most appropriate style. The original TXT classification is incorrect as it doesn't reflect the heading nature within the list."
+    },
+    {
+      "id": 319,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Ipilimumab, Tremelimumab",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 321,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Nivolumab, Pembrolizumab, Cemiplimab, Dostarlimab, Retifanlimab, Toripalimab",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 323,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Atezolizumab, Durvalumab, Avelumab",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 325,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Relatlimab",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 329,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Endomyocardial biopsy (EMB) shows inflammatory infiltrate with myocardial necrosis",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 331,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Troponin elevation with 1 major criteria or 2 minor criteria",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 333,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Major criteria: cardiac magnetic resonance [CMR] diagnostic for acute myocarditis based on modified ...",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 335,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Minor criteria: clinical symptoms, arrhythmia, left ventricular systolic dysfunction, other irAEs, o...",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    }
+  ]
+}

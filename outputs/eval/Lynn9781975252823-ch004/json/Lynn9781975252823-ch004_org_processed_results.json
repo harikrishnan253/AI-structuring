@@ -1,0 +1,6806 @@
+{
+  "document_name": "Lynn9781975252823-ch004_org.docx",
+  "processed_at": "2026-02-07T12:25:14.793183",
+  "summary": {
+    "total_paragraphs": 1012,
+    "auto_applied": 972,
+    "needs_review": 40,
+    "auto_apply_percentage": 96.0,
+    "average_confidence": 96.05237154150197
+  },
+  "classifications": [
+    {
+      "id": 1,
+      "tag": "CN",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 2,
+      "tag": "CT",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 3,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 4,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 5,
+      "tag": "TXT-FLUSH",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 6,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 7,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 8,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 9,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 10,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 11,
+      "tag": "OBJ1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 12,
+      "tag": "OBJ-TXT-FLUSH",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 13,
+      "tag": "OBJ-NL-FIRST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 14,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 15,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 16,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 17,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 18,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 19,
+      "tag": "OBJ-NL-MID",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 20,
+      "tag": "OBJ-NL-LAST",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 21,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 22,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 23,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 24,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 25,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 26,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 27,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 28,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 29,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 30,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 31,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 32,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Table marker"
+    },
+    {
+      "id": 33,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 34,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 35,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 36,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 37,
+      "tag": "BX1-H1",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 38,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 39,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 40,
+      "tag": "BX1-H1",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 41,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 42,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 43,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 44,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 45,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 46,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 47,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 48,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 49,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 50,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 51,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 52,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 53,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 54,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 55,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 56,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 57,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 58,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 59,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 60,
+      "tag": "BX1-BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 61,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 62,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 63,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 64,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 65,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 66,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 67,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 68,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 69,
+      "tag": "BX1-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 70,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 71,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 72,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 73,
+      "tag": "BX1-TTL",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 74,
+      "tag": "BX1-TXT",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 75,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 76,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 77,
+      "tag": "BX4-TYPE",
+      "confidence": 99,
+      "reasoning": "Box type label for Skill 4-7"
+    },
+    {
+      "id": 78,
+      "tag": "BX4-BL-FIRST",
+      "confidence": 97,
+      "reasoning": "First bullet point within a Skill box (BX4)"
+    },
+    {
+      "id": 79,
+      "tag": "BX4-TXT",
+      "confidence": 95,
+      "reasoning": "Body text within a Skill box (BX4)"
+    },
+    {
+      "id": 80,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 81,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "[Flash] The text starts with '<BX_TYPE>' which is a pattern for PMI. The surrounding context also supports this.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 82,
+      "tag": "TXT",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with '<BX_TTL>' which is a pattern for TTL. The surrounding context also supports this.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50,
+      "repaired": true,
+      "repair_reason": "not-allowed"
+    },
+    {
+      "id": 83,
+      "tag": "TXT",
+      "confidence": 95,
+      "reasoning": "[Flash] This is a regular paragraph describing the evidence for practice.",
+      "fallback_used": true,
+      "original_tag": "TXT",
+      "original_confidence": 50
+    },
+    {
+      "id": 84,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 85,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 86,
+      "tag": "BX4-H1",
+      "confidence": 99,
+      "reasoning": "Heading within a Skill box (BX4)"
+    },
+    {
+      "id": 87,
+      "tag": "BX4-TXT",
+      "confidence": 97,
+      "reasoning": "First paragraph of text within a Skill box (BX4)"
+    },
+    {
+      "id": 88,
+      "tag": "BX4-BL-FIRST",
+      "confidence": 97,
+      "reasoning": "First bullet point within a Skill box (BX4)"
+    },
+    {
+      "id": 89,
+      "tag": "BX4-BL-LAST",
+      "confidence": 97,
+      "reasoning": "Last bullet point within a Skill box (BX4)"
+    },
+    {
+      "id": 90,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 91,
+      "tag": "H2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 92,
+      "tag": "NL-FIRST",
+      "confidence": 98,
+      "reasoning": "First item in a numbered list"
+    },
+    {
+      "id": 93,
+      "tag": "NL-MID",
+      "confidence": 98,
+      "reasoning": "Middle item in a numbered list"
+    },
+    {
+      "id": 94,
+      "tag": "NL-LAST",
+      "confidence": 98,
+      "reasoning": "Last item in a numbered list"
+    },
+    {
+      "id": 95,
+      "tag": "REFH1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 96,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 97,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 98,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 99,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 100,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 101,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 102,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 103,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 104,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 105,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 106,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 107,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 108,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 109,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 110,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 111,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 112,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 113,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 114,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 115,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 116,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 117,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 118,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 119,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 120,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 121,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 122,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 123,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 124,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 125,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 126,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 127,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 128,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 129,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 130,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 131,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 132,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 133,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 134,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 135,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 136,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 137,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 138,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 139,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 140,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 141,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 142,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 143,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 144,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 145,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 146,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 147,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 148,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 149,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 150,
+      "tag": "REF-N",
+      "confidence": 98,
+      "reasoning": null
+    },
+    {
+      "id": 151,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 152,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 153,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 154,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 155,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 156,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 157,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 158,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 159,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 160,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 161,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 162,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 163,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 164,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 165,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 166,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 167,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 168,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 169,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 170,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 171,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 172,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 173,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 174,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 175,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 176,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 177,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 178,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 179,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 180,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 181,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 182,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 183,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 184,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 185,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 186,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 187,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 188,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 189,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 190,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 191,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 192,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 193,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 194,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 195,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 196,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 197,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 198,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 199,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 200,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 201,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 202,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 203,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 204,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 205,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 206,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 207,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 208,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 209,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 210,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 211,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 212,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 213,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 214,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 215,
+      "tag": "REF-N",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 216,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 217,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 218,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 219,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 220,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 221,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 222,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 223,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 224,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 225,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 226,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 227,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 228,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": "Skill heading, treated as H1 in this context"
+    },
+    {
+      "id": 229,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 230,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 231,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 232,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 233,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": "Skill heading, treated as H1 in this context"
+    },
+    {
+      "id": 234,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 235,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": "Figure legend with source citation"
+    },
+    {
+      "id": 236,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": "Skill heading, treated as H1 in this context"
+    },
+    {
+      "id": 237,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 238,
+      "tag": "H1",
+      "confidence": 99,
+      "reasoning": "Skill heading, treated as H1 in this context"
+    },
+    {
+      "id": 239,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 240,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 241,
+      "tag": "FIG-LEG",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 242,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Table marker"
+    },
+    {
+      "id": 243,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 244,
+      "tag": "TSN",
+      "confidence": 99,
+      "reasoning": "Source line after table title"
+    },
+    {
+      "id": 245,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 246,
+      "tag": "BX2-SRC",
+      "confidence": 99,
+      "reasoning": "Source for a warning/red flag box"
+    },
+    {
+      "id": 247,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 248,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 249,
+      "tag": "BX4-TTL",
+      "confidence": 99,
+      "reasoning": "Box type and title"
+    },
+    {
+      "id": 250,
+      "tag": "BX4-BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 251,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 252,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 253,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 254,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 255,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 256,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 257,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 258,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 259,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 260,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 261,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 262,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 263,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 264,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 265,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 266,
+      "tag": "BX4-BL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 267,
+      "tag": "BX4-BL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 268,
+      "tag": "BX4-SRC",
+      "confidence": 99,
+      "reasoning": "Source citation for Box 4-1"
+    },
+    {
+      "id": 269,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 270,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box opening marker"
+    },
+    {
+      "id": 271,
+      "tag": "BX4-TTL",
+      "confidence": 99,
+      "reasoning": "Box type and title"
+    },
+    {
+      "id": 272,
+      "tag": "BX4-TXT",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 273,
+      "tag": "BX4-NL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 274,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 275,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 276,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 277,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 278,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 279,
+      "tag": "BX4-NL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 280,
+      "tag": "BX4-NL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 281,
+      "tag": "BX4-SRC",
+      "confidence": 99,
+      "reasoning": "Source citation for Box 4-2"
+    },
+    {
+      "id": 282,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box closing marker"
+    },
+    {
+      "id": 283,
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": "Table title"
+    },
+    {
+      "id": 284,
+      "tag": "T2",
+      "confidence": 96,
+      "reasoning": "Table header row content, includes a list"
+    },
+    {
+      "id": 285,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 286,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": "Bulleted list item within a table cell"
+    },
+    {
+      "id": 287,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 288,
+      "tag": "T",
+      "confidence": 94,
+      "reasoning": "Table body cell content, includes a list"
+    },
+    {
+      "id": 289,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 290,
+      "tag": "T",
+      "confidence": 94,
+      "reasoning": "Table body cell content"
+    },
+    {
+      "id": 291,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": "Bulleted list item within a table cell"
+    },
+    {
+      "id": 292,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": "Bulleted list item within a table cell"
+    },
+    {
+      "id": 293,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": "Bulleted list item within a table cell"
+    },
+    {
+      "id": 294,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 295,
+      "tag": "T",
+      "confidence": 94,
+      "reasoning": "Table body cell content"
+    },
+    {
+      "id": 296,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 297,
+      "tag": "T",
+      "confidence": 94,
+      "reasoning": "Table body cell content"
+    },
+    {
+      "id": 298,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 299,
+      "tag": "T",
+      "confidence": 94,
+      "reasoning": "Table body cell content"
+    },
+    {
+      "id": 300,
+      "tag": "T4",
+      "confidence": 94,
+      "reasoning": "Table first column header"
+    },
+    {
+      "id": 301,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 302,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 303,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 304,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 305,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 306,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 307,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 308,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 309,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 310,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 311,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 312,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 313,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 314,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 315,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 316,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 317,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 318,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 319,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 320,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 321,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 322,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 323,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 324,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 325,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 326,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 327,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 328,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 329,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 330,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 331,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 332,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 333,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 334,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 335,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 336,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 337,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 338,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 339,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 340,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 341,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 342,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 343,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 344,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 345,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 346,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 347,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 348,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 349,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 350,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 351,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 352,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 353,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 354,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 355,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 356,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 357,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 358,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 359,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 360,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 361,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 362,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 363,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 364,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 365,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 366,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 367,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 368,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 369,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 370,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 371,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 372,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 373,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 374,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 375,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 376,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 377,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 378,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 379,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 380,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Table row header, likely a section title within the table."
+    },
+    {
+      "id": 381,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 382,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 383,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 384,
+      "tag": "TBL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 385,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Table row header, likely a section title within the table."
+    },
+    {
+      "id": 386,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 387,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Table row header, likely a section title within the table."
+    },
+    {
+      "id": 388,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 389,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Table row header, likely a sub-section title within the table."
+    },
+    {
+      "id": 390,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Table row header, likely a sub-section title within the table."
+    },
+    {
+      "id": 391,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 392,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 393,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 394,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 395,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 396,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 397,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 398,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 399,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 400,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 401,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 402,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 403,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 404,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 405,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 406,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 407,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 408,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 409,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 410,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 411,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 412,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 413,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 414,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 415,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 416,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 417,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 418,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 419,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 420,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 421,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 422,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 423,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 424,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 425,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 426,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 427,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 428,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 429,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 430,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 431,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 432,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 433,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 434,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 435,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 436,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 437,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 438,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 439,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 440,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 441,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 442,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 443,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 444,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 445,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 446,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 447,
+      "tag": "PMI",
+      "confidence": 95,
+      "reasoning": "Figure placeholder within a table cell."
+    },
+    {
+      "id": 448,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 449,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 450,
+      "tag": "T4",
+      "confidence": 98,
+      "reasoning": "Numbered list item in the first column, likely a step."
+    },
+    {
+      "id": 451,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 452,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 453,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 454,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 455,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 456,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 457,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 458,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 459,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 460,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 461,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 462,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H1 is a heading within a table cell"
+    },
+    {
+      "id": 463,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 464,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 465,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 466,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 467,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 468,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H1 is a heading within a table cell"
+    },
+    {
+      "id": 469,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 470,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 471,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 472,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 473,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 474,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 475,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 476,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 477,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 478,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 479,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 480,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 481,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 482,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 483,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 484,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 485,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 486,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 487,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H4 is a heading within a table cell"
+    },
+    {
+      "id": 488,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 489,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 490,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 491,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 492,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box marker within table cell"
+    },
+    {
+      "id": 493,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Box end marker within table cell"
+    },
+    {
+      "id": 494,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H1 is a heading within a table cell"
+    },
+    {
+      "id": 495,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Header row text spanning multiple columns"
+    },
+    {
+      "id": 496,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H1 is a heading within a table cell"
+    },
+    {
+      "id": 497,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 498,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 499,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H1 is a heading within a table cell"
+    },
+    {
+      "id": 500,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 501,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 502,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 503,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 504,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 505,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 506,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 507,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 508,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 509,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 510,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 511,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 512,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 513,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H2 is a heading within a table cell"
+    },
+    {
+      "id": 514,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H3 is a heading within a table cell"
+    },
+    {
+      "id": 515,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "SK_H3 is a heading within a table cell"
+    },
+    {
+      "id": 516,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 517,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 518,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 519,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 520,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 521,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 522,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 523,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 524,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 525,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 526,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 527,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 528,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 529,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 530,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 531,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 532,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 533,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 534,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 535,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 536,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 537,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 538,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 539,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 540,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 541,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 542,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 543,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 544,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 545,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 546,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 547,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 548,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 549,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 550,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 551,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 552,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 553,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 554,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 555,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 556,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 557,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 558,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 559,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 560,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 561,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 562,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 563,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 564,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 565,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 566,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 567,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 568,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 569,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 570,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 571,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 572,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 573,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 574,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 575,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 576,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 577,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 578,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 579,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 580,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 581,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 582,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 583,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 584,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 585,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 586,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 587,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 588,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 589,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 590,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 591,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 592,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 593,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 594,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 595,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 596,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 597,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 598,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 599,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 600,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 601,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 602,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 603,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 604,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 605,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 606,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 607,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 608,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 609,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 610,
+      "tag": "T2",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 611,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 612,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 613,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 614,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 615,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 616,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 617,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 618,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 619,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 620,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 621,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 622,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 623,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 624,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 625,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 626,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 627,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 628,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 629,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 630,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 631,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 632,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 633,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 634,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 635,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 636,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 637,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 638,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 639,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 640,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 641,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 642,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 643,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 644,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 645,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 646,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 647,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 648,
+      "tag": "TBL-FIRST",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 649,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 650,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 651,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 652,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 653,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 654,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 655,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 656,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 657,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 658,
+      "tag": "TBL-LAST",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 659,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 660,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 661,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 662,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 663,
+      "tag": "TBL-LAST",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 664,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 665,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 666,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 667,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 668,
+      "tag": "TBL-LAST",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 669,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 670,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 671,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 672,
+      "tag": "TBL-LAST",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 673,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 674,
+      "tag": "T4",
+      "confidence": 96,
+      "reasoning": null
+    },
+    {
+      "id": 675,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 676,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 677,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 678,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 679,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 680,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 681,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 682,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 683,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 684,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 685,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 686,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 687,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 688,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 689,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 690,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 691,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 692,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 693,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 694,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 695,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 696,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 697,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 698,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 699,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 700,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 701,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 702,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 703,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 704,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 705,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 706,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 707,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 708,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 709,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 710,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 711,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 712,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 713,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 714,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 715,
+      "tag": "TBL-MID",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 716,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 717,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 718,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 719,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 720,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 721,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 722,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 723,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 724,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 725,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 726,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 727,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 728,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 729,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 730,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 731,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 732,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 733,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 734,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 735,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 736,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 737,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 738,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 739,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 740,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 741,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 742,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 743,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 744,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 745,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 746,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 747,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 748,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 749,
+      "tag": "T",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 750,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 751,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 752,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 753,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "Figure placeholder marker within a table cell"
+    },
+    {
+      "id": 754,
+      "tag": "TBL-LAST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 755,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 756,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 757,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 758,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 759,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 760,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 761,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 762,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 763,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 764,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 765,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 766,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 767,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a primary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH1",
+      "original_confidence": 60
+    },
+    {
+      "id": 768,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a tertiary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH4",
+      "original_confidence": 60
+    },
+    {
+      "id": 769,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 770,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a tertiary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH4",
+      "original_confidence": 60
+    },
+    {
+      "id": 771,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 772,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": "Signature line within a table cell"
+    },
+    {
+      "id": 773,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 774,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": "Signature line within a table cell"
+    },
+    {
+      "id": 775,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a primary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH1",
+      "original_confidence": 60
+    },
+    {
+      "id": 776,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 777,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 778,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 779,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 780,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 781,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 782,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 783,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 784,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a tertiary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH4",
+      "original_confidence": 60
+    },
+    {
+      "id": 785,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 786,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": "End of skill box marker within a table cell"
+    },
+    {
+      "id": 787,
+      "tag": "T2",
+      "confidence": 96,
+      "reasoning": "Table header row content"
+    },
+    {
+      "id": 788,
+      "tag": "T2",
+      "confidence": 96,
+      "reasoning": "Table header row content"
+    },
+    {
+      "id": 789,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a primary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH1",
+      "original_confidence": 60
+    },
+    {
+      "id": 790,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 791,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 792,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 793,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a primary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH1",
+      "original_confidence": 60
+    },
+    {
+      "id": 794,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 795,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 796,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 797,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 798,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 799,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 800,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 801,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 802,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 803,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 804,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 805,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 806,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 807,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 808,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 809,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a secondary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH2",
+      "original_confidence": 60
+    },
+    {
+      "id": 810,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a tertiary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH3",
+      "original_confidence": 60
+    },
+    {
+      "id": 811,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": "[Flash] Skill heading within a table cell, likely a tertiary header. T2 is appropriate for table header rows.",
+      "zone_violation": true,
+      "expected_zone": "TABLE",
+      "zone_suggestions": [
+        "T",
+        "T1",
+        "T2",
+        "T2-C",
+        "T3"
+      ],
+      "fallback_used": true,
+      "original_tag": "TH3",
+      "original_confidence": 60
+    },
+    {
+      "id": 812,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 813,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 814,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 815,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 816,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 817,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 818,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 819,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 820,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 821,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 822,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 823,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 824,
+      "tag": "TBL-FIRST",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 825,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 826,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 827,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 828,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 829,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 830,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 831,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 832,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 833,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 834,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 835,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 836,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 837,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 838,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 839,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 840,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 841,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 842,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 843,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 844,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 845,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 846,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 847,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 848,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 849,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 850,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 851,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 852,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 853,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 854,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 855,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 856,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 857,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 858,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 859,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 860,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 861,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 862,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 863,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 864,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 865,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 866,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 867,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 868,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 869,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 870,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 871,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 872,
+      "tag": "PMI",
+      "confidence": 99,
+      "reasoning": null
+    },
+    {
+      "id": 873,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 874,
+      "tag": "T2",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 875,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 876,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 877,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 878,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 879,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 880,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 881,
+      "tag": "T",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 882,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 883,
+      "tag": "TBL-MID",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 884,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 885,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 886,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 887,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 888,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 889,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 890,
+      "tag": "REF-N",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 891,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 892,
+      "tag": "REF-N",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 893,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 894,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 895,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 896,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 897,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 898,
+      "tag": "REF-N",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 899,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 900,
+      "tag": "REF-N",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 901,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 902,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 903,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 904,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 905,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Figure placeholder within a table cell",
+      "repaired": true,
+      "repair_reason": "table-inferred"
+    },
+    {
+      "id": 906,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 907,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 908,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Figure placeholder within a table cell",
+      "repaired": true,
+      "repair_reason": "table-inferred"
+    },
+    {
+      "id": 909,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 910,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 911,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Figure placeholder within a table cell",
+      "repaired": true,
+      "repair_reason": "table-inferred"
+    },
+    {
+      "id": 912,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 913,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 914,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 915,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 916,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 917,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 918,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 919,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 920,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 921,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 922,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 923,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 924,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Signature within a table cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 925,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 926,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Heading within a table cell"
+    },
+    {
+      "id": 927,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 928,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 929,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 930,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 931,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 932,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Closing box marker within a table cell",
+      "repaired": true,
+      "repair_reason": "table-inferred"
+    },
+    {
+      "id": 933,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Box title within a table cell"
+    },
+    {
+      "id": 934,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Box title within a table cell"
+    },
+    {
+      "id": 935,
+      "tag": "T4",
+      "confidence": 97,
+      "reasoning": "Box heading within a table cell"
+    },
+    {
+      "id": 936,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Box heading within a table cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 937,
+      "tag": "T4",
+      "confidence": 97,
+      "reasoning": "Box instruction text within a table cell"
+    },
+    {
+      "id": 938,
+      "tag": "REF-N",
+      "confidence": 80.0,
+      "reasoning": "Question within a table cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 939,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Box heading within a table cell"
+    },
+    {
+      "id": 940,
+      "tag": "REF-N",
+      "confidence": 97.0,
+      "reasoning": "Question within a table cell",
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 941,
+      "tag": "REF-N",
+      "confidence": 80.0,
+      "reasoning": "Question within a table cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 942,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Note about answers within a table cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 943,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Table header"
+    },
+    {
+      "id": 944,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Table header"
+    },
+    {
+      "id": 945,
+      "tag": "T2",
+      "confidence": 98,
+      "reasoning": "Table header"
+    },
+    {
+      "id": 946,
+      "tag": "T4",
+      "confidence": 97,
+      "reasoning": "Row header"
+    },
+    {
+      "id": 947,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 948,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 949,
+      "tag": "T4",
+      "confidence": 97,
+      "reasoning": "Row header"
+    },
+    {
+      "id": 950,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 951,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 952,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 953,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 954,
+      "tag": "TBL-MID",
+      "confidence": 97,
+      "reasoning": null
+    },
+    {
+      "id": 955,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 956,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 957,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 958,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 959,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 960,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 961,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 962,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 963,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 964,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 965,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 966,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Introductory text for moderate risk category",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 967,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 968,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 969,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 970,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 971,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 972,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Introductory text for evaluation of need",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 973,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 974,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 975,
+      "tag": "REF-U",
+      "confidence": 97.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 976,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 977,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 978,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 979,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 980,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 981,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 982,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 983,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 984,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 985,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 986,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 987,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 988,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": "Table header row, likely a box title marker"
+    },
+    {
+      "id": 989,
+      "tag": "T2",
+      "confidence": 99,
+      "reasoning": "Table header row, likely a box title marker"
+    },
+    {
+      "id": 990,
+      "tag": "T4",
+      "confidence": 99,
+      "reasoning": "First column header, likely a box title"
+    },
+    {
+      "id": 991,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": "Table body cell, likely a box title",
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 992,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 993,
+      "tag": "T4",
+      "confidence": 95,
+      "reasoning": null
+    },
+    {
+      "id": 994,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 995,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 996,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 997,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-stub-col,ref-zone-final"
+    },
+    {
+      "id": 998,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 999,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    },
+    {
+      "id": 1000,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1001,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1002,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1003,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text,ref-zone-final"
+    },
+    {
+      "id": 1004,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1005,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1006,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1007,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1008,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1009,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1010,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1011,
+      "tag": "REF-U",
+      "confidence": 95.0,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "ref-zone-final"
+    },
+    {
+      "id": 1012,
+      "tag": "T",
+      "confidence": 80,
+      "reasoning": null,
+      "repaired": true,
+      "repair_reason": "zone-table-text"
+    }
+  ],
+  "flagged_items": [
+    {
+      "id": 82,
+      "tag": "TXT",
+      "confidence": 80,
+      "original_text": "<BX_TTL>MINIMIZING RESTRAINT USE",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with '<BX_TTL>' which is a pattern for TTL. The surrounding context also supports this.",
+      "alternatives": [
+        "TXT-FLUSH",
+        "BX1-TXT-FIRST",
+        "CS-TXT"
+      ]
+    },
+    {
+      "id": 885,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "The expected outcomes are that the patient is constrained by the restraint and remains free from inj...",
+      "needs_review": true
+    },
+    {
+      "id": 887,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<SK_H2>IMPLEMENTATION",
+      "needs_review": true
+    },
+    {
+      "id": 889,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<SK_H3>RATIONALE",
+      "needs_review": true
+    },
+    {
+      "id": 891,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "Restraints should be used only as a last resort when alternative measures have failed, and the patie...",
+      "needs_review": true
+    },
+    {
+      "id": 893,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "This policy protects the patient and the nurse and specifies guidelines for application as well as t...",
+      "needs_review": true
+    },
+    {
+      "id": 895,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Hand hygiene and PPE prevent the spread of microorganisms. PPE is required based on transmission pre...",
+      "needs_review": true
+    },
+    {
+      "id": 897,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Identifying the patient ensures the right patient receives the intervention and helps prevent errors...",
+      "needs_review": true
+    },
+    {
+      "id": 899,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Explanation may lessen confusion and anger and provide reassurance. A clearly stated facility policy...",
+      "needs_review": true
+    },
+    {
+      "id": 901,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "This promotes person-centered, individualized care and engagement; continuity of care; and understan...",
+      "needs_review": true
+    },
+    {
+      "id": 903,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "This positions the child correctly on the blanket.",
+      "needs_review": true
+    },
+    {
+      "id": 905,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<fig4-7.1>",
+      "needs_review": true,
+      "reasoning": "Figure placeholder within a table cell"
+    },
+    {
+      "id": 906,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Wrapping snugly ensures that the child will not be able to wriggle out.",
+      "needs_review": true
+    },
+    {
+      "id": 908,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<fig4-7.2>",
+      "needs_review": true,
+      "reasoning": "Figure placeholder within a table cell"
+    },
+    {
+      "id": 909,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Wrapping snugly ensures that the child will not be able to wriggle out.",
+      "needs_review": true
+    },
+    {
+      "id": 911,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<fig4-7.3>",
+      "needs_review": true,
+      "reasoning": "Figure placeholder within a table cell"
+    },
+    {
+      "id": 912,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Securing the blanket ensures that the child will not be able to wriggle out. The restraint must be s...",
+      "needs_review": true
+    },
+    {
+      "id": 914,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Remaining with the child prevents injury. Reassurance demonstrates caring and provides an opportunit...",
+      "needs_review": true
+    },
+    {
+      "id": 916,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Proper removal of PPE reduces the risk for infection transmission and contamination of other items. ...",
+      "needs_review": true
+    },
+    {
+      "id": 918,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "The expected outcomes have been met when the restraint has prevented injury to the patient and other...",
+      "needs_review": true
+    },
+    {
+      "id": 921,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "Document alternative measures attempted before applying the restraint and that less-restrictive inte...",
+      "needs_review": true
+    },
+    {
+      "id": 923,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "6/9/30 0230 Patient requires suturing of forehead. Parent attempted to hold child for procedure with...",
+      "needs_review": true
+    },
+    {
+      "id": 924,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "\u2014D. Dunn, RN",
+      "needs_review": true,
+      "reasoning": "Signature within a table cell"
+    },
+    {
+      "id": 931,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "Initiate appropriate referral to other health care providers for further evaluation, based on assess...",
+      "needs_review": true
+    },
+    {
+      "id": 932,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "</SK_BX>",
+      "needs_review": true,
+      "reasoning": "Closing box marker within a table cell"
+    },
+    {
+      "id": 936,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<EYU_H1>Focusing on Patient Care: Developing Clinical Reasoning and Clinical Judgment",
+      "needs_review": true,
+      "reasoning": "Box heading within a table cell"
+    },
+    {
+      "id": 938,
+      "tag": "REF-N",
+      "confidence": 80.0,
+      "original_text": "2. \tKevin Mallory, the 35-year-old with a closed head injury, is causing concern that he will pull h...",
+      "needs_review": true,
+      "reasoning": "Question within a table cell",
+      "alternatives": [
+        "NL-FIRST",
+        "NL-MID"
+      ]
+    },
+    {
+      "id": 941,
+      "tag": "REF-N",
+      "confidence": 80.0,
+      "original_text": "3. \tJohn Frawley, the 72-year-old patient with Alzheimer disease, continually tries to get out of be...",
+      "needs_review": true,
+      "reasoning": "Question within a table cell",
+      "alternatives": [
+        "NL-FIRST",
+        "NL-MID"
+      ]
+    },
+    {
+      "id": 942,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "You can find suggested answers after the Bibliography at the end of this chapter.",
+      "needs_review": true,
+      "reasoning": "Note about answers within a table cell"
+    },
+    {
+      "id": 947,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Fall Risk Score: 6\u201310 Points Color Code: Yellow",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 948,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Fall Risk Score: >10 Points Color Code: Red",
+      "needs_review": true,
+      "reasoning": "Table body cell"
+    },
+    {
+      "id": 966,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "In addition to measures listed under low fall risk:",
+      "needs_review": true,
+      "reasoning": "Introductory text for moderate risk category"
+    },
+    {
+      "id": 972,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Evaluate need for:",
+      "needs_review": true,
+      "reasoning": "Introductory text for evaluation of need"
+    },
+    {
+      "id": 977,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "In addition to measures listed under moderate and low fall risk:",
+      "needs_review": true
+    },
+    {
+      "id": 982,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Evaluate need for the following, starting with less restrictive to more restrictive measures in the ...",
+      "needs_review": true
+    },
+    {
+      "id": 991,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "<BX_TTL>GENERAL GUIDELINES FOR RESTRAINT USE",
+      "needs_review": true,
+      "reasoning": "Table body cell, likely a box title"
+    },
+    {
+      "id": 997,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "For example (The Joint Commission, 2024a): If a bed rail is used to facilitate a patient\u2019s mobility ...",
+      "needs_review": true
+    },
+    {
+      "id": 999,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Whether or not a specific device is considered a restraint is determined by several factors:",
+      "needs_review": true
+    },
+    {
+      "id": 1003,
+      "tag": "REF-U",
+      "confidence": 80.0,
+      "original_text": "For example (The Joint Commission, 2024a): If a bed rail is used to facilitate a patient\u2019s mobility ...",
+      "needs_review": true
+    },
+    {
+      "id": 1012,
+      "tag": "T",
+      "confidence": 80,
+      "original_text": "Restraints must be discontinued at the earliest possible time.",
+      "needs_review": true
+    }
+  ]
+}

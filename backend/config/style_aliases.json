@@ -1,0 +1,19 @@
+{
+  "Ref-H1": "REFH1",
+  "REF-H1": "REFH1",
+  "RefH1": "REFH1",
+  "Ref-H2": "REFH2",
+  "REF-H2": "REFH2",
+  "RefH2": "REFH2",
+  "Ref-H2a": "REFH2a",
+  "REF-H2a": "REFH2a",
+  "RefH2a": "REFH2a",
+  "Ref-N": "REF-N",
+  "Ref-U": "REF-U",
+  "EFP_BX-TTL": "BX-TTL",
+  "EFP_BX-TXT": "BX-TXT",
+  "EYU_BX-H1": "BX-H1",
+  "EYU_BX-TXT": "BX-TXT",
+  "EYU_BX-BL-FIRST": "BX-BL-FIRST",
+  "EYU_BX-BL-LAST": "BX-BL-LAST"
+}
