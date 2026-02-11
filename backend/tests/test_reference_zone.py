@@ -20,8 +20,21 @@ def test_reference_zone_ul_to_ref_u():
         {"id": 3, "tag": "UL-MID", "confidence": 0.8},
     ]
     repaired = validate_and_repair(classifications, blocks, allowed_styles={"REF-U", "REF-N", "REF-TXT", "H1"})
+    assert repaired[1]["tag"] == "REF-N"
+    assert repaired[2]["tag"] == "REF-N"
+
+
+def test_reference_zone_bullet_entry_to_ref_u():
+    blocks = [
+        {"id": 1, "text": "References", "metadata": {"context_zone": "BACK_MATTER"}},
+        {"id": 2, "text": "• Smith et al. 2019. Journal.", "metadata": {"context_zone": "BACK_MATTER"}},
+    ]
+    classifications = [
+        {"id": 1, "tag": "H1", "confidence": 0.95},
+        {"id": 2, "tag": "UL-FIRST", "confidence": 0.8},
+    ]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"REF-U", "REF-N", "H1"})
     assert repaired[1]["tag"] == "REF-U"
-    assert repaired[2]["tag"] == "REF-U"
 
 
 def test_reference_zone_numbered_to_ref_n():
@@ -73,3 +86,17 @@ def test_reference_zone_citation_density_late_trigger():
     assert start_idx is not None
     assert start_idx >= 42
     assert len(ref_ids) > 0
+
+
+def test_reference_zone_annotated_bibliography_heading_trigger():
+    blocks = [
+        {"id": 1, "text": "Body paragraph", "metadata": {}},
+        {"id": 2, "text": "<Ref-H1>Annotated Bibliography", "metadata": {}},
+        {"id": 3, "text": "Smith AB, Jones C. Journal. 2020;10:1-5.", "metadata": {}},
+        {"id": 4, "text": "Doe D, Roe E. N Engl J Med 2021;12:6-8.", "metadata": {}},
+        {"id": 5, "text": "Lee F, Kim G. doi:10.1000/test.123", "metadata": {}},
+    ]
+    ref_ids, trigger, start_idx = detect_reference_zone(blocks)
+    assert trigger == "heading_match"
+    assert start_idx == 1
+    assert ref_ids == {2, 3, 4, 5}

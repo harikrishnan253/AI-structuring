@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python -m app.services.grounded_retriever:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(\"c:\\\\Users\\\\harikrishnam\\\\Desktop\\\\AI-structuring-main\\\\backend\\\\venv\\\\Scripts\\\\python.exe\":*)",
+      "Bash(python3:*)"
     ]
   }
 }

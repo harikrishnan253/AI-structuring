@@ -16,15 +16,18 @@ from typing import Optional
 
 from .llm_client import GeminiClient
 from .style_list import ALLOWED_STYLES
-from app.services.style_normalizer import normalize_style
+from app.services.style_normalizer import normalize_style, normalize_tag
 from app.services.grounded_retriever import get_retriever
 from app.services.prediction_cache import get_cache
+from .rule_learner import RuleLearner
 
 logger = logging.getLogger(__name__)
 
 REF_NUMBER_RE = re.compile(
     r"^\s*(?:[•●\-–—]\s*)?(?:\[\s*\d+\s*\]|\(\s*\d+\s*\)|\d+\s*[.)]|\d+\s+)"
 )
+REF_BULLET_RE = re.compile(r"^\s*[\u2022\u25CF\-\*\u2013\u2014]\s+")
+
 
 # strict parsing helpers for model tag outputs
 STRICT_TAG_RE = re.compile(r"^[A-Z0-9]+(?:[_-][A-Z0-9]+)*$")
@@ -473,8 +476,102 @@ class GeminiClassifier:
             logger.warning(f"Failed to initialize cache: {e}")
             self.cache = None
 
+        # Rule learner for deterministic classification before LLM
+        try:
+            self.rule_learner = RuleLearner()
+            self.rule_learner.load_rules()
+            if self.rule_learner.rules:
+                logger.info(f"Loaded {len(self.rule_learner.rules)} deterministic rules")
+            else:
+                logger.info("No learned rules found - will use LLM for all predictions")
+        except Exception as e:
+            logger.warning(f"Failed to load rule learner: {e}")
+            self.rule_learner = None
+
+        # Statistics for rule-based predictions
+        self.rule_predictions = 0
+        self.llm_predictions = 0
+
         logger.info(f"Initialized Gemini classifier with model: {model_name}, timeout: {API_TIMEOUT}s")
     
+    def _apply_rules(
+        self,
+        paragraphs: list[dict],
+        min_confidence: float = 0.80
+    ) -> tuple[list[dict], list[dict], list[dict]]:
+        """
+        Apply learned deterministic rules to paragraphs before LLM classification.
+
+        Args:
+            paragraphs: List of paragraph dicts with text and metadata
+            min_confidence: Minimum confidence threshold for rule prediction
+
+        Returns:
+            Tuple of (rule_predictions, llm_needed, all_results_so_far)
+            - rule_predictions: List of predictions made by rules
+            - llm_needed: List of paragraphs that still need LLM classification
+            - all_results_so_far: Combined list with rule predictions filled in
+        """
+        if not self.rule_learner or not self.rule_learner.rules:
+            # No rules available, all paragraphs need LLM
+            return [], paragraphs, []
+
+        rule_predictions = []
+        llm_needed = []
+        all_results = []
+
+        for para in paragraphs:
+            para_id = para.get('id')
+            text = para.get('text', '')
+            metadata = para.get('metadata', {})
+
+            # Try to predict using rules
+            predicted_tag = self.rule_learner.apply_rules(text, metadata)
+
+            if predicted_tag:
+                # Find the rule that matched to get its confidence
+                features = self.rule_learner.feature_extractor.extract_features(text, metadata)
+                matched_rule = None
+
+                for rule in self.rule_learner.rules:
+                    if self.rule_learner._feature_matches(features, rule["condition"]):
+                        matched_rule = rule
+                        break
+
+                rule_confidence = matched_rule["confidence"] if matched_rule else 0.8
+
+                # Only use rule if confidence is high enough
+                if rule_confidence >= min_confidence:
+                    result = {
+                        "id": para_id,
+                        "tag": predicted_tag,
+                        "confidence": int(rule_confidence * 100),
+                        "reasoning": f"Rule: {matched_rule['condition']}" if matched_rule else "Rule-based",
+                        "rule_based": True,
+                    }
+                    rule_predictions.append(result)
+                    all_results.append(result)
+                    self.rule_predictions += 1
+                    continue
+
+            # No high-confidence rule match, needs LLM
+            llm_needed.append(para)
+            # Placeholder for LLM result (will be filled later)
+            all_results.append({
+                "id": para_id,
+                "tag": "TXT",  # Temporary placeholder
+                "confidence": 0,
+                "rule_based": False,
+            })
+
+        if rule_predictions:
+            logger.info(
+                f"Rule-based classification: {len(rule_predictions)}/{len(paragraphs)} paragraphs "
+                f"({len(rule_predictions)/len(paragraphs)*100:.1f}% coverage)"
+            )
+
+        return rule_predictions, llm_needed, all_results
+
     def _get_fallback_system_prompt(self) -> str:
         """Get specialized system prompt for fallback model - focused on difficult cases."""
         return """You are an expert document style classifier specializing in DIFFICULT CASES.
@@ -749,10 +846,12 @@ Classify each paragraph below:
         Map known model aliases/invalid variants to allowed canonical tags.
         """
         mapped = normalize_style(self._sanitize_raw_tag(tag), meta=meta)
+        original_mapped = mapped
 
         zone = (meta or {}).get("context_zone", "")
         in_ref_zone = bool((meta or {}).get("is_reference_zone")) or zone == "REFERENCE"
         numbered = bool(REF_NUMBER_RE.match((text or "").strip()))
+        bulleted = bool(REF_BULLET_RE.match((text or "").strip()))
 
         table_heading_map = {
             "SK_H1": "TH1", "SK_H2": "TH2", "SK_H3": "TH3", "SK_H4": "TH4",
@@ -764,13 +863,13 @@ Classify each paragraph below:
                 return candidate
 
         if in_ref_zone and (mapped.startswith("UL-") or mapped.startswith("BL-") or mapped.startswith("NL-")):
-            candidate = "REF-N" if numbered else "REF-U"
+            candidate = "REF-U" if bulleted else "REF-N"
             if candidate in VALID_TAGS:
                 return candidate
 
         if mapped == "BIBITEM":
             if in_ref_zone:
-                candidate = "REF-N" if numbered else "REF-U"
+                candidate = "REF-U" if bulleted else "REF-N"
                 if candidate in VALID_TAGS:
                     return candidate
             for candidate in ("REF-U", "REF-N", "TXT"):
@@ -779,6 +878,59 @@ Classify each paragraph below:
 
         if mapped == "COUT":
             for candidate in ("COUT-1", "COUT-2", "TXT"):
+                if candidate in VALID_TAGS:
+                    return candidate
+
+        # Common shorthand / malformed aliases.
+        if mapped == "HH":
+            return "H1" if "H1" in VALID_TAGS else "TXT"
+        if mapped == "REF":
+            candidate = "REF-U" if bulleted else "REF-N"
+            if candidate in VALID_TAGS:
+                return candidate
+        if mapped == "TYPE":
+            if zone.startswith("BOX_"):
+                zone_prefix = zone[len("BOX_"):]
+                candidate = f"{zone_prefix}-TYPE"
+                if candidate in VALID_TAGS:
+                    return candidate
+            if zone == "TABLE":
+                return "T" if "T" in VALID_TAGS else mapped
+        if mapped == "TTL":
+            if zone.startswith("BOX_"):
+                zone_prefix = zone[len("BOX_"):]
+                candidate = f"{zone_prefix}-TTL"
+                if candidate in VALID_TAGS:
+                    return candidate
+            if zone == "TABLE":
+                for candidate in ("T1", "T2", "T"):
+                    if candidate in VALID_TAGS:
+                        return candidate
+
+        # Normalize table list spellings sometimes produced by models.
+        tbl_list = re.fullmatch(r"TBL-(BL|NL|UL)-(FIRST|MID|LAST)", mapped)
+        if tbl_list:
+            list_kind, pos = tbl_list.groups()
+            if list_kind == "BL":
+                candidate = f"TBL-{pos}"
+            elif list_kind == "NL":
+                candidate = f"TNL-{pos}"
+            else:
+                candidate = f"TUL-{pos}"
+            if candidate in VALID_TAGS:
+                return candidate
+            if list_kind == "BL" and "TBL-MID" in VALID_TAGS:
+                return "TBL-MID"
+            if list_kind == "NL" and "TNL-MID" in VALID_TAGS:
+                return "TNL-MID"
+            if list_kind == "UL" and "TUL-MID" in VALID_TAGS:
+                return "TUL-MID"
+        if mapped == "TBL-TXT":
+            for candidate in ("T", "TD", "TXT"):
+                if candidate in VALID_TAGS:
+                    return candidate
+        if mapped == "BL-TXT":
+            for candidate in ("BL-MID", "TXT"):
                 if candidate in VALID_TAGS:
                     return candidate
 
@@ -791,6 +943,64 @@ Classify each paragraph below:
                         return candidate
                 if remainder in VALID_TAGS:
                     return remainder
+                # Bare box name without subtype (e.g., EFP-BX → TXT)
+                if remainder == "BX":
+                    for candidate in ("TXT",):
+                        if candidate in VALID_TAGS:
+                            return candidate
+
+        # Numeric-prefixed shorthand from model output (e.g., 1-TTL, 2-TXT-FLUSH).
+        # If we are in a box zone, use that zone's prefix as the canonical family.
+        m_short = re.fullmatch(r"\d+-([A-Z0-9-]+)", mapped)
+        if m_short:
+            mapped = m_short.group(1)
+            if zone.startswith("BOX_"):
+                zone_prefix = zone[len("BOX_"):]
+                candidate = f"{zone_prefix}-{mapped}"
+                if candidate in VALID_TAGS:
+                    return candidate
+
+        # When a model emits bare subtype tokens inside a box zone (e.g., TTL),
+        # map to that zone family (e.g., BOX_BX2 + TTL -> BX2-TTL).
+        if zone.startswith("BOX_"):
+            zone_prefix = zone[len("BOX_"):]
+            candidate = f"{zone_prefix}-{mapped}"
+            if candidate in VALID_TAGS:
+                return candidate
+
+        # No zone hint available: try numeric prefix directly as BX family.
+        m_num = re.fullmatch(r"(\d+)-([A-Z0-9-]+)", original_mapped)
+        if m_num:
+            candidate = f"BX{m_num.group(1)}-{m_num.group(2)}"
+            if candidate in VALID_TAGS:
+                return candidate
+        if mapped.isdigit() and zone.startswith("BOX_"):
+            zone_prefix = zone[len("BOX_"):]
+            for suffix in ("TTL", "TYPE", "TXT"):
+                candidate = f"{zone_prefix}-{suffix}"
+                if candidate in VALID_TAGS:
+                    return candidate
+
+        # Zone-aware coercion to avoid invalid/non-actionable tags.
+        if zone == "TABLE":
+            if mapped.startswith(("BX", "NBX", "KT-", "KP-", "OBJ-")):
+                if mapped.endswith("-FIRST") and "TBL-FIRST" in VALID_TAGS:
+                    return "TBL-FIRST"
+                if mapped.endswith("-LAST") and "TBL-LAST" in VALID_TAGS:
+                    return "TBL-LAST"
+                if mapped.endswith("-MID") and "TBL-MID" in VALID_TAGS:
+                    return "TBL-MID"
+                return "T" if "T" in VALID_TAGS else mapped
+            if mapped.startswith("H") and mapped[1:].isdigit():
+                for candidate in ("TH1", "T2", "T"):
+                    if candidate in VALID_TAGS:
+                        return candidate
+
+        if zone == "BACK_MATTER" and mapped not in {"SR", "SRH1"}:
+            if mapped.startswith(("FIG-", "T", "TFN", "TSN", "REF", "H")):
+                candidate = "REF-U" if bulleted else "REF-N"
+                if candidate in VALID_TAGS:
+                    return candidate
 
         if mapped in VALID_TAGS:
             return mapped
@@ -814,7 +1024,9 @@ Classify each paragraph below:
     ) -> list[dict]:
         """
         Classify all paragraphs in a document.
-        - Checks cache first to avoid repeated API calls
+        - Applies deterministic rules first (grounded-first approach)
+        - Checks cache for already classified paragraphs
+        - Sends only uncertain paragraphs to LLM
         - Automatically chunks large documents
         - Validates results against zone constraints and ground truth
         - Uses Flash fallback for low-confidence items
@@ -856,6 +1068,48 @@ Classify each paragraph below:
             # Use uncached paragraphs for classification
             paragraphs = uncached_paragraphs
             total_paragraphs = len(paragraphs)
+
+        # === RULE-BASED CLASSIFICATION (GROUNDED-FIRST) ===
+        # Apply deterministic rules before calling LLM
+        rule_predictions, llm_needed, partial_results = self._apply_rules(paragraphs, min_confidence=0.80)
+
+        # Keep reference to all original paragraphs for caching later
+        all_original_paragraphs = {p['id']: p for p in paragraphs}
+
+        # If all paragraphs handled by rules, return early
+        if not llm_needed:
+            logger.info(f"All {len(paragraphs)} paragraphs classified by rules (100% coverage), skipping LLM")
+            self.llm_predictions += 0
+
+            # Still need to validate and cache
+            results = self.validate_zone_constraints(rule_predictions, paragraphs)
+
+            # Cache rule predictions
+            if self.cache:
+                for result in results:
+                    para_id = result.get('id')
+                    para = all_original_paragraphs.get(para_id)
+                    if para:
+                        self.cache.set(
+                            doc_id=document_name,
+                            para_index=para_id,
+                            text=para.get('text', ''),
+                            prediction=result,
+                            zone=para.get('metadata', {}).get('context_zone', 'BODY')
+                        )
+
+            # Merge with cached results if any
+            if cached_results:
+                all_results = list(cached_results.values()) + results
+                all_results.sort(key=lambda x: x['id'])
+                return all_results
+
+            return results
+
+        # Some paragraphs still need LLM classification
+        logger.info(f"LLM needed for {len(llm_needed)}/{total_paragraphs} paragraphs after rule filtering")
+        paragraphs = llm_needed  # Only classify these with LLM
+        total_paragraphs = len(paragraphs)
         
         # Check if we need to chunk
         if total_paragraphs <= MAX_PARAGRAPHS_PER_CHUNK:
@@ -899,17 +1153,47 @@ Classify each paragraph below:
         else:
             logger.info("Zone validation: All styles valid for their zones")
         
+        # === MERGE LLM RESULTS WITH RULE PREDICTIONS ===
+        # Track LLM prediction count
+        self.llm_predictions += len(results)
+
+        # Merge LLM results with rule predictions
+        if rule_predictions:
+            # Build lookup for LLM results by ID
+            llm_results_by_id = {r['id']: r for r in results}
+
+            # Combine: use rule predictions where available, LLM results for the rest
+            combined_results = []
+            for rule_pred in rule_predictions:
+                combined_results.append(rule_pred)
+
+            # Add LLM results for paragraphs not covered by rules
+            for llm_result in results:
+                # Only add if not already present in rule predictions
+                if not any(r['id'] == llm_result['id'] for r in rule_predictions):
+                    combined_results.append(llm_result)
+
+            # Sort by ID
+            combined_results.sort(key=lambda x: x['id'])
+            results = combined_results
+
+            logger.info(
+                f"Classification complete: {len(rule_predictions)} by rules, "
+                f"{len(results) - len(rule_predictions)} by LLM"
+            )
+
         # === FLASH FALLBACK FOR LOW-CONFIDENCE ITEMS ===
         if self.enable_fallback and self.fallback_model:
-            results = self._process_fallback(results, paragraphs, document_name)
+            # Build complete paragraph list for fallback processing
+            all_paras_for_fallback = [all_original_paragraphs[r['id']] for r in results if r['id'] in all_original_paragraphs]
+            results = self._process_fallback(results, all_paras_for_fallback, document_name)
 
         # === CACHE PREDICTIONS ===
-        # Save new predictions to cache
+        # Save new predictions to cache (both rule and LLM predictions)
         if self.cache:
-            para_by_id = {p['id']: p for p in paragraphs}
             for result in results:
                 para_id = result.get('id')
-                para = para_by_id.get(para_id)
+                para = all_original_paragraphs.get(para_id)
 
                 if para:
                     self.cache.set(
@@ -1124,41 +1408,50 @@ Return a JSON array with your classifications for all {len(batch)} items:
         text_by_id: dict | None = None
     ) -> list[dict]:
         """
-        Force invalid tags to valid ones using grounded fallback.
-        Instead of blindly downgrading to TXT, try to find the best match
-        from ground truth examples.
+        Normalize and validate tags using normalize_tag() with membership enforcement.
+        Falls back to grounded retrieval if normalize_tag() returns a generic fallback.
         """
         for r in results:
             rid = r.get("id")
             meta = meta_by_id.get(rid) if meta_by_id else None
             text = text_by_id.get(rid, "") if text_by_id else ""
-            tag = self._map_tag_alias(r.get("tag", ""), meta=meta, text=text)
+            raw_tag = r.get("tag", "")
 
-            if tag and tag not in VALID_TAGS:
-                # Try grounded fallback first
-                fallback_tag = "TXT"  # Default fallback
+            # First, apply basic alias mapping
+            mapped_tag = self._map_tag_alias(raw_tag, meta=meta, text=text)
 
-                if self.retriever and text:
-                    try:
-                        # Retrieve most similar example from ground truth
-                        zone = (meta or {}).get("context_zone", "BODY")
-                        similar = self.retriever.retrieve_examples(
-                            text=text,
-                            k=1,  # Get top-1 most similar
-                            zone=zone
-                        )
+            # Then, apply normalize_tag() which enforces membership in allowed_styles.json
+            normalized_tag = normalize_tag(mapped_tag, meta=meta)
 
-                        if similar:
-                            fallback_tag = similar[0].get("canonical_gold_tag", "TXT")
-                            logger.debug(f"Invalid tag '{tag}' -> grounded fallback '{fallback_tag}' (similarity: {similar[0].get('similarity_score', 0):.3f})")
-                    except Exception as e:
-                        logger.warning(f"Grounded fallback failed: {e}")
+            # If normalize_tag() returned a generic fallback (TXT) and we have grounded retrieval,
+            # try to find a better match from ground truth
+            if normalized_tag in {"TXT", "TXT-FLUSH"} and self.retriever and text and mapped_tag not in VALID_TAGS:
+                try:
+                    # Retrieve most similar example from ground truth
+                    zone = (meta or {}).get("context_zone", "BODY")
+                    similar = self.retriever.retrieve_examples(
+                        text=text,
+                        k=1,  # Get top-1 most similar
+                        zone=zone
+                    )
 
-                r["tag"] = fallback_tag
+                    if similar and similar[0].get('similarity_score', 0) > 0.7:
+                        grounded_tag = similar[0].get("canonical_gold_tag", "TXT")
+                        # Validate grounded tag is in allowed_styles
+                        validated_grounded = normalize_tag(grounded_tag, meta=meta)
+                        if validated_grounded != "TXT" or grounded_tag == "TXT":
+                            normalized_tag = validated_grounded
+                            logger.debug(f"Invalid tag '{raw_tag}' -> grounded fallback '{normalized_tag}' (similarity: {similar[0].get('similarity_score', 0):.3f})")
+                except Exception as e:
+                    logger.warning(f"Grounded fallback failed: {e}")
+
+            # Update tag with normalized/validated version
+            if normalized_tag != raw_tag:
+                r["tag"] = normalized_tag
                 r["confidence"] = min(int(r.get("confidence", 50)), 60)
-                r["reasoning"] = f"Invalid tag '{tag}' -> grounded fallback '{fallback_tag}'"
+                r["reasoning"] = f"Normalized '{raw_tag}' -> '{normalized_tag}'"
             else:
-                r["tag"] = tag
+                r["tag"] = normalized_tag
 
         return results
     
@@ -1541,6 +1834,8 @@ Return a JSON array with your classifications for all {len(batch)} items:
             
             zone = para.get('metadata', {}).get('context_zone', 'BODY')
             style = result.get('tag', '')
+            text = para.get('text', '')
+            meta = para.get('metadata', {})
             
             # Skip BODY zone (no restrictions)
             if zone == 'BODY':
@@ -1548,6 +1843,37 @@ Return a JSON array with your classifications for all {len(batch)} items:
             
             # Check if style is valid for zone
             if not validate_style_for_zone(style, zone):
+                # First try alias remap with zone/text context.
+                remapped = self._map_tag_alias(style, meta=meta, text=text)
+                if remapped and validate_style_for_zone(remapped, zone):
+                    result['tag'] = remapped
+                    continue
+
+                # Deterministic zone fallback to reduce noisy invalid outputs.
+                fallback = None
+                if zone == 'TABLE':
+                    text_lower = (text or "").strip().lower()
+                    if text_lower.startswith(("note", "source")):
+                        fallback = "TFN"
+                    elif bool(REF_BULLET_RE.match((text or "").strip())):
+                        fallback = "TBL-MID"
+                    elif bool(REF_NUMBER_RE.match((text or "").strip())):
+                        fallback = "TNL-MID"
+                    else:
+                        fallback = "T"
+                elif zone == 'BACK_MATTER':
+                    fallback = "REF-U" if bool(REF_BULLET_RE.match((text or "").strip())) else "REF-N"
+                elif zone == 'METADATA':
+                    fallback = "PMI"
+                else:
+                    fallback = "TXT"
+
+                if fallback and validate_style_for_zone(fallback, zone):
+                    result['tag'] = fallback
+                    original_confidence = result.get('confidence', 85)
+                    result['confidence'] = min(original_confidence, 70)
+                    continue
+
                 # Flag as zone violation
                 result['zone_violation'] = True
                 result['expected_zone'] = zone
@@ -1570,8 +1896,6 @@ Return a JSON array with your classifications for all {len(batch)} items:
                     result['reasoning'] = f"{existing_reason}; {zone_reason}"
                 else:
                     result['reasoning'] = zone_reason
-                
-                logger.warning(f"Zone violation: Para {para_id} - style '{style}' not valid for zone '{zone}'")
         
         return results
     
@@ -1608,6 +1932,17 @@ Return a JSON array with your classifications for all {len(batch)} items:
                 'items_improved': self.items_improved,
                 'input_tokens': fallback_usage.get('input_tokens', 0),
                 'output_tokens': fallback_usage.get('output_tokens', 0),
+            },
+            # Rule-based prediction statistics
+            'rule_based': {
+                'predictions': self.rule_predictions,
+                'llm_predictions': self.llm_predictions,
+                'total_predictions': self.rule_predictions + self.llm_predictions,
+                'rule_coverage': (
+                    self.rule_predictions / (self.rule_predictions + self.llm_predictions)
+                    if (self.rule_predictions + self.llm_predictions) > 0
+                    else 0.0
+                ),
             },
             # Combined totals
             'combined_input_tokens': primary_usage['total_input_tokens'] + fallback_usage.get('input_tokens', 0),

@@ -339,22 +339,22 @@
                         <div class="label">Total Paragraphs</div>
                     </div>
                     <div class="stat-box success">
-                        <div class="value">446</div>
+                        <div class="value">445</div>
                         <div class="label">Auto-Applied (≥85%)</div>
                     </div>
                     <div class="stat-box warning">
-                        <div class="value">0</div>
+                        <div class="value">1</div>
                         <div class="label">Needs Review (&lt;85%)</div>
                     </div>
                     <div class="stat-box">
-                        <div class="value">18</div>
+                        <div class="value">19</div>
                         <div class="label">Unique Tags Used</div>
                     </div>
                 </div>
                 
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: 100.0%">
-                        100.0% Auto-Applied
+                    <div class="progress-fill" style="width: 99.8%">
+                        99.8% Auto-Applied
                     </div>
                 </div>
             </div>
@@ -375,7 +375,7 @@
                     </div>
                     <div class="tag-item">
                         <div class="tag-name">TXT-FLUSH</div>
-                        <div class="tag-count">56 (12.6%)</div>
+                        <div class="tag-count">52 (11.7%)</div>
                     </div>
                     <div class="tag-item">
                         <div class="tag-name">H2</div>
@@ -390,6 +390,10 @@
                         <div class="tag-count">30 (6.7%)</div>
                     </div>
                     <div class="tag-item">
+                        <div class="tag-name">TXT</div>
+                        <div class="tag-count">11 (2.5%)</div>
+                    </div>
+                    <div class="tag-item">
                         <div class="tag-name">T1</div>
                         <div class="tag-count">11 (2.5%)</div>
                     </div>
@@ -399,10 +403,6 @@
                     </div>
                     <div class="tag-item">
                         <div class="tag-name">BL-MID</div>
-                        <div class="tag-count">7 (1.6%)</div>
-                    </div>
-                    <div class="tag-item">
-                        <div class="tag-name">TXT</div>
                         <div class="tag-count">7 (1.6%)</div>
                     </div>
                     <div class="tag-item">
@@ -422,10 +422,6 @@
                         <div class="tag-count">2 (0.4%)</div>
                     </div>
                     <div class="tag-item">
-                        <div class="tag-name">FIG-LEG</div>
-                        <div class="tag-count">2 (0.4%)</div>
-                    </div>
-                    <div class="tag-item">
                         <div class="tag-name">CN</div>
                         <div class="tag-count">1 (0.2%)</div>
                     </div>
@@ -437,6 +433,14 @@
                         <div class="tag-name">SRH1</div>
                         <div class="tag-count">1 (0.2%)</div>
                     </div>
+                    <div class="tag-item">
+                        <div class="tag-name">REF-U</div>
+                        <div class="tag-count">1 (0.2%)</div>
+                    </div>
+                    <div class="tag-item">
+                        <div class="tag-name">FIG-LEG</div>
+                        <div class="tag-count">1 (0.2%)</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -444,10 +448,32 @@
         <!-- Flagged Items (Needs Review) -->
         <div class="card">
             <div class="card-body">
-                <h2>⚠️ Items Needing Review (0 items)</h2>
-                <div class="no-results">
-                    <h3>✅ All items auto-applied!</h3>
-                    <p>No paragraphs require manual review.</p>
+                <h2>⚠️ Items Needing Review (1 items)</h2>
+                <input type="text" class="search-box" placeholder="Search by paragraph ID, tag, or text..." onkeyup="filterTable(this, 'flagged-table')">
+                <div class="scrollable">
+                    <table id="flagged-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Suggested Tag</th>
+                                <th>Confidence</th>
+                                <th>Text Preview</th>
+                                <th>Reasoning</th>
+                                <th>Alternatives</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class=" ">
+                                <td><strong>#169</strong></td>
+                                <td><span class="tag-badge">REF-U</span></td>
+                                <td><span class="confidence medium">80%</span></td>
+                                <td class="text-preview" title="<DFIG2.1>Figure 2.1: Anatomy of a CAR Construct. Adapted from: Acharya, U.H.; Walter, R.B. Chimeric ..."><DFIG2.1>Figure 2.1: Anatomy of a CAR Construct. Adapted from: Acharya, U.H.; Wa...</td>
+                                <td>Figure legend with source attribution</td>
+                                <td class="alternatives">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -508,7 +534,7 @@
                                 <td><strong>#6</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>List start marker</td>
+                                <td>Start of bulleted list block</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#7</strong></td>
@@ -556,7 +582,7 @@
                                 <td><strong>#14</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>List end marker</td>
+                                <td>End of bulleted list block</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#15</strong></td>
@@ -566,7 +592,7 @@
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#16</strong></td>
-                                <td><span class="tag-badge">TXT-FLUSH</span></td>
+                                <td><span class="tag-badge">TXT</span></td>
                                 <td><span class="confidence high">95%</span></td>
                                 <td>None</td>
                             </tr>
@@ -578,7 +604,7 @@
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#18</strong></td>
-                                <td><span class="tag-badge">TXT-FLUSH</span></td>
+                                <td><span class="tag-badge">TXT</span></td>
                                 <td><span class="confidence high">95%</span></td>
                                 <td>None</td>
                             </tr>
@@ -694,7 +720,7 @@
                                 <td><strong>#37</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>List start marker</td>
+                                <td>Start of bulleted list block</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#38</strong></td>
@@ -724,7 +750,7 @@
                                 <td><strong>#42</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>List end marker</td>
+                                <td>End of bulleted list block</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#43</strong></td>
@@ -926,7 +952,7 @@
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#76</strong></td>
-                                <td><span class="tag-badge">TXT-FLUSH</span></td>
+                                <td><span class="tag-badge">TXT</span></td>
                                 <td><span class="confidence high">95%</span></td>
                                 <td>None</td>
                             </tr>
@@ -994,7 +1020,7 @@
                                 <td><strong>#87</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#88</strong></td>
@@ -1012,7 +1038,7 @@
                                 <td><strong>#90</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#91</strong></td>
@@ -1102,7 +1128,7 @@
                                 <td><strong>#105</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#106</strong></td>
@@ -1186,7 +1212,7 @@
                                 <td><strong>#119</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#120</strong></td>
@@ -1276,7 +1302,7 @@
                                 <td><strong>#134</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#135</strong></td>
@@ -1372,7 +1398,7 @@
                                 <td><strong>#150</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Placeholder for table</td>
+                                <td>Placeholder for table insertion</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#151</strong></td>
@@ -1412,7 +1438,7 @@
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#157</strong></td>
-                                <td><span class="tag-badge">TXT-FLUSH</span></td>
+                                <td><span class="tag-badge">TXT</span></td>
                                 <td><span class="confidence high">95%</span></td>
                                 <td>None</td>
                             </tr>
@@ -1431,49 +1457,49 @@
                             <tr data-confidence="high">
                                 <td><strong>#160</strong></td>
                                 <td><span class="tag-badge">SRH1</span></td>
-                                <td><span class="confidence high">98%</span></td>
+                                <td><span class="confidence high">99%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#161</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#162</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#163</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#164</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#165</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#166</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#167</strong></td>
                                 <td><span class="tag-badge">SR</span></td>
-                                <td><span class="confidence high">97%</span></td>
+                                <td><span class="confidence high">98%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
@@ -1482,11 +1508,11 @@
                                 <td><span class="confidence high">99%</span></td>
                                 <td>Figure section marker</td>
                             </tr>
-                            <tr data-confidence="high">
+                            <tr data-confidence="low">
                                 <td><strong>#169</strong></td>
-                                <td><span class="tag-badge">FIG-LEG</span></td>
-                                <td><span class="confidence high">99%</span></td>
-                                <td>None</td>
+                                <td><span class="tag-badge">REF-U</span></td>
+                                <td><span class="confidence low">80%</span></td>
+                                <td>Figure legend with source attribution</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#170</strong></td>
@@ -1498,7 +1524,7 @@
                                 <td><strong>#171</strong></td>
                                 <td><span class="tag-badge">PMI</span></td>
                                 <td><span class="confidence high">99%</span></td>
-                                <td>Caption marker for table</td>
+                                <td>Table section marker</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#172</strong></td>
@@ -1636,31 +1662,31 @@
                                 <td><strong>#194</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
                                 <td><span class="confidence high">96%</span></td>
-                                <td>Table header row</td>
+                                <td>Table column header</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#195</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
                                 <td><span class="confidence high">96%</span></td>
-                                <td>Table header row</td>
+                                <td>Table column header</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#196</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
                                 <td><span class="confidence high">96%</span></td>
-                                <td>Table header row</td>
+                                <td>Table column header</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#197</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
                                 <td><span class="confidence high">96%</span></td>
-                                <td>Table header row</td>
+                                <td>Table column header</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#198</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#199</strong></td>
@@ -1684,7 +1710,7 @@
                                 <td><strong>#202</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#203</strong></td>
@@ -1708,7 +1734,7 @@
                                 <td><strong>#206</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#207</strong></td>
@@ -1732,7 +1758,7 @@
                                 <td><strong>#210</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#211</strong></td>
@@ -1756,7 +1782,7 @@
                                 <td><strong>#214</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#215</strong></td>
@@ -1780,7 +1806,7 @@
                                 <td><strong>#218</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#219</strong></td>
@@ -1804,7 +1830,7 @@
                                 <td><strong>#222</strong></td>
                                 <td><span class="tag-badge">T4</span></td>
                                 <td><span class="confidence medium">94%</span></td>
-                                <td>Table first column header</td>
+                                <td>Table row header in first column</td>
                             </tr>
                             <tr data-confidence="medium">
                                 <td><strong>#223</strong></td>
@@ -2343,19 +2369,19 @@
                             <tr data-confidence="high">
                                 <td><strong>#312</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#313</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#314</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
@@ -2451,19 +2477,19 @@
                             <tr data-confidence="high">
                                 <td><strong>#330</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#331</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#332</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
@@ -2631,19 +2657,19 @@
                             <tr data-confidence="high">
                                 <td><strong>#360</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#361</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
                                 <td><strong>#362</strong></td>
                                 <td><span class="tag-badge">T2</span></td>
-                                <td><span class="confidence high">95%</span></td>
+                                <td><span class="confidence high">96%</span></td>
                                 <td>None</td>
                             </tr>
                             <tr data-confidence="high">
@@ -3156,7 +3182,7 @@
             </div>
         </div>
         
-        <p class="timestamp">Generated: 2026-02-07 12:11:40</p>
+        <p class="timestamp">Generated: 2026-02-10 15:36:36</p>
     </div>
     
     <script>

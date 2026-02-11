@@ -1,12 +1,12 @@
 {
   "document_name": "Acharya9781975261764-ch002_org.docx",
-  "processed_at": "2026-02-07T12:11:40.521750",
+  "processed_at": "2026-02-10T15:36:36.275332",
   "summary": {
     "total_paragraphs": 446,
-    "auto_applied": 446,
-    "needs_review": 0,
-    "auto_apply_percentage": 100.0,
-    "average_confidence": 96.70179372197309
+    "auto_applied": 445,
+    "needs_review": 1,
+    "auto_apply_percentage": 99.8,
+    "average_confidence": 96.69730941704036
   },
   "classifications": [
     {
@@ -43,7 +43,7 @@
       "id": 6,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "List start marker"
+      "reasoning": "Start of bulleted list block"
     },
     {
       "id": 7,
@@ -91,7 +91,7 @@
       "id": 14,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "List end marker"
+      "reasoning": "End of bulleted list block"
     },
     {
       "id": 15,
@@ -101,7 +101,7 @@
     },
     {
       "id": 16,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -113,7 +113,7 @@
     },
     {
       "id": 18,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -229,7 +229,7 @@
       "id": 37,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "List start marker"
+      "reasoning": "Start of bulleted list block"
     },
     {
       "id": 38,
@@ -259,7 +259,7 @@
       "id": 42,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "List end marker"
+      "reasoning": "End of bulleted list block"
     },
     {
       "id": 43,
@@ -461,7 +461,7 @@
     },
     {
       "id": 76,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -529,7 +529,7 @@
       "id": 87,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 88,
@@ -547,7 +547,7 @@
       "id": 90,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 91,
@@ -637,7 +637,7 @@
       "id": 105,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 106,
@@ -721,7 +721,7 @@
       "id": 119,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 120,
@@ -811,7 +811,7 @@
       "id": 134,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 135,
@@ -907,7 +907,7 @@
       "id": 150,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Placeholder for table"
+      "reasoning": "Placeholder for table insertion"
     },
     {
       "id": 151,
@@ -947,7 +947,7 @@
     },
     {
       "id": 157,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -966,49 +966,49 @@
     {
       "id": 160,
       "tag": "SRH1",
-      "confidence": 98,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 161,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 162,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 163,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 164,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 165,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 166,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 167,
       "tag": "SR",
-      "confidence": 97,
+      "confidence": 98,
       "reasoning": null
     },
     {
@@ -1019,9 +1019,11 @@
     },
     {
       "id": 169,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": null
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "Figure legend with source attribution",
+      "repaired": true,
+      "repair_reason": "ref-zone-pre-allowed"
     },
     {
       "id": 170,
@@ -1033,7 +1035,7 @@
       "id": 171,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": "Caption marker for table"
+      "reasoning": "Table section marker"
     },
     {
       "id": 172,
@@ -1171,31 +1173,31 @@
       "id": 194,
       "tag": "T2",
       "confidence": 96,
-      "reasoning": "Table header row"
+      "reasoning": "Table column header"
     },
     {
       "id": 195,
       "tag": "T2",
       "confidence": 96,
-      "reasoning": "Table header row"
+      "reasoning": "Table column header"
     },
     {
       "id": 196,
       "tag": "T2",
       "confidence": 96,
-      "reasoning": "Table header row"
+      "reasoning": "Table column header"
     },
     {
       "id": 197,
       "tag": "T2",
       "confidence": 96,
-      "reasoning": "Table header row"
+      "reasoning": "Table column header"
     },
     {
       "id": 198,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 199,
@@ -1219,7 +1221,7 @@
       "id": 202,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 203,
@@ -1243,7 +1245,7 @@
       "id": 206,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 207,
@@ -1267,7 +1269,7 @@
       "id": 210,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 211,
@@ -1291,7 +1293,7 @@
       "id": 214,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 215,
@@ -1315,7 +1317,7 @@
       "id": 218,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 219,
@@ -1339,7 +1341,7 @@
       "id": 222,
       "tag": "T4",
       "confidence": 94,
-      "reasoning": "Table first column header"
+      "reasoning": "Table row header in first column"
     },
     {
       "id": 223,
@@ -1878,19 +1880,19 @@
     {
       "id": 312,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 313,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 314,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
@@ -1986,19 +1988,19 @@
     {
       "id": 330,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 331,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 332,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
@@ -2166,19 +2168,19 @@
     {
       "id": 360,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 361,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 362,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
@@ -2686,5 +2688,14 @@
       "reasoning": null
     }
   ],
-  "flagged_items": []
+  "flagged_items": [
+    {
+      "id": 169,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "<DFIG2.1>Figure 2.1: Anatomy of a CAR Construct. Adapted from: Acharya, U.H.; Walter, R.B. Chimeric ...",
+      "needs_review": true,
+      "reasoning": "Figure legend with source attribution"
+    }
+  ]
 }

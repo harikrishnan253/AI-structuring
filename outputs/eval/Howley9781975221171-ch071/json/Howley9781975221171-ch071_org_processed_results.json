@@ -1,463 +1,463 @@
 {
   "document_name": "Howley9781975221171-ch071_org.docx",
-  "processed_at": "2026-02-07T12:23:31.583601",
+  "processed_at": "2026-02-10T15:36:46.067555",
   "summary": {
     "total_paragraphs": 1934,
-    "auto_applied": 1932,
-    "needs_review": 2,
-    "auto_apply_percentage": 99.9,
-    "average_confidence": 97.4622543950362
+    "auto_applied": 1888,
+    "needs_review": 46,
+    "auto_apply_percentage": 97.6,
+    "average_confidence": 96.51809720785936
   },
   "classifications": [
     {
       "id": 1,
       "tag": "CN",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Chapter number marker"
     },
     {
       "id": 2,
       "tag": "CT",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Chapter title marker"
     },
     {
       "id": 3,
       "tag": "CAU",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Chapter author marker"
     },
     {
       "id": 4,
-      "tag": "COUT-1",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Start of chapter outline marker"
     },
     {
       "id": 5,
       "tag": "COUT-1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 6,
       "tag": "COUT-1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 7,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 8,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 9,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 10,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 11,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 12,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 13,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 14,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 15,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 16,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 17,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 18,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 19,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 20,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 21,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 22,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 23,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 24,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 25,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 26,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 27,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 28,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 29,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 30,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 31,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 32,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 33,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 34,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 35,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 36,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 37,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 38,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 39,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 40,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 41,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 42,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 43,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 44,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 45,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 46,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 47,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 48,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 49,
       "tag": "COUT-1",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 85,
+      "reasoning": "Chapter outline item, level 1"
     },
     {
       "id": 50,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "End of chapter outline marker"
     },
     {
       "id": 51,
       "tag": "H1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H1"
     },
     {
       "id": 52,
       "tag": "TXT-FLUSH",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "First paragraph after H1 heading"
     },
     {
       "id": 53,
       "tag": "H1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H1"
     },
     {
       "id": 54,
       "tag": "TXT-FLUSH",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "First paragraph after H1 heading"
     },
     {
       "id": 55,
       "tag": "TXT",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "Subsequent paragraph after H1 heading"
     },
     {
       "id": 56,
       "tag": "TXT",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "Subsequent paragraph after H1 heading"
     },
     {
       "id": 57,
       "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table caption marker"
     },
     {
       "id": 58,
-      "tag": "TXT",
-      "confidence": 95,
-      "reasoning": null
+      "tag": "T1",
+      "confidence": 99,
+      "reasoning": "Table title with marker"
     },
     {
       "id": 59,
-      "tag": "PMI",
+      "tag": "FIG-LEG",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure marker"
     },
     {
       "id": 60,
       "tag": "TXT",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "Subsequent paragraph after H1 heading"
     },
     {
       "id": 61,
       "tag": "TXT",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "Subsequent paragraph after H1 heading"
     },
     {
       "id": 62,
       "tag": "TXT",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "Subsequent paragraph after H1 heading"
     },
     {
       "id": 63,
       "tag": "H1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H1"
     },
     {
       "id": 64,
       "tag": "TXT-FLUSH",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "First paragraph after H1 heading"
     },
     {
       "id": 65,
-      "tag": "PMI",
+      "tag": "FIG-LEG",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure marker"
     },
     {
       "id": 66,
       "tag": "H1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H1"
     },
     {
       "id": 67,
       "tag": "TXT-FLUSH",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "First paragraph after H1 heading"
     },
     {
       "id": 68,
-      "tag": "H1",
+      "tag": "H2",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H2"
     },
     {
       "id": 69,
       "tag": "H2",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H2"
     },
     {
       "id": 70,
       "tag": "TXT-FLUSH",
       "confidence": 95,
-      "reasoning": null
+      "reasoning": "First paragraph after H2 heading"
     },
     {
       "id": 71,
-      "tag": "PMI",
+      "tag": "FIG-LEG",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure marker"
     },
     {
       "id": 72,
       "tag": "H2",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading marker H2"
     },
     {
       "id": 73,
-      "tag": "TXT-FLUSH",
-      "confidence": 95,
-      "reasoning": null
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": "First item in a bulleted list"
     },
     {
       "id": 74,
-      "tag": "TXT",
-      "confidence": 95,
-      "reasoning": null
+      "tag": "BL-MID",
+      "confidence": 97,
+      "reasoning": "Middle item in a bulleted list"
     },
     {
       "id": 75,
-      "tag": "TXT",
-      "confidence": 95,
-      "reasoning": null
+      "tag": "BL-LAST",
+      "confidence": 97,
+      "reasoning": "Last item in a bulleted list"
     },
     {
       "id": 76,
@@ -479,9 +479,9 @@
     },
     {
       "id": 79,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder marker"
     },
     {
       "id": 80,
@@ -497,7 +497,7 @@
     },
     {
       "id": 82,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -515,7 +515,7 @@
     },
     {
       "id": 85,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -575,9 +575,9 @@
     },
     {
       "id": 95,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table placeholder marker"
     },
     {
       "id": 96,
@@ -593,7 +593,7 @@
     },
     {
       "id": 98,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -647,7 +647,7 @@
     },
     {
       "id": 107,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -701,7 +701,7 @@
     },
     {
       "id": 116,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -767,7 +767,7 @@
     },
     {
       "id": 127,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -809,7 +809,7 @@
     },
     {
       "id": 134,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -893,7 +893,7 @@
     },
     {
       "id": 148,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -912,67 +912,67 @@
     {
       "id": 151,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 152,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 153,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 154,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 155,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 156,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 157,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 158,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 159,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 160,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 161,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -983,56 +983,56 @@
     },
     {
       "id": 163,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 164,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 165,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 166,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 167,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 168,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 169,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 170,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 171,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1043,26 +1043,26 @@
     },
     {
       "id": 173,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 174,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 175,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 176,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1073,56 +1073,56 @@
     },
     {
       "id": 178,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 179,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 180,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 181,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 182,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 183,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 184,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 185,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 186,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1133,14 +1133,14 @@
     },
     {
       "id": 188,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 189,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1151,50 +1151,50 @@
     },
     {
       "id": 191,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 192,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 193,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 194,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 195,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 196,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 197,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 198,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1205,38 +1205,38 @@
     },
     {
       "id": 200,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 201,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 202,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 203,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 204,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 205,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1247,32 +1247,32 @@
     },
     {
       "id": 207,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 208,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 209,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 210,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 211,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1283,50 +1283,50 @@
     },
     {
       "id": 213,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 214,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 215,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 216,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 217,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 218,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 219,
-      "tag": "TXT",
-      "confidence": 98,
+      "tag": "BL-FIRST",
+      "confidence": 97,
       "reasoning": null
     },
     {
       "id": 220,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1343,20 +1343,20 @@
     },
     {
       "id": 223,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 224,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 225,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -1385,15 +1385,15 @@
     },
     {
       "id": 230,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 231,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 232,
@@ -1409,15 +1409,15 @@
     },
     {
       "id": 234,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 235,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 236,
@@ -1427,9 +1427,9 @@
     },
     {
       "id": 237,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 238,
@@ -1469,15 +1469,15 @@
     },
     {
       "id": 244,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 245,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table caption marker"
     },
     {
       "id": 246,
@@ -1535,7 +1535,7 @@
     },
     {
       "id": 255,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -1571,7 +1571,7 @@
     },
     {
       "id": 261,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -1589,7 +1589,7 @@
     },
     {
       "id": 264,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -1601,9 +1601,9 @@
     },
     {
       "id": 266,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 267,
@@ -1637,7 +1637,7 @@
     },
     {
       "id": 272,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -1649,9 +1649,9 @@
     },
     {
       "id": 274,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 275,
@@ -1685,7 +1685,7 @@
     },
     {
       "id": 280,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
@@ -1721,15 +1721,15 @@
     },
     {
       "id": 286,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 287,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table caption marker"
     },
     {
       "id": 288,
@@ -1757,9 +1757,9 @@
     },
     {
       "id": 292,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 293,
@@ -1775,15 +1775,15 @@
     },
     {
       "id": 295,
-      "tag": "TXT-FLUSH",
+      "tag": "TXT",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 296,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table caption marker"
     },
     {
       "id": 297,
@@ -1793,9 +1793,9 @@
     },
     {
       "id": 298,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 299,
@@ -1841,9 +1841,9 @@
     },
     {
       "id": 306,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 307,
@@ -1901,9 +1901,9 @@
     },
     {
       "id": 316,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 317,
@@ -1913,9 +1913,9 @@
     },
     {
       "id": 318,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 319,
@@ -2093,9 +2093,9 @@
     },
     {
       "id": 348,
-      "tag": "TXT",
-      "confidence": 80,
-      "reasoning": "Appears to be the start of a list, but no list markers are present. Classifying as TXT for now."
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
     },
     {
       "id": 349,
@@ -2147,9 +2147,9 @@
     },
     {
       "id": 357,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 358,
@@ -2189,9 +2189,9 @@
     },
     {
       "id": 364,
-      "tag": "FIG-LEG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder"
     },
     {
       "id": 365,
@@ -2201,9 +2201,9 @@
     },
     {
       "id": 366,
-      "tag": "TXT",
-      "confidence": 80,
-      "reasoning": "Appears to be the start of a list, but no list markers are present. Classifying as TXT for now."
+      "tag": "BL-FIRST",
+      "confidence": 97,
+      "reasoning": null
     },
     {
       "id": 367,
@@ -2262,32 +2262,32 @@
     {
       "id": 376,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 377,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 378,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 379,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 380,
-      "tag": "FIG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Figure placeholder marker"
     },
     {
       "id": 381,
@@ -2297,8 +2297,8 @@
     },
     {
       "id": 382,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2315,8 +2315,8 @@
     },
     {
       "id": 385,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2327,32 +2327,32 @@
     },
     {
       "id": 387,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 388,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 389,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 390,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 391,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2363,8 +2363,8 @@
     },
     {
       "id": 393,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2375,14 +2375,14 @@
     },
     {
       "id": 395,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 396,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2393,32 +2393,32 @@
     },
     {
       "id": 398,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 399,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 400,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 401,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 402,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2429,56 +2429,56 @@
     },
     {
       "id": 404,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 405,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 406,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 407,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 408,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 409,
-      "tag": "FIG",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Table placeholder marker"
     },
     {
       "id": 410,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 411,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 412,
       "tag": "TXT",
-      "confidence": 98,
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2489,8 +2489,8 @@
     },
     {
       "id": 414,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "TXT",
+      "confidence": 95,
       "reasoning": null
     },
     {
@@ -2501,8 +2501,8 @@
     },
     {
       "id": 416,
-      "tag": "TXT-FLUSH",
-      "confidence": 98,
+      "tag": "ACKTXT",
+      "confidence": 97,
       "reasoning": null
     },
     {
@@ -7535,15 +7535,15 @@
     },
     {
       "id": 1255,
-      "tag": "EOC-H1",
+      "tag": "PMI",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Section header for figures, not a figure legend itself."
     },
     {
       "id": 1256,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.1.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.1.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone, resolving the zone violation. As it's the first in a continuous sequence of such items, 'NL-FIRST' is appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7555,13 +7555,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1257,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.2.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.2.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7573,13 +7575,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1258,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.3.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.3.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7591,13 +7595,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1259,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.4.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.4.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7609,13 +7615,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1260,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.5.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.5.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded by another numbered figure description and followed by a continuation of its source, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7627,13 +7635,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1261,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.5 (cont.).",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This paragraph is a direct continuation of the source citation from the preceding 'NL-MID' item (Figure 71.5). It does not start with 'Figure 71.X.' and is not a new numbered list item. 'FIG-SRC' is explicitly invalid for the zone. 'TXT' is a suitable generic style for a continuation paragraph in BACK_MATTER.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7644,14 +7654,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_tag": "FIG-SRC",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1262,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.6.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.6.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7663,13 +7675,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1263,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.7.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.7.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7681,13 +7695,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1264,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.8.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.8.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7699,13 +7715,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1265,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.9.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.9.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7717,13 +7735,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1266,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.10.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.10.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7735,13 +7755,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1267,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.11.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.11.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7753,13 +7775,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1268,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.12.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.12.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7771,13 +7795,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1269,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.13.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.13.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7789,13 +7815,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1270,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.14.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.14.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7807,13 +7835,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1271,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.15.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.15.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7825,13 +7855,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1272,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.16.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.16.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7843,13 +7875,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1273,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.17.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.17.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7861,13 +7895,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1274,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.18.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.18.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7879,13 +7915,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1275,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.19.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.19.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7897,13 +7935,15 @@
       ],
       "fallback_used": true,
       "original_tag": "FIG-LEG",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1276,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.20.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.20.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7914,14 +7954,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1277,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.21.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.21.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7932,14 +7974,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1278,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.22.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.22.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7950,14 +7994,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1279,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.23.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.23.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7968,14 +8014,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1280,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.24.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.24.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -7986,14 +8034,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1281,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.25.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.25.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8004,14 +8054,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1282,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.26.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.26.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8022,14 +8074,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1283,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.27.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.27.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8040,14 +8094,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1284,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.28.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.28.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8058,14 +8114,16 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1285,
-      "tag": "FIG-LEG",
-      "confidence": 99,
-      "reasoning": "[Flash] This is a figure legend in the back matter, describing Figure 71.29.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] The text starts with 'Figure 71.29.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. As it's the last in this sequence of numbered figure descriptions before an 'EOC-H1' (End of Chapter Heading), 'NL-LAST' is appropriate.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8076,20 +8134,22 @@
         "SR"
       ],
       "fallback_used": true,
-      "original_tag": "FIG-SRC",
-      "original_confidence": 60
+      "original_tag": "FIG-LEG",
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1286,
-      "tag": "REFH2",
+      "tag": "EOC-H1",
       "confidence": 99,
-      "reasoning": null
+      "reasoning": "Heading for tables section at end of chapter"
     },
     {
       "id": 1287,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8101,13 +8161,15 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1288,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a general note pertaining to the preceding table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8119,13 +8181,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1289,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This paragraph contains both a general note and a list of abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8137,13 +8201,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1290,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8155,13 +8221,15 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1291,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'a') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8173,13 +8241,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1292,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'b') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8191,13 +8261,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1293,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'c') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8209,13 +8281,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1294,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'd') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8227,13 +8301,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1295,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'e') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8245,13 +8321,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1296,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This paragraph contains abbreviations and a general note for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8263,13 +8341,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1297,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8281,13 +8361,15 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1298,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8299,13 +8381,15 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1299,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This paragraph contains abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8317,13 +8401,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1300,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8335,13 +8421,15 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1301,
-      "tag": "TFN",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table footnote.",
+      "tag": "REF-U",
+      "confidence": 80,
+      "reasoning": "[Flash] This paragraph contains abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8353,13 +8441,15 @@
       ],
       "fallback_used": true,
       "original_tag": "TFN",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "zone-fallback"
     },
     {
       "id": 1302,
-      "tag": "TBH",
-      "confidence": 95,
-      "reasoning": "[Flash] This is a table header in the back matter.",
+      "tag": "T1",
+      "confidence": 80,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone.",
       "zone_violation": true,
       "expected_zone": "BACK_MATTER",
       "zone_suggestions": [
@@ -8371,295 +8461,297 @@
       ],
       "fallback_used": true,
       "original_tag": "T1",
-      "original_confidence": 60
+      "original_confidence": 60,
+      "repaired": true,
+      "repair_reason": "table-caption"
     },
     {
       "id": 1303,
       "tag": "T2",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 96,
+      "reasoning": "Table column header"
     },
     {
       "id": 1304,
       "tag": "T2",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 96,
+      "reasoning": "Table column header"
     },
     {
       "id": 1305,
       "tag": "T2",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 96,
+      "reasoning": "Table column header"
     },
     {
       "id": 1306,
       "tag": "T2",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 96,
+      "reasoning": "Table column header"
     },
     {
       "id": 1307,
       "tag": "T2",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 96,
+      "reasoning": "Table column header"
     },
     {
       "id": 1308,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1309,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1310,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1311,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1312,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1313,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1314,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1315,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1316,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1317,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1318,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1319,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1320,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1321,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1322,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1323,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1324,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1325,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1326,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1327,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1328,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1329,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1330,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1331,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1332,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1333,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1334,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1335,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1336,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1337,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1338,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1339,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1340,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1341,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1342,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1343,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1344,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1345,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1346,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1347,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1348,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1349,
       "tag": "T4",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table row header"
     },
     {
       "id": 1350,
       "tag": "T",
-      "confidence": 99,
-      "reasoning": null
+      "confidence": 94,
+      "reasoning": "Table body cell"
     },
     {
       "id": 1351,
@@ -9113,902 +9205,902 @@
     },
     {
       "id": 1426,
-      "tag": "T4",
-      "confidence": 90,
+      "tag": "TBL-FIRST",
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1427,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1428,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1429,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1430,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1431,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1432,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1433,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1434,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1435,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1436,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1437,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1438,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1439,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1440,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1441,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1442,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1443,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1444,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1445,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1446,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1447,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1448,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1449,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1450,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1451,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1452,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1453,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1454,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1455,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1456,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1457,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1458,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1459,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1460,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1461,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1462,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1463,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1464,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1465,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1466,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1467,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1468,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1469,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1470,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1471,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1472,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1473,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1474,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1475,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1476,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1477,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1478,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1479,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1480,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1481,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1482,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1483,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1484,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1485,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1486,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1487,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1488,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1489,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1490,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1491,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1492,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1493,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1494,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1495,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1496,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1497,
       "tag": "T4",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1498,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1499,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1500,
       "tag": "T",
-      "confidence": 99,
+      "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1501,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1502,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1503,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1504,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1505,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1506,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1507,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1508,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1509,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1510,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1511,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1512,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1513,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1514,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1515,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1516,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1517,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1518,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1519,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1520,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1521,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1522,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1523,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1524,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1525,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1526,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1527,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1528,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1529,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1530,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1531,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1532,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1533,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1534,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1535,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1536,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1537,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1538,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1539,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1540,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1541,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1542,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1543,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1544,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1545,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1546,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1547,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1548,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1549,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1550,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1551,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1552,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1553,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1554,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1555,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1556,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1557,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1558,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1559,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1560,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1561,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1562,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1563,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1564,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1565,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1566,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1567,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1568,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1569,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1570,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1571,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1572,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1573,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1574,
       "tag": "T4",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
       "id": 1575,
       "tag": "T",
-      "confidence": 95,
+      "confidence": 99,
       "reasoning": null
     },
     {
@@ -10463,7 +10555,7 @@
     },
     {
       "id": 1651,
-      "tag": "T",
+      "tag": "TBL-MID",
       "confidence": 95,
       "reasoning": null
     },
@@ -10608,13 +10700,13 @@
     {
       "id": 1675,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
       "id": 1676,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 96,
       "reasoning": null
     },
     {
@@ -10992,49 +11084,49 @@
     {
       "id": 1739,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1740,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1741,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1742,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1743,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1744,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1745,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
       "id": 1746,
       "tag": "T2",
-      "confidence": 95,
+      "confidence": 98,
       "reasoning": null
     },
     {
@@ -11063,7 +11155,7 @@
     },
     {
       "id": 1751,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11111,7 +11203,7 @@
     },
     {
       "id": 1759,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11165,7 +11257,7 @@
     },
     {
       "id": 1768,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11207,7 +11299,7 @@
     },
     {
       "id": 1775,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11255,7 +11347,7 @@
     },
     {
       "id": 1783,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11297,7 +11389,7 @@
     },
     {
       "id": 1790,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11339,7 +11431,7 @@
     },
     {
       "id": 1797,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11375,7 +11467,7 @@
     },
     {
       "id": 1803,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11387,7 +11479,7 @@
     },
     {
       "id": 1805,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11423,13 +11515,13 @@
     },
     {
       "id": 1811,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
     {
       "id": 1812,
-      "tag": "T",
+      "tag": "TBL-LAST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11561,7 +11653,7 @@
     },
     {
       "id": 1834,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11597,7 +11689,7 @@
     },
     {
       "id": 1840,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11669,7 +11761,7 @@
     },
     {
       "id": 1852,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11711,7 +11803,7 @@
     },
     {
       "id": 1859,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -11831,7 +11923,7 @@
     },
     {
       "id": 1879,
-      "tag": "T",
+      "tag": "TBL-FIRST",
       "confidence": 95,
       "reasoning": null
     },
@@ -12168,30 +12260,372 @@
   ],
   "flagged_items": [
     {
-      "id": 348,
-      "tag": "TXT",
+      "id": 1256,
+      "tag": "REF-U",
       "confidence": 80,
-      "original_text": "A longitudinal study of EBV DNA loads and cellular immunity in HIV patients showed that patients who...",
+      "original_text": "Figure 71.1. Schematic depiction of the linear Epstein-Barr virus (EBV) genome. Linear representatio...",
       "needs_review": true,
-      "reasoning": "Appears to be the start of a list, but no list markers are present. Classifying as TXT for now.",
-      "alternatives": [
-        "TXT-FLUSH",
-        "BX1-TXT-FIRST",
-        "CS-TXT"
-      ]
+      "reasoning": "[Flash] The text starts with 'Figure 71.1.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone, resolving the zone violation. As it's the first in a continuous sequence of such items, 'NL-FIRST' is appropriate."
     },
     {
-      "id": 366,
-      "tag": "TXT",
+      "id": 1257,
+      "tag": "REF-U",
       "confidence": 80,
-      "original_text": "A third class of EBV-associated malignancies (e.g. BL, NPC, gastric carcinoma) arise in patients who...",
+      "original_text": "Figure 71.2. Schematic depiction of the linear Epstein-Barr virus (EBV) genome with encoded open rea...",
       "needs_review": true,
-      "reasoning": "Appears to be the start of a list, but no list markers are present. Classifying as TXT for now.",
-      "alternatives": [
-        "TXT-FLUSH",
-        "BX1-TXT-FIRST",
-        "CS-TXT"
-      ]
+      "reasoning": "[Flash] The text starts with 'Figure 71.2.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1258,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.3. Electron micrograph and schematic diagram of EBV virions. (A) EBV particles purified fr...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.3.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1259,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.4. EBV entry and replication in epithelial and B cells. EBV enters B cells by fusion with ...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.4.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1260,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.5. Proposed EBV B cell entry complex required for B cell fusion.639 (A). Top represents th...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.5.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded by another numbered figure description and followed by a continuation of its source, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1261,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "of the EBV B cell entry triggering complex. PLoS Pathog. 2014;10(8):e1004309. https://creativecommon...",
+      "needs_review": true,
+      "reasoning": "[Flash] This paragraph is a direct continuation of the source citation from the preceding 'NL-MID' item (Figure 71.5). It does not start with 'Figure 71.X.' and is not a new numbered list item. 'FIG-SRC' is explicitly invalid for the zone. 'TXT' is a suitable generic style for a continuation paragraph in BACK_MATTER."
+    },
+    {
+      "id": 1262,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.6. Schematic depiction of the EBV episome. The EBV episome is circularized through termina...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.6.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1263,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.7. Schematic model of EBV/host epigenetic regulation in B-cell differentiation. In newly i...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.7.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1264,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.8. EBNA1 functional domains, schematic of the oriP DNA arrangement, and structure of EBNA1...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.8.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1265,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.9. Schematic depiction of Epstein-Barr virus nuclear antigen (EBNA)-2 domains. EBNA2 conta...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.9.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1266,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.10. Schematic diagram of the repeat and unique exon and domain structure of Epstein-Barr v...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.10.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1267,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.11. Schematic diagram of the Epstein-Barr virus nuclear antigen (EBNA)3A, EBNA3B, and EBNA...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.11.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1268,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.12. Schematic diagram of biochemical mechanisms by which latent membrane protein 1 (LMP1) ...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.12.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1269,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.13. Latent Membrane Protein 2A (LMP2A) activates B cell signaling pathways by constitutive...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.13.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1270,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.14. Schematic representation of EBV BZLF1 promoter elements. The BZLF1 promoter has a larg...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.14.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1271,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.15. EBV life cycle. EBV infects resting B cells either directly or by virus released from ...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.15.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1272,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.16. EBV infection of B cells parallels the response of B cell to antigenic stimulation. EB...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.16.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1273,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.17. Pattern of antibodies to EBV during acute infection. (Reprinted from Cohen JI. Epstein...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.17.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1274,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.18. Levels of EBV in the throat and blood and cellular immunity during the course of infec...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.18.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1275,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.19. CD8+ and CD4+ T cell responses to EBV immediate-early (IE), early (E), late (L) and la...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.19.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1276,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.20. Atypical lymphocytes with prominent cytoplasm and vacuoles. (Reprinted from Cohen JI. ...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.20.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1277,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.21. Interaction of SAP with SLAM and 2B4 and proteins important for B and T or NK cell int...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.21.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1278,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.22. Biopsy from a patient with (A) polymorphic, or (B) monomorphic post-transplant lymphop...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.22.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1279,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.23. Biopsy from a patient with Burkitt lymphoma. The intensely stained B cells in a backgr...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.23.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1280,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.24. Biopsy from a patient with Hodgkin lymphoma, mixed cellularity. The large binucleate c...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.24.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1281,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.25. Biopsy from a patient with nasopharyngeal carcinoma. (A) Undifferentiated anaplastic c...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.25.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1282,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.26. Steps involved in the development of nasopharyngeal carcinoma. EBV infection occurs af...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.26.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1283,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.27. Biopsy from a patient with immunoblastic lymphoma of the central nervous system. (Cour...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.27.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1284,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.28. Model of EBV oncogenesis. EBV-associated malignancies in immunocompromised patients sh...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.28.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. It is preceded and followed by other numbered figure descriptions, making 'NL-MID' appropriate."
+    },
+    {
+      "id": 1285,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Figure 71.29. EBER staining from a biopsy showing EBV lymphoma. Arrows show cells that hybridize wit...",
+      "needs_review": true,
+      "reasoning": "[Flash] The text starts with 'Figure 71.29.', indicating a numbered item. 'NL-ITEM' is a valid style for the BACK_MATTER zone. As it's the last in this sequence of numbered figure descriptions before an 'EOC-H1' (End of Chapter Heading), 'NL-LAST' is appropriate."
+    },
+    {
+      "id": 1287,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.1. EBV-encoded Proteins.",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
+    },
+    {
+      "id": 1288,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "Genes in \"EBV\" column bolded are expressed in latent infection.",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a general note pertaining to the preceding table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content."
+    },
+    {
+      "id": 1289,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "In the \"HSV\" and \"KSV\" columns, the homology with the proteins underlined with EBV is not significan...",
+      "needs_review": true,
+      "reasoning": "[Flash] This paragraph contains both a general note and a list of abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content."
+    },
+    {
+      "id": 1290,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.2. EBV Latency Gene Expression Patterns",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
+    },
+    {
+      "id": 1291,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "a EBNA1 is expressed only when cells divide",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'a') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote."
+    },
+    {
+      "id": 1292,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "b EBNA1 is driven by the Q promoter",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'b') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote."
+    },
+    {
+      "id": 1293,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "c EBNA1 is driven by the C or W promoter",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'c') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote."
+    },
+    {
+      "id": 1294,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "d A form of latency termed I/II has been proposed in which some cells do not express LMP1",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'd') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote."
+    },
+    {
+      "id": 1295,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "e BHRF1 miRNAs are also expressed along with low level expression of BHRF1",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a specific footnote (indicated by 'e') related to a table, and 'TFN' is disallowed. 'BMT-FN' is the most appropriate style for a back matter footnote."
+    },
+    {
+      "id": 1296,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "BL, Burkitt lymphoma; NPC, nasopharyngeal carcinoma; HL, Hodgkin lymphoma; TCL, T cell lymphoma; DLB...",
+      "needs_review": true,
+      "reasoning": "[Flash] This paragraph contains abbreviations and a general note for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content."
+    },
+    {
+      "id": 1297,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.3. EBV Proteins and RNAs that Inhibit the Immune System",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
+    },
+    {
+      "id": 1298,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.4. EBV-Associated Malignancies in Immunocompromised Persons",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
+    },
+    {
+      "id": 1299,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "GC, germinal center; DLBCL, diffuse large B cell lymphoma; CNS, central nervous system",
+      "needs_review": true,
+      "reasoning": "[Flash] This paragraph contains abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content."
+    },
+    {
+      "id": 1300,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.5. EBV-Associated Malignancies in Non-Immunocompromised Persons",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
+    },
+    {
+      "id": 1301,
+      "tag": "REF-U",
+      "confidence": 80,
+      "original_text": "MC, mixed cellularity; LD, lymphocyte depleted; NS, nodular sclerosis; GC, germinal center; RB2, ret...",
+      "needs_review": true,
+      "reasoning": "[Flash] This paragraph contains abbreviations for the table, and 'TFN' is disallowed. 'BMT-TXT' is the appropriate general text style for back matter content."
+    },
+    {
+      "id": 1302,
+      "tag": "T1",
+      "confidence": 80,
+      "original_text": "Table 71.6. Prophylactic EBV Vaccine Trials in Healthy Volunteers",
+      "needs_review": true,
+      "reasoning": "[Flash] This is a table title within the BACK_MATTER zone, and 'T1' is disallowed. 'BMT-H1' is the most appropriate heading style for a primary element like a table title in this zone."
     }
   ]
 }

@@ -263,3 +263,91 @@ def test_back_matter_bm_ttl_maps_to_allowed():
     allowed = {"REFH1", "REF-U"}
     repaired = validate_and_repair(classifications, blocks, allowed_styles=allowed)
     assert repaired[0]["tag"] in allowed
+
+
+def test_list_enforcement_does_not_override_ref_tag():
+    blocks = [
+        {
+            "id": 1,
+            "text": "Smith AB, Jones CD. N Engl J Med 2020;10:10-20.",
+            "metadata": {"context_zone": "BODY", "list_kind": "unordered", "list_position": "MID"},
+        }
+    ]
+    classifications = [{"id": 1, "tag": "REF-N", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"REF-N", "UL-MID", "TXT"})
+    assert repaired[0]["tag"] == "REF-N"
+
+
+def test_list_enforcement_does_not_flip_bl_to_ul_when_ambiguous():
+    blocks = [
+        {
+            "id": 1,
+            "text": "Clinical item",
+            "metadata": {"context_zone": "BODY", "list_kind": "unordered", "list_position": "MID"},
+        }
+    ]
+    classifications = [{"id": 1, "tag": "BL-MID", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"BL-MID", "UL-MID", "TXT"})
+    assert repaired[0]["tag"] == "BL-MID"
+
+
+def test_inline_h3_marker_overrides_txt_flush():
+    blocks = [
+        {"id": 1, "text": "<H3>Risk Factors", "metadata": {"context_zone": "BODY"}},
+    ]
+    classifications = [{"id": 1, "tag": "TXT-FLUSH", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"H3", "TXT-FLUSH", "TXT"})
+    assert repaired[0]["tag"] == "H3"
+
+
+def test_inline_h3_marker_not_applied_in_table_zone():
+    blocks = [
+        {"id": 1, "text": "<H3>Table Group", "metadata": {"context_zone": "TABLE"}},
+    ]
+    classifications = [{"id": 1, "tag": "T", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"T", "H3"})
+    assert repaired[0]["tag"] == "T"
+
+
+def test_unordered_xml_bullet_maps_to_bl_not_ul():
+    blocks = [
+        {
+            "id": 1,
+            "text": "• Orthopnea",
+            "metadata": {
+                "context_zone": "BODY",
+                "list_kind": "unordered",
+                "list_position": "MID",
+                "has_xml_list": True,
+            },
+        }
+    ]
+    classifications = [{"id": 1, "tag": "UL-MID", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"BL-MID", "UL-MID", "TXT"})
+    assert repaired[0]["tag"] == "BL-MID"
+
+
+def test_txt_after_heading_promotes_to_txt_flush():
+    blocks = [
+        {"id": 1, "text": "<H2>Clinical Presentation", "metadata": {"context_zone": "BODY"}},
+        {"id": 2, "text": "Classic manifestations include edema and orthopnea.", "metadata": {"context_zone": "BODY"}},
+    ]
+    classifications = [
+        {"id": 1, "tag": "H2", "confidence": 0.95},
+        {"id": 2, "tag": "TXT", "confidence": 0.8},
+    ]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"H2", "TXT", "TXT-FLUSH"})
+    assert repaired[1]["tag"] == "TXT-FLUSH"
+
+
+def test_apx_ref_n_preserved_in_reference_zone():
+    blocks = [
+        {"id": 1, "text": "References", "metadata": {"context_zone": "BACK_MATTER"}},
+        {"id": 2, "text": "Cohn JN, Kowey PR, Whelton PK, et al. Arch Intern Med 2000;160:2429.", "metadata": {"context_zone": "BACK_MATTER"}},
+    ]
+    classifications = [
+        {"id": 1, "tag": "REFH1", "confidence": 0.95},
+        {"id": 2, "tag": "APX-REF-N", "confidence": 0.8},
+    ]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"REFH1", "APX-REF-N", "REF-N", "REF-U"})
+    assert repaired[1]["tag"] == "APX-REF-N"

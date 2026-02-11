@@ -17,28 +17,26 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 def test_token_counting():
     """Test token counting with a small sample."""
-    
+
     api_key = os.environ.get("GOOGLE_API_KEY", "")
     if not api_key:
         print("ERROR: Set GOOGLE_API_KEY environment variable")
         return False
-    
-    import google.generativeai as genai
-    from google.generativeai.types import GenerationConfig
-    
+
+    from google import genai
+    from google.genai import types
+
     print("=" * 60)
     print("TOKEN COUNTING VERIFICATION TEST")
     print("=" * 60)
-    
-    # Configure API
-    genai.configure(api_key=api_key)
-    
-    model = genai.GenerativeModel(
-        model_name="gemini-2.5-flash-lite",
-        generation_config=GenerationConfig(
-            response_mime_type="application/json",
-            temperature=0.1,
-        )
+
+    # Create client
+    client = genai.Client(api_key=api_key)
+
+    # Configure generation
+    generation_config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        temperature=0.1,
     )
     
     # Test prompt
@@ -48,15 +46,22 @@ def test_token_counting():
 [3] This chapter covers the basics of ML.
 
 Return JSON array: [{"id": 1, "tag": "CN"}, ...]"""
-    
+
     print(f"\nTest Prompt ({len(test_prompt)} chars):")
     print("-" * 40)
     print(test_prompt[:200] + "..." if len(test_prompt) > 200 else test_prompt)
     print("-" * 40)
-    
+
     # Make API call
     print("\nCalling Gemini API...")
-    response = model.generate_content(test_prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=types.Content(
+            role="user",
+            parts=[types.Part(text=test_prompt)]
+        ),
+        config=generation_config
+    )
     
     # Check response
     print("\nResponse received!")
@@ -157,42 +162,46 @@ Return JSON array: [{"id": 1, "tag": "CN"}, ...]"""
 
 def test_with_system_prompt():
     """Test with system prompt to see if it affects token count."""
-    
+
     api_key = os.environ.get("GOOGLE_API_KEY", "")
     if not api_key:
         return
-    
-    import google.generativeai as genai
-    from google.generativeai.types import GenerationConfig
-    
+
+    from google import genai
+    from google.genai import types
+
     print("\n" + "=" * 60)
     print("TEST WITH SYSTEM PROMPT")
     print("=" * 60)
-    
-    genai.configure(api_key=api_key)
-    
+
+    client = genai.Client(api_key=api_key)
+
     system_prompt = """You are an expert document classifier.
     Classify each paragraph with the correct style tag.
     Output JSON array format."""
-    
-    model = genai.GenerativeModel(
-        model_name="gemini-2.5-flash-lite",
-        generation_config=GenerationConfig(
-            response_mime_type="application/json",
-            temperature=0.1,
-        ),
+
+    generation_config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        temperature=0.1,
         system_instruction=system_prompt
     )
-    
+
     user_prompt = """Classify:
 [1] CHAPTER 1
 [2] Test Title
 Return JSON: [{"id": 1, "tag": "CN"}, {"id": 2, "tag": "CT"}]"""
-    
+
     print(f"\nSystem Prompt: {len(system_prompt)} chars")
     print(f"User Prompt: {len(user_prompt)} chars")
-    
-    response = model.generate_content(user_prompt)
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=types.Content(
+            role="user",
+            parts=[types.Part(text=user_prompt)]
+        ),
+        config=generation_config
+    )
     
     if hasattr(response, 'usage_metadata'):
         usage = response.usage_metadata

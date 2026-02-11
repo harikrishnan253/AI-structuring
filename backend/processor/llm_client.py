@@ -11,9 +11,30 @@ Provides:
 
 import logging
 import time
+import importlib
 from typing import Optional, Dict, Any
-from google import genai
-from google.genai import types
+
+genai = None
+types = None
+_sdk_mode = None
+
+try:
+    # Use module loading to avoid namespace-package edge cases where
+    # `from google import genai` fails despite `google-genai` being installed.
+    genai = importlib.import_module("google.genai")
+    types = importlib.import_module("google.genai.types")
+    _sdk_mode = "google-genai"
+except Exception:
+    try:
+        # Backward-compatible fallback for environments still using the legacy SDK.
+        genai = importlib.import_module("google.generativeai")
+        _sdk_mode = "google-generativeai"
+    except Exception as import_err:
+        raise ImportError(
+            "Google Gemini SDK not available. Install/upgrade `google-genai` "
+            "(recommended: `pip install -U google-genai`) or install legacy "
+            "`google-generativeai`."
+        ) from import_err
 
 logger = logging.getLogger(__name__)
 
@@ -56,20 +77,34 @@ class GeminiClient:
             retry_delay: Initial delay between retries (seconds)
             timeout: API call timeout (seconds)
         """
-        self.client = genai.Client(api_key=api_key)
+        self._sdk_mode = _sdk_mode
         self.model_name = model_name
         self.system_instruction = system_instruction
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.timeout = timeout
 
-        # Generation config
-        self.generation_config = types.GenerateContentConfig(
-            temperature=temperature,
-            top_p=top_p,
-            max_output_tokens=max_output_tokens,
-            response_mime_type="application/json",
-        )
+        if self._sdk_mode == "google-genai":
+            self.client = genai.Client(api_key=api_key)
+            self.generation_config = types.GenerateContentConfig(
+                temperature=temperature,
+                top_p=top_p,
+                max_output_tokens=max_output_tokens,
+                response_mime_type="application/json",
+            )
+        else:
+            genai.configure(api_key=api_key)
+            self.client = genai.GenerativeModel(
+                model_name=model_name,
+                system_instruction=system_instruction,
+                generation_config={
+                    "temperature": temperature,
+                    "top_p": top_p,
+                    "max_output_tokens": max_output_tokens,
+                    "response_mime_type": "application/json",
+                },
+            )
+            self.generation_config = None
 
         # Token usage tracking
         self.total_input_tokens = 0
@@ -84,7 +119,7 @@ class GeminiClient:
         prompt: str,
         timeout: Optional[int] = None,
         max_retries: Optional[int] = None,
-    ) -> types.GenerateContentResponse:
+    ) -> Any:
         """
         Generate content with retry logic and rate limit handling.
 
@@ -103,30 +138,44 @@ class GeminiClient:
         max_retries = max_retries or self.max_retries
         last_error = None
 
-        # Build contents with system instruction if provided
-        contents = []
-        if self.system_instruction:
+        # Build request for the active SDK.
+        if self._sdk_mode == "google-genai":
+            contents = []
+            if self.system_instruction:
+                contents.append(
+                    types.Content(
+                        role="user",
+                        parts=[types.Part(text=self.system_instruction)],
+                    )
+                )
             contents.append(
                 types.Content(
                     role="user",
-                    parts=[types.Part(text=self.system_instruction)],
+                    parts=[types.Part(text=prompt)],
                 )
             )
-        contents.append(
-            types.Content(
-                role="user",
-                parts=[types.Part(text=prompt)],
+        else:
+            full_prompt = (
+                f"{self.system_instruction}\n\n{prompt}"
+                if self.system_instruction
+                else prompt
             )
-        )
 
         for attempt in range(max_retries):
             try:
                 # Make API call
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=contents,
-                    config=self.generation_config,
-                )
+                if self._sdk_mode == "google-genai":
+                    response = self.client.models.generate_content(
+                        model=self.model_name,
+                        contents=contents,
+                        config=self.generation_config,
+                    )
+                else:
+                    request_options = {"timeout": timeout} if timeout else None
+                    response = self.client.generate_content(
+                        full_prompt,
+                        request_options=request_options,
+                    )
 
                 # Track token usage
                 if hasattr(response, 'usage_metadata'):
