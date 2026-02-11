@@ -99,8 +99,8 @@ htmlcov/
 .tox/
 .hypothesis/
 test zone-based/
-output/
-
+outputs/
+outputs/eval/
 # Logs
 *.log
 logs/
