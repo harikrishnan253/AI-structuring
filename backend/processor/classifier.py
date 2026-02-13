@@ -11,9 +11,12 @@ import json
 import re
 import logging
 import time
+import traceback
+import uuid
 from pathlib import Path
 from typing import Optional
 
+from config import DEFAULT_MODEL, FAST_FALLBACK_MODEL, LLM_ENABLED, LLM_REQUIRED
 from .llm_client import GeminiClient
 from .style_list import ALLOWED_STYLES
 from app.services.style_normalizer import normalize_style, normalize_tag
@@ -391,10 +394,12 @@ class GeminiClassifier:
     def __init__(
         self,
         api_key: str,
-        model_name: str = "gemini-2.5-pro",
-        fallback_model_name: str = "gemini-2.5-flash",
+        model_name: str = DEFAULT_MODEL,
+        fallback_model_name: str = FAST_FALLBACK_MODEL,
         fallback_threshold: int = FLASH_FALLBACK_THRESHOLD,
         enable_fallback: bool = True,
+        llm_enabled: bool = LLM_ENABLED,
+        llm_required: bool = LLM_REQUIRED,
         system_prompt_override: str | None = None,
         fallback_prompt_override: str | None = None,
     ):
@@ -424,6 +429,8 @@ class GeminiClassifier:
             timeout=API_TIMEOUT,
         )
         self.primary_model_name = model_name
+        self.llm_enabled = bool(llm_enabled)
+        self.llm_required = bool(llm_required)
 
         # Fallback model (gemini-2.5-flash - faster)
         self.fallback_model = None
@@ -494,6 +501,82 @@ class GeminiClassifier:
 
         logger.info(f"Initialized Gemini classifier with model: {model_name}, timeout: {API_TIMEOUT}s")
     
+    def _classify_from_indent_level(self, para: dict) -> dict | None:
+        """
+        Classify list items using indent-based semantic level.
+        Called BEFORE LLM for high-confidence predictions.
+        """
+        metadata = para.get('metadata', {})
+
+        if not metadata.get('is_list'):
+            return None
+
+        semantic_level = metadata.get('semantic_level')
+        list_prefix = metadata.get('list_style_prefix')
+        zone = metadata.get('context_zone', 'BODY')
+        is_numbered = metadata.get('is_numbered', False)
+
+        if semantic_level is None or list_prefix is None:
+            return None
+
+        # Zone-specific conversions
+        if zone == 'TABLE':
+            if is_numbered:
+                prefix = {0: 'TNL-', 1: 'TNL2-', 2: 'TNL3-'}.get(semantic_level, 'TNL-')
+            else:
+                prefix = {0: 'TBL-', 1: 'TBL2-', 2: 'TBL3-'}.get(semantic_level, 'TBL-')
+            list_prefix = prefix
+
+        elif zone == 'BACK_MATTER':
+            if is_numbered:
+                return {
+                    'id': para['id'],
+                    'tag': 'REF-N',
+                    'confidence': 95,
+                    'source': 'indent_rule',
+                    'rule_based': True,
+                }
+            else:
+                return {
+                    'id': para['id'],
+                    'tag': 'SR',
+                    'confidence': 95,
+                    'source': 'indent_rule',
+                    'rule_based': True,
+                }
+
+        elif zone.startswith('BOX_'):
+            box_prefix = zone.replace('BOX_', '')
+            if is_numbered:
+                prefix = {0: f'{box_prefix}-NL-', 1: f'{box_prefix}-NL2-', 2: f'{box_prefix}-NL3-'}.get(semantic_level, f'{box_prefix}-NL-')
+            else:
+                prefix = {0: f'{box_prefix}-BL-', 1: f'{box_prefix}-BL2-', 2: f'{box_prefix}-BL3-'}.get(semantic_level, f'{box_prefix}-BL-')
+            list_prefix = prefix
+
+        # Position (MID default, corrected later for Level 0)
+        position = 'MID'
+
+        tag = f"{list_prefix}{position}"
+
+        # Build confidence based on detection source
+        indent_source = metadata.get('indent_source', 'unknown')
+        if indent_source == 'ooxml_ind':
+            confidence = 94  # High - direct OOXML indent
+        elif indent_source == 'ooxml_ilvl':
+            confidence = 92  # Good - OOXML numbering level
+        else:
+            confidence = 88  # Lower - text whitespace fallback
+
+        return {
+            'id': para['id'],
+            'tag': tag,
+            'confidence': confidence,
+            'source': 'indent_rule',
+            'semantic_level': semantic_level,
+            'indent_source': indent_source,
+            'rule_based': True,
+        }
+
     def _apply_rules(
         self,
         paragraphs: list[dict],
@@ -512,10 +595,6 @@ class GeminiClassifier:
             - llm_needed: List of paragraphs that still need LLM classification
             - all_results_so_far: Combined list with rule predictions filled in
         """
-        if not self.rule_learner or not self.rule_learner.rules:
-            # No rules available, all paragraphs need LLM
-            return [], paragraphs, []
-
         rule_predictions = []
         llm_needed = []
         all_results = []
@@ -525,34 +604,67 @@ class GeminiClassifier:
             text = para.get('text', '')
             metadata = para.get('metadata', {})
 
-            # Try to predict using rules
-            predicted_tag = self.rule_learner.apply_rules(text, metadata)
+            # Priority 0: Teacher-forced deterministic rules from manual-tagged corpus.
+            if self.retriever:
+                try:
+                    teacher_tag = self.retriever.suggest_teacher_forced_tag(
+                        text=text,
+                        metadata=metadata,
+                        allowed_styles=set(VALID_TAGS),
+                    )
+                    if teacher_tag:
+                        result = {
+                            "id": para_id,
+                            "tag": teacher_tag,
+                            "confidence": 99,
+                            "reasoning": "Teacher-forced grounded rule",
+                            "rule_based": True,
+                            "source": "teacher_rule",
+                        }
+                        rule_predictions.append(result)
+                        all_results.append(result)
+                        self.rule_predictions += 1
+                        continue
+                except Exception as e:
+                    logger.debug(f"Teacher-forced rule skipped for para {para_id}: {e}")
 
-            if predicted_tag:
-                # Find the rule that matched to get its confidence
-                features = self.rule_learner.feature_extractor.extract_features(text, metadata)
-                matched_rule = None
+            # Priority 1: Indent-based list classification
+            indent_result = self._classify_from_indent_level(para)
+            if indent_result and indent_result.get('confidence', 0) >= 88:
+                rule_predictions.append(indent_result)
+                all_results.append(indent_result)
+                self.rule_predictions += 1
+                continue
 
-                for rule in self.rule_learner.rules:
-                    if self.rule_learner._feature_matches(features, rule["condition"]):
-                        matched_rule = rule
-                        break
+            # Priority 2: Learned rules from rule_learner
+            if self.rule_learner and self.rule_learner.rules:
+                predicted_tag = self.rule_learner.apply_rules(text, metadata)
 
-                rule_confidence = matched_rule["confidence"] if matched_rule else 0.8
+                if predicted_tag:
+                    # Find the rule that matched to get its confidence
+                    features = self.rule_learner.feature_extractor.extract_features(text, metadata)
+                    matched_rule = None
 
-                # Only use rule if confidence is high enough
-                if rule_confidence >= min_confidence:
-                    result = {
-                        "id": para_id,
-                        "tag": predicted_tag,
-                        "confidence": int(rule_confidence * 100),
-                        "reasoning": f"Rule: {matched_rule['condition']}" if matched_rule else "Rule-based",
-                        "rule_based": True,
-                    }
-                    rule_predictions.append(result)
-                    all_results.append(result)
-                    self.rule_predictions += 1
-                    continue
+                    for rule in self.rule_learner.rules:
+                        if self.rule_learner._feature_matches(features, rule["condition"]):
+                            matched_rule = rule
+                            break
+
+                    rule_confidence = matched_rule["confidence"] if matched_rule else 0.8
+
+                    # Only use rule if confidence is high enough
+                    if rule_confidence >= min_confidence:
+                        result = {
+                            "id": para_id,
+                            "tag": predicted_tag,
+                            "confidence": int(rule_confidence * 100),
+                            "reasoning": f"Rule: {matched_rule['condition']}" if matched_rule else "Rule-based",
+                            "rule_based": True,
+                        }
+                        rule_predictions.append(result)
+                        all_results.append(result)
+                        self.rule_predictions += 1
+                        continue
 
             # No high-confidence rule match, needs LLM
             llm_needed.append(para)
@@ -793,7 +905,8 @@ T2 (table header), T4 (row header), T (table cell), TBL-MID (table bullet), TFN 
                 examples = self.retriever.retrieve_examples(
                     text=sample_text,
                     k=10,  # Get 10 diverse examples
-                    zone=paragraphs[0].get('metadata', {}).get('context_zone') if paragraphs else None
+                    zone=paragraphs[0].get('metadata', {}).get('context_zone') if paragraphs else None,
+                    metadata=paragraphs[0].get('metadata', {}) if paragraphs else None,
                 )
 
                 if examples:
@@ -1432,7 +1545,8 @@ Return a JSON array with your classifications for all {len(batch)} items:
                     similar = self.retriever.retrieve_examples(
                         text=text,
                         k=1,  # Get top-1 most similar
-                        zone=zone
+                        zone=zone,
+                        metadata=meta,
                     )
 
                     if similar and similar[0].get('similarity_score', 0) > 0.7:
@@ -1467,12 +1581,73 @@ Return a JSON array with your classifications for all {len(batch)} items:
         Retries are handled by GeminiClient internally.
         """
         user_prompt = self.build_user_prompt(paragraphs, document_name, document_type, chunk_info)
+        request_id = str(uuid.uuid4())
+        model_name = getattr(self, "primary_model_name", "unknown")
 
-        logger.info(f"Sending {len(paragraphs)} paragraphs to Gemini API")
+        if not getattr(self, "llm_enabled", True):
+            logger.info(
+                "LLM_FALLBACK_USED %s",
+                json.dumps(
+                    {
+                        "request_id": request_id,
+                        "reason": "disabled",
+                        "doc_id": document_name,
+                        "num_blocks": len(paragraphs),
+                    }
+                ),
+            )
+            if getattr(self, "llm_required", False):
+                raise RuntimeError("LLM is disabled but required by configuration (LLM_REQUIRED=1).")
+            return [
+                {"id": p["id"], "tag": "TXT", "confidence": 0, "reasoning": "LLM disabled"}
+                for p in paragraphs
+            ]
 
-        # Make API call (retries handled internally by GeminiClient)
-        response = self._generate_content(user_prompt)
-        logger.info("Received response from Gemini API")
+        logger.info(
+            "LLM_CALL_START %s",
+            json.dumps(
+                {
+                    "request_id": request_id,
+                    "model": model_name,
+                    "doc_id": document_name,
+                    "num_blocks": len(paragraphs),
+                    "prompt_length": len(user_prompt),
+                }
+            ),
+        )
+
+        start = time.perf_counter()
+        try:
+            # Make API call (retries handled internally by GeminiClient)
+            response = self._generate_content(user_prompt)
+        except Exception as e:
+            logger.error(
+                "LLM_CALL_FAIL %s",
+                json.dumps(
+                    {
+                        "request_id": request_id,
+                        "exception": str(e),
+                        "stacktrace": traceback.format_exc(),
+                    }
+                ),
+            )
+            if getattr(self, "llm_required", False):
+                raise
+            logger.info(
+                "LLM_FALLBACK_USED %s",
+                json.dumps(
+                    {
+                        "request_id": request_id,
+                        "reason": "llm_call_failed",
+                        "doc_id": document_name,
+                        "num_blocks": len(paragraphs),
+                    }
+                ),
+            )
+            return [
+                {"id": p["id"], "tag": "TXT", "confidence": 0, "reasoning": "LLM call failed"}
+                for p in paragraphs
+            ]
 
         # Log token usage (tracked by GeminiClient)
         last_usage = self.model.get_last_usage()
@@ -1518,6 +1693,20 @@ Return a JSON array with your classifications for all {len(batch)} items:
 
         # Validate results for this chunk
         validated = self._validate_results(results, len(paragraphs), paragraphs[0]['id'])
+
+        latency_ms = int((time.perf_counter() - start) * 1000)
+        logger.info(
+            "LLM_CALL_SUCCESS %s",
+            json.dumps(
+                {
+                    "request_id": request_id,
+                    "latency_ms": latency_ms,
+                    "input_tokens": int(last_usage.get("input_tokens", 0)) if last_usage else 0,
+                    "output_tokens": int(last_usage.get("output_tokens", 0)) if last_usage else 0,
+                    "num_labels": len(validated),
+                }
+            ),
+        )
 
         # Ensure no invalid tags remain after validation
         for r in validated:
@@ -2012,6 +2201,8 @@ def classify_blocks_with_prompt(
     enable_fallback: bool = True,
     fallback_threshold: int = FLASH_FALLBACK_THRESHOLD,
     model_name: str | None = None,
+    llm_enabled: bool = LLM_ENABLED,
+    llm_required: bool = LLM_REQUIRED,
     system_prompt_override: str | None = None,
     fallback_prompt_override: str | None = None,
 ) -> tuple[list[dict], dict]:
@@ -2020,9 +2211,11 @@ def classify_blocks_with_prompt(
     """
     classifier = GeminiClassifier(
         api_key,
-        model_name=model_name or "gemini-2.5-flash-lite",
+        model_name=model_name or DEFAULT_MODEL,
         enable_fallback=enable_fallback,
         fallback_threshold=fallback_threshold,
+        llm_enabled=llm_enabled,
+        llm_required=llm_required,
         system_prompt_override=system_prompt_override,
         fallback_prompt_override=fallback_prompt_override,
     )

@@ -19,6 +19,7 @@ from app.services.allowed_styles import load_allowed_styles
 from app.services.prompt_router import route_prompt
 from app.services.quality_score import score_document
 from app.services.review_bundle import create_review_bundle
+from config import DEFAULT_MODEL, FAST_FALLBACK_MODEL, LLM_ENABLED, LLM_REQUIRED
 
 logger = logging.getLogger(__name__)
 
@@ -93,8 +94,8 @@ def process_document(
         if not api_key:
             raise ValueError("GOOGLE_API_KEY environment variable not set")
 
-        primary_model = os.getenv("GEMINI_MODEL_PRIMARY", "gemini-2.5-flash-lite")
-        strong_model = os.getenv("GEMINI_MODEL_STRONG", "gemini-2.0-flash")
+        primary_model = os.getenv("GEMINI_MODEL_PRIMARY", DEFAULT_MODEL)
+        strong_model = os.getenv("GEMINI_MODEL_STRONG", FAST_FALLBACK_MODEL)
 
         classifications = []
         for attempt in range(1, 4):
@@ -113,6 +114,8 @@ def process_document(
                 api_key=api_key,
                 document_type=document_type,
                 model_name=model_name,
+                llm_enabled=LLM_ENABLED,
+                llm_required=LLM_REQUIRED,
                 system_prompt_override=prompt_text,
             )
 
