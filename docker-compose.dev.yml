@@ -1,0 +1,88 @@
+# S4Carlisle Pre-Editor v3 - Docker Compose (Development)
+# Simplified setup for local development
+
+version: '3.8'
+
+services:
+  # ============================================
+  # Redis - Message Broker
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: preeditor-redis-dev
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # ============================================
+  # Backend API (Development Mode)
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: preeditor-backend-dev
+    command: python run.py
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - QUEUE_MODE=celery
+      - REDIS_URL=redis://redis:6379/0
+      - FLASK_DEBUG=true
+    volumes:
+      - ./backend:/app
+      - app_data_dev:/app/data
+    ports:
+      - "5000:5000"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ============================================
+  # Celery Worker
+  # ============================================
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: preeditor-worker-dev
+    command: celery -A celery_worker worker --loglevel=info
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - QUEUE_MODE=celery
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./backend:/app
+      - app_data_dev:/app/data
+    depends_on:
+      - redis
+      - backend
+
+  # ============================================
+  # Flower - Monitoring UI
+  # ============================================
+  flower:
+    image: mher/flower:0.9.7
+    container_name: preeditor-flower-dev
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+
+volumes:
+  app_data_dev:
+    driver: local
+
+# ============================================
+# Usage:
+#   1. Copy .env.example to .env
+#   2. Add your GOOGLE_API_KEY
+#   3. Run: docker-compose -f docker-compose.dev.yml up -d
+#   4. Run frontend separately: cd frontend && npm run dev
+#   5. Open http://localhost:3000
+# ============================================
