@@ -8,21 +8,19 @@ Sends entire document in one API call and extracts tags + confidence scores.
 """
 
 import json
+import os
 import re
 import logging
 import time
-import traceback
-import uuid
 from pathlib import Path
 from typing import Optional
 
-from config import DEFAULT_MODEL, FAST_FALLBACK_MODEL, LLM_ENABLED, LLM_REQUIRED
 from .llm_client import GeminiClient
 from .style_list import ALLOWED_STYLES
 from app.services.style_normalizer import normalize_style, normalize_tag
 from app.services.grounded_retriever import get_retriever
 from app.services.prediction_cache import get_cache
-from .rule_learner import RuleLearner
+from .rule_learner import RuleLearner, MissingLearnedRulesError
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +33,19 @@ REF_BULLET_RE = re.compile(r"^\s*[\u2022\u25CF\-\*\u2013\u2014]\s+")
 # strict parsing helpers for model tag outputs
 STRICT_TAG_RE = re.compile(r"^[A-Z0-9]+(?:[_-][A-Z0-9]+)*$")
 EXTRACT_TAG_RE = re.compile(r"[A-Z0-9]+(?:[_-][A-Z0-9]+)*")
+
+# Publisher-specific canonical style names worth hinting to the LLM.
+# These are valid output tags that differ from the WK generic defaults
+# (TXT, TXT-FLUSH, T1, FIG-LEG, T, T2) but should be preserved verbatim
+# when the source paragraph already carries one of these styles.
+_PUBLISHER_STYLE_HINTS: frozenset[str] = frozenset({
+    "TX", "TXL",            # Body text alternates (e.g. ENA/JBL)
+    "TT",                   # Table title alternate
+    "TB",                   # Table body alternate
+    "TCH1", "TCH",          # Table column-header alternates
+    "FGC", "FGS",           # Figure caption/source alternates
+    "COBJ", "COBJ_T", "COBJ_TXL",  # Chapter objectives
+})
 
 # Load system prompt
 PROMPT_DIR = Path(__file__).parent.parent / 'prompts'
@@ -65,8 +76,9 @@ VALID_TAGS = {
     
     # Headings (H1-H6 with text flow variants)
     "H1", "H2", "H3", "H4", "H5", "H6",  # Standard Headings
+    "H10",          # H1 alternate/variant used by some tagged corpora
     "H11", "H12",   # H1 in text flow 1, 2 (multi-column layouts)
-    "H21",          # H2 in text flow 1
+    "H20", "H21",   # H2 variants / text flow variants
     "SP-H1",        # Special Heading 1
     "EOC-H1",       # End of Chapter Heading 1
     
@@ -84,6 +96,8 @@ VALID_TAGS = {
     "TXT-FLUSH1", "TXT-FLUSH2", "TXT-FLUSH4",  # Flush text in different flows
     "TXT-DC",       # Drop Cap Text
     "TXT-AU",       # Author Text
+    "TX",           # Body Text alternate (publisher-specific, e.g. ENA/JBL)
+    "TXL",          # Body Text with lead-in alternate (publisher-specific)
     "T",            # Table Cell Body Text
     
     # Bulleted Lists
@@ -108,20 +122,24 @@ VALID_TAGS = {
     # Tables - Titles (with text flow variants)
     "T1",           # Table Title
     "T11", "T12",   # Table Title in text flow 1, 2
+    "TT",           # Table Title alternate (publisher-specific, e.g. ENA)
     "UNT-T1",       # Unnumbered Table Title
     "TableCaption", # Table Caption (alternate)
     "TableCaptions",# Table Captions section header
-    
+
     # Tables - Headers (T2x for different header types)
     "T2",           # Table Header Row
     "T2-C",         # Table Header Centered
     "T21", "T22", "T23",  # Table header variants (different column types)
-    
+    "TCH1",         # Table Column Header 1 (publisher-specific, e.g. ENA)
+    "TCH",          # Table Column Header (publisher-specific)
+
     # Tables - Row Headers and Body Cells
     "T3",           # Table Sub-header/Category Row
     "T4",           # Table Row Header (first column)
     "T5",           # Table Body Cell (data values)
     "T6",           # Table Body Cell variant (specific data)
+    "TB",           # Table Body alternate (publisher-specific, e.g. ENA)
     "T",            # Generic Table Cell
     
     # Tables - Lists inside cells
@@ -151,6 +169,8 @@ VALID_TAGS = {
     "FigureCaption",# Figure Caption (alternate)
     "FigureLegend", # Figure Legend (alternate)
     "FigureSource", # Figure Source (alternate)
+    "FGC",          # Figure Caption alternate (publisher-specific, e.g. ENA)
+    "FGS",          # Figure Source alternate (publisher-specific, e.g. ENA)
     "PMI",          # Picture/Media Item
     
     # References
@@ -214,6 +234,9 @@ VALID_TAGS = {
     "OBJ-NL-FIRST", # Objective Numbered List First
     "OBJ-NL-MID",   # Objective Numbered List Middle
     "OBJ-NL-LAST",  # Objective Numbered List Last
+    "ANS-NL-FIRST", # Answer Numbered List First
+    "ANS-NL-MID",   # Answer Numbered List Middle
+    "ANS-NL-LAST",  # Answer Numbered List Last
     
     # Special/Miscellaneous
     "SUMHD",        # Summary Heading
@@ -228,6 +251,8 @@ VALID_TAGS = {
     "NBX-TTL",      # Numbered Box Title (general)
     "NBX-TXT-FIRST",# Numbered Box Text First
     "NBX-TXT",      # Numbered Box Text
+    "NBX-TXT-FLUSH",# Numbered Box Text Flush
+    "NBX-FIG-LEG",  # Numbered Box Figure Legend
     "NBX-UL-FIRST", # Numbered Box Unnumbered List First
     "NBX-UL-MID",   # Numbered Box Unnumbered List Middle
     "NBX-UL-LAST",  # Numbered Box Unnumbered List Last
@@ -260,6 +285,11 @@ VALID_TAGS = {
     "KEY-BL-MID",   # Key Terms Bullet Middle
     "KP-TXT",       # Key Points Text
     "KP-BL-MID",    # Key Points Bullet Middle
+    "KT-BL-FIRST",  # Key Terms Bullet First
+    "KT-BL-MID",    # Key Terms Bullet Middle
+    "KT-BL-LAST",   # Key Terms Bullet Last
+    "KT-BL2-MID",   # Key Terms Bullet Level 2 Middle
+    "KT-BL2-LAST",  # Key Terms Bullet Level 2 Last
     "DIA",          # Dialog
     "SR",           # Source Reference
     "SRH1",         # Source Reference Heading
@@ -285,6 +315,7 @@ VALID_TAGS = {
     "EOC_NL",       # End of Chapter Numbered List
     "EOC_NLLL",     # End of Chapter Numbered List Last Level
     "BL2-MID",      # Bullet List Level 2 Middle
+    "BL2-LAST",     # Bullet List Level 2 Last
     "BL3-MID",      # Bullet List Level 3 Middle
     "TUL-MID",      # Table Unordered List Middle
     "CHAP-BM",      # Chapter Back Matter
@@ -373,17 +404,79 @@ def validate_style_for_zone(style: str, zone: str) -> bool:
             
     return False
 
-# Maximum paragraphs per API call to avoid token limits
-MAX_PARAGRAPHS_PER_CHUNK = 75  # Reduced from 100 for faster, more reliable processing
+# Maximum paragraphs per API call to avoid token limits.
+# Configurable via LLM_BATCH_SIZE env var (default 75).
+MAX_PARAGRAPHS_PER_CHUNK = int(os.environ.get("LLM_BATCH_SIZE", "75"))
 
 # Confidence threshold for Flash fallback
 FLASH_FALLBACK_THRESHOLD = 75  # Items below this confidence get re-evaluated by Flash
 
 
+# ---------------------------------------------------------------------------
+# Token cost estimation (USD per 1K tokens, approximate public pricing)
+# ---------------------------------------------------------------------------
+_COST_PER_1K_INPUT = {
+    "gemini-2.5-flash-lite": 0.0,
+    "gemini-2.0-flash": 0.0001,
+    "gemini-2.5-flash": 0.00015,
+    "gemini-2.5-pro": 0.00125,
+}
+_COST_PER_1K_OUTPUT = {
+    "gemini-2.5-flash-lite": 0.0,
+    "gemini-2.0-flash": 0.0004,
+    "gemini-2.5-flash": 0.0006,
+    "gemini-2.5-pro": 0.005,
+}
+
+
+def _estimate_cost(model_name: str, input_tokens: int, output_tokens: int) -> float:
+    """Return estimated USD cost for *input_tokens* and *output_tokens*."""
+    in_rate = _COST_PER_1K_INPUT.get(model_name, 0.0)
+    out_rate = _COST_PER_1K_OUTPUT.get(model_name, 0.0)
+    return (input_tokens / 1000) * in_rate + (output_tokens / 1000) * out_rate
+
+
+def _empty_token_usage(gate_metrics) -> dict:
+    """Return a zero-token usage dict when the LLM was not called at all."""
+    return {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0,
+        "last_call": {},
+        "fallback": {
+            "enabled": False,
+            "model": None,
+            "threshold": 0,
+            "calls": 0,
+            "items_improved": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+        },
+        "estimated_cost_usd": 0.0,
+        "rule_based": {
+            "predictions": 0,
+            "llm_predictions": 0,
+            "total_predictions": 0,
+            "rule_coverage": 0.0,
+        },
+        "combined_input_tokens": 0,
+        "combined_output_tokens": 0,
+        "gate": {
+            "total_blocks": gate_metrics.total_blocks,
+            "gated": gate_metrics.gated_count,
+            "sent_to_llm": gate_metrics.llm_count,
+            "gated_pct": round(
+                gate_metrics.gated_count / max(gate_metrics.total_blocks, 1) * 100, 1
+            ),
+            "rules_fired": gate_metrics.rules_fired,
+        },
+    }
+
+
 class GeminiClassifier:
     """
     Document style classifier using Gemini API with hybrid model support.
-    
+
     Primary: Gemini 2.5 Flash-Lite (fast, cost-effective)
     Fallback: Gemini 2.5 Flash (higher quality for low-confidence items)
     
@@ -394,12 +487,10 @@ class GeminiClassifier:
     def __init__(
         self,
         api_key: str,
-        model_name: str = DEFAULT_MODEL,
-        fallback_model_name: str = FAST_FALLBACK_MODEL,
+        model_name: str = "gemini-2.5-pro",
+        fallback_model_name: str = "gemini-2.5-flash",
         fallback_threshold: int = FLASH_FALLBACK_THRESHOLD,
         enable_fallback: bool = True,
-        llm_enabled: bool = LLM_ENABLED,
-        llm_required: bool = LLM_REQUIRED,
         system_prompt_override: str | None = None,
         fallback_prompt_override: str | None = None,
     ):
@@ -429,8 +520,6 @@ class GeminiClassifier:
             timeout=API_TIMEOUT,
         )
         self.primary_model_name = model_name
-        self.llm_enabled = bool(llm_enabled)
-        self.llm_required = bool(llm_required)
 
         # Fallback model (gemini-2.5-flash - faster)
         self.fallback_model = None
@@ -491,6 +580,8 @@ class GeminiClassifier:
                 logger.info(f"Loaded {len(self.rule_learner.rules)} deterministic rules")
             else:
                 logger.info("No learned rules found - will use LLM for all predictions")
+        except MissingLearnedRulesError:
+            raise
         except Exception as e:
             logger.warning(f"Failed to load rule learner: {e}")
             self.rule_learner = None
@@ -500,83 +591,21 @@ class GeminiClassifier:
         self.llm_predictions = 0
 
         logger.info(f"Initialized Gemini classifier with model: {model_name}, timeout: {API_TIMEOUT}s")
-    
-    def _classify_from_indent_level(self, para: dict) -> dict | None:
-        """
-        Classify list items using indent-based semantic level.
-        Called BEFORE LLM for high-confidence predictions.
-        """
-        metadata = para.get('metadata', {})
 
-        if not metadata.get('is_list'):
-            return None
-
-        semantic_level = metadata.get('semantic_level')
-        list_prefix = metadata.get('list_style_prefix')
-        zone = metadata.get('context_zone', 'BODY')
-        is_numbered = metadata.get('is_numbered', False)
-
-        if semantic_level is None or list_prefix is None:
-            return None
-
-        # Zone-specific conversions
-        if zone == 'TABLE':
-            if is_numbered:
-                prefix = {0: 'TNL-', 1: 'TNL2-', 2: 'TNL3-'}.get(semantic_level, 'TNL-')
-            else:
-                prefix = {0: 'TBL-', 1: 'TBL2-', 2: 'TBL3-'}.get(semantic_level, 'TBL-')
-            list_prefix = prefix
-
-        elif zone == 'BACK_MATTER':
-            if is_numbered:
-                return {
-                    'id': para['id'],
-                    'tag': 'REF-N',
-                    'confidence': 95,
-                    'source': 'indent_rule',
-                    'rule_based': True,
-                }
-            else:
-                return {
-                    'id': para['id'],
-                    'tag': 'SR',
-                    'confidence': 95,
-                    'source': 'indent_rule',
-                    'rule_based': True,
-                }
-
-        elif zone.startswith('BOX_'):
-            box_prefix = zone.replace('BOX_', '')
-            if is_numbered:
-                prefix = {0: f'{box_prefix}-NL-', 1: f'{box_prefix}-NL2-', 2: f'{box_prefix}-NL3-'}.get(semantic_level, f'{box_prefix}-NL-')
-            else:
-                prefix = {0: f'{box_prefix}-BL-', 1: f'{box_prefix}-BL2-', 2: f'{box_prefix}-BL3-'}.get(semantic_level, f'{box_prefix}-BL-')
-            list_prefix = prefix
-
-        # Position (MID default, corrected later for Level 0)
-        position = 'MID'
-
-        tag = f"{list_prefix}{position}"
-
-        # Build confidence based on detection source
-        indent_source = metadata.get('indent_source', 'unknown')
-        if indent_source == 'ooxml_ind':
-            confidence = 94  # High - direct OOXML indent
-        elif indent_source == 'ooxml_ilvl':
-            confidence = 92  # Good - OOXML numbering level
-        else:
-            confidence = 88  # Lower - text whitespace fallback
-
+    def _build_skip_llm_result(self, paragraph: dict) -> dict:
+        """Return a deterministic classification for blocks explicitly excluded from LLM."""
+        allowed = paragraph.get("allowed_styles") or []
+        tag = str(allowed[0]).strip() if allowed else "PMI"
+        if not tag:
+            tag = "PMI"
         return {
-            'id': para['id'],
-            'tag': tag,
-            'confidence': confidence,
-            'source': 'indent_rule',
-            'semantic_level': semantic_level,
-            'indent_source': indent_source,
-            'rule_based': True,
+            "id": paragraph.get("id"),
+            "tag": tag,
+            "confidence": 99,
+            "gated": True,
+            "gate_rule": "skip-llm",
         }
-
+    
     def _apply_rules(
         self,
         paragraphs: list[dict],
@@ -595,6 +624,10 @@ class GeminiClassifier:
             - llm_needed: List of paragraphs that still need LLM classification
             - all_results_so_far: Combined list with rule predictions filled in
         """
+        if not self.rule_learner or not self.rule_learner.rules:
+            # No rules available, all paragraphs need LLM
+            return [], paragraphs, []
+
         rule_predictions = []
         llm_needed = []
         all_results = []
@@ -604,67 +637,34 @@ class GeminiClassifier:
             text = para.get('text', '')
             metadata = para.get('metadata', {})
 
-            # Priority 0: Teacher-forced deterministic rules from manual-tagged corpus.
-            if self.retriever:
-                try:
-                    teacher_tag = self.retriever.suggest_teacher_forced_tag(
-                        text=text,
-                        metadata=metadata,
-                        allowed_styles=set(VALID_TAGS),
-                    )
-                    if teacher_tag:
-                        result = {
-                            "id": para_id,
-                            "tag": teacher_tag,
-                            "confidence": 99,
-                            "reasoning": "Teacher-forced grounded rule",
-                            "rule_based": True,
-                            "source": "teacher_rule",
-                        }
-                        rule_predictions.append(result)
-                        all_results.append(result)
-                        self.rule_predictions += 1
-                        continue
-                except Exception as e:
-                    logger.debug(f"Teacher-forced rule skipped for para {para_id}: {e}")
+            # Try to predict using rules
+            predicted_tag = self.rule_learner.apply_rules(text, metadata)
 
-            # Priority 1: Indent-based list classification
-            indent_result = self._classify_from_indent_level(para)
-            if indent_result and indent_result.get('confidence', 0) >= 88:
-                rule_predictions.append(indent_result)
-                all_results.append(indent_result)
-                self.rule_predictions += 1
-                continue
+            if predicted_tag:
+                # Find the rule that matched to get its confidence
+                features = self.rule_learner.feature_extractor.extract_features(text, metadata)
+                matched_rule = None
 
-            # Priority 2: Learned rules from rule_learner
-            if self.rule_learner and self.rule_learner.rules:
-                predicted_tag = self.rule_learner.apply_rules(text, metadata)
+                for rule in self.rule_learner.rules:
+                    if self.rule_learner._feature_matches(features, rule["condition"]):
+                        matched_rule = rule
+                        break
 
-                if predicted_tag:
-                    # Find the rule that matched to get its confidence
-                    features = self.rule_learner.feature_extractor.extract_features(text, metadata)
-                    matched_rule = None
+                rule_confidence = matched_rule["confidence"] if matched_rule else 0.8
 
-                    for rule in self.rule_learner.rules:
-                        if self.rule_learner._feature_matches(features, rule["condition"]):
-                            matched_rule = rule
-                            break
-
-                    rule_confidence = matched_rule["confidence"] if matched_rule else 0.8
-
-                    # Only use rule if confidence is high enough
-                    if rule_confidence >= min_confidence:
-                        result = {
-                            "id": para_id,
-                            "tag": predicted_tag,
-                            "confidence": int(rule_confidence * 100),
-                            "reasoning": f"Rule: {matched_rule['condition']}" if matched_rule else "Rule-based",
-                            "rule_based": True,
-                        }
-                        rule_predictions.append(result)
-                        all_results.append(result)
-                        self.rule_predictions += 1
-                        continue
+                # Only use rule if confidence is high enough
+                if rule_confidence >= min_confidence:
+                    result = {
+                        "id": para_id,
+                        "tag": predicted_tag,
+                        "confidence": int(rule_confidence * 100),
+                        "reasoning": f"Rule: {matched_rule['condition']}" if matched_rule else "Rule-based",
+                        "rule_based": True,
+                    }
+                    rule_predictions.append(result)
+                    all_results.append(result)
+                    self.rule_predictions += 1
+                    continue
 
             # No high-confidence rule match, needs LLM
             llm_needed.append(para)
@@ -828,13 +828,21 @@ T2 (table header), T4 (row header), T (table cell), TBL-MID (table bullet), TFN 
 
             if metadata.get('box_marker'):
                 context_parts.append(f"BOX_MARKER:{metadata['box_marker']}")
-            
+
+            # Add source style hint when the paragraph already carries a
+            # publisher-specific canonical style name.  The LLM should prefer
+            # outputting that exact style rather than substituting a generic
+            # equivalent (e.g. TX→TXT, TT→T1, FGC→FIG-LEG).
+            source_style = metadata.get('style_name', '')
+            if source_style in _PUBLISHER_STYLE_HINTS:
+                context_parts.append(f"STYLE:{source_style}")
+
             # Build context hint string
             if context_parts:
                 context_hint = f" [{' | '.join(context_parts)}]"
             else:
                 context_hint = ""
-            
+
             lines.append(f"[{para['id']}]{context_hint} {text}")
         
         formatted_paragraphs = "\n".join(lines)
@@ -905,8 +913,7 @@ T2 (table header), T4 (row header), T (table cell), TBL-MID (table bullet), TFN 
                 examples = self.retriever.retrieve_examples(
                     text=sample_text,
                     k=10,  # Get 10 diverse examples
-                    zone=paragraphs[0].get('metadata', {}).get('context_zone') if paragraphs else None,
-                    metadata=paragraphs[0].get('metadata', {}) if paragraphs else None,
+                    zone=paragraphs[0].get('metadata', {}).get('context_zone') if paragraphs else None
                 )
 
                 if examples:
@@ -1144,8 +1151,58 @@ Classify each paragraph below:
         - Validates results against zone constraints and ground truth
         - Uses Flash fallback for low-confidence items
         - Caches predictions for future reuse
+
+        **FORCE_LLM mode (evaluation)**:
+        - When FORCE_LLM=true env var is set, forces at least one LLM call
+        - Bypasses cache and rule short-circuits if eligible blocks exist
+        - Ensures LLM invocation for evaluation/testing purposes
         """
+        if not paragraphs:
+            return []
+
+        skip_llm_paragraphs = [p for p in paragraphs if p.get("skip_llm") is True]
+        if skip_llm_paragraphs:
+            logger.info(
+                "skip-llm: excluding %d/%d blocks from cache/rules/LLM eligibility",
+                len(skip_llm_paragraphs),
+                len(paragraphs),
+            )
+
+        skip_llm_results = [self._build_skip_llm_result(p) for p in skip_llm_paragraphs]
+        paragraphs = [p for p in paragraphs if p.get("skip_llm") is not True]
+
+        def _merge_skip_llm(results: list[dict]) -> list[dict]:
+            if not skip_llm_results:
+                return results
+            merged_by_id = {r["id"]: r for r in results}
+            for r in skip_llm_results:
+                merged_by_id[r["id"]] = r
+            return sorted(merged_by_id.values(), key=lambda x: x["id"])
+
+        if not paragraphs:
+            return sorted(skip_llm_results, key=lambda x: x["id"])
+
         total_paragraphs = len(paragraphs)
+
+        # === LLM EXECUTION AUDIT TRACKING ===
+        # Track metrics for LLM execution validation
+        llm_audit = {
+            "total_eligible": total_paragraphs,  # Total blocks that could be classified
+            "cache_hits": 0,                     # Blocks retrieved from cache
+            "rule_classified": 0,                # Blocks classified by rules
+            "llm_eligible": 0,                   # Blocks that should go to LLM
+            "llm_invoked": False,                # Whether LLM was determined to be needed (pre-call intent)
+            "llm_attempted": False,              # Whether LLM API call was actually made
+            "llm_successful": False,             # Whether LLM returned a valid non-empty response
+            "provider": "google-gemini",         # LLM provider
+            "model": self.primary_model_name,    # Model name
+            "token_count": 0,                    # Total tokens used
+        }
+
+        # Check FORCE_LLM flag for evaluation runs
+        force_llm = os.getenv("FORCE_LLM", "false").lower() == "true"
+        if force_llm:
+            logger.info("FORCE_LLM mode enabled - will guarantee LLM invocation if eligible blocks exist")
 
         # === CACHE CHECK ===
         # Check cache for already classified paragraphs
@@ -1167,63 +1224,149 @@ Classify each paragraph below:
 
                 if cached:
                     cached_results[para_id] = cached
+                    llm_audit["cache_hits"] += 1
                 else:
                     uncached_paragraphs.append(para)
 
             if cached_results:
                 logger.info(f"Cache: {len(cached_results)} cached, {len(uncached_paragraphs)} need classification")
 
-            # If all cached, return immediately
-            if not uncached_paragraphs:
-                logger.info("All paragraphs found in cache, skipping API call")
-                return sorted(cached_results.values(), key=lambda x: x['id'])
+            # === CACHE INTEGRITY VALIDATION ===
+            # Validate that all_cached is only true if cache_hits == total_eligible
+            all_blocks_cached = not uncached_paragraphs
+            if all_blocks_cached:
+                # Verify cache integrity: cache_hits must equal total_eligible
+                if llm_audit["cache_hits"] != llm_audit["total_eligible"]:
+                    logger.error(
+                        f"CACHE_INTEGRITY_ERROR: all_blocks_cached=True but cache_hits={llm_audit['cache_hits']} "
+                        f"!= total_eligible={llm_audit['total_eligible']}. Forcing LLM invocation."
+                    )
+                    # Partial cache detected - force LLM run
+                    uncached_paragraphs = paragraphs
+                    all_blocks_cached = False
 
-            # Use uncached paragraphs for classification
-            paragraphs = uncached_paragraphs
-            total_paragraphs = len(paragraphs)
+            # If all cached, return immediately (unless FORCE_LLM is set)
+            if all_blocks_cached:
+                if force_llm:
+                    logger.info("All paragraphs cached, but FORCE_LLM is set - forcing LLM call with first paragraph")
+                    # Force LLM call on at least one paragraph for evaluation
+                    uncached_paragraphs = [paragraphs[0]]
+                    paragraphs = uncached_paragraphs
+                    total_paragraphs = len(paragraphs)
+                    llm_audit["llm_eligible"] = len(uncached_paragraphs)
+                else:
+                    logger.info("All paragraphs found in cache, skipping API call")
+                    # Emit LLM execution trace for cache-only path
+                    logger.info(
+                        f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+                        f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+                        f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+                        f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+                        f"provider={llm_audit['provider']} model={llm_audit['model']} "
+                        f"token_count={llm_audit['token_count']}"
+                    )
+                    return _merge_skip_llm(sorted(cached_results.values(), key=lambda x: x['id']))
+            else:
+                # Use uncached paragraphs for classification
+                paragraphs = uncached_paragraphs
+                total_paragraphs = len(paragraphs)
+                llm_audit["llm_eligible"] = total_paragraphs
 
         # === RULE-BASED CLASSIFICATION (GROUNDED-FIRST) ===
         # Apply deterministic rules before calling LLM
         rule_predictions, llm_needed, partial_results = self._apply_rules(paragraphs, min_confidence=0.80)
 
+        # Track rule-classified blocks
+        llm_audit["rule_classified"] = len(rule_predictions)
+
         # Keep reference to all original paragraphs for caching later
         all_original_paragraphs = {p['id']: p for p in paragraphs}
 
-        # If all paragraphs handled by rules, return early
+        # If all paragraphs handled by rules, return early (unless FORCE_LLM is set)
         if not llm_needed:
-            logger.info(f"All {len(paragraphs)} paragraphs classified by rules (100% coverage), skipping LLM")
-            self.llm_predictions += 0
+            if force_llm:
+                logger.info(f"All {len(paragraphs)} paragraphs classified by rules, but FORCE_LLM is set - forcing LLM call on first paragraph")
+                # Force LLM call on at least one paragraph for evaluation
+                llm_needed = [paragraphs[0]]
+                llm_audit["llm_eligible"] = len(llm_needed)
+            else:
+                logger.info(f"All {len(paragraphs)} paragraphs classified by rules (100% coverage), skipping LLM")
+                self.llm_predictions += 0
 
-            # Still need to validate and cache
-            results = self.validate_zone_constraints(rule_predictions, paragraphs)
+                # Emit LLM execution trace for rules-only path
+                logger.info(
+                    f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+                    f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+                    f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+                    f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+                    f"provider={llm_audit['provider']} model={llm_audit['model']} "
+                    f"token_count={llm_audit['token_count']}"
+                )
 
-            # Cache rule predictions
-            if self.cache:
-                for result in results:
-                    para_id = result.get('id')
-                    para = all_original_paragraphs.get(para_id)
-                    if para:
-                        self.cache.set(
-                            doc_id=document_name,
-                            para_index=para_id,
-                            text=para.get('text', ''),
-                            prediction=result,
-                            zone=para.get('metadata', {}).get('context_zone', 'BODY')
-                        )
+                # Still need to validate and cache
+                results = self.validate_zone_constraints(rule_predictions, paragraphs)
 
-            # Merge with cached results if any
-            if cached_results:
-                all_results = list(cached_results.values()) + results
-                all_results.sort(key=lambda x: x['id'])
-                return all_results
+                # Cache rule predictions
+                if self.cache:
+                    for result in results:
+                        para_id = result.get('id')
+                        para = all_original_paragraphs.get(para_id)
+                        if para:
+                            self.cache.set(
+                                doc_id=document_name,
+                                para_index=para_id,
+                                text=para.get('text', ''),
+                                prediction=result,
+                                zone=para.get('metadata', {}).get('context_zone', 'BODY')
+                            )
 
-            return results
+                # Merge with cached results if any
+                if cached_results:
+                    all_results = list(cached_results.values()) + results
+                    all_results.sort(key=lambda x: x['id'])
+                    # Emit LLM execution trace before returning
+                    logger.info(
+                        f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+                        f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+                        f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+                        f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+                        f"provider={llm_audit['provider']} model={llm_audit['model']} "
+                        f"token_count={llm_audit['token_count']}"
+                    )
+                    return _merge_skip_llm(all_results)
+
+                # Emit LLM execution trace before returning
+                logger.info(
+                    f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+                    f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+                    f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+                    f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+                    f"provider={llm_audit['provider']} model={llm_audit['model']} "
+                    f"token_count={llm_audit['token_count']}"
+                )
+                return _merge_skip_llm(results)
 
         # Some paragraphs still need LLM classification
         logger.info(f"LLM needed for {len(llm_needed)}/{total_paragraphs} paragraphs after rule filtering")
         paragraphs = llm_needed  # Only classify these with LLM
         total_paragraphs = len(paragraphs)
+
+        # Update llm_eligible count after rule filtering
+        llm_audit["llm_eligible"] = total_paragraphs
+
+        # === VALIDATE LLM INVOCATION ===
+        # HOUSE RULE 1: If llm_eligible > 0, LLM MUST be invoked
+        if llm_audit["llm_eligible"] > 0:
+            llm_audit["llm_invoked"] = True
+            logger.info(
+                f"LLM_INVOCATION_VALIDATED: {llm_audit['llm_eligible']} eligible blocks, "
+                f"LLM will be invoked with provider={llm_audit['provider']} model={llm_audit['model']}"
+            )
         
+        # === MAKE LLM API CALL ===
+        # Mark as attempted just before the actual API call
+        llm_audit["llm_attempted"] = True
+
         # Check if we need to chunk
         if total_paragraphs <= MAX_PARAGRAPHS_PER_CHUNK:
             # Single API call
@@ -1237,24 +1380,39 @@ Classify each paragraph below:
                 chunk = paragraphs[i:i + MAX_PARAGRAPHS_PER_CHUNK]
                 chunk_num = i // MAX_PARAGRAPHS_PER_CHUNK + 1
                 total_chunks = (total_paragraphs + MAX_PARAGRAPHS_PER_CHUNK - 1) // MAX_PARAGRAPHS_PER_CHUNK
-                
+
                 chunk_info = f"Chunk {chunk_num} of {total_chunks} (paragraphs {chunk[0]['id']} to {chunk[-1]['id']})"
                 logger.info(f"Processing {chunk_info}")
-                
-                chunk_results = self._classify_chunk(
-                    chunk, 
-                    document_name, 
-                    document_type,
-                    chunk_info
-                )
-                all_results.extend(chunk_results)
+
+                try:
+                    chunk_results = self._classify_chunk(
+                        chunk,
+                        document_name,
+                        document_type,
+                        chunk_info
+                    )
+                    all_results.extend(chunk_results)
+                except Exception as e:
+                    logger.error(f"Batch {chunk_num}/{total_chunks} failed: {e}. Falling back to TXT for {len(chunk)} paragraphs.")
+                    for para in chunk:
+                        all_results.append({
+                            "id": para["id"],
+                            "tag": "TXT",
+                            "confidence": 30,
+                            "reasoning": f"LLM batch failed: {e}",
+                            "batch_fallback": True,
+                        })
             
             # Validate all results
             results = self._validate_results(all_results, total_paragraphs)
         
         # Post-validate against zone constraints
         results = self.validate_zone_constraints(results, paragraphs)
-        
+
+        # Mark LLM as successful if we got a valid non-empty response
+        if results:
+            llm_audit["llm_successful"] = True
+
         # Log zone violation summary
         violations = [r for r in results if r.get('zone_violation')]
         if violations:
@@ -1269,6 +1427,20 @@ Classify each paragraph below:
         # === MERGE LLM RESULTS WITH RULE PREDICTIONS ===
         # Track LLM prediction count
         self.llm_predictions += len(results)
+
+        # Track token count from LLM invocation
+        last_usage = self.model.get_last_usage()
+        if last_usage:
+            llm_audit["token_count"] = last_usage.get('total_tokens', 0)
+            # HOUSE RULE 5: Token count must be > 0 when LLM API was actually called
+            if llm_audit["llm_attempted"] and llm_audit["token_count"] == 0:
+                logger.warning(
+                    "LLM_TOKEN_COUNT_ERROR: LLM API was called but token_count=0. "
+                    "This indicates the LLM response may be empty or malformed."
+                )
+
+        # Emit LLM_CALL telemetry
+        self._emit_llm_telemetry(len(paragraphs))
 
         # Merge LLM results with rule predictions
         if rule_predictions:
@@ -1325,9 +1497,27 @@ Classify each paragraph below:
         if cached_results:
             all_results = list(cached_results.values()) + results
             all_results.sort(key=lambda x: x['id'])
-            return all_results
+            # Emit final LLM execution trace
+            logger.info(
+                f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+                f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+                f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+                f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+                f"provider={llm_audit['provider']} model={llm_audit['model']} "
+                f"token_count={llm_audit['token_count']}"
+            )
+            return _merge_skip_llm(all_results)
 
-        return results
+        # Emit final LLM execution trace
+        logger.info(
+            f"LLM_EXECUTION_TRACE eligible={llm_audit['total_eligible']} "
+            f"invoked={llm_audit['llm_invoked']} attempted={llm_audit['llm_attempted']} "
+            f"successful={llm_audit['llm_successful']} cache_hits={llm_audit['cache_hits']} "
+            f"rule_classified={llm_audit['rule_classified']} llm_eligible={llm_audit['llm_eligible']} "
+            f"provider={llm_audit['provider']} model={llm_audit['model']} "
+            f"token_count={llm_audit['token_count']}"
+        )
+        return _merge_skip_llm(results)
     
     def _process_fallback(
         self,
@@ -1545,8 +1735,7 @@ Return a JSON array with your classifications for all {len(batch)} items:
                     similar = self.retriever.retrieve_examples(
                         text=text,
                         k=1,  # Get top-1 most similar
-                        zone=zone,
-                        metadata=meta,
+                        zone=zone
                     )
 
                     if similar and similar[0].get('similarity_score', 0) > 0.7:
@@ -1580,90 +1769,57 @@ Return a JSON array with your classifications for all {len(batch)} items:
         Classify a chunk of paragraphs.
         Retries are handled by GeminiClient internally.
         """
+        leaked_skip_ids = [p.get("id") for p in paragraphs if p.get("skip_llm") is True]
+        if leaked_skip_ids:
+            logger.warning(
+                "skip-llm: blocks %s reached LLM payload build path; aborting chunk",
+                leaked_skip_ids,
+            )
+            raise AssertionError(
+                f"skip_llm blocks reached LLM payload build path: {leaked_skip_ids}"
+            )
+
         user_prompt = self.build_user_prompt(paragraphs, document_name, document_type, chunk_info)
-        request_id = str(uuid.uuid4())
-        model_name = getattr(self, "primary_model_name", "unknown")
 
-        if not getattr(self, "llm_enabled", True):
-            logger.info(
-                "LLM_FALLBACK_USED %s",
-                json.dumps(
-                    {
-                        "request_id": request_id,
-                        "reason": "disabled",
-                        "doc_id": document_name,
-                        "num_blocks": len(paragraphs),
-                    }
-                ),
-            )
-            if getattr(self, "llm_required", False):
-                raise RuntimeError("LLM is disabled but required by configuration (LLM_REQUIRED=1).")
-            return [
-                {"id": p["id"], "tag": "TXT", "confidence": 0, "reasoning": "LLM disabled"}
-                for p in paragraphs
-            ]
+        logger.info(f"Sending {len(paragraphs)} paragraphs to Gemini API")
 
-        logger.info(
-            "LLM_CALL_START %s",
-            json.dumps(
-                {
-                    "request_id": request_id,
-                    "model": model_name,
-                    "doc_id": document_name,
-                    "num_blocks": len(paragraphs),
-                    "prompt_length": len(user_prompt),
-                }
-            ),
-        )
-
-        start = time.perf_counter()
-        try:
-            # Make API call (retries handled internally by GeminiClient)
-            response = self._generate_content(user_prompt)
-        except Exception as e:
-            logger.error(
-                "LLM_CALL_FAIL %s",
-                json.dumps(
-                    {
-                        "request_id": request_id,
-                        "exception": str(e),
-                        "stacktrace": traceback.format_exc(),
-                    }
-                ),
-            )
-            if getattr(self, "llm_required", False):
-                raise
-            logger.info(
-                "LLM_FALLBACK_USED %s",
-                json.dumps(
-                    {
-                        "request_id": request_id,
-                        "reason": "llm_call_failed",
-                        "doc_id": document_name,
-                        "num_blocks": len(paragraphs),
-                    }
-                ),
-            )
-            return [
-                {"id": p["id"], "tag": "TXT", "confidence": 0, "reasoning": "LLM call failed"}
-                for p in paragraphs
-            ]
+        # Make API call (retries handled internally by GeminiClient)
+        response = self._generate_content(user_prompt)
+        logger.info("Received response from Gemini API")
 
         # Log token usage (tracked by GeminiClient)
         last_usage = self.model.get_last_usage()
         total_usage = self.model.get_token_usage()
 
         if last_usage:
+            # Format token values, handling None gracefully
+            input_tok = last_usage.get('input_tokens')
+            output_tok = last_usage.get('output_tokens')
+            total_tok = last_usage.get('total_tokens')
+
             logger.info(
-                f"Token Usage - Input: {last_usage['input_tokens']:,}, "
-                f"Output: {last_usage['output_tokens']:,}, "
-                f"Total: {last_usage['total_tokens']:,}"
+                f"Token Usage - Input: {input_tok:,}, "
+                f"Output: {output_tok:,}, "
+                f"Total: {total_tok:,}"
             )
-            logger.info(
-                f"Cumulative Tokens - Input: {total_usage['total_input_tokens']:,}, "
-                f"Output: {total_usage['total_output_tokens']:,}, "
-                f"Total: {total_usage['total_tokens']:,}"
-            )
+
+            # Format cumulative values, handling None gracefully
+            cum_input = total_usage.get('total_input_tokens')
+            cum_output = total_usage.get('total_output_tokens')
+            cum_total = total_usage.get('total_tokens')
+
+            if cum_input is not None and cum_output is not None and cum_total is not None:
+                logger.info(
+                    f"Cumulative Tokens - Input: {cum_input:,}, "
+                    f"Output: {cum_output:,}, "
+                    f"Total: {cum_total:,}"
+                )
+            else:
+                logger.info(
+                    f"Cumulative Tokens - Input: {cum_input or 0}, "
+                    f"Output: {cum_output or 0}, "
+                    f"Total: {cum_total or 0}"
+                )
         else:
             logger.warning("Token usage metadata not available in response")
 
@@ -1693,20 +1849,6 @@ Return a JSON array with your classifications for all {len(batch)} items:
 
         # Validate results for this chunk
         validated = self._validate_results(results, len(paragraphs), paragraphs[0]['id'])
-
-        latency_ms = int((time.perf_counter() - start) * 1000)
-        logger.info(
-            "LLM_CALL_SUCCESS %s",
-            json.dumps(
-                {
-                    "request_id": request_id,
-                    "latency_ms": latency_ms,
-                    "input_tokens": int(last_usage.get("input_tokens", 0)) if last_usage else 0,
-                    "output_tokens": int(last_usage.get("output_tokens", 0)) if last_usage else 0,
-                    "num_labels": len(validated),
-                }
-            ),
-        )
 
         # Ensure no invalid tags remain after validation
         for r in validated:
@@ -1850,7 +1992,7 @@ Return a JSON array with your classifications for all {len(batch)} items:
             # Body text variations
             "PARA-FL": "TXT-FLUSH", "PARAFL": "TXT-FLUSH", "PARA FL": "TXT-FLUSH",
             "PARAFIRSTLINE-IND": "TXT", "PARA-FIRSTLINE-IND": "TXT",
-            "TX": "TXT", "TXFL": "TXT-FLUSH", "TXL": "TXT",
+            "TX": "TX", "TXFL": "TXT-FLUSH", "TXL": "TXL",
             "BODYTEXT": "TXT", "BODY TEXT": "TXT", "BODY-TEXT": "TXT",
             "PARAGRAPH": "TXT", "PARA": "TXT", "TEXT": "TXT",
             
@@ -1967,12 +2109,15 @@ Return a JSON array with your classifications for all {len(batch)} items:
                         result["confidence"] = min(result.get("confidence", 50), 50)
                         result["reasoning"] = f"Unknown tag '{original_tag}' mapped to {tag}"
             
-            validated.append({
+            entry = {
                 "id": result["id"],
                 "tag": tag,
                 "confidence": result.get("confidence", 85),
-                "reasoning": result.get("reasoning")
-            })
+                "reasoning": result.get("reasoning"),
+            }
+            if result.get("batch_fallback"):
+                entry["batch_fallback"] = True
+            validated.append(entry)
         
         # Check for missing paragraphs
         found_ids = {r["id"] for r in validated}
@@ -2090,7 +2235,7 @@ Return a JSON array with your classifications for all {len(batch)} items:
     
     def get_token_usage(self) -> dict:
         """
-        Get token usage statistics including fallback model.
+        Get token usage statistics including fallback model and cost estimate.
 
         Returns:
             Dict with token usage details for primary and fallback models
@@ -2105,6 +2250,9 @@ Return a JSON array with your classifications for all {len(batch)} items:
                 'input_tokens': self.fallback_input_tokens,
                 'output_tokens': self.fallback_output_tokens,
             }
+
+        combined_in = primary_usage['total_input_tokens'] + fallback_usage.get('input_tokens', 0)
+        combined_out = primary_usage['total_output_tokens'] + fallback_usage.get('output_tokens', 0)
 
         return {
             # Primary model usage
@@ -2122,6 +2270,11 @@ Return a JSON array with your classifications for all {len(batch)} items:
                 'input_tokens': fallback_usage.get('input_tokens', 0),
                 'output_tokens': fallback_usage.get('output_tokens', 0),
             },
+            # Cost estimation
+            'estimated_cost_usd': (
+                _estimate_cost(self.primary_model_name, primary_usage['total_input_tokens'], primary_usage['total_output_tokens'])
+                + _estimate_cost(self.fallback_model_name, fallback_usage.get('input_tokens', 0), fallback_usage.get('output_tokens', 0))
+            ),
             # Rule-based prediction statistics
             'rule_based': {
                 'predictions': self.rule_predictions,
@@ -2137,6 +2290,53 @@ Return a JSON array with your classifications for all {len(batch)} items:
             'combined_input_tokens': primary_usage['total_input_tokens'] + fallback_usage.get('input_tokens', 0),
             'combined_output_tokens': primary_usage['total_output_tokens'] + fallback_usage.get('output_tokens', 0),
         }
+
+    def _emit_llm_telemetry(self, blocks_sent: int) -> None:
+        """Emit structured LLM_CALL telemetry for monitoring and evaluation.
+
+        Parameters
+        ----------
+        blocks_sent : int
+            Number of blocks sent to LLM in this batch
+        """
+        # Get token usage from primary model
+        primary_usage = self.model.get_token_usage()
+
+        # Calculate request count (number of API calls made)
+        request_count = primary_usage.get('api_calls', 1)  # Default to 1 if not tracked
+
+        # Get fallback token usage if enabled
+        fallback_input = 0
+        fallback_output = 0
+        if self.enable_fallback and self.fallback_model:
+            fallback_input = self.fallback_input_tokens
+            fallback_output = self.fallback_output_tokens
+
+        # Calculate total tokens (handle None values)
+        total_input = primary_usage.get('total_input_tokens') or 0
+        total_output = primary_usage.get('total_output_tokens') or 0
+        combined_input = total_input + fallback_input
+        combined_output = total_output + fallback_output
+
+        # Calculate cache hit rate (if cache enabled and has stats)
+        cache_hit_rate = None
+        if self.cache and hasattr(self.cache, 'get_stats'):
+            stats = self.cache.get_stats()
+            total_checks = stats.get('hits', 0) + stats.get('misses', 0)
+            if total_checks > 0:
+                cache_hit_rate = round(stats.get('hits', 0) / total_checks, 3)
+
+        # Emit structured log
+        logger.info(
+            "LLM_CALL provider=%s model=%s request_count=%s blocks_sent=%d tokens_in=%s tokens_out=%s cache_hit_rate=%s",
+            "gemini",
+            self.primary_model_name,
+            request_count if request_count is not None else "null",
+            blocks_sent,
+            combined_input if combined_input is not None else "null",
+            combined_output if combined_output is not None else "null",
+            cache_hit_rate if cache_hit_rate is not None else "null",
+        )
 
 
 def classify_document(
@@ -2201,27 +2401,54 @@ def classify_blocks_with_prompt(
     enable_fallback: bool = True,
     fallback_threshold: int = FLASH_FALLBACK_THRESHOLD,
     model_name: str | None = None,
-    llm_enabled: bool = LLM_ENABLED,
-    llm_required: bool = LLM_REQUIRED,
     system_prompt_override: str | None = None,
     fallback_prompt_override: str | None = None,
 ) -> tuple[list[dict], dict]:
     """
     Classify extracted blocks using a prompt override and/or model override.
+
+    Applies a deterministic gate first to classify blocks that can be resolved
+    from metadata and text patterns alone, then sends only ambiguous blocks to
+    the LLM.
     """
+    from .deterministic_gate import gate_for_llm
+
+    # === DETERMINISTIC GATE ===
+    gated_clfs, llm_blocks, gate_metrics = gate_for_llm(blocks)
+
+    if not llm_blocks:
+        # All blocks classified deterministically — no LLM call needed
+        logger.info("deterministic-gate: 100%% coverage — skipping LLM entirely")
+        return sorted(gated_clfs, key=lambda x: x["id"]), _empty_token_usage(gate_metrics)
+
+    # Only send non-gated blocks to the LLM
     classifier = GeminiClassifier(
         api_key,
-        model_name=model_name or DEFAULT_MODEL,
+        model_name=model_name or "gemini-2.5-pro",
         enable_fallback=enable_fallback,
         fallback_threshold=fallback_threshold,
-        llm_enabled=llm_enabled,
-        llm_required=llm_required,
         system_prompt_override=system_prompt_override,
         fallback_prompt_override=fallback_prompt_override,
     )
-    results = classifier.classify(blocks, document_name, document_type)
+    llm_results = classifier.classify(llm_blocks, document_name, document_type)
     token_usage = classifier.get_token_usage()
-    return results, token_usage
+
+    # Merge gated + LLM results, sorted by paragraph ID
+    all_results = gated_clfs + llm_results
+    all_results.sort(key=lambda x: x["id"])
+
+    # Attach gate metrics to token_usage
+    token_usage["gate"] = {
+        "total_blocks": gate_metrics.total_blocks,
+        "gated": gate_metrics.gated_count,
+        "sent_to_llm": gate_metrics.llm_count,
+        "gated_pct": round(
+            gate_metrics.gated_count / max(gate_metrics.total_blocks, 1) * 100, 1
+        ),
+        "rules_fired": gate_metrics.rules_fired,
+    }
+
+    return all_results, token_usage
 
 
 if __name__ == "__main__":

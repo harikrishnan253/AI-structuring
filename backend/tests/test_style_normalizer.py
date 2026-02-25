@@ -48,3 +48,26 @@ def test_normalize_style_vendor_bx_txt_without_meta():
 
 def test_normalize_style_strip_illegal_list_suffix():
     assert normalize_style("BX4-TXT-LAST") == "BX4-TXT"
+
+
+def test_normalize_style_preserves_nested_list_suffixes():
+    assert normalize_style("BL2-MID") == "BL2-MID"
+    assert normalize_style("BL2-LAST") == "BL2-LAST"
+    assert normalize_style("TBL3-MID") == "TBL3-MID"
+
+
+def test_normalize_style_preserves_prefixed_nested_list_suffixes():
+    assert normalize_style("KT-BL2-MID") == "KT-BL2-MID"
+    assert normalize_style("KT-BL2-LAST") == "KT-BL2-LAST"
+    assert normalize_style("BX4-NL2-MID") == "BX4-NL2-MID"
+
+
+def test_corpus_aliases_from_tagged_zip_samples():
+    assert normalize_style("BulletList1first") == "BL-FIRST"
+    assert normalize_style("BulletList1last") == "BL-LAST"
+    assert normalize_style("NumberList1last") == "NL-LAST"
+    assert normalize_style("BulletList2") == "BL2-MID"
+    assert normalize_style("BulletList2last") == "BL2-LAST"
+    assert normalize_style("EOCREF") == "REF-N"
+    assert normalize_style("COKTL") == "CO_KTL"
+    assert normalize_style("NBX1-TXT-FLUSH") == "NBX-TXT-FLUSH"

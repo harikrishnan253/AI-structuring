@@ -12,6 +12,8 @@ Provides:
 import logging
 import time
 import importlib
+import warnings
+import socket
 from typing import Optional, Dict, Any
 
 genai = None
@@ -27,7 +29,9 @@ try:
 except Exception:
     try:
         # Backward-compatible fallback for environments still using the legacy SDK.
-        genai = importlib.import_module("google.generativeai")
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", FutureWarning)
+            genai = importlib.import_module("google.generativeai")
         _sdk_mode = "google-generativeai"
     except Exception as import_err:
         raise ImportError(
@@ -37,6 +41,25 @@ except Exception:
         ) from import_err
 
 logger = logging.getLogger(__name__)
+
+
+def _is_transient_network_error(exc: Exception) -> bool:
+    """Return True for transient DNS/network failures that should be retried."""
+    if isinstance(exc, socket.gaierror):
+        return True
+
+    error_str = str(exc)
+    lowered = error_str.lower()
+    transient_markers = (
+        "getaddrinfo failed",     # Windows DNS resolution failure (Errno 11001)
+        "name or service not known",
+        "temporary failure in name resolution",
+        "connection reset",
+        "connection aborted",
+        "timed out",
+        "timeout",
+    )
+    return any(marker in lowered for marker in transient_markers)
 
 
 class GeminiClient:
@@ -215,6 +238,7 @@ class GeminiClient:
                     or "DeadlineExceeded" in error_str
                     or "UNAVAILABLE" in error_str
                     or "DEADLINE_EXCEEDED" in error_str
+                    or _is_transient_network_error(e)
                 )
 
                 if is_rate_limit:

@@ -42,12 +42,12 @@ def test_score_review_low():
     assert action == "REVIEW"
 
 
-def test_unknown_style_raises():
+def test_unknown_style_sets_review_and_penalty():
     blocks = _make_blocks(10, txt_count=0)
     blocks[0]["tag"] = "NOT-A-STYLE"
-    try:
-        score_document(blocks, {"TXT", "H1"})
-    except ValueError:
-        assert True
-    else:
-        assert False, "Expected ValueError for unknown styles"
+    score, metrics, action = score_document(blocks, {"TXT", "H1"})
+    assert action == "REVIEW"
+    assert score == 90
+    assert metrics["unknown_style_count"] == 1
+    assert metrics["unknown_style_counts"].get("NOT-A-STYLE") == 1
+    assert any(ex.get("style_norm") == "NOT-A-STYLE" for ex in metrics["unknown_style_examples"])

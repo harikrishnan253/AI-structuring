@@ -22,6 +22,21 @@ from app.services.reference_zone import detect_reference_zone
 
 logger = logging.getLogger(__name__)
 
+# Composite tag separators: tags with these characters are invalid composite tags
+# that need to be split and repaired (e.g., "TBL-H2+TXT", "REF-N/PMI")
+_COMPOSITE_SEPARATORS = frozenset({"+", "/", ",", "|"})
+
+
+def _is_composite_tag(tag: str) -> bool:
+    """Returns True if tag contains composite separators."""
+    return any(sep in tag for sep in _COMPOSITE_SEPARATORS)
+
+
+def _split_composite_tag(tag: str) -> list[str]:
+    """Split composite tag into component parts."""
+    return re.split(r'[+/,|]', tag)
+
+
 # Semantic fallback chains: when a tag is not in allowed_styles,
 # try these alternatives in order before falling back to TXT.
 SEMANTIC_FALLBACK_CHAINS: dict[str, list[str]] = {
@@ -133,8 +148,13 @@ REF_NUMBER_RE = re.compile(
     r"^\s*(?:[\u2022\u25CF\-\*\u2013\u2014]\s*)?(?:\(\d+\)|\[\d+\]|\d+[\.\)]|\d+\s+)"
 )
 REF_BULLET_RE = re.compile(r"^\s*[\u2022\u25CF\-\*\u2013\u2014]\s+")
+LEADING_XML_TAGS_RE = re.compile(r"^\s*(?:<[^>]+>\s*)+")
 T4_HEADING_CASE_RE = re.compile(r"^[A-Z0-9][A-Z0-9\s/&\-]{1,59}$")
 INLINE_H_TAG_RE = re.compile(r"^\s*<H([1-6])>\b", re.IGNORECASE)
+MARKER_ONLY_TAG_RE = re.compile(r"^\s*<[^>]+>\s*$")
+SEMANTIC_LIST_POS_RE = re.compile(
+    r"^(?P<prefix>.*?)(?P<base>(?:BL|NL|UL|LL)\d*)-(?P<pos>FIRST|MID|LAST)$"
+)
 
 BOX_PREFIX_BY_ZONE = {
     "BOX_NBX": "NBX",
@@ -308,15 +328,17 @@ def _first_allowed(candidates: list[str], allowed: set[str]) -> str | None:
 
 
 def _starts_with_number(text: str) -> bool:
-    return bool(REF_NUMBER_RE.match(text))
+    t = LEADING_XML_TAGS_RE.sub("", text or "")
+    return bool(REF_NUMBER_RE.match(t))
 
 
 def _starts_with_ref_bullet(text: str) -> bool:
-    return bool(REF_BULLET_RE.match(text or ""))
+    t = LEADING_XML_TAGS_RE.sub("", text or "")
+    return bool(REF_BULLET_RE.match(t))
 
 
 def _looks_like_reference_entry(text: str) -> bool:
-    t = text.strip()
+    t = LEADING_XML_TAGS_RE.sub("", text or "").strip()
     if not t:
         return False
     t_lower = t.lower()
@@ -373,6 +395,82 @@ def _inline_heading_tag(text: str) -> str | None:
     return f"H{m.group(1)}"
 
 
+def _inline_heading_level(text: str) -> int | None:
+    m = INLINE_H_TAG_RE.match(text or "")
+    if not m:
+        return None
+    try:
+        return int(m.group(1))
+    except Exception:
+        return None
+
+
+def _tag_matches_inline_heading_level(tag: str, level: int | None) -> bool:
+    if level is None:
+        return False
+    t = normalize_style(tag or "")
+    if not t:
+        return False
+    # Preserve valid heading variants (e.g. H10/H20/H21) when they match the
+    # explicit inline marker family. We only need the leading heading digit.
+    m = re.fullmatch(r"H([1-6])\d*", t)
+    return bool(m and int(m.group(1)) == int(level))
+
+
+def _align_semantic_list_position_variant(tag: str, meta: dict, allowed: set[str]) -> str | None:
+    """
+    Align FIRST/MID/LAST for semantic list families while preserving the tag family.
+
+    Examples:
+    - KT-BL-MID  -> KT-BL-FIRST / KT-BL-LAST
+    - EOC-NL-MID -> EOC-NL-FIRST / EOC-NL-LAST
+    - RQ-LL2-MID -> RQ-LL2-LAST
+    - BL2-MID    -> BL2-LAST
+    """
+    m = SEMANTIC_LIST_POS_RE.fullmatch(normalize_style(tag or ""))
+    if not m:
+        return None
+    list_pos = str((meta or {}).get("list_position") or "").strip().upper()
+    if list_pos not in {"FIRST", "MID", "LAST"}:
+        return None
+
+    prefix = m.group("prefix") or ""
+    base = m.group("base")
+    desired = f"{prefix}{base}-{list_pos}"
+    if not allowed or desired in allowed:
+        return desired
+
+    # Nested families often only define MID/LAST. Fall back conservatively to MID.
+    mid = f"{prefix}{base}-MID"
+    if not allowed or mid in allowed:
+        return mid
+    return None
+
+
+def _inline_heading_variant_for_context(text: str, meta: dict, zone: str) -> str | None:
+    """
+    Infer custom heading variants (H10/H20/H21) from explicit inline markers and
+    source heading styles in BODY text when the model returns plain H1/H2.
+
+    This matches a common publisher pattern where source Word styles are built-in
+    Heading 2 / Heading 3, while the tagged corpus expects canonical H10/H20/H21.
+    """
+    lvl = _inline_heading_level(text)
+    if lvl is None:
+        return None
+    if zone != "BODY":
+        return None
+    source_style = str((meta or {}).get("style_name") or "")
+    if lvl == 1 and source_style == "Heading 2":
+        return "H10"
+    if lvl == 2:
+        if source_style == "Heading 3":
+            return "H20"
+        if source_style == "Heading 2":
+            return "H21"
+    return None
+
+
 def validate_and_repair(
     classifications: list[dict],
     blocks: list[dict],
@@ -383,6 +481,15 @@ def validate_and_repair(
     """
     Validate and repair classification results based on deterministic rules.
     """
+    # Metrics tracking for STYLE_CANONICALIZATION logging
+    metrics = {
+        "invalid_styles": 0,      # Styles not in allowed_styles
+        "repaired": 0,            # Total repairs made
+        "composite_rejected": 0,  # Composite tags split/rejected
+        "alias_resolved": 0,      # Alias canonicalized
+        "zone_repaired": 0,       # Zone-invalid styles fixed
+    }
+
     allowed = _allowed_set(allowed_styles)
     block_lookup = {b["id"]: b for b in blocks}
 
@@ -434,11 +541,39 @@ def validate_and_repair(
         original_tag = norm_tag
         came_from_h4h5 = False
 
+        # Composite tag detection and repair (before canonicalization)
+        if not lock_tag and _is_composite_tag(tag):
+            components = _split_composite_tag(tag)
+            # Try each component in order, use first valid one
+            chosen_component = None
+            for component in components:
+                comp = component.strip()
+                if comp:
+                    # Normalize the component
+                    norm_comp = normalize_style(comp, meta=meta)
+                    # Check if valid in allowed_styles
+                    if norm_comp in allowed:
+                        chosen_component = comp
+                        break
+
+            # If no valid component found, use first component and let fallback handle it
+            if chosen_component is None and components:
+                chosen_component = components[0].strip()
+
+            if chosen_component:
+                tag = chosen_component
+                # Re-normalize with proper meta context (zone-aware)
+                norm_tag = normalize_style(tag, meta=meta)
+                changed = True
+                change_reason.append("composite-rejected")
+                metrics["composite_rejected"] += 1
+
         # Canonicalize style before applying other rules (non-trusted only)
         if not lock_tag and norm_tag and norm_tag != tag:
             tag = norm_tag
             changed = True
             change_reason.append("style-canonicalize")
+            metrics["alias_resolved"] += 1
 
         # Box markers -> PMI
         if not lock_tag and meta.get("box_marker") in {"start", "end"}:
@@ -446,6 +581,22 @@ def validate_and_repair(
                 tag = "PMI"
                 changed = True
                 change_reason.append("box-marker")
+
+        # Generic marker-only paragraphs (e.g. </BL>, <front-open>, <FIG...>) should
+        # remain PMI, not semantic content styles. Inline heading markers are excluded.
+        #
+        # Apply this even for "locked" high-confidence tags because marker paragraphs
+        # can occasionally leak into the classifier and arrive with a valid heading/tag.
+        text_stripped = (text or "").strip()
+        if (
+            MARKER_ONLY_TAG_RE.match(text_stripped)
+            and _inline_heading_level(text_stripped) is None
+            and tag != "PMI"
+        ):
+            tag = "PMI"
+            lock_tag = True
+            changed = True
+            change_reason.append("marker-only")
 
         # Metadata zone enforced
         if not lock_tag and zone == "METADATA" and tag != "PMI":
@@ -456,7 +607,17 @@ def validate_and_repair(
         # Explicit inline heading marker should win over model drift like TXT/TXT-FLUSH.
         if not lock_tag and zone != "TABLE":
             inline_heading = _inline_heading_tag(text)
-            if inline_heading and tag != inline_heading:
+            inline_heading_level = _inline_heading_level(text)
+            inline_heading_variant = _inline_heading_variant_for_context(text, meta, zone)
+            if (
+                inline_heading_variant
+                and inline_heading_variant in allowed
+                and tag != inline_heading_variant
+            ):
+                tag = inline_heading_variant
+                changed = True
+                change_reason.append("inline-heading-variant")
+            if inline_heading and not _tag_matches_inline_heading_level(tag, inline_heading_level):
                 tag = inline_heading
                 changed = True
                 change_reason.append("inline-heading-marker")
@@ -584,12 +745,23 @@ def validate_and_repair(
 
         # List enforcement (skip inside reference zone)
         if not in_reference_zone:
+            semantic_list_tag = _align_semantic_list_position_variant(tag, meta, allowed)
             list_tag = _list_tag_from_meta(meta, base_tag=tag)
             norm_tag = normalize_style(tag)
             is_ref_like_tag = norm_tag.startswith("REF") or norm_tag in {"BIB", "SR", "SRH1"}
             is_ref_like_text = _looks_like_reference_entry(text)
 
             if (
+                not lock_tag
+                and semantic_list_tag
+                and semantic_list_tag != tag
+                and not is_ref_like_tag
+                and not is_ref_like_text
+            ):
+                tag = semantic_list_tag
+                changed = True
+                change_reason.append("semantic-list-position")
+            elif (
                 not lock_tag
                 and list_tag
                 and not tag.endswith(("-FIRST", "-MID", "-LAST"))
@@ -627,6 +799,7 @@ def validate_and_repair(
                 tag = inferred
                 changed = True
                 change_reason.append("table-inferred")
+                metrics["zone_repaired"] += 1
 
         # Front matter enforcement (zone constraints)
         if not lock_tag and zone != "BODY" and not validate_style_for_zone(tag, zone):
@@ -646,6 +819,7 @@ def validate_and_repair(
                 tag = fallback
                 changed = True
                 change_reason.append("zone-fallback")
+                metrics["zone_repaired"] += 1
 
         # Canonicalize headings before allowed-style enforcement (non-trusted only)
         if not lock_tag and tag in {"H4", "H5"}:
@@ -685,11 +859,13 @@ def validate_and_repair(
             tag = ensured
             changed = True
             change_reason.append("not-allowed")
+            metrics["invalid_styles"] += 1
             logger.warning(f"Tag not allowed, downgraded: para {para_id} -> {tag}")
 
         if changed:
             confidence = min(confidence, 80)
             clf = {**clf, "tag": tag, "confidence": confidence, "repaired": True}
+            metrics["repaired"] += 1
             if change_reason:
                 clf["repair_reason"] = ",".join(change_reason)
             if reason:
@@ -895,5 +1071,85 @@ def validate_and_repair(
             clf["repaired"] = True
             clf["repair_reason"] = (clf.get("repair_reason", "") + ",ref-zone-final").strip(",")
 
-    return repaired
+    # Marker-triggered reference-section fallback (covers docs where metadata-based
+    # reference-zone detection misses <REF>-prefixed reference sections).
+    in_ref_marker_section = False
+    seen_ref_entries = 0
+    marker_ref_headings = {
+        "references",
+        "bibliography",
+        "works cited",
+        "cited references",
+        "literature cited",
+    }
+    marker_section_end_tags = {"H1", "H2", "CN", "CT", "T1", "BM-TTL"}
+    for clf in repaired:
+        para_id = clf.get("id")
+        block = block_lookup.get(para_id, {})
+        meta = block.get("metadata", {})
+        text = (block.get("text", "") or "").strip()
+        tag = clf.get("tag", "")
+        norm_tag = normalize_style(tag)
+        text_no_tags = LEADING_XML_TAGS_RE.sub("", text).strip()
+        text_no_tags_lower = text_no_tags.lower()
+        starts_ref_marker = text.lower().startswith("<ref>")
 
+        if starts_ref_marker and text_no_tags_lower in marker_ref_headings:
+            in_ref_marker_section = True
+            seen_ref_entries = 0
+            if clf.get("tag") != "REFH1":
+                clf["tag"] = "REFH1"
+                clf["confidence"] = max(float(clf.get("confidence", 0)), 0.99)
+                clf["repaired"] = True
+                clf["repair_reason"] = (clf.get("repair_reason", "") + ",ref-marker-heading").strip(",")
+            continue
+
+        if not in_ref_marker_section:
+            continue
+
+        if meta.get("context_zone") == "TABLE":
+            in_ref_marker_section = False
+            seen_ref_entries = 0
+            continue
+        if norm_tag in marker_section_end_tags and not starts_ref_marker:
+            in_ref_marker_section = False
+            seen_ref_entries = 0
+            continue
+        if text_no_tags.lower().startswith("table ") and norm_tag in {"T1", "BM-TTL", "TXT", "TXT-FLUSH"}:
+            in_ref_marker_section = False
+            seen_ref_entries = 0
+            continue
+
+        if tag in {"SR", "SRH1"} or tag.startswith("APX-REF"):
+            continue
+
+        if not text_no_tags:
+            continue
+
+        if tag.startswith(("UL-", "BL-", "NL-")) or _looks_like_reference_entry(text):
+            desired = "REF-U" if _starts_with_ref_bullet(text) else "REF-N"
+            if clf.get("tag") != desired:
+                clf["tag"] = desired
+                clf["confidence"] = max(float(clf.get("confidence", 0)), 0.99)
+                clf["repaired"] = True
+                clf["repair_reason"] = (clf.get("repair_reason", "") + ",ref-marker-section").strip(",")
+            seen_ref_entries += 1
+            continue
+
+        # Allow a small amount of blank/transition text, but once we have seen
+        # multiple refs and hit non-reference prose, end the marker section.
+        if seen_ref_entries >= 3:
+            in_ref_marker_section = False
+            seen_ref_entries = 0
+
+    # Emit STYLE_CANONICALIZATION metrics
+    logger.info(
+        "STYLE_CANONICALIZATION invalid=%d repaired=%d composite_rejected=%d alias_resolved=%d zone_repaired=%d",
+        metrics["invalid_styles"],
+        metrics["repaired"],
+        metrics["composite_rejected"],
+        metrics["alias_resolved"],
+        metrics["zone_repaired"],
+    )
+
+    return repaired

@@ -4,6 +4,8 @@ Production quality scoring for classified documents.
 
 from __future__ import annotations
 
+import json
+import sys
 from typing import Iterable
 
 from .style_normalizer import normalize_style
@@ -54,6 +56,8 @@ def score_document(
             "txt_ratio": 1.0,
             "low_conf_ratio": 1.0,
             "unknown_style_count": 0,
+            "unknown_style_counts": {},
+            "unknown_style_examples": [],
             "heading_violations": 0,
             "box_integrity_violations": 0,
             "figure_integrity_violations": 0,
@@ -66,9 +70,41 @@ def score_document(
     txt_count = sum(1 for t in tags if t == "TXT")
     low_conf_count = sum(1 for c in confidences if c < 0.60)
     unknown_style_count = sum(1 for t in tags if t and t not in allowed)
+    top_unknown_counts: dict[str, int] = {}
+    unknown_examples: list[dict] = []
 
     if unknown_style_count > 0:
-        raise ValueError("Unknown styles detected in output.")
+        normalized_allowed = sorted({str(s or "").strip() for s in allowed_styles if str(s or "").strip()})
+        allowed_set_stripped = set(normalized_allowed)
+        unknown_counts: dict[str, int] = {}
+
+        for block in blocks:
+            style_raw = block.get("style") or block.get("tag") or block.get("predicted_style") or ""
+            style_raw = str(style_raw)
+            style_norm = style_raw.strip()
+            if style_norm and style_norm not in allowed_set_stripped:
+                unknown_counts[style_norm] = unknown_counts.get(style_norm, 0) + 1
+                if len(unknown_examples) < 30:
+                    unknown_examples.append(
+                        {
+                            "id": block.get("id"),
+                            "style_raw": style_raw,
+                            "style_norm": style_norm,
+                            "text": str(block.get("text") or "")[:80],
+                        }
+                    )
+
+        top_unknown_counts = dict(sorted(unknown_counts.items(), key=lambda kv: (-kv[1], kv[0]))[:50])
+        payload = {
+            "allowed_count": len(normalized_allowed),
+            "allowed_styles_sample": normalized_allowed[:50],
+            "total_blocks": len(blocks),
+            "unknown_count": sum(unknown_counts.values()),
+            "unknown_counts": top_unknown_counts,
+            "unknown_examples": unknown_examples,
+        }
+        sys.stdout.write("QUALITY_UNKNOWN_STYLES " + json.dumps(payload, ensure_ascii=False) + "\n")
+        sys.stdout.flush()
 
     # Heading violations
     seen_h1 = False
@@ -165,11 +201,17 @@ def score_document(
     score -= table_integrity_violations * 6
     score = max(0, min(100, int(round(score))))
 
+    if unknown_style_count > 0:
+        penalty = min(30, int(100 * unknown_style_count / max(1, total)))
+        score = max(0, score - penalty)
+
     if score >= 85:
         action = "PASS"
     elif score >= 70:
         action = "RETRY"
     else:
+        action = "REVIEW"
+    if unknown_style_count > 0:
         action = "REVIEW"
 
     metrics = {
@@ -177,6 +219,8 @@ def score_document(
         "txt_ratio": round(txt_ratio, 4),
         "low_conf_ratio": round(low_conf_ratio, 4),
         "unknown_style_count": unknown_style_count,
+        "unknown_style_counts": top_unknown_counts,
+        "unknown_style_examples": unknown_examples,
         "heading_violations": heading_violations,
         "box_integrity_violations": box_integrity_violations,
         "figure_integrity_violations": figure_integrity_violations,

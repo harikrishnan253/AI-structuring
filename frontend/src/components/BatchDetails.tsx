@@ -176,7 +176,9 @@ interface JobItemProps {
 }
 
 function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
-  const statusConfig = getJobStatusConfig(job.status);
+  const normalizedStatus = String(job.status || '').toLowerCase();
+  const showFailureDetails = normalizedStatus === 'failed' || normalizedStatus === 'cancelled';
+  const statusConfig = getJobStatusConfig(normalizedStatus as JobStatus);
   
   const getFilename = (path: string | null): string | null => {
     if (!path) return null;
@@ -209,7 +211,7 @@ function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
               {job.original_filename}
             </p>
             <div className="flex items-center gap-2 text-xs flex-wrap" style={{ color: '#64748b' }}>
-              {job.status === 'completed' && (
+              {normalizedStatus === 'completed' && (
                 <>
                   {job.total_paragraphs && (
                     <span>{job.total_paragraphs} paragraphs</span>
@@ -227,9 +229,13 @@ function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
                   )}
                 </>
               )}
-              {job.error_message && (
-                <span className="truncate max-w-[200px]" style={{ color: '#dc2626' }} title={job.error_message}>
-                  • {job.error_message}
+              {showFailureDetails && (job.failure_message || job.error_message) && (
+                <span
+                  className="truncate max-w-[240px]"
+                  style={{ color: '#dc2626' }}
+                  title={job.diagnostics || job.error_message || undefined}
+                >
+                  • {job.stage ? `[${job.stage}] ` : ''}{job.failure_message || job.error_message}
                 </span>
               )}
             </div>
@@ -249,7 +255,7 @@ function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
           </span>
           
           {/* Actions */}
-          {job.status === 'failed' && (
+          {normalizedStatus === 'failed' && (
             <button
               onClick={onRetry}
               className="p-1.5 rounded-lg transition-colors hover:bg-amber-50"
@@ -258,8 +264,8 @@ function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
               <RefreshCw className="h-4 w-4" style={{ color: '#d97706' }} />
             </button>
           )}
-          
-          {job.status === 'pending' && (
+
+          {normalizedStatus === 'pending' && (
             <button
               onClick={onCancel}
               className="p-1.5 rounded-lg transition-colors hover:bg-red-50"
@@ -268,16 +274,30 @@ function JobItem({ job, batchId, onRetry, onCancel }: JobItemProps) {
               <XCircle className="h-4 w-4" style={{ color: '#dc2626' }} />
             </button>
           )}
-          
-          {job.status === 'completed' && job.output_path && (
-            <a
-              href={getDownloadUrl(batchId, 'processed', getFilename(job.output_path) || '')}
-              className="p-1.5 rounded-lg transition-colors hover:bg-emerald-50"
-              title="Download"
-            >
-              <Download className="h-4 w-4" style={{ color: '#059669' }} />
-            </a>
-          )}
+
+          {normalizedStatus === 'completed' && (() => {
+            const downloadPath = job.output_path || job.review_path;
+            const fileType = job.output_path ? 'processed' : 'review';
+            if (downloadPath) {
+              return (
+                <a
+                  href={getDownloadUrl(batchId, fileType, getFilename(downloadPath) || '')}
+                  className="p-1.5 rounded-lg transition-colors hover:bg-emerald-50"
+                  title={job.output_path ? 'Download processed DOCX' : 'Download review DOCX'}
+                >
+                  <Download className="h-4 w-4" style={{ color: '#059669' }} />
+                </a>
+              );
+            }
+            return (
+              <span
+                className="p-1.5 rounded-lg"
+                title="No output file path returned by server."
+              >
+                <AlertTriangle className="h-4 w-4" style={{ color: '#d97706' }} />
+              </span>
+            );
+          })()}
         </div>
       </div>
     </div>

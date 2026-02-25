@@ -29,9 +29,6 @@ def _make_classifier():
     clf.items_improved = 0
     clf.rule_predictions = 0
     clf.llm_predictions = 0
-    clf.primary_model_name = "gemini-2.5-pro"
-    clf.llm_enabled = True
-    clf.llm_required = False
     clf.total_input_tokens = 0
     clf.total_output_tokens = 0
     clf.total_tokens = 0
@@ -51,39 +48,6 @@ def _make_classifier():
         },
     )()
     return clf
-
-
-def test_llm_called_when_enabled():
-    clf = _make_classifier()
-    calls = {"n": 0}
-
-    def _gen(_prompt):
-        calls["n"] += 1
-        return DummyResp('[{"id":1,"tag":"TXT","confidence":90}]')
-
-    clf._generate_content = _gen
-    paragraphs = [{"id": 1, "text": "Hello"}]
-
-    results = clf._classify_chunk(paragraphs, "doc", "Academic", "")
-    assert calls["n"] == 1
-    assert results[0]["tag"] == "TXT"
-
-
-def test_fail_fast_when_required():
-    clf = _make_classifier()
-    clf.llm_required = True
-
-    def _gen(_prompt):
-        raise RuntimeError("forced llm failure")
-
-    clf._generate_content = _gen
-    paragraphs = [{"id": 1, "text": "Hello"}]
-
-    try:
-        clf._classify_chunk(paragraphs, "doc", "Academic", "")
-        assert False, "expected RuntimeError"
-    except RuntimeError as e:
-        assert "forced llm failure" in str(e)
 
 
 def test_self_heal_retries_on_invalid():

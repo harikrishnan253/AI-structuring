@@ -4,7 +4,11 @@
       "Bash(python -m app.services.grounded_retriever:*)",
       "Bash(python:*)",
       "Bash(\"c:\\\\Users\\\\harikrishnam\\\\Desktop\\\\AI-structuring-main\\\\backend\\\\venv\\\\Scripts\\\\python.exe\":*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(test:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)"
     ]
   }
 }
