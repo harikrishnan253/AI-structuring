@@ -32,6 +32,21 @@ _FLAT_T_FAMILY: frozenset[str] = frozenset({"T", "T2", "T4", "TBL-MID"})
 # Positional styles that mark a cell as already processed.
 _POSITIONAL_STYLES: frozenset[str] = frozenset({"TBL-FIRST", "TBL-LAST"})
 
+# Publisher-specific table body / heading styles (e.g. ENA, JBL).
+#
+# These are semantically complete equivalents of the canonical T / T2 / TH*
+# family and must NOT be promoted to positional TBL-FIRST/MID/LAST variants.
+# More importantly, their presence anywhere in a cell or column is treated as
+# a signal that the whole cell/column uses the publisher's tag family – so
+# co-resident T-family paragraphs (which may be mis-classifications by the
+# LLM) are also left unchanged, preventing TB→TBL-* over-conversion.
+_PUBLISHER_TABLE_STYLES: frozenset[str] = frozenset({
+    "TB",    # ENA/JBL table body cell (publisher equivalent of T / TBL-MID)
+    "TCH1",  # ENA table column heading level-1 (publisher equivalent of TH1/T2)
+    "TCH",   # ENA table column heading generic
+    "TT",    # ENA table title alternate (publisher equivalent of T1)
+})
+
 
 def _has_list_indicator(meta: dict) -> bool:
     return bool(
@@ -153,6 +168,16 @@ def normalize_table_cell_positions(
         ):
             continue
 
+        # Guard: if any paragraph in this cell carries a publisher-specific
+        # table style (TB, TCH1, …) the corpus uses a publisher tag family.
+        # Promoting co-resident T-family paragraphs to TBL-* would produce
+        # semantically wrong tags (observed pattern: TB→TBL-FIRST/MID/LAST).
+        if any(
+            clf_by_id.get(bid, {}).get("tag") in _PUBLISHER_TABLE_STYLES
+            for bid in bid_list
+        ):
+            continue
+
         # Identify the "eligible" subset: blocks with a list indicator whose
         # current tag is in the flat T family.
         eligible: list[int] = []
@@ -197,6 +222,16 @@ def normalize_table_cell_positions(
         )
 
     for key, bid_list in column_groups.items():
+        # Guard: if ANY paragraph in this column carries a publisher-specific
+        # table style the entire column is assumed to use publisher semantics.
+        # Promoting T-family tags elsewhere in the column would produce wrong
+        # TBL-* tags instead of the expected TB etc. (observed: TB→TBL-*).
+        if any(
+            clf_by_id.get(bid, {}).get("tag") in _PUBLISHER_TABLE_STYLES
+            for bid in bid_list
+        ):
+            continue
+
         run: list[int] = []
         any_run_in_group = False
         for bid in bid_list:
