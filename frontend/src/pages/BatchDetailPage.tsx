@@ -377,6 +377,9 @@ interface JobRowProps {
 }
 
 function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, formatTokens, formatTime }: JobRowProps) {
+  const normalizedStatus = String(job.status || '').toLowerCase();
+  const showFailureDetails = normalizedStatus === 'failed' || normalizedStatus === 'cancelled';
+
   const getStatusConfig = (status: JobStatus) => {
     switch (status) {
       case 'pending':
@@ -393,8 +396,8 @@ function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, form
         return { icon: FileText, bg: '#f1f5f9', color: '#64748b', label: status };
     }
   };
-  
-  const config = getStatusConfig(job.status);
+
+  const config = getStatusConfig(normalizedStatus as JobStatus);
   const StatusIcon = config.icon;
   
   return (
@@ -411,9 +414,13 @@ function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, form
             <p className="font-medium truncate max-w-xs" style={{ color: '#1e293b' }}>
               {job.original_filename}
             </p>
-            {job.error_message && (
-              <p className="text-xs truncate max-w-xs" style={{ color: '#dc2626' }} title={job.error_message}>
-                {job.error_message}
+            {showFailureDetails && (job.failure_message || job.error_message) && (
+              <p
+                className="text-xs truncate max-w-xs"
+                style={{ color: '#dc2626' }}
+                title={job.diagnostics || job.error_message || undefined}
+              >
+                {job.stage ? `[${job.stage}] ` : ''}{job.failure_message || job.error_message}
               </p>
             )}
           </div>
@@ -453,7 +460,7 @@ function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, form
       </td>
       <td className="px-6 py-4">
         <div className="flex items-center justify-end gap-1">
-          {job.status === 'failed' && (
+          {normalizedStatus === 'failed' && (
             <button
               onClick={onRetry}
               className="p-1.5 rounded-lg hover:bg-amber-50"
@@ -462,7 +469,7 @@ function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, form
               <RefreshCw className="h-4 w-4" style={{ color: '#d97706' }} />
             </button>
           )}
-          {job.status === 'pending' && (
+          {normalizedStatus === 'pending' && (
             <button
               onClick={onCancel}
               className="p-1.5 rounded-lg hover:bg-red-50"
@@ -471,15 +478,32 @@ function JobRow({ job, batchId, onRetry, onCancel, getFilename, formatCost, form
               <XCircle className="h-4 w-4" style={{ color: '#dc2626' }} />
             </button>
           )}
-          {job.status === 'completed' && job.output_path && (
-            <a
-              href={getDownloadUrl(batchId, 'processed', getFilename(job.output_path) || '')}
-              className="p-1.5 rounded-lg hover:bg-emerald-50"
-              title="Download"
-            >
-              <Download className="h-4 w-4" style={{ color: '#16a34a' }} />
-            </a>
-          )}
+          {normalizedStatus === 'completed' && (() => {
+            const downloadPath = job.output_path || job.review_path;
+            const fileType = job.output_path ? 'processed' : 'review';
+            if (downloadPath) {
+              return (
+                <a
+                  href={getDownloadUrl(batchId, fileType, getFilename(downloadPath) || '')}
+                  className="p-1.5 rounded-lg hover:bg-emerald-50"
+                  title={job.output_path ? 'Download processed DOCX' : 'Download review DOCX'}
+                >
+                  <Download className="h-4 w-4" style={{ color: '#16a34a' }} />
+                </a>
+              );
+            }
+            if (job.json_path) {
+              return null;
+            }
+            return (
+              <span
+                className="p-1.5 rounded-lg"
+                title="No output file path returned by server."
+              >
+                <AlertTriangle className="h-4 w-4" style={{ color: '#d97706' }} />
+              </span>
+            );
+          })()}
         </div>
       </td>
     </tr>

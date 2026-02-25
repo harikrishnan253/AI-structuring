@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import * as api from '../api/client';
-import type { UploadOptions } from '../types';
+import type { BatchWithJobs, UploadOptions } from '../types';
 
 // ============ Query Keys ============
 
@@ -28,7 +28,14 @@ export function useBatch(batchId: string | null) {
     queryKey: queryKeys.batch(batchId ?? ''),
     queryFn: () => api.getBatch(batchId!),
     enabled: !!batchId,
-    refetchInterval: 2000,
+    refetchInterval: (query) => {
+      const data = query.state.data as BatchWithJobs | undefined;
+      if (!data) return 2000;
+      const hasActiveJobs = data.jobs.some(
+        (j) => j.status === 'pending' || j.status === 'processing'
+      );
+      return hasActiveJobs ? 2000 : false;
+    },
   });
 }
 

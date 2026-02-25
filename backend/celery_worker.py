@@ -113,11 +113,18 @@ def process_document_task(self, job_id: str):
                 use_markers=job.use_markers if job.use_markers is not None else batch.use_markers
             )
             
+            # Validate output_path before marking completed
+            output_path = result.get('output_path')
+            if not output_path:
+                raise RuntimeError(
+                    "OUTPUT_MISSING: Processed DOCX was not generated; output_path is empty."
+                )
+
             # Update job with results
             job.status = JobStatus.COMPLETED
             job.completed_at = datetime.utcnow()
             job.processing_time_seconds = time.time() - start_time
-            job.output_path = result.get('output_path')
+            job.output_path = output_path
             job.review_path = result.get('review_path')
             job.json_path = result.get('json_path')
             job.total_paragraphs = result.get('total_paragraphs')

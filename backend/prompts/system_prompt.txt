@@ -877,13 +877,25 @@ When you see markers like `<TABLE1,HEADER_ROW>` or `<TABLE1,FIRST_COL>` or `<TAB
 - Spanning/straddle headers → **T2-C**
 
 **First Column Content (FIRST_COL)**:
-- Row labels/identifiers → **T4**
+- Row labels/identifiers that NAME a category → **T4**
 - Examples: "CAR T-Cells", "Initial lesion outbreak", "Emotional"
+- **IMPORTANT**: Use T4 ONLY when the content is a SHORT CATEGORY LABEL (1–5 words) that identifies the whole row. If the first-column content is a longer descriptive sentence or is bulleted, use **T** or **TBL-MID** instead.
 
 **Body Cell Content (R#C#)**:
 - Regular data cells → **T**
 - Cells with measurements, dosages → **T5**
-- Bulleted content in cells → **TBL-MID**
+- Bulleted or numbered list items in cells → **TBL-MID**
+
+**Multi-paragraph cells (multiple consecutive paragraphs in the same cell)**:
+- When a cell contains ≥2 bullet/list paragraphs, tag ALL of them as **TBL-MID**.
+  The pipeline automatically promotes the first to TBL-FIRST and the last to TBL-LAST.
+  Do NOT output TBL-FIRST or TBL-LAST yourself — always use TBL-MID.
+- Do NOT assign T2 or T4 to list items inside a cell; those tags are for headers and row labels only.
+
+**Common T2/T4 over-use mistakes to avoid**:
+- A body data cell that happens to be in the first column → **T**, not T4
+- A bullet-point list inside a non-header cell → **TBL-MID**, not T2 or T4
+- Short phrases in the second row onward that are not row category labels → **T**, not T4
 
 **DO NOT** classify table cell content as TXT or TXT-FLUSH!
 Table cells should use T, T2, T4, T5, T6, TBL-*, or TNL-* tags.
@@ -924,6 +936,25 @@ Table cells should use T, T2, T4, T5, T6, TBL-*, or TNL-* tags.
 - Framework steps (Attention:, Interest:, Desire:, Action:) → UL-FIRST/MID/LAST
 - Example text after each step → UL-MID (part of same list flow)
 - These are NOT separate TXT paragraphs
+
+### Rule 16: Source Style Preservation (Publisher-Specific Canonical Styles)
+When a paragraph's context hint contains `[STYLE:X]`, the source document already uses a publisher-specific canonical style name. **Output that exact style name** — do NOT substitute a generic WK equivalent.
+
+| Context hint | Use this tag | Do NOT use |
+|---|---|---|
+| `[STYLE:TX]` | **TX** | TXT |
+| `[STYLE:TXL]` | **TXL** | TXT-FLUSH |
+| `[STYLE:TT]` | **TT** | T1 |
+| `[STYLE:TB]` | **TB** | T |
+| `[STYLE:TCH1]` | **TCH1** | T2 |
+| `[STYLE:TCH]` | **TCH** | T2 |
+| `[STYLE:FGC]` | **FGC** | FIG-LEG |
+| `[STYLE:FGS]` | **FGS** | TSN / FIG-SRC |
+| `[STYLE:COBJ]` | **COBJ** | OBJ-NL-* |
+
+**Why**: These publisher-specific style names are valid canonical output tags. The pipeline preserves them as-is. Using TXT instead of TX, or FIG-LEG instead of FGC, creates a false mismatch with the publisher's expected output.
+
+**Exception**: If the content clearly violates the style's semantics (e.g., `[STYLE:TX]` but paragraph is actually an H1 heading), follow the content evidence instead of the hint.
 
 ---
 

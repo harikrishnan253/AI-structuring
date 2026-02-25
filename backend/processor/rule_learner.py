@@ -18,6 +18,7 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import re
 import logging
 from pathlib import Path
@@ -27,11 +28,22 @@ from collections import Counter, defaultdict
 
 logger = logging.getLogger(__name__)
 
+_MISSING_RULES_LOGGED_PATHS: set[str] = set()
+
 # Paths
 DATA_DIR = Path(__file__).parent.parent / "data"
 GROUND_TRUTH_PATH = DATA_DIR / "ground_truth.jsonl"
 LEARNED_RULES_PATH = DATA_DIR / "learned_rules.json"
 ALLOWED_STYLES_PATH = Path(__file__).parent.parent / "config" / "allowed_styles.json"
+
+
+class MissingLearnedRulesError(FileNotFoundError):
+    """Raised when learned rules are required but the rules file is missing."""
+
+
+def learned_rules_required() -> bool:
+    """Return True when learned rules are required via config/env."""
+    return os.getenv("REQUIRE_LEARNED_RULES", "false").lower() == "true"
 
 
 class FeatureExtractor:
@@ -434,14 +446,30 @@ class RuleLearner:
 
         logger.info(f"Saved {len(self.rules)} rules to {path}")
 
-    def load_rules(self, path: Optional[Path] = None):
+    def load_rules(self, path: Optional[Path] = None, required: Optional[bool] = None) -> bool:
         """Load rules from JSON file."""
         if path is None:
             path = LEARNED_RULES_PATH
+        if required is None:
+            required = learned_rules_required()
 
         if not path.exists():
-            logger.warning(f"Rules file not found: {path}")
-            return
+            # Reset to empty so callers never accidentally use stale rules.
+            self.rules = []
+            self.tag_stats = defaultdict(Counter)
+
+            msg = f"Rules file not found: {path}"
+            if required:
+                logger.error("%s (required by REQUIRE_LEARNED_RULES=true)", msg)
+                raise MissingLearnedRulesError(msg)
+
+            path_key = str(path.resolve()) if path.is_absolute() else str(path)
+            if path_key not in _MISSING_RULES_LOGGED_PATHS:
+                _MISSING_RULES_LOGGED_PATHS.add(path_key)
+                logger.info("%s (optional; proceeding without learned rules)", msg)
+            else:
+                logger.debug("%s (optional; already reported)", msg)
+            return False
 
         with path.open("r", encoding="utf-8") as f:
             data = json.load(f)
@@ -452,6 +480,7 @@ class RuleLearner:
         })
 
         logger.info(f"Loaded {len(self.rules)} rules from {path}")
+        return True
 
     def generate_report(self) -> str:
         """Generate a human-readable report of learned rules."""

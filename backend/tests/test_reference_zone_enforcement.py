@@ -213,3 +213,30 @@ def test_reference_zone_bl_mid_maps_to_ref_u():
     repaired = validate_and_repair(classifications, blocks, allowed_styles={"REF-N", "REF-U", "H1"})
     assert repaired[1]["tag"] == "REF-U"
     assert not repaired[1]["tag"].startswith(("UL-", "BL-"))
+
+
+def test_ref_marker_section_coerces_entries_and_stops_before_tables():
+    blocks = [
+        {"id": 1, "text": "<REF>REFERENCES", "metadata": {}},
+        {"id": 2, "text": "World Health Organization. Breastfeeding recommendations. https://www.who.int/", "metadata": {}},
+        {"id": 3, "text": "Meek JY, Noble L. Policy Statement. Pediatrics. 2022.", "metadata": {}},
+        {"id": 4, "text": "CDC Breastfeeding Topic at: https://www.cdc.gov/breastfeeding/", "metadata": {}},
+        {"id": 5, "text": "Table 6.1 Clinical Resources", "metadata": {"context_zone": "BODY"}},
+    ]
+    classifications = [
+        {"id": 1, "tag": "TXT", "confidence": 0.7},
+        {"id": 2, "tag": "BL-MID", "confidence": 0.7},
+        {"id": 3, "tag": "BL-MID", "confidence": 0.7},
+        {"id": 4, "tag": "TXT", "confidence": 0.7},
+        {"id": 5, "tag": "T1", "confidence": 0.95},
+    ]
+    repaired = validate_and_repair(
+        classifications,
+        blocks,
+        allowed_styles={"REFH1", "REF-N", "REF-U", "T1", "TXT"},
+    )
+    assert repaired[0]["tag"] == "REFH1"
+    assert repaired[1]["tag"] == "REF-N"
+    assert repaired[2]["tag"] == "REF-N"
+    assert repaired[3]["tag"] == "REF-N"
+    assert repaired[4]["tag"] == "T1"

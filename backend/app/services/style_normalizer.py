@@ -13,8 +13,12 @@ ALLOWED_STYLES_PATH = Path(__file__).resolve().parents[2] / "config" / "allowed_
 VENDOR_PREFIX_RE = re.compile(r"^[A-Z]{2,}_(.+)$")
 LIST_SUFFIXES = ("-FIRST", "-MID", "-LAST")
 LIST_BASES = {"BL", "NL", "UL", "TBL", "TNL", "TUL"}
+LIST_BASE_FAMILY_RE = re.compile(r"(?:^|[-])(BL|NL|UL|TBL|TNL|TUL)\d*$")
 DEFAULT_BOX_PREFIX = "BX4"
 VENDOR_BX_RE = re.compile(r"^[A-Z]{2,}[-_]?BX[-_](.+)$")
+_COMPACT_BULLET_LIST_RE = re.compile(r"^BULLETLIST(\d+)(FIRST|LAST)?$")
+_COMPACT_NUMBER_LIST_RE = re.compile(r"^NUMBERLIST(\d+)(FIRST|LAST)?$")
+_COMPACT_UNNUMBERED_LIST_RE = re.compile(r"^(?:UNNUMBEREDLIST|UNLIST)(\d+)(FIRST|LAST)?$")
 
 # Illegal prefixes that should be stripped (except SK_H1-SK_H6 and TBL-H1-TBL-H6 which map to TH1-TH6)
 ILLEGAL_PREFIXES = ["BX4-", "NBX1-"]
@@ -119,6 +123,48 @@ def _find_closest_style(tag: str, allowed_styles: set[str] | None = None, min_si
     return "TXT" if "TXT" in allowed_styles else (best_match or "TXT")
 
 
+def _compact_list_style_alias(text: str) -> str | None:
+    """
+    Corpus-driven list style normalization for publisher style names that do not
+    use the canonical WK tag format, e.g. ``BulletList1first``.
+    """
+    compact = re.sub(r"[^A-Za-z0-9]", "", text or "").upper()
+    if not compact:
+        return None
+
+    def _pos_or_mid(raw: str | None) -> str:
+        return (raw or "MID").upper()
+
+    m = _COMPACT_BULLET_LIST_RE.fullmatch(compact)
+    if m:
+        level = int(m.group(1))
+        pos = _pos_or_mid(m.group(2))
+        if level <= 1:
+            return f"BL-{pos}"
+        # Nested bullet variants commonly preserve level in the base (BL2/BL3...).
+        return f"BL{level}-{pos if pos == 'LAST' else 'MID'}"
+
+    m = _COMPACT_NUMBER_LIST_RE.fullmatch(compact)
+    if m:
+        level = int(m.group(1))
+        pos = _pos_or_mid(m.group(2))
+        if level <= 1:
+            return f"NL-{pos}"
+        # Generic nested numbered publisher styles vary by corpus (NL2 vs LL2).
+        # Keep a conservative mapping until a semantic family is known.
+        return f"NL-{pos if pos in {'FIRST', 'LAST'} else 'MID'}"
+
+    m = _COMPACT_UNNUMBERED_LIST_RE.fullmatch(compact)
+    if m:
+        level = int(m.group(1))
+        pos = _pos_or_mid(m.group(2))
+        if level <= 1:
+            return f"UL-{pos}"
+        return f"UL-{pos if pos in {'FIRST', 'LAST'} else 'MID'}"
+
+    return None
+
+
 def normalize_style(name: str, meta: dict | None = None, enforce_membership: bool = False) -> str:
     """
     Normalize a style name by:
@@ -178,6 +224,12 @@ def normalize_style(name: str, meta: dict | None = None, enforce_membership: boo
     # Apply explicit aliases
     text = _ALIASES.get(text, text)
 
+    # Apply corpus-driven list name heuristics (e.g. BulletList1first -> BL-FIRST)
+    # after explicit aliases so curated mappings win.
+    heuristic = _compact_list_style_alias(text)
+    if heuristic:
+        text = heuristic
+
     # Apply box prefix expansion if provided
     if text.startswith("BX-"):
         box_prefix = None
@@ -191,7 +243,9 @@ def normalize_style(name: str, meta: dict | None = None, enforce_membership: boo
     for suffix in LIST_SUFFIXES:
         if text.endswith(suffix):
             base = text[: -len(suffix)]
-            if base not in LIST_BASES and not base.endswith(("-BL", "-NL", "-UL", "-TBL", "-TNL", "-TUL")):
+            # Preserve positional suffixes for nested list families such as
+            # BL2-MID, TBL3-MID, KT-BL2-MID, BX4-NL2-MID.
+            if base not in LIST_BASES and not LIST_BASE_FAMILY_RE.search(base):
                 text = base
             break
 

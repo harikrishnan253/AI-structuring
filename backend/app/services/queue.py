@@ -23,6 +23,57 @@ logger = logging.getLogger(__name__)
 QUEUE_MODE = os.getenv('QUEUE_MODE', 'threading')
 
 
+def _pipeline_failure_details(result: dict) -> dict | None:
+    """Parse a structured pipeline failure result, if present."""
+    if not isinstance(result, dict):
+        return None
+
+    status = str(result.get("status", "")).upper()
+    if status != "FAILED":
+        return None
+
+    error_code = str(result.get("error") or "PIPELINE_FAILED").strip() or "PIPELINE_FAILED"
+    stage = result.get("stage")
+    diagnostics = None
+
+    if stage:
+        diagnostics = result.get(stage)
+        if diagnostics is None and "diagnostics" in result:
+            diagnostics = result.get("diagnostics")
+    elif "structure_guard" in result:
+        stage = "structure_guard"
+        diagnostics = result.get("structure_guard")
+    elif "integrity_check" in result:
+        stage = "integrity_check"
+        diagnostics = result.get("integrity_check")
+    else:
+        stage = "pipeline"
+
+    message = str(result.get("message") or error_code).strip() or error_code
+    diag_text = ""
+    if isinstance(diagnostics, dict):
+        diag_text = str(
+            diagnostics.get("error")
+            or diagnostics.get("message")
+            or diagnostics.get("status")
+            or ""
+        ).strip()
+    elif diagnostics is not None:
+        diag_text = str(diagnostics).strip()
+
+    error_message = f"{error_code} [stage={stage}] {message}"
+    if diag_text and diag_text not in error_message:
+        error_message = f"{error_message} | diagnostics={diag_text}"
+
+    return {
+        "error_code": error_code,
+        "stage": stage,
+        "message": message,
+        "diagnostics": diagnostics,
+        "error_message": error_message[:4000],
+    }
+
+
 class QueueService:
     """Manages document processing queue."""
     
@@ -394,6 +445,8 @@ class QueueService:
         
         job.status = JobStatus.PROCESSING
         job.started_at = get_ist_now()
+        # Clear stale failure text from previous attempts while the retry is running.
+        job.error_message = None
         db.session.commit()
         
         start_time = time.time()
@@ -413,13 +466,50 @@ class QueueService:
                 use_markers=job.use_markers if job.use_markers is not None else batch.use_markers,
                 job_id=job.job_id,
             )
-            
+
+            pipeline_failure = _pipeline_failure_details(result)
+            if pipeline_failure:
+                ist_now = get_ist_now()
+                job.status = JobStatus.FAILED
+                job.error_message = pipeline_failure["error_message"]
+                job.completed_at = ist_now
+                job.processing_time_seconds = time.time() - start_time
+
+                # Preserve useful stats when the pipeline failed after partial execution.
+                job.total_paragraphs = result.get('total_paragraphs')
+                job.input_tokens = result.get('input_tokens')
+                job.output_tokens = result.get('output_tokens')
+                job.total_tokens = result.get('total_tokens')
+                job.content_hash = original_content_hash
+
+                batch.failed_jobs += 1
+                if batch.completed_jobs + batch.failed_jobs == batch.total_jobs:
+                    batch.completed_at = ist_now
+
+                db.session.commit()
+                logger.warning(
+                    "Pipeline failed for job %s (%s): %s",
+                    job.job_id,
+                    pipeline_failure["stage"],
+                    pipeline_failure["error_message"],
+                )
+                return
+             
+            # Validate output_path before marking completed
+            output_path = result.get('output_path')
+            if not output_path:
+                raise RuntimeError(
+                    "OUTPUT_MISSING: Processed DOCX was not generated; output_path is empty."
+                )
+
             # Update job with results - using IST
             ist_now = get_ist_now()
             job.status = JobStatus.COMPLETED
+            # Successful completion must not retain a prior failure message from retries.
+            job.error_message = None
             job.completed_at = ist_now
             job.processing_time_seconds = time.time() - start_time
-            job.output_path = result.get('output_path')
+            job.output_path = output_path
             job.review_path = result.get('review_path')
             job.json_path = result.get('json_path')
             job.total_paragraphs = result.get('total_paragraphs')
@@ -428,12 +518,12 @@ class QueueService:
             job.input_tokens = result.get('input_tokens')
             job.output_tokens = result.get('output_tokens')
             job.total_tokens = result.get('total_tokens')
-            
+
             # Content integrity tracking
             job.original_paragraph_count = result.get('total_paragraphs')
             job.processed_paragraph_count = result.get('total_paragraphs')
             job.content_hash = original_content_hash
-            
+
             batch.completed_jobs += 1
             if batch.completed_jobs + batch.failed_jobs == batch.total_jobs:
                 batch.completed_at = ist_now

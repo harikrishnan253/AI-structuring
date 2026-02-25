@@ -22,6 +22,7 @@ export interface Job {
   batch_id: number;
   original_filename: string;
   status: JobStatus;
+  is_terminal?: boolean;
   queue_position: number;
   created_at: string | null;
   started_at: string | null;
@@ -30,6 +31,11 @@ export interface Job {
   review_path: string | null;
   json_path: string | null;
   error_message: string | null;
+  error?: string | null;
+  stage?: string | null;
+  failure_message?: string | null;
+  diagnostics?: string | null;
+  diagnostics_truncated?: boolean;
   total_paragraphs: number | null;
   auto_applied: number | null;
   needs_review: number | null;
@@ -58,6 +64,7 @@ export interface Batch {
   completed_jobs: number;
   failed_jobs: number;
   status: BatchStatus;
+  is_terminal?: boolean;
   progress_percent: number;
   output_folder: string | null;
   total_tokens?: number;

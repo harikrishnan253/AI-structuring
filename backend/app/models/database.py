@@ -6,12 +6,16 @@ Timestamps are in IST (India Standard Time - UTC+5:30)
 
 from datetime import datetime, timezone, timedelta
 from enum import Enum
+import re
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 # IST timezone offset (UTC+5:30)
 IST = timezone(timedelta(hours=5, minutes=30))
+_STAGE_RE = re.compile(r"\[stage=([^\]]+)\]")
+_ERROR_CODE_RE = re.compile(r"^\s*([A-Z0-9_]+)\b")
+_DIAGNOSTICS_SPLIT = " | diagnostics="
 
 
 def get_ist_now():
@@ -26,6 +30,59 @@ def utc_to_ist(utc_dt):
     if utc_dt.tzinfo is None:
         utc_dt = utc_dt.replace(tzinfo=timezone.utc)
     return utc_dt.astimezone(IST)
+
+
+def _parse_job_error_message(error_message: str | None, *, diagnostics_limit: int = 500) -> dict:
+    """Parse structured queue error_message into API-friendly fields.
+
+    Expected queue format:
+    ``ERROR_CODE [stage=integrity_check] message | diagnostics=...``
+    """
+    raw = (error_message or "").strip()
+    if not raw:
+        return {
+            "error": None,
+            "stage": None,
+            "message": None,
+            "diagnostics": None,
+            "diagnostics_truncated": False,
+        }
+
+    error = None
+    m = _ERROR_CODE_RE.match(raw)
+    if m:
+        error = m.group(1)
+
+    stage = None
+    sm = _STAGE_RE.search(raw)
+    if sm:
+        stage = sm.group(1).strip() or None
+
+    diagnostics = None
+    diagnostics_truncated = False
+    message_text = raw
+    if _DIAGNOSTICS_SPLIT in raw:
+        message_text, diagnostics = raw.split(_DIAGNOSTICS_SPLIT, 1)
+        diagnostics = diagnostics.strip() or None
+        if diagnostics and len(diagnostics) > diagnostics_limit:
+            diagnostics = diagnostics[: diagnostics_limit - 3] + "..."
+            diagnostics_truncated = True
+
+    # Make a concise message by removing the leading error code + stage marker if present.
+    concise = message_text
+    if error and concise.startswith(error):
+        concise = concise[len(error):].lstrip()
+    if stage:
+        concise = _STAGE_RE.sub("", concise, count=1).strip()
+    concise = concise or raw
+
+    return {
+        "error": error,
+        "stage": stage,
+        "message": concise[:500] if concise else None,
+        "diagnostics": diagnostics,
+        "diagnostics_truncated": diagnostics_truncated,
+    }
 
 
 class JobStatus(str, Enum):
@@ -80,6 +137,12 @@ class Batch(db.Model):
         return int((self.completed_jobs + self.failed_jobs) / self.total_jobs * 100)
     
     def to_dict(self) -> dict:
+        status_value = str(self.status) if self.status is not None else None
+        is_terminal = status_value in {
+            "empty",
+            "completed",
+            "completed_with_errors",
+        }
         return {
             'id': self.id,
             'batch_id': self.batch_id,
@@ -91,8 +154,9 @@ class Batch(db.Model):
             'total_jobs': self.total_jobs,
             'completed_jobs': self.completed_jobs,
             'failed_jobs': self.failed_jobs,
-            'status': self.status,
+            'status': status_value,
             'progress_percent': self.progress_percent,
+            'is_terminal': is_terminal,
             'output_folder': self.output_folder,
             'timezone': 'IST',
         }
@@ -144,12 +208,20 @@ class Job(db.Model):
     content_hash = db.Column(db.String(64), nullable=True)  # SHA-256 hash of original content
     
     def to_dict(self) -> dict:
+        status_value = self.status.value if self.status else None
+        is_terminal = status_value in {
+            JobStatus.COMPLETED.value,
+            JobStatus.FAILED.value,
+            JobStatus.CANCELLED.value,
+        }
+        parsed_error = _parse_job_error_message(self.error_message)
         return {
             'id': self.id,
             'job_id': self.job_id,
             'batch_id': self.batch_id,
             'original_filename': self.original_filename,
-            'status': self.status.value if self.status else None,
+            'status': status_value,
+            'is_terminal': is_terminal,
             'queue_position': self.queue_position,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'started_at': self.started_at.isoformat() if self.started_at else None,
@@ -158,6 +230,11 @@ class Job(db.Model):
             'review_path': self.review_path,
             'json_path': self.json_path,
             'error_message': self.error_message,
+            'error': parsed_error['error'],
+            'stage': parsed_error['stage'],
+            'failure_message': parsed_error['message'],
+            'diagnostics': parsed_error['diagnostics'],
+            'diagnostics_truncated': parsed_error['diagnostics_truncated'],
             'total_paragraphs': self.total_paragraphs,
             'auto_applied': self.auto_applied,
             'needs_review': self.needs_review,

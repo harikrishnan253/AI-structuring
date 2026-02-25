@@ -95,12 +95,18 @@ Thumbs.db
 # Testing
 .coverage
 .pytest_cache/
+.tmp_pytest/
 htmlcov/
 .tox/
 .hypothesis/
 test zone-based/
 outputs/
 outputs/eval/
+backend/.pytest_cache/
+backend/tests/.tmp_pytest/
+backend/tests/.pytest_temp_root/
+backend/tests/run_tmp/
+
 # Logs
 *.log
 logs/
@@ -115,6 +121,8 @@ Untitled-*.md
 Untitled-*.py
 *~
 .~*
+.tmp_*
+tmp/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
