@@ -56,7 +56,20 @@ def _list_position_suffix(tag: str) -> str | None:
 def _is_position_compatible(current_tag: str, expected_tag: str) -> bool:
     """True when current tag matches expected list family/level and only differs by position.
 
-    Example: expected ``BL-MID`` accepts ``BL-FIRST`` and ``BL-LAST``.
+    Accepts both exact-family and prefixed-family variants so that normaliser-
+    assigned prefixed tags (e.g. ``KT-BL-FIRST``) are not needlessly coerced
+    back to their base family.
+
+    Examples::
+
+        # exact match
+        _is_position_compatible("BL-FIRST", "BL-MID")    → True
+        # prefixed variant — KT-BL shares the same level as BL
+        _is_position_compatible("KT-BL-FIRST", "BL-MID") → True
+        # wrong level
+        _is_position_compatible("BL2-FIRST", "BL-MID")   → False
+        # incompatible family
+        _is_position_compatible("NL-FIRST",  "BL-MID")   → False
     """
     if current_tag == expected_tag:
         return True
@@ -64,22 +77,52 @@ def _is_position_compatible(current_tag: str, expected_tag: str) -> bool:
         return False
     if not expected_tag.endswith("-MID"):
         return False
-    expected_family = expected_tag[:-4]
+
+    expected_family = expected_tag[:-4]   # e.g. "BL-"  or  "BL2-"  (trailing dash)
     suffix = _list_position_suffix(current_tag)
-    return suffix is not None and current_tag == f"{expected_family}-{suffix}"
+    if suffix is None:
+        return False
+
+    # Exact-family match  (e.g. current="BL-FIRST", expected_family="BL-")
+    if current_tag == f"{expected_family}-{suffix}":
+        return True
+
+    # Prefixed-family match: current ends with "-<base_family_no_dash>-<suffix>"
+    # e.g. "KT-BL-FIRST" ends with "-BL-FIRST"  when expected_family="BL-"
+    bare_family = expected_family.rstrip("-")   # "BL" or "BL2"
+    if current_tag.endswith(f"-{bare_family}-{suffix}"):
+        return True
+
+    return False
 
 
 def _coerce_expected_tag_preserving_position(current_tag: str, expected_tag: str) -> str:
     """Override to expected family/level, retaining FIRST/LAST when classifier had a position suffix.
 
-    This keeps list-run continuity (set by ``normalize_list_runs``) while still enforcing
-    Word XML list type/level. If no usable position is present, falls back to ``expected_tag``.
+    This keeps list-run continuity (set by ``normalize_list_runs``) while still
+    enforcing Word XML list type/level.
+
+    When the current tag already carries a prefix (e.g. ``KT-BL-FIRST``) but the
+    expected tag is a base family (e.g. ``BL-MID``), we prefer the *prefixed* form
+    (``KT-BL-FIRST``) to avoid silently stripping the semantic prefix.
+
+    Falls back to ``expected_tag`` (the plain ``*-MID`` form) only when:
+    * no position suffix is present on the current tag, OR
+    * the expected tag does not end with ``-MID``.
     """
     if not expected_tag.endswith("-MID"):
         return expected_tag
     suffix = _list_position_suffix(current_tag)
     if suffix is None:
         return expected_tag
+
+    # Prefer current tag's family when it is a prefixed variant of the expected
+    # base family (to avoid stripping meaningful prefixes like KT-, OBJ-, etc.)
+    expected_base = expected_tag[:-4].rstrip("-")   # e.g. "BL"
+    if current_tag.endswith(f"-{expected_base}-{suffix}"):
+        # current carries a valid prefix; return the prefixed form.
+        return current_tag
+
     return f"{expected_tag[:-4]}-{suffix}"
 
 
@@ -156,12 +199,49 @@ def enforce_list_hierarchy_from_word_xml(
 
         meta = meta_by_id[clf_id]
 
+        # TABLE-zone paragraphs use TBL-* styles, not BL-*/NL-*. Skip both
+        # the OOXML path and the fallback path so TBL-MID is never rewritten.
+        if meta.get("context_zone") == "TABLE":
+            continue
+
+        # Reference-zone paragraphs carry SR/REF-* family tags. List coercion
+        # must not overwrite them — skip both OOXML and fallback paths.
+        if meta.get("is_reference_zone") or meta.get("context_zone") == "REFERENCE":
+            continue
+
         # Check if this paragraph was a list in Word
         xml_level = meta.get("xml_list_level")
         xml_num_id = meta.get("xml_num_id")
 
         if xml_level is None:
-            # Not a list paragraph
+            # Fallback: use detector-enriched list_style_prefix when OOXML
+            # numPr is absent (style-based or indent-detected lists).
+            list_style_prefix = meta.get("list_style_prefix")
+            if not list_style_prefix:
+                continue
+
+            list_paras += 1
+            expected_tag = f"{list_style_prefix}MID"
+            current_tag = clf.get("tag", "")
+
+            if not _is_position_compatible(current_tag, expected_tag):
+                corrected_tag = _coerce_expected_tag_preserving_position(
+                    current_tag, expected_tag
+                )
+                clf["tag"] = corrected_tag
+                clf["list_preserved"] = True
+                clf["original_tag"] = current_tag
+                overrides += 1
+                logger.debug(
+                    "list-preservation: corrected block %s from %s to %s"
+                    " (prefix-fallback, list_style_prefix=%s)",
+                    clf_id,
+                    current_tag,
+                    corrected_tag,
+                    list_style_prefix,
+                )
+            else:
+                restored += 1
             continue
 
         list_paras += 1

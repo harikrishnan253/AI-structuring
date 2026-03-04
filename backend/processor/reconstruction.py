@@ -651,17 +651,24 @@ class DocumentReconstructor:
     ) -> bool:
         """Return True when changing paragraph style would destroy style-based list semantics.
 
-        Exception: explicit inline heading markers (``<H1>...``, ``<H2>...``) are
-        stronger than legacy style-based list artifacts seen in some publisher
-        templates and must be allowed to re-style as headings.
+        Applies only to paragraphs whose list status is encoded entirely via a
+        named paragraph style (no ``numPr`` XML element).  For these paragraphs
+        the source style *must* be preserved to avoid a ``STRUCTURE_GUARD_FAIL``:
+        the structure guard reads list status from the style chain on both the
+        input and output documents, so any style change from a list-named style
+        to a non-list style (e.g. Heading 1) is flagged as a list mutation.
+
+        Inline heading markers in ``source_text`` do NOT override list
+        preservation for style-based lists: the paragraph's list semantics,
+        as declared by its style name, take precedence over any embedded marker.
+        (For numPr-based lists the guard is moot because ``source_has_numpr``
+        is True and this function returns False on the first gate.)
         """
         if not (source_is_list and not source_has_numpr):
             return False
         # If the target style is itself a semantic list tag, allow re-styling and
         # preserve list structure by upgrading to explicit numPr in _apply_list_numbering.
         if _list_props_for_tag(target_tag or ""):
-            return False
-        if _INLINE_HEADING_MARKER_RE.match(source_text or ""):
             return False
         return True
 

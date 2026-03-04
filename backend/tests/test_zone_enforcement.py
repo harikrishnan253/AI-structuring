@@ -351,3 +351,63 @@ def test_apx_ref_n_preserved_in_reference_zone():
     ]
     repaired = validate_and_repair(classifications, blocks, allowed_styles={"REFH1", "APX-REF-N", "REF-N", "REF-U"})
     assert repaired[1]["tag"] == "APX-REF-N"
+
+
+# ---------------------------------------------------------------------------
+# TABLE-zone: source vs footnote tagging
+# ---------------------------------------------------------------------------
+
+def test_table_zone_source_prefix_maps_to_tsn():
+    """TABLE-zone 'Source: ...' line → TSN."""
+    blocks = [{"id": 1, "text": "Source: Adapted from Smith (2020)", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TSN"
+
+
+def test_table_zone_adapted_from_maps_to_tsn():
+    """TABLE-zone 'Adapted from ...' attribution line → TSN."""
+    blocks = [{"id": 1, "text": "Adapted from WHO Guidelines 2019", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TSN"
+
+
+def test_table_zone_from_prefix_maps_to_tsn():
+    """TABLE-zone 'From ...' attribution line → TSN."""
+    blocks = [{"id": 1, "text": "From the 2020 Global Report", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TSN"
+
+
+def test_table_zone_note_prefix_maps_to_tfn():
+    """TABLE-zone 'Note: ...' line → TFN."""
+    blocks = [{"id": 1, "text": "Note: All values are approximate", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TFN"
+
+
+def test_table_zone_symbol_footnote_maps_to_tfn():
+    """TABLE-zone '* ...' symbol footnote → TFN."""
+    blocks = [{"id": 1, "text": "* Statistically significant (p < 0.05)", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TFN"
+
+
+def test_table_zone_letter_footnote_maps_to_tfn():
+    """TABLE-zone 'a) ...' letter footnote → TFN."""
+    blocks = [{"id": 1, "text": "a) Adjusted for age", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TFN"
+
+
+def test_table_zone_source_priority_over_footnote():
+    """TABLE-zone: source check has priority — 'Source: a Adapted ...' → TSN not TFN."""
+    blocks = [{"id": 1, "text": "Source: a Adapted from original", "metadata": {"context_zone": "TABLE"}}]
+    classifications = [{"id": 1, "tag": "TXT", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"TSN", "TFN", "T"})
+    assert repaired[0]["tag"] == "TSN"

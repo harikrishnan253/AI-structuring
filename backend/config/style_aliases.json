@@ -102,6 +102,11 @@
   "NBX1-H1": "NBX-H1",
   "NBX1-UNT": "NBX-UNT",
   "NBX1-TXT-FLUSH": "NBX-TXT-FLUSH",
+  "NBX-BL2-FIRST": "NBX-BL2-MID",
+  "NBX-BL2-LAST": "NBX-BL2-MID",
+  "NBX-BL3-FIRST": "NBX-BL2-MID",
+  "NBX-BL3-MID": "NBX-BL2-MID",
+  "NBX-BL3-LAST": "NBX-BL2-MID",
   "NoParagraphStyle": "TXT",
   "NoSpacing": "TXT",
   "BodyText": "TXT",
@@ -116,5 +121,11 @@
   "FGS": "FGS",
   "TB": "TB",
   "TCH1": "TCH1",
-  "TCH": "TCH"
+  "TCH": "TCH",
+  "DIALOGUE": "DIA-MID",
+  "CJC-NGN-BL-LAST": "CJC-NN-BL-LAST",
+  "ANS-UL": "ANS-UL-MID",
+  "ANS-NL": "ANS-NL-MID",
+  "TUL": "TUL-MID",
+  "TUL-LAST": "TUL-MID"
 }

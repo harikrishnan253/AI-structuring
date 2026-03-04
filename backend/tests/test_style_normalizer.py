@@ -71,3 +71,41 @@ def test_corpus_aliases_from_tagged_zip_samples():
     assert normalize_style("EOCREF") == "REF-N"
     assert normalize_style("COKTL") == "CO_KTL"
     assert normalize_style("NBX1-TXT-FLUSH") == "NBX-TXT-FLUSH"
+
+
+# -----------------------------------------------------------------------
+# Task-2 alias mappings: DIALOGUE, CJC-NGN-BL-LAST, ANS-UL, ANS-NL
+# -----------------------------------------------------------------------
+
+def test_normalize_style_dialogue_alias():
+    """DIALOGUE is an alias for DIA-MID."""
+    assert normalize_style("DIALOGUE") == "DIA-MID"
+
+
+def test_normalize_style_cjc_ngn_bl_last_alias():
+    """CJC-NGN-BL-LAST is a backward-compat alias for CJC-NN-BL-LAST."""
+    assert normalize_style("CJC-NGN-BL-LAST") == "CJC-NN-BL-LAST"
+
+
+def test_normalize_style_ans_ul_alias():
+    """Unsuffixed ANS-UL resolves to ANS-UL-MID deterministically."""
+    assert normalize_style("ANS-UL") == "ANS-UL-MID"
+
+
+def test_normalize_style_ans_nl_alias():
+    """Unsuffixed ANS-NL resolves to ANS-NL-MID deterministically."""
+    assert normalize_style("ANS-NL") == "ANS-NL-MID"
+
+
+# -----------------------------------------------------------------------
+# Task-8 alias mappings: TUL, TUL-LAST
+# -----------------------------------------------------------------------
+
+def test_normalize_style_tul_alias():
+    """Unsuffixed TUL resolves to TUL-MID deterministically."""
+    assert normalize_style("TUL") == "TUL-MID"
+
+
+def test_normalize_style_tul_last_alias():
+    """TUL-LAST is aliased to TUL-MID (no standalone last variant)."""
+    assert normalize_style("TUL-LAST") == "TUL-MID"

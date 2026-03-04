@@ -660,9 +660,10 @@ class TestLeakedMarkerDetection:
     """Verify detection of markers that leaked to LLM."""
 
     def test_marker_with_llm_reasoning_detected(self, caplog):
-        """Marker with LLM reasoning field → leaked."""
+        """Marker with skip_llm=True + LLM reasoning → case A true leak."""
         blocks = [_block(1, "<CN>")]
         blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True  # had prior lock → case A
 
         clfs = [
             _clf(
@@ -684,9 +685,10 @@ class TestLeakedMarkerDetection:
         assert result[0]["tag"] == "PMI"
 
     def test_marker_not_gated_detected(self, caplog):
-        """Marker with gated=False → leaked."""
+        """Marker with skip_llm=True + gated=False → case A true leak."""
         blocks = [_block(1, "<CT>")]
         blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True  # had prior lock → case A
 
         clfs = [_clf(1, "PMI", gated=False)]
 
@@ -708,7 +710,7 @@ class TestLeakedMarkerDetection:
         assert "leaked" not in caplog.text
 
     def test_multiple_leaked_markers(self, caplog):
-        """Multiple leaked markers all detected."""
+        """Multiple markers with skip_llm=True + LLM output → 2 case A leaks."""
         blocks = [
             _block(1, "<CN>"),
             _block(2, "<CT>"),
@@ -716,6 +718,9 @@ class TestLeakedMarkerDetection:
         ]
         for b in blocks:
             b["_is_marker"] = True
+        # blocks 1 and 2 had prior lock; block 3 was properly gated
+        blocks[0]["skip_llm"] = True
+        blocks[1]["skip_llm"] = True
 
         clfs = [
             _clf(1, "TXT", reasoning="LLM analyzed this", gated=False),
@@ -729,6 +734,213 @@ class TestLeakedMarkerDetection:
         # Should log 2 leaks (blocks 1 and 2)
         warnings = [rec for rec in caplog.records if rec.levelname == "WARNING"]
         assert len(warnings) == 2
+
+
+# ===================================================================
+# Case A vs Case B leak diagnostic correctness
+# ===================================================================
+
+class TestLeakDiagnosticCorrectness:
+    """Case A (true skip_llm leak) vs Case B (no prior lock) distinction."""
+
+    # ------------------------------------------------------------------
+    # Case A: block had skip_llm=True — must fire WARNING + count metric
+    # ------------------------------------------------------------------
+
+    def test_case_a_gated_false_fires_warning(self, caplog):
+        """Case A: skip_llm=True + gated=False → WARNING 'leaked to LLM'."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "TXT", gated=False)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" in caplog.text
+
+    def test_case_a_reasoning_fires_warning(self, caplog):
+        """Case A: skip_llm=True + reasoning (no rule_based) → WARNING."""
+        blocks = [_block(1, "<CT>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "TXT", reasoning="LLM said so", gated=False)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" in caplog.text
+
+    def test_case_a_counted_in_leaked_metric(self, caplog):
+        """Case A leak increments leaked_to_llm in structured log."""
+        blocks = [_block(1, "<REF>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "TXT", gated=False)]
+
+        with caplog.at_level("INFO"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked_to_llm=1" in caplog.text
+
+    def test_case_a_still_relocks_to_pmi(self, caplog):
+        """Case A: PMI enforcement still fires even when warning is emitted."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "H1", gated=False)]
+
+        result = relock_marker_classifications(blocks, clfs)
+
+        assert result[0]["tag"] == "PMI"
+        assert result[0].get("relocked") is True
+
+    # ------------------------------------------------------------------
+    # Case B: block has no skip_llm — must NOT fire WARNING; still relocks
+    # ------------------------------------------------------------------
+
+    def test_case_b_no_skip_llm_no_warning(self, caplog):
+        """Case B: _is_marker=True but no skip_llm + gated=False → no WARNING."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        # skip_llm intentionally NOT set
+
+        clfs = [_clf(1, "TXT", gated=False)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        warnings = [r for r in caplog.records if r.levelname == "WARNING"]
+        assert len(warnings) == 0
+        assert "leaked to LLM" not in caplog.text
+
+    def test_case_b_not_counted_in_leaked_metric(self, caplog):
+        """Case B does NOT increment leaked_to_llm counter."""
+        blocks = [_block(1, "<CT>")]
+        blocks[0]["_is_marker"] = True
+        # skip_llm NOT set
+
+        clfs = [_clf(1, "TXT", reasoning="LLM says TXT", gated=False)]
+
+        with caplog.at_level("INFO"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked_to_llm=0" in caplog.text
+
+    def test_case_b_still_relocks_to_pmi(self):
+        """Case B: PMI enforcement fires regardless (functional behavior unchanged)."""
+        blocks = [_block(1, "<REF>")]
+        blocks[0]["_is_marker"] = True
+        # skip_llm NOT set
+
+        clfs = [_clf(1, "TXT", gated=False)]
+
+        result = relock_marker_classifications(blocks, clfs)
+
+        assert result[0]["tag"] == "PMI"
+        assert result[0].get("relocked") is True
+
+    def test_case_b_text_pattern_detection_also_no_warning(self, caplog):
+        """Case B: marker detected by text pattern (no _is_marker flag, no skip_llm) → no WARNING."""
+        blocks = [_block(1, "<TAB6.1>")]
+        # Neither _is_marker nor skip_llm set — detected purely by text pattern
+
+        clfs = [_clf(1, "TXT", gated=False)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" not in caplog.text
+
+    # ------------------------------------------------------------------
+    # Rule-based path: never a true LLM leak regardless of skip_llm
+    # ------------------------------------------------------------------
+
+    def test_rule_based_never_fires_warning(self, caplog):
+        """rule_based=True is not a true LLM leak even with skip_llm=True."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "PMI", reasoning="rule: marker=PMI", rule_based=True)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" not in caplog.text
+
+    def test_rule_based_not_counted_in_leaked_metric(self, caplog):
+        """rule_based=True not counted as a leak even if skip_llm=True."""
+        blocks = [_block(1, "<CT>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "PMI", reasoning="rule matched", rule_based=True)]
+
+        with caplog.at_level("INFO"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked_to_llm=0" in caplog.text
+
+    # ------------------------------------------------------------------
+    # Mixed scenario: case A + case B in same batch
+    # ------------------------------------------------------------------
+
+    def test_mixed_case_a_and_case_b_in_one_batch(self, caplog):
+        """One case A (skip_llm=True) + one case B (no skip_llm) in same pass.
+
+        Expects: 1 WARNING (case A), leaked_to_llm=1, both relocked to PMI.
+        """
+        blocks = [
+            _block(1, "<CN>"),  # case A — had prior lock
+            _block(2, "<CT>"),  # case B — no prior lock
+        ]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+        blocks[1]["_is_marker"] = True
+        # blocks[1] has no skip_llm
+
+        clfs = [
+            _clf(1, "TXT", gated=False),  # case A: true leak
+            _clf(2, "TXT", gated=False),  # case B: no lock metadata
+        ]
+
+        with caplog.at_level("WARNING"):
+            result = relock_marker_classifications(blocks, clfs)
+
+        warnings = [r for r in caplog.records if r.levelname == "WARNING"]
+        assert len(warnings) == 1
+        assert "block 1" in caplog.text
+        assert result[0]["tag"] == "PMI"
+        assert result[1]["tag"] == "PMI"
+
+    def test_mixed_metric_counts_only_case_a(self, caplog):
+        """leaked_to_llm metric counts only case A blocks."""
+        blocks = [
+            _block(1, "<CN>"),  # case A
+            _block(2, "<CT>"),  # case B
+            _block(3, "<REF>"),  # case A
+        ]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+        blocks[1]["_is_marker"] = True
+        blocks[2]["_is_marker"] = True
+        blocks[2]["skip_llm"] = True
+
+        clfs = [
+            _clf(1, "TXT", gated=False),
+            _clf(2, "TXT", gated=False),
+            _clf(3, "TXT", gated=False),
+        ]
+
+        with caplog.at_level("INFO"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked_to_llm=2" in caplog.text
 
 
 # ===================================================================
@@ -775,16 +987,17 @@ class TestLoggingFormat:
         assert "MARKER_LOCK markers_total=2 relocked=1 leaked_to_llm=0" in caplog.text
 
     def test_post_lock_with_leaks(self, caplog):
-        """Post-lock with leaked markers logs leaked_to_llm count."""
+        """Post-lock with case A leaked marker logs leaked_to_llm=1."""
         blocks = [
             _block(1, "<CN>"),
             _block(2, "<CT>"),
         ]
         for b in blocks:
             b["_is_marker"] = True
+        blocks[0]["skip_llm"] = True  # block 1 had prior lock → case A
 
         clfs = [
-            _clf(1, "TXT", reasoning="LLM output", gated=False),  # Leaked
+            _clf(1, "TXT", reasoning="LLM output", gated=False),  # Case A leak
             _clf(2, "PMI", gated=True),  # Proper
         ]
 
@@ -836,3 +1049,80 @@ class TestIsMarkerBlock:
         assert _is_marker_block("<<nested>>") is False
         assert _is_marker_block("<incomplete") is False
         assert _is_marker_block("<>") is False
+
+
+# ===================================================================
+# Provenance-based leak detection (llm_generated field)
+# ===================================================================
+
+class TestLlmGeneratedProvenance:
+    """llm_generated=True is the canonical leak signal; reasoning alone is not."""
+
+    def test_reasoning_alone_does_not_trigger_warning(self, caplog):
+        """Deterministic output with reasoning but no gated=False / llm_generated → no warning."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        # Simulates a deterministic gate that adds reasoning text (gated=True)
+        clfs = [_clf(1, "PMI", reasoning="Matched rule: marker=PMI", gated=True)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" not in caplog.text
+
+    def test_llm_generated_true_triggers_case_a_warning(self, caplog):
+        """llm_generated=True on a skip_llm block is a true Case A leak."""
+        blocks = [_block(1, "<CT>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        # Simulates real LLM output: llm_generated=True, no gated field set
+        clfs = [_clf(1, "TXT", llm_generated=True)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked to LLM" in caplog.text
+
+    def test_llm_generated_true_counted_in_metric(self, caplog):
+        """llm_generated=True leak increments leaked_to_llm counter."""
+        blocks = [_block(1, "<REF>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "TXT", llm_generated=True)]
+
+        with caplog.at_level("INFO"):
+            relock_marker_classifications(blocks, clfs)
+
+        assert "leaked_to_llm=1" in caplog.text
+
+    def test_llm_generated_case_a_still_relocks_to_pmi(self):
+        """PMI enforcement fires even when llm_generated leak is detected."""
+        blocks = [_block(1, "<CN>")]
+        blocks[0]["_is_marker"] = True
+        blocks[0]["skip_llm"] = True
+
+        clfs = [_clf(1, "H1", llm_generated=True)]
+
+        result = relock_marker_classifications(blocks, clfs)
+
+        assert result[0]["tag"] == "PMI"
+        assert result[0].get("relocked") is True
+
+    def test_llm_generated_without_skip_llm_no_warning(self, caplog):
+        """llm_generated=True on a block without skip_llm is Case B — no WARNING."""
+        blocks = [_block(1, "<TAB6.1>")]
+        blocks[0]["_is_marker"] = True
+        # skip_llm intentionally NOT set (Case B)
+
+        clfs = [_clf(1, "TXT", llm_generated=True)]
+
+        with caplog.at_level("WARNING"):
+            relock_marker_classifications(blocks, clfs)
+
+        warnings = [r for r in caplog.records if r.levelname == "WARNING"]
+        assert len(warnings) == 0
+        assert "leaked to LLM" not in caplog.text

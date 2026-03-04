@@ -1,0 +1,2696 @@
+{
+  "extraction_params": {
+    "min_support": 3,
+    "scope": "within-document sequential pairs (UNMAPPED entries break chains)"
+  },
+  "generated_at": "2026-02-27T09:23:57Z",
+  "global_transitions": {
+    "ANS-TXT": {
+      "next_tag_distribution": {
+        "KP-TXT": {
+          "count": 13,
+          "probability": 0.6842
+        }
+      },
+      "total_observed": 19
+    },
+    "APTX": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 0.6667
+        }
+      },
+      "total_observed": 6
+    },
+    "APX-H1": {
+      "next_tag_distribution": {
+        "APX-TXT-FLUSH": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "APX-H2": {
+      "next_tag_distribution": {
+        "APX-TXT-FLUSH": {
+          "count": 8,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 8
+    },
+    "APX-H3": {
+      "next_tag_distribution": {
+        "APX-TXT-FLUSH": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "APX-REF-N": {
+      "next_tag_distribution": {
+        "APX-REF-N": {
+          "count": 4,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 5
+    },
+    "APX-TXT-FLUSH": {
+      "next_tag_distribution": {
+        "APX-H1": {
+          "count": 4,
+          "probability": 0.2667
+        },
+        "APX-H2": {
+          "count": 6,
+          "probability": 0.4
+        }
+      },
+      "total_observed": 15
+    },
+    "BL": {
+      "next_tag_distribution": {
+        "BL": {
+          "count": 22,
+          "probability": 0.6875
+        },
+        "BLL": {
+          "count": 9,
+          "probability": 0.2812
+        }
+      },
+      "total_observed": 32
+    },
+    "BL-FIRST": {
+      "next_tag_distribution": {
+        "BL-LAST": {
+          "count": 11,
+          "probability": 0.1667
+        },
+        "BL-MID": {
+          "count": 52,
+          "probability": 0.7879
+        }
+      },
+      "total_observed": 66
+    },
+    "BL-LAST": {
+      "next_tag_distribution": {
+        "H2": {
+          "count": 9,
+          "probability": 0.1343
+        },
+        "H3": {
+          "count": 4,
+          "probability": 0.0597
+        },
+        "H4": {
+          "count": 3,
+          "probability": 0.0448
+        },
+        "Normal": {
+          "count": 3,
+          "probability": 0.0448
+        },
+        "PMI": {
+          "count": 8,
+          "probability": 0.1194
+        },
+        "TXT": {
+          "count": 29,
+          "probability": 0.4328
+        },
+        "TXT-FLUSH": {
+          "count": 4,
+          "probability": 0.0597
+        }
+      },
+      "total_observed": 67
+    },
+    "BL-MID": {
+      "next_tag_distribution": {
+        "BL-LAST": {
+          "count": 53,
+          "probability": 0.2775
+        },
+        "BL-MID": {
+          "count": 133,
+          "probability": 0.6963
+        }
+      },
+      "total_observed": 191
+    },
+    "BL2-MID": {
+      "next_tag_distribution": {
+        "BL2-MID": {
+          "count": 49,
+          "probability": 0.7656
+        },
+        "NL-LAST": {
+          "count": 3,
+          "probability": 0.0469
+        },
+        "NL-MID": {
+          "count": 7,
+          "probability": 0.1094
+        }
+      },
+      "total_observed": 64
+    },
+    "BLF": {
+      "next_tag_distribution": {
+        "BL": {
+          "count": 9,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 9
+    },
+    "BLL": {
+      "next_tag_distribution": {
+        "TX": {
+          "count": 5,
+          "probability": 0.625
+        }
+      },
+      "total_observed": 8
+    },
+    "BX1-H1": {
+      "next_tag_distribution": {
+        "BX1-H2": {
+          "count": 5,
+          "probability": 0.625
+        },
+        "BX1-TXT-FIRST": {
+          "count": 3,
+          "probability": 0.375
+        }
+      },
+      "total_observed": 8
+    },
+    "BX1-H2": {
+      "next_tag_distribution": {
+        "BX1-TXT-FIRST": {
+          "count": 5,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 5
+    },
+    "BX1-QUES-TXT": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 14,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 14
+    },
+    "BX1-TTL": {
+      "next_tag_distribution": {
+        "APTX": {
+          "count": 5,
+          "probability": 0.7143
+        }
+      },
+      "total_observed": 7
+    },
+    "BX1-TXT-FIRST": {
+      "next_tag_distribution": {
+        "BX1-H1": {
+          "count": 4,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 8
+    },
+    "BX15-H1": {
+      "next_tag_distribution": {
+        "BX15-TXT-FIRST": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "BX2-BL-MID": {
+      "next_tag_distribution": {
+        "BX2-BL-MID": {
+          "count": 8,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 10
+    },
+    "BX2-H1": {
+      "next_tag_distribution": {
+        "BX2-TXT-FIRST": {
+          "count": 9,
+          "probability": 0.8182
+        }
+      },
+      "total_observed": 11
+    },
+    "BX2-NL-FIRST": {
+      "next_tag_distribution": {
+        "BX2-NL-MID": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "BX2-NL-LAST": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "BX2-NL-MID": {
+      "next_tag_distribution": {
+        "BX2-NL-LAST": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "BX2-TTL": {
+      "next_tag_distribution": {
+        "BX2-NL-FIRST": {
+          "count": 4,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 7
+    },
+    "BX2-TXT": {
+      "next_tag_distribution": {
+        "BX2-TXT": {
+          "count": 4,
+          "probability": 0.6667
+        }
+      },
+      "total_observed": 6
+    },
+    "BX2-TXT-FIRST": {
+      "next_tag_distribution": {
+        "BX2-TXT-FIRST": {
+          "count": 3,
+          "probability": 0.2143
+        },
+        "Normal": {
+          "count": 5,
+          "probability": 0.3571
+        }
+      },
+      "total_observed": 14
+    },
+    "BX3-TTL": {
+      "next_tag_distribution": {
+        "BX3-TXT-FLUSH": {
+          "count": 3,
+          "probability": 0.6
+        }
+      },
+      "total_observed": 5
+    },
+    "BX3-TXT-FLUSH": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "BX4-TTL": {
+      "next_tag_distribution": {
+        "BX4-TXT-FIRST": {
+          "count": 10,
+          "probability": 0.7692
+        },
+        "BX4-TXT-FLUSH": {
+          "count": 3,
+          "probability": 0.2308
+        }
+      },
+      "total_observed": 13
+    },
+    "BX4-TXT": {
+      "next_tag_distribution": {
+        "PMI": {
+          "count": 4,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 8
+    },
+    "BX4-TXT-FIRST": {
+      "next_tag_distribution": {
+        "BX4-TXT": {
+          "count": 6,
+          "probability": 0.2609
+        },
+        "TXT-FLUSH": {
+          "count": 16,
+          "probability": 0.6957
+        }
+      },
+      "total_observed": 23
+    },
+    "BX6-TTL": {
+      "next_tag_distribution": {
+        "BX6-TXT-FIRST": {
+          "count": 5,
+          "probability": 0.8333
+        }
+      },
+      "total_observed": 6
+    },
+    "BX6-TXT-FIRST": {
+      "next_tag_distribution": {
+        "PMI": {
+          "count": 4,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 7
+    },
+    "BX6-TYPE": {
+      "next_tag_distribution": {
+        "BX6-TTL": {
+          "count": 5,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 5
+    },
+    "Body text (3)1": {
+      "next_tag_distribution": {
+        "PMI": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "Body text (37)1": {
+      "next_tag_distribution": {
+        "Body text (37)1": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "Box-01": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 0.5
+        },
+        "TB": {
+          "count": 4,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 8
+    },
+    "Box-01-BoxTitle": {
+      "next_tag_distribution": {
+        "Box-01-BoxTitle": {
+          "count": 4,
+          "probability": 0.4
+        },
+        "Box-01-Para-FL": {
+          "count": 5,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 10
+    },
+    "Box-01-BulletList1": {
+      "next_tag_distribution": {
+        "Box-01-BulletList1": {
+          "count": 4,
+          "probability": 0.4444
+        }
+      },
+      "total_observed": 9
+    },
+    "Box-01-BulletList1_first": {
+      "next_tag_distribution": {
+        "Box-01-BulletList1_first": {
+          "count": 3,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 6
+    },
+    "Box-01-Para-FL": {
+      "next_tag_distribution": {
+        "Box-01-Para-FL": {
+          "count": 6,
+          "probability": 0.4615
+        }
+      },
+      "total_observed": 13
+    },
+    "BulletList1": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 74,
+          "probability": 0.6271
+        },
+        "BulletList1_Last": {
+          "count": 3,
+          "probability": 0.0254
+        },
+        "BulletList1_first": {
+          "count": 4,
+          "probability": 0.0339
+        },
+        "BulletList1_last": {
+          "count": 8,
+          "probability": 0.0678
+        },
+        "BulletList2": {
+          "count": 5,
+          "probability": 0.0424
+        },
+        "Head1": {
+          "count": 3,
+          "probability": 0.0254
+        },
+        "Head3": {
+          "count": 5,
+          "probability": 0.0424
+        },
+        "Head4": {
+          "count": 6,
+          "probability": 0.0508
+        },
+        "UL-FL2": {
+          "count": 6,
+          "probability": 0.0508
+        }
+      },
+      "total_observed": 118
+    },
+    "BulletList1_First": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 4,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 5
+    },
+    "BulletList1_Last": {
+      "next_tag_distribution": {
+        "ParaFirstLine-Ind": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "BulletList1_first": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 10,
+          "probability": 0.3846
+        },
+        "BulletList1_last": {
+          "count": 7,
+          "probability": 0.2692
+        },
+        "BulletList2": {
+          "count": 3,
+          "probability": 0.1154
+        }
+      },
+      "total_observed": 26
+    },
+    "BulletList1_last": {
+      "next_tag_distribution": {
+        "Head2": {
+          "count": 7,
+          "probability": 0.4118
+        }
+      },
+      "total_observed": 17
+    },
+    "BulletList2": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 5,
+          "probability": 0.1923
+        },
+        "BulletList2": {
+          "count": 10,
+          "probability": 0.3846
+        },
+        "BulletList3": {
+          "count": 4,
+          "probability": 0.1538
+        },
+        "UnNumberedList1": {
+          "count": 4,
+          "probability": 0.1538
+        }
+      },
+      "total_observed": 26
+    },
+    "BulletList3": {
+      "next_tag_distribution": {
+        "BulletList2": {
+          "count": 3,
+          "probability": 0.2727
+        },
+        "BulletList3": {
+          "count": 7,
+          "probability": 0.6364
+        }
+      },
+      "total_observed": 11
+    },
+    "CARD-NUM": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 15,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 15
+    },
+    "CJC-BL2-MID": {
+      "next_tag_distribution": {
+        "CJC-BL2-MID": {
+          "count": 11,
+          "probability": 0.8462
+        }
+      },
+      "total_observed": 13
+    },
+    "CJC-BL3-MID": {
+      "next_tag_distribution": {
+        "CJC-BL3-MID": {
+          "count": 6,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 8
+    },
+    "CJC-INSTR": {
+      "next_tag_distribution": {
+        "CJC-UNBX-SN": {
+          "count": 3,
+          "probability": 0.25
+        }
+      },
+      "total_observed": 12
+    },
+    "CJC-NN-BL-MID": {
+      "next_tag_distribution": {
+        "CJC-NN-BL-MID": {
+          "count": 6,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 8
+    },
+    "CJC-NN-TXT": {
+      "next_tag_distribution": {
+        "CJC-INSTR": {
+          "count": 6,
+          "probability": 0.2308
+        },
+        "CJC-NN-TXT": {
+          "count": 18,
+          "probability": 0.6923
+        }
+      },
+      "total_observed": 26
+    },
+    "CJC-NN-TXT-FIRST": {
+      "next_tag_distribution": {
+        "CJC-NN-TXT": {
+          "count": 7,
+          "probability": 0.5385
+        }
+      },
+      "total_observed": 13
+    },
+    "CJC-SUBTTL": {
+      "next_tag_distribution": {
+        "CJC-NN-TXT-FIRST": {
+          "count": 3,
+          "probability": 0.1875
+        },
+        "CJC-TTL2": {
+          "count": 10,
+          "probability": 0.625
+        }
+      },
+      "total_observed": 16
+    },
+    "CJC-TTL": {
+      "next_tag_distribution": {
+        "CJC-SUBTTL": {
+          "count": 13,
+          "probability": 0.619
+        },
+        "CJC-TTL": {
+          "count": 7,
+          "probability": 0.3333
+        }
+      },
+      "total_observed": 21
+    },
+    "CJC-TTL2": {
+      "next_tag_distribution": {
+        "CJC-NN-TXT-FIRST": {
+          "count": 7,
+          "probability": 0.7
+        }
+      },
+      "total_observed": 10
+    },
+    "CL": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 7
+    },
+    "CN": {
+      "next_tag_distribution": {
+        "CT": {
+          "count": 12,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 12
+    },
+    "COBJ": {
+      "next_tag_distribution": {
+        "COBJ": {
+          "count": 12,
+          "probability": 0.8571
+        }
+      },
+      "total_observed": 14
+    },
+    "COUT-1": {
+      "next_tag_distribution": {
+        "COUT-1": {
+          "count": 10,
+          "probability": 0.5882
+        },
+        "COUT-2": {
+          "count": 5,
+          "probability": 0.2941
+        }
+      },
+      "total_observed": 17
+    },
+    "COUT-1-TXT": {
+      "next_tag_distribution": {
+        "COUT-1-TXT": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "COUT-2": {
+      "next_tag_distribution": {
+        "COUT-1": {
+          "count": 5,
+          "probability": 0.1724
+        },
+        "COUT-2": {
+          "count": 24,
+          "probability": 0.8276
+        }
+      },
+      "total_observed": 29
+    },
+    "CO_KTL": {
+      "next_tag_distribution": {
+        "CO_KTL": {
+          "count": 43,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 43
+    },
+    "CST": {
+      "next_tag_distribution": {
+        "H1": {
+          "count": 5,
+          "probability": 0.5556
+        }
+      },
+      "total_observed": 9
+    },
+    "CT": {
+      "next_tag_distribution": {
+        "CAU": {
+          "count": 5,
+          "probability": 0.2381
+        },
+        "H1": {
+          "count": 3,
+          "probability": 0.1429
+        },
+        "Normal": {
+          "count": 3,
+          "probability": 0.1429
+        }
+      },
+      "total_observed": 21
+    },
+    "CTC-BL-FIRST": {
+      "next_tag_distribution": {
+        "CTC-BL-MID": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "CTC-BL-LAST": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "CTC-BL-MID": {
+      "next_tag_distribution": {
+        "CTC-BL-LAST": {
+          "count": 4,
+          "probability": 0.2
+        },
+        "CTC-BL-MID": {
+          "count": 12,
+          "probability": 0.6
+        }
+      },
+      "total_observed": 20
+    },
+    "CTC-H1": {
+      "next_tag_distribution": {
+        "CTC-BL-FIRST": {
+          "count": 4,
+          "probability": 0.25
+        },
+        "CTC-BL-MID": {
+          "count": 4,
+          "probability": 0.25
+        },
+        "CTC-H1": {
+          "count": 7,
+          "probability": 0.4375
+        }
+      },
+      "total_observed": 16
+    },
+    "CTG_Footnote": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 5,
+          "probability": 0.7143
+        }
+      },
+      "total_observed": 7
+    },
+    "CTG_Head1": {
+      "next_tag_distribution": {
+        "CTG_Uc-Alphalist1": {
+          "count": 6,
+          "probability": 0.8571
+        }
+      },
+      "total_observed": 7
+    },
+    "CTG_Head1-Runin": {
+      "next_tag_distribution": {
+        "CTG_Head1": {
+          "count": 5,
+          "probability": 0.3333
+        },
+        "CTG_Para-FL1": {
+          "count": 5,
+          "probability": 0.3333
+        },
+        "CTG_Uc-Alphalist1": {
+          "count": 3,
+          "probability": 0.2
+        }
+      },
+      "total_observed": 15
+    },
+    "CTG_Para-FL1": {
+      "next_tag_distribution": {
+        "CTG_Footnote": {
+          "count": 6,
+          "probability": 0.1395
+        },
+        "CTG_Para-FL1": {
+          "count": 29,
+          "probability": 0.6744
+        },
+        "CTG_Uc-Alphalist1": {
+          "count": 6,
+          "probability": 0.1395
+        }
+      },
+      "total_observed": 43
+    },
+    "CTG_Title": {
+      "next_tag_distribution": {
+        "CTG_Head1-Runin": {
+          "count": 6,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 6
+    },
+    "CTG_Title1": {
+      "next_tag_distribution": {
+        "CTG_Title": {
+          "count": 6,
+          "probability": 0.8571
+        }
+      },
+      "total_observed": 7
+    },
+    "CTG_Uc-Alphalist1": {
+      "next_tag_distribution": {
+        "CTG_Head1-Runin": {
+          "count": 5,
+          "probability": 0.0943
+        },
+        "CTG_Para-FL1": {
+          "count": 8,
+          "probability": 0.1509
+        },
+        "CTG_Uc-Alphalist1": {
+          "count": 38,
+          "probability": 0.717
+        }
+      },
+      "total_observed": 53
+    },
+    "CaseStudy-BulletList1": {
+      "next_tag_distribution": {
+        "CaseStudy-BulletList1": {
+          "count": 36,
+          "probability": 0.973
+        }
+      },
+      "total_observed": 37
+    },
+    "CaseStudy-Dialogue": {
+      "next_tag_distribution": {
+        "CaseStudy-Dialogue": {
+          "count": 4,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 5
+    },
+    "CaseStudy-Para-FL": {
+      "next_tag_distribution": {
+        "CaseStudy-Para-FL": {
+          "count": 12,
+          "probability": 0.5217
+        },
+        "CaseStudy-ParaFirstLine-Ind": {
+          "count": 10,
+          "probability": 0.4348
+        }
+      },
+      "total_observed": 23
+    },
+    "CaseStudy-ParaFirstLine-Ind": {
+      "next_tag_distribution": {
+        "CaseStudy-Para-FL": {
+          "count": 9,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 12
+    },
+    "CaseStudyTitle": {
+      "next_tag_distribution": {
+        "CaseStudyTitle": {
+          "count": 258,
+          "probability": 0.9923
+        }
+      },
+      "total_observed": 260
+    },
+    "ChapterAuthor": {
+      "next_tag_distribution": {
+        "ChapterAuthor": {
+          "count": 8,
+          "probability": 0.4706
+        }
+      },
+      "total_observed": 17
+    },
+    "ChapterNumber": {
+      "next_tag_distribution": {
+        "ChapterAuthor": {
+          "count": 3,
+          "probability": 0.3
+        },
+        "ChapterTitle": {
+          "count": 6,
+          "probability": 0.6
+        }
+      },
+      "total_observed": 10
+    },
+    "ChapterTitle": {
+      "next_tag_distribution": {
+        "ChapterAuthor": {
+          "count": 5,
+          "probability": 0.119
+        },
+        "ChapterNumber": {
+          "count": 7,
+          "probability": 0.1667
+        },
+        "ChapterTitle": {
+          "count": 25,
+          "probability": 0.5952
+        }
+      },
+      "total_observed": 42
+    },
+    "DIA": {
+      "next_tag_distribution": {
+        "DIA": {
+          "count": 20,
+          "probability": 0.5
+        },
+        "H3": {
+          "count": 7,
+          "probability": 0.175
+        },
+        "TXT": {
+          "count": 11,
+          "probability": 0.275
+        }
+      },
+      "total_observed": 40
+    },
+    "DOM-TTL": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 15,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 15
+    },
+    "EOC-Answer-Para-FL": {
+      "next_tag_distribution": {
+        "EOC-NumberList1": {
+          "count": 6,
+          "probability": 0.8571
+        }
+      },
+      "total_observed": 7
+    },
+    "EOC-BulletList1": {
+      "next_tag_distribution": {
+        "EOC-BulletList1": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "EOC-Head1": {
+      "next_tag_distribution": {
+        "EOC-NumberList1_first": {
+          "count": 4,
+          "probability": 0.6667
+        }
+      },
+      "total_observed": 6
+    },
+    "EOC-NumberList1": {
+      "next_tag_distribution": {
+        "EOC-Answer-Para-FL": {
+          "count": 6,
+          "probability": 0.0698
+        },
+        "EOC-NumberList1": {
+          "count": 71,
+          "probability": 0.8256
+        },
+        "EOC-NumberList1_last": {
+          "count": 4,
+          "probability": 0.0465
+        }
+      },
+      "total_observed": 86
+    },
+    "EOC-NumberList1_first": {
+      "next_tag_distribution": {
+        "EOC-NumberList1": {
+          "count": 3,
+          "probability": 0.1429
+        },
+        "EOC-NumberList1_first": {
+          "count": 16,
+          "probability": 0.7619
+        }
+      },
+      "total_observed": 21
+    },
+    "EOC-NumberList1_last": {
+      "next_tag_distribution": {
+        "EOC-Head1": {
+          "count": 3,
+          "probability": 0.6
+        }
+      },
+      "total_observed": 5
+    },
+    "EOC-REF": {
+      "next_tag_distribution": {
+        "EOC-REF": {
+          "count": 8,
+          "probability": 0.8889
+        }
+      },
+      "total_observed": 9
+    },
+    "EOC_NL": {
+      "next_tag_distribution": {
+        "EOC_NL": {
+          "count": 9,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 9
+    },
+    "EOC_NLLL": {
+      "next_tag_distribution": {
+        "EOC_NLLL": {
+          "count": 30,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 30
+    },
+    "EOC_REF": {
+      "next_tag_distribution": {
+        "EOC_REF": {
+          "count": 269,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 269
+    },
+    "EOC_REFH": {
+      "next_tag_distribution": {
+        "EOC_REF": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "EQ-ONLY": {
+      "next_tag_distribution": {
+        "TXT": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "EXT": {
+      "next_tag_distribution": {
+        "EXT": {
+          "count": 6,
+          "probability": 0.6667
+        },
+        "TXT": {
+          "count": 3,
+          "probability": 0.3333
+        }
+      },
+      "total_observed": 9
+    },
+    "FE-01-BulletList1": {
+      "next_tag_distribution": {
+        "FE-01-BulletList1": {
+          "count": 14,
+          "probability": 0.9333
+        }
+      },
+      "total_observed": 15
+    },
+    "FE-01-ParaFirstLine-Ind": {
+      "next_tag_distribution": {
+        "FE-01-ParaFirstLine-Ind": {
+          "count": 4,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 5
+    },
+    "FE-02-ParaFirstLine-Ind": {
+      "next_tag_distribution": {
+        "FE-02-ParaFirstLine-Ind": {
+          "count": 8,
+          "probability": 0.8889
+        }
+      },
+      "total_observed": 9
+    },
+    "FE-03-ParaFirstLine-Ind": {
+      "next_tag_distribution": {
+        "FE-03-ParaFirstLine-Ind": {
+          "count": 10,
+          "probability": 0.8333
+        }
+      },
+      "total_observed": 12
+    },
+    "FG-CAP": {
+      "next_tag_distribution": {
+        "FG-CAP": {
+          "count": 5,
+          "probability": 0.3846
+        },
+        "Normal": {
+          "count": 7,
+          "probability": 0.5385
+        }
+      },
+      "total_observed": 13
+    },
+    "FIG-LEG": {
+      "next_tag_distribution": {
+        "FIG-LEG": {
+          "count": 74,
+          "probability": 0.8506
+        },
+        "Normal": {
+          "count": 11,
+          "probability": 0.1264
+        }
+      },
+      "total_observed": 87
+    },
+    "FigureCaption": {
+      "next_tag_distribution": {
+        "FG-CAP": {
+          "count": 5,
+          "probability": 0.3333
+        },
+        "PMI": {
+          "count": 7,
+          "probability": 0.4667
+        }
+      },
+      "total_observed": 15
+    },
+    "FigureLegend": {
+      "next_tag_distribution": {
+        "FigureLegend": {
+          "count": 10,
+          "probability": 0.4167
+        },
+        "FigureSource": {
+          "count": 4,
+          "probability": 0.1667
+        },
+        "Normal": {
+          "count": 3,
+          "probability": 0.125
+        },
+        "ParaFirstLine-Ind": {
+          "count": 3,
+          "probability": 0.125
+        }
+      },
+      "total_observed": 24
+    },
+    "FigureSource": {
+      "next_tag_distribution": {
+        "FigureLegend": {
+          "count": 3,
+          "probability": 0.4286
+        },
+        "Normal": {
+          "count": 4,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 7
+    },
+    "H1": {
+      "next_tag_distribution": {
+        "H1A": {
+          "count": 4,
+          "probability": 0.0252
+        },
+        "H2": {
+          "count": 30,
+          "probability": 0.1887
+        },
+        "Normal": {
+          "count": 6,
+          "probability": 0.0377
+        },
+        "TXL": {
+          "count": 20,
+          "probability": 0.1258
+        },
+        "TXT-FLUSH": {
+          "count": 86,
+          "probability": 0.5409
+        },
+        "UL-FIRST": {
+          "count": 8,
+          "probability": 0.0503
+        }
+      },
+      "total_observed": 159
+    },
+    "H1A": {
+      "next_tag_distribution": {
+        "PT-H2": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "H2": {
+      "next_tag_distribution": {
+        "BL-FIRST": {
+          "count": 4,
+          "probability": 0.0133
+        },
+        "H3": {
+          "count": 12,
+          "probability": 0.0399
+        },
+        "NL-FIRST": {
+          "count": 6,
+          "probability": 0.0199
+        },
+        "PMI": {
+          "count": 5,
+          "probability": 0.0166
+        },
+        "REF-U": {
+          "count": 6,
+          "probability": 0.0199
+        },
+        "TXL": {
+          "count": 27,
+          "probability": 0.0897
+        },
+        "TXT-FLUSH": {
+          "count": 233,
+          "probability": 0.7741
+        }
+      },
+      "total_observed": 301
+    },
+    "H3": {
+      "next_tag_distribution": {
+        "BL-FIRST": {
+          "count": 6,
+          "probability": 0.0225
+        },
+        "H4": {
+          "count": 4,
+          "probability": 0.015
+        },
+        "TXL": {
+          "count": 48,
+          "probability": 0.1798
+        },
+        "TXT-FLUSH": {
+          "count": 208,
+          "probability": 0.779
+        }
+      },
+      "total_observed": 267
+    },
+    "H4": {
+      "next_tag_distribution": {
+        "H2": {
+          "count": 6,
+          "probability": 0.0566
+        },
+        "H3": {
+          "count": 10,
+          "probability": 0.0943
+        },
+        "H4": {
+          "count": 33,
+          "probability": 0.3113
+        },
+        "H5": {
+          "count": 6,
+          "probability": 0.0566
+        },
+        "TXT": {
+          "count": 22,
+          "probability": 0.2075
+        },
+        "TXT-FLUSH": {
+          "count": 28,
+          "probability": 0.2642
+        }
+      },
+      "total_observed": 106
+    },
+    "H5": {
+      "next_tag_distribution": {
+        "H4": {
+          "count": 4,
+          "probability": 0.1739
+        },
+        "H5": {
+          "count": 10,
+          "probability": 0.4348
+        },
+        "TXT-FLUSH": {
+          "count": 6,
+          "probability": 0.2609
+        }
+      },
+      "total_observed": 23
+    },
+    "Head1": {
+      "next_tag_distribution": {
+        "Head2": {
+          "count": 12,
+          "probability": 0.1463
+        },
+        "Para-FL": {
+          "count": 59,
+          "probability": 0.7195
+        }
+      },
+      "total_observed": 82
+    },
+    "Head2": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 4,
+          "probability": 0.0237
+        },
+        "BulletList1_first": {
+          "count": 9,
+          "probability": 0.0533
+        },
+        "Head3": {
+          "count": 3,
+          "probability": 0.0178
+        },
+        "Para-FL": {
+          "count": 64,
+          "probability": 0.3787
+        },
+        "Uc-AlphatList1": {
+          "count": 82,
+          "probability": 0.4852
+        }
+      },
+      "total_observed": 169
+    },
+    "Head3": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 3,
+          "probability": 0.0968
+        },
+        "BulletList1_first": {
+          "count": 4,
+          "probability": 0.129
+        },
+        "Para-FL": {
+          "count": 18,
+          "probability": 0.5806
+        },
+        "UL-FL2": {
+          "count": 3,
+          "probability": 0.0968
+        }
+      },
+      "total_observed": 31
+    },
+    "Head4": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 5,
+          "probability": 0.8333
+        }
+      },
+      "total_observed": 6
+    },
+    "KP-BL-MID": {
+      "next_tag_distribution": {
+        "KP-BL-MID": {
+          "count": 25,
+          "probability": 0.9259
+        }
+      },
+      "total_observed": 27
+    },
+    "KP-TXT": {
+      "next_tag_distribution": {
+        "SRH1": {
+          "count": 15,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 15
+    },
+    "Lc-AlphaList3": {
+      "next_tag_distribution": {
+        "Head2": {
+          "count": 6,
+          "probability": 0.1
+        },
+        "Lc-AlphaList3": {
+          "count": 33,
+          "probability": 0.55
+        },
+        "Lc-RomanList4": {
+          "count": 8,
+          "probability": 0.1333
+        },
+        "NumberList2": {
+          "count": 10,
+          "probability": 0.1667
+        },
+        "Uc-AlphatList1": {
+          "count": 3,
+          "probability": 0.05
+        }
+      },
+      "total_observed": 60
+    },
+    "Lc-RomanList4": {
+      "next_tag_distribution": {
+        "Lc-RomanList4": {
+          "count": 10,
+          "probability": 0.5556
+        },
+        "NumberList2": {
+          "count": 3,
+          "probability": 0.1667
+        }
+      },
+      "total_observed": 18
+    },
+    "LearningObj-BulletList1": {
+      "next_tag_distribution": {
+        "LearningObj-BulletList1": {
+          "count": 12,
+          "probability": 0.8571
+        }
+      },
+      "total_observed": 14
+    },
+    "List Paragraph": {
+      "next_tag_distribution": {
+        "List Paragraph": {
+          "count": 33,
+          "probability": 0.8684
+        }
+      },
+      "total_observed": 38
+    },
+    "NBX-BL-FIRST": {
+      "next_tag_distribution": {
+        "NBX-BL-LAST": {
+          "count": 6,
+          "probability": 0.2727
+        },
+        "NBX-BL-MID": {
+          "count": 15,
+          "probability": 0.6818
+        }
+      },
+      "total_observed": 22
+    },
+    "NBX-BL-LAST": {
+      "next_tag_distribution": {
+        "NBX-H1": {
+          "count": 9,
+          "probability": 0.4286
+        },
+        "NBX-TXT-FIRST": {
+          "count": 8,
+          "probability": 0.381
+        }
+      },
+      "total_observed": 21
+    },
+    "NBX-BL-MID": {
+      "next_tag_distribution": {
+        "NBX-BL-LAST": {
+          "count": 15,
+          "probability": 0.0882
+        },
+        "NBX-BL-MID": {
+          "count": 118,
+          "probability": 0.6941
+        },
+        "NBX-H1": {
+          "count": 18,
+          "probability": 0.1059
+        },
+        "NBX-H2": {
+          "count": 17,
+          "probability": 0.1
+        }
+      },
+      "total_observed": 170
+    },
+    "NBX-DIA": {
+      "next_tag_distribution": {
+        "NBX-DIA": {
+          "count": 18,
+          "probability": 0.9
+        }
+      },
+      "total_observed": 20
+    },
+    "NBX-H1": {
+      "next_tag_distribution": {
+        "NBX-BL-FIRST": {
+          "count": 12,
+          "probability": 0.3077
+        },
+        "NBX-H2": {
+          "count": 19,
+          "probability": 0.4872
+        },
+        "NBX-TXT": {
+          "count": 3,
+          "probability": 0.0769
+        }
+      },
+      "total_observed": 39
+    },
+    "NBX-H2": {
+      "next_tag_distribution": {
+        "NBX-BL-MID": {
+          "count": 35,
+          "probability": 0.9459
+        }
+      },
+      "total_observed": 37
+    },
+    "NBX-NL-MID": {
+      "next_tag_distribution": {
+        "NBX-NL-MID": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "NBX-TTL": {
+      "next_tag_distribution": {
+        "NBX-H1": {
+          "count": 6,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 12
+    },
+    "NBX-TXT": {
+      "next_tag_distribution": {
+        "NBX-H1": {
+          "count": 4,
+          "probability": 0.2
+        },
+        "NBX-TXT": {
+          "count": 15,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 20
+    },
+    "NBX-TXT-FIRST": {
+      "next_tag_distribution": {
+        "NBX-BL-FIRST": {
+          "count": 10,
+          "probability": 0.7143
+        }
+      },
+      "total_observed": 14
+    },
+    "NBX-UL-MID": {
+      "next_tag_distribution": {
+        "NBX-UL-MID": {
+          "count": 42,
+          "probability": 0.9333
+        }
+      },
+      "total_observed": 45
+    },
+    "NBX1-BL-MID": {
+      "next_tag_distribution": {
+        "NBX1-BL-MID": {
+          "count": 15,
+          "probability": 0.9375
+        }
+      },
+      "total_observed": 16
+    },
+    "NBX1-NL-MID": {
+      "next_tag_distribution": {
+        "NBX1-NL-MID": {
+          "count": 5,
+          "probability": 0.8333
+        }
+      },
+      "total_observed": 6
+    },
+    "NL-FIRST": {
+      "next_tag_distribution": {
+        "BL2-MID": {
+          "count": 5,
+          "probability": 0.2778
+        },
+        "NL-MID": {
+          "count": 10,
+          "probability": 0.5556
+        }
+      },
+      "total_observed": 18
+    },
+    "NL-LAST": {
+      "next_tag_distribution": {
+        "H2": {
+          "count": 6,
+          "probability": 0.4286
+        }
+      },
+      "total_observed": 14
+    },
+    "NL-MID": {
+      "next_tag_distribution": {
+        "BL2-MID": {
+          "count": 11,
+          "probability": 0.25
+        },
+        "NL-LAST": {
+          "count": 8,
+          "probability": 0.1818
+        },
+        "NL-MID": {
+          "count": 21,
+          "probability": 0.4773
+        }
+      },
+      "total_observed": 44
+    },
+    "NN-DIA": {
+      "next_tag_distribution": {
+        "NN-DIA": {
+          "count": 16,
+          "probability": 0.8889
+        }
+      },
+      "total_observed": 18
+    },
+    "Normal": {
+      "next_tag_distribution": {
+        "ANS-TXT": {
+          "count": 15,
+          "probability": 0.0346
+        },
+        "BL-FIRST": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "BX1-QUES-TXT": {
+          "count": 14,
+          "probability": 0.0323
+        },
+        "BX1-TTL": {
+          "count": 5,
+          "probability": 0.0115
+        },
+        "BX2-H1": {
+          "count": 5,
+          "probability": 0.0115
+        },
+        "BX2-TTL": {
+          "count": 5,
+          "probability": 0.0115
+        },
+        "BX3-TTL": {
+          "count": 4,
+          "probability": 0.0092
+        },
+        "BX4-TTL": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "Box-01": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "Box-01-BoxTitle": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "CARD-NUM": {
+          "count": 14,
+          "probability": 0.0323
+        },
+        "CJC-TTL": {
+          "count": 6,
+          "probability": 0.0138
+        },
+        "CL": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "CST": {
+          "count": 4,
+          "probability": 0.0092
+        },
+        "CTC-H1": {
+          "count": 4,
+          "probability": 0.0092
+        },
+        "CTG_Title1": {
+          "count": 5,
+          "probability": 0.0115
+        },
+        "FIG-LEG": {
+          "count": 6,
+          "probability": 0.0138
+        },
+        "FigureCaption": {
+          "count": 13,
+          "probability": 0.03
+        },
+        "FigureLegend": {
+          "count": 7,
+          "probability": 0.0161
+        },
+        "H1": {
+          "count": 17,
+          "probability": 0.0392
+        },
+        "H2": {
+          "count": 17,
+          "probability": 0.0392
+        },
+        "H3": {
+          "count": 10,
+          "probability": 0.023
+        },
+        "NBX-TTL": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "Normal": {
+          "count": 123,
+          "probability": 0.2834
+        },
+        "PMI": {
+          "count": 11,
+          "probability": 0.0253
+        },
+        "Para-FL": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "ParaFirstLine-Ind": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "QUES-TXT-FLUSH": {
+          "count": 15,
+          "probability": 0.0346
+        },
+        "REF-H1": {
+          "count": 3,
+          "probability": 0.0069
+        },
+        "REFH1": {
+          "count": 6,
+          "probability": 0.0138
+        },
+        "T1": {
+          "count": 24,
+          "probability": 0.0553
+        },
+        "TXT": {
+          "count": 10,
+          "probability": 0.023
+        },
+        "TXT-FLUSH": {
+          "count": 8,
+          "probability": 0.0184
+        },
+        "TableCaption": {
+          "count": 6,
+          "probability": 0.0138
+        }
+      },
+      "total_observed": 434
+    },
+    "NumberList1": {
+      "next_tag_distribution": {
+        "NumberList1": {
+          "count": 35,
+          "probability": 0.6364
+        },
+        "NumberList1-last": {
+          "count": 6,
+          "probability": 0.1091
+        },
+        "NumberList1_last": {
+          "count": 5,
+          "probability": 0.0909
+        },
+        "ParaFirstLine-Ind": {
+          "count": 5,
+          "probability": 0.0909
+        }
+      },
+      "total_observed": 55
+    },
+    "NumberList1-first": {
+      "next_tag_distribution": {
+        "NumberList1": {
+          "count": 6,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 6
+    },
+    "NumberList1-last": {
+      "next_tag_distribution": {
+        "ParaFirstLine-Ind": {
+          "count": 5,
+          "probability": 0.8333
+        }
+      },
+      "total_observed": 6
+    },
+    "NumberList1_first": {
+      "next_tag_distribution": {
+        "NumberList1": {
+          "count": 4,
+          "probability": 0.6667
+        }
+      },
+      "total_observed": 6
+    },
+    "NumberList1_last": {
+      "next_tag_distribution": {
+        "ParaFirstLine-Ind": {
+          "count": 3,
+          "probability": 0.5
+        }
+      },
+      "total_observed": 6
+    },
+    "NumberList2": {
+      "next_tag_distribution": {
+        "H2": {
+          "count": 6,
+          "probability": 0.0321
+        },
+        "Head2": {
+          "count": 7,
+          "probability": 0.0374
+        },
+        "Lc-AlphaList3": {
+          "count": 25,
+          "probability": 0.1337
+        },
+        "NumberList2": {
+          "count": 108,
+          "probability": 0.5775
+        },
+        "Uc-AlphatList1": {
+          "count": 40,
+          "probability": 0.2139
+        }
+      },
+      "total_observed": 187
+    },
+    "OBJ-BL-MID": {
+      "next_tag_distribution": {
+        "OBJ-BL-MID": {
+          "count": 6,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 8
+    },
+    "OBJ-NL-FIRST": {
+      "next_tag_distribution": {
+        "OBJ-NL-MID": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "OBJ-NL-MID": {
+      "next_tag_distribution": {
+        "OBJ-NL-LAST": {
+          "count": 3,
+          "probability": 0.1111
+        },
+        "OBJ-NL-MID": {
+          "count": 23,
+          "probability": 0.8519
+        }
+      },
+      "total_observed": 27
+    },
+    "PMI": {
+      "next_tag_distribution": {
+        "BL-FIRST": {
+          "count": 11,
+          "probability": 0.0502
+        },
+        "BX4-TTL": {
+          "count": 7,
+          "probability": 0.032
+        },
+        "BX6-TYPE": {
+          "count": 5,
+          "probability": 0.0228
+        },
+        "FG-CAP": {
+          "count": 3,
+          "probability": 0.0137
+        },
+        "FIG-LEG": {
+          "count": 4,
+          "probability": 0.0183
+        },
+        "FigureSource": {
+          "count": 3,
+          "probability": 0.0137
+        },
+        "H1": {
+          "count": 12,
+          "probability": 0.0548
+        },
+        "H2": {
+          "count": 22,
+          "probability": 0.1005
+        },
+        "H3": {
+          "count": 5,
+          "probability": 0.0228
+        },
+        "Head1": {
+          "count": 14,
+          "probability": 0.0639
+        },
+        "Head2": {
+          "count": 4,
+          "probability": 0.0183
+        },
+        "Normal": {
+          "count": 22,
+          "probability": 0.1005
+        },
+        "PMI": {
+          "count": 21,
+          "probability": 0.0959
+        },
+        "ParaFirstLine-Ind": {
+          "count": 8,
+          "probability": 0.0365
+        },
+        "T1": {
+          "count": 4,
+          "probability": 0.0183
+        },
+        "TXT": {
+          "count": 48,
+          "probability": 0.2192
+        },
+        "TXT-FLUSH": {
+          "count": 3,
+          "probability": 0.0137
+        }
+      },
+      "total_observed": 219
+    },
+    "PT-H2": {
+      "next_tag_distribution": {
+        "PT-H2": {
+          "count": 16,
+          "probability": 0.8421
+        }
+      },
+      "total_observed": 19
+    },
+    "Para-FL": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 5,
+          "probability": 0.0235
+        },
+        "BulletList1_First": {
+          "count": 3,
+          "probability": 0.0141
+        },
+        "BulletList1_first": {
+          "count": 5,
+          "probability": 0.0235
+        },
+        "Head1": {
+          "count": 21,
+          "probability": 0.0986
+        },
+        "Head2": {
+          "count": 33,
+          "probability": 0.1549
+        },
+        "Head3": {
+          "count": 6,
+          "probability": 0.0282
+        },
+        "Normal": {
+          "count": 11,
+          "probability": 0.0516
+        },
+        "NumberList1-first": {
+          "count": 4,
+          "probability": 0.0188
+        },
+        "PMI": {
+          "count": 6,
+          "probability": 0.0282
+        },
+        "Para-FL": {
+          "count": 44,
+          "probability": 0.2066
+        },
+        "ParaFirstLine-Ind": {
+          "count": 55,
+          "probability": 0.2582
+        },
+        "TableCaption": {
+          "count": 3,
+          "probability": 0.0141
+        },
+        "UL-FL1_first": {
+          "count": 6,
+          "probability": 0.0282
+        }
+      },
+      "total_observed": 213
+    },
+    "ParaFirstLine-Ind": {
+      "next_tag_distribution": {
+        "Head1": {
+          "count": 22,
+          "probability": 0.0759
+        },
+        "Head2": {
+          "count": 23,
+          "probability": 0.0793
+        },
+        "Head3": {
+          "count": 9,
+          "probability": 0.031
+        },
+        "NumberList1": {
+          "count": 6,
+          "probability": 0.0207
+        },
+        "PMI": {
+          "count": 16,
+          "probability": 0.0552
+        },
+        "ParaFirstLine-Ind": {
+          "count": 195,
+          "probability": 0.6724
+        }
+      },
+      "total_observed": 290
+    },
+    "QUES-LL2-MID": {
+      "next_tag_distribution": {
+        "QUES-LL2-MID": {
+          "count": 15,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 15
+    },
+    "QUES-NL-MID": {
+      "next_tag_distribution": {
+        "ANS-UL-MID": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    },
+    "QUES-TXT-FLUSH": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 15,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 15
+    },
+    "REF-H1": {
+      "next_tag_distribution": {
+        "REF-U": {
+          "count": 3,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 3
+    },
+    "REF-N": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 3,
+          "probability": 0.0026
+        },
+        "REF-N": {
+          "count": 1136,
+          "probability": 0.9776
+        },
+        "REFH2": {
+          "count": 21,
+          "probability": 0.0181
+        }
+      },
+      "total_observed": 1162
+    },
+    "REF-U": {
+      "next_tag_distribution": {
+        "Head1": {
+          "count": 5,
+          "probability": 0.0103
+        },
+        "Normal": {
+          "count": 6,
+          "probability": 0.0124
+        },
+        "REF-U": {
+          "count": 469,
+          "probability": 0.967
+        }
+      },
+      "total_observed": 485
+    },
+    "REFH1": {
+      "next_tag_distribution": {
+        "REF-N": {
+          "count": 4,
+          "probability": 0.3636
+        },
+        "REF-U": {
+          "count": 5,
+          "probability": 0.4545
+        }
+      },
+      "total_observed": 11
+    },
+    "REFH2": {
+      "next_tag_distribution": {
+        "REF-N": {
+          "count": 21,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 21
+    },
+    "RQ-ANS": {
+      "next_tag_distribution": {
+        "RQ-ANS": {
+          "count": 14,
+          "probability": 0.9333
+        }
+      },
+      "total_observed": 15
+    },
+    "RQ-LL2-MID": {
+      "next_tag_distribution": {
+        "RQ-LL2-MID": {
+          "count": 67,
+          "probability": 0.7614
+        },
+        "RQ-NL-MID": {
+          "count": 18,
+          "probability": 0.2045
+        }
+      },
+      "total_observed": 88
+    },
+    "RQ-NL-MID": {
+      "next_tag_distribution": {
+        "RQ-LL2-MID": {
+          "count": 17,
+          "probability": 0.9444
+        }
+      },
+      "total_observed": 18
+    },
+    "RQ-UL2-MID": {
+      "next_tag_distribution": {
+        "RQ-UL2-MID": {
+          "count": 3,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 4
+    },
+    "Reference-Alphabetical": {
+      "next_tag_distribution": {
+        "Reference-Alphabetical": {
+          "count": 108,
+          "probability": 0.973
+        }
+      },
+      "total_observed": 111
+    },
+    "Reference-Numbered": {
+      "next_tag_distribution": {
+        "Reference-Numbered": {
+          "count": 23,
+          "probability": 0.9583
+        }
+      },
+      "total_observed": 24
+    },
+    "ReferenceAlphabetical": {
+      "next_tag_distribution": {
+        "ReferenceAlphabetical": {
+          "count": 73,
+          "probability": 0.9865
+        }
+      },
+      "total_observed": 74
+    },
+    "SR": {
+      "next_tag_distribution": {
+        "DOM-TTL": {
+          "count": 15,
+          "probability": 0.3
+        },
+        "SR": {
+          "count": 34,
+          "probability": 0.68
+        }
+      },
+      "total_observed": 50
+    },
+    "SRH1": {
+      "next_tag_distribution": {
+        "SR": {
+          "count": 17,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 17
+    },
+    "T1": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 11,
+          "probability": 0.3056
+        },
+        "PMI": {
+          "count": 11,
+          "probability": 0.3056
+        },
+        "TFN": {
+          "count": 9,
+          "probability": 0.25
+        },
+        "TSN": {
+          "count": 3,
+          "probability": 0.0833
+        }
+      },
+      "total_observed": 36
+    },
+    "TB": {
+      "next_tag_distribution": {
+        "Box-01": {
+          "count": 5,
+          "probability": 0.5
+        },
+        "TB": {
+          "count": 4,
+          "probability": 0.4
+        }
+      },
+      "total_observed": 10
+    },
+    "TFN": {
+      "next_tag_distribution": {
+        "TFN": {
+          "count": 8,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 14
+    },
+    "TOC-H2": {
+      "next_tag_distribution": {
+        "TOC-H2": {
+          "count": 4,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 5
+    },
+    "TSN": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 0.5714
+        }
+      },
+      "total_observed": 7
+    },
+    "TX": {
+      "next_tag_distribution": {
+        "BLF": {
+          "count": 5,
+          "probability": 0.0217
+        },
+        "H1": {
+          "count": 5,
+          "probability": 0.0217
+        },
+        "H2": {
+          "count": 8,
+          "probability": 0.0348
+        },
+        "H3": {
+          "count": 29,
+          "probability": 0.1261
+        },
+        "TX": {
+          "count": 171,
+          "probability": 0.7435
+        },
+        "TXL": {
+          "count": 9,
+          "probability": 0.0391
+        }
+      },
+      "total_observed": 230
+    },
+    "TXL": {
+      "next_tag_distribution": {
+        "BLF": {
+          "count": 4,
+          "probability": 0.0272
+        },
+        "H2": {
+          "count": 8,
+          "probability": 0.0544
+        },
+        "H3": {
+          "count": 15,
+          "probability": 0.102
+        },
+        "TX": {
+          "count": 59,
+          "probability": 0.4014
+        },
+        "TXL": {
+          "count": 56,
+          "probability": 0.381
+        }
+      },
+      "total_observed": 147
+    },
+    "TXT": {
+      "next_tag_distribution": {
+        "BL-FIRST": {
+          "count": 20,
+          "probability": 0.0298
+        },
+        "BX2-H1": {
+          "count": 3,
+          "probability": 0.0045
+        },
+        "DIA": {
+          "count": 7,
+          "probability": 0.0104
+        },
+        "EQ-ONLY": {
+          "count": 3,
+          "probability": 0.0045
+        },
+        "H1": {
+          "count": 32,
+          "probability": 0.0477
+        },
+        "H2": {
+          "count": 66,
+          "probability": 0.0984
+        },
+        "H3": {
+          "count": 66,
+          "probability": 0.0984
+        },
+        "H4": {
+          "count": 24,
+          "probability": 0.0358
+        },
+        "NL-FIRST": {
+          "count": 3,
+          "probability": 0.0045
+        },
+        "Normal": {
+          "count": 29,
+          "probability": 0.0432
+        },
+        "PMI": {
+          "count": 49,
+          "probability": 0.073
+        },
+        "TXT": {
+          "count": 343,
+          "probability": 0.5112
+        },
+        "TXT-FLUSH": {
+          "count": 12,
+          "probability": 0.0179
+        }
+      },
+      "total_observed": 671
+    },
+    "TXT-FLUSH": {
+      "next_tag_distribution": {
+        "BL-FIRST": {
+          "count": 23,
+          "probability": 0.0352
+        },
+        "BL2-MID": {
+          "count": 3,
+          "probability": 0.0046
+        },
+        "BX4-TTL": {
+          "count": 3,
+          "probability": 0.0046
+        },
+        "BX4-TXT-FIRST": {
+          "count": 13,
+          "probability": 0.0199
+        },
+        "DIA": {
+          "count": 13,
+          "probability": 0.0199
+        },
+        "H1": {
+          "count": 41,
+          "probability": 0.0628
+        },
+        "H2": {
+          "count": 95,
+          "probability": 0.1455
+        },
+        "H3": {
+          "count": 99,
+          "probability": 0.1516
+        },
+        "H4": {
+          "count": 33,
+          "probability": 0.0505
+        },
+        "NBX-TTL": {
+          "count": 4,
+          "probability": 0.0061
+        },
+        "NL-FIRST": {
+          "count": 3,
+          "probability": 0.0046
+        },
+        "Normal": {
+          "count": 32,
+          "probability": 0.049
+        },
+        "PMI": {
+          "count": 41,
+          "probability": 0.0628
+        },
+        "TXT": {
+          "count": 201,
+          "probability": 0.3078
+        },
+        "TXT-FLUSH": {
+          "count": 28,
+          "probability": 0.0429
+        }
+      },
+      "total_observed": 653
+    },
+    "TableCaption": {
+      "next_tag_distribution": {
+        "Normal": {
+          "count": 4,
+          "probability": 0.3636
+        },
+        "PMI": {
+          "count": 5,
+          "probability": 0.4545
+        }
+      },
+      "total_observed": 11
+    },
+    "UL-FIRST": {
+      "next_tag_distribution": {
+        "UL-MID": {
+          "count": 9,
+          "probability": 0.75
+        }
+      },
+      "total_observed": 12
+    },
+    "UL-FL1_first": {
+      "next_tag_distribution": {
+        "Para-FL": {
+          "count": 8,
+          "probability": 0.8
+        }
+      },
+      "total_observed": 10
+    },
+    "UL-FL2": {
+      "next_tag_distribution": {
+        "BulletList1": {
+          "count": 5,
+          "probability": 0.2778
+        },
+        "Head3": {
+          "count": 3,
+          "probability": 0.1667
+        },
+        "UL-FL2": {
+          "count": 5,
+          "probability": 0.2778
+        }
+      },
+      "total_observed": 18
+    },
+    "UL-LAST": {
+      "next_tag_distribution": {
+        "H1": {
+          "count": 7,
+          "probability": 0.7
+        }
+      },
+      "total_observed": 10
+    },
+    "UL-MID": {
+      "next_tag_distribution": {
+        "UL-LAST": {
+          "count": 9,
+          "probability": 0.25
+        },
+        "UL-MID": {
+          "count": 26,
+          "probability": 0.7222
+        }
+      },
+      "total_observed": 36
+    },
+    "Uc-AlphatList1": {
+      "next_tag_distribution": {
+        "Head2": {
+          "count": 62,
+          "probability": 0.2573
+        },
+        "NumberList2": {
+          "count": 66,
+          "probability": 0.2739
+        },
+        "Uc-AlphatList1": {
+          "count": 113,
+          "probability": 0.4689
+        }
+      },
+      "total_observed": 241
+    },
+    "UnNumberedList1": {
+      "next_tag_distribution": {
+        "BulletList2": {
+          "count": 4,
+          "probability": 1.0
+        }
+      },
+      "total_observed": 4
+    }
+  },
+  "input_paths": {
+    "allowed_styles": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\config\\allowed_styles.json",
+    "ground_truth": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\data\\ground_truth.jsonl",
+    "style_aliases": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\config\\style_aliases.json"
+  },
+  "schema_version": "1.0.0"
+}

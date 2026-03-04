@@ -115,7 +115,9 @@ ZONE_VALID_STYLES = {
         'Exhibit-TableBody', 'Exhibit-TableColumnHead1', 'Exhibit-TB-BulletList1',
         'Exhibit-TableFootnote', 'ExhibitTitle',
         # Clinical judgment in tables (Training data)
-        'CJC-UL-MID', 'CJC-UNT', 'CJC-UNBX-T', 'CJC-UNBX-T2',
+        'CJC-UL-FIRST', 'CJC-UL-LAST', 'CJC-UL-MID',
+        'CJC-NN-BL-LAST',
+        'CJC-UNT', 'CJC-UNBX-T', 'CJC-UNBX-T2',
         # Box content in tables
         'NBX1-UNT', 'NBX1-UNT-T2',
     },

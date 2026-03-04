@@ -404,3 +404,50 @@ class TestSkipLlmExclusion:
             classifier._classify_chunk([marker], "test_doc", "Academic Document")
 
         assert "reached LLM payload build path" in caplog.text
+
+
+class TestLlmGeneratedProvenance:
+    """_classify_chunk sets llm_generated=True; skip_llm path does not."""
+
+    def test_classify_chunk_sets_llm_generated_true(self, classifier, mock_gemini_client):
+        """All results returned by _classify_chunk must carry llm_generated=True."""
+        block = _block(1, "Regular paragraph text", "BODY")
+        results = classifier._classify_chunk([block], "test_doc", "Academic Document")
+        assert len(results) > 0
+        for r in results:
+            assert r.get("llm_generated") is True, (
+                f"result id={r.get('id')} missing llm_generated=True"
+            )
+
+    def test_skip_llm_result_has_no_llm_generated(self, classifier):
+        """Results built by _build_skip_llm_result must NOT carry llm_generated=True."""
+        marker = _block(70, "<CN>", "BODY")
+        marker["skip_llm"] = True
+        marker["allowed_styles"] = ["PMI"]
+        result = classifier._build_skip_llm_result(marker)
+        assert result.get("llm_generated") is not True
+
+    def test_skip_llm_blocks_excluded_from_llm_path_no_llm_generated(
+        self, classifier, mock_gemini_client
+    ):
+        """In classify(), skip_llm blocks get gated=True / gate_rule=skip-llm,
+        never llm_generated=True."""
+        marker = _block(5, "<INSERT TABLE 2.1 HERE>", "BODY")
+        marker["skip_llm"] = True
+        normal = _block(6, "Body paragraph", "BODY")
+
+        classifier.cache = None
+        classifier.rule_learner = None
+
+        results = classifier.classify([marker, normal], "test_doc")
+        result_by_id = {r["id"]: r for r in results}
+
+        # skip_llm result: gated path, no llm_generated
+        skip_result = result_by_id[5]
+        assert skip_result["tag"] == "PMI"
+        assert skip_result.get("gated") is True
+        assert skip_result.get("llm_generated") is not True
+
+        # Normal result: LLM path, llm_generated=True
+        normal_result = result_by_id[6]
+        assert normal_result.get("llm_generated") is True

@@ -240,3 +240,55 @@ def test_ref_marker_section_coerces_entries_and_stops_before_tables():
     assert repaired[2]["tag"] == "REF-N"
     assert repaired[3]["tag"] == "REF-N"
     assert repaired[4]["tag"] == "T1"
+
+
+# ===================================================================
+# List-preservation guard: reference-zone entries not coerced by
+# enforce_list_hierarchy_from_word_xml()
+# ===================================================================
+
+def test_list_preservation_skips_is_reference_zone():
+    """SR entry with is_reference_zone=True survives list-preservation pass."""
+    from processor.list_preservation import enforce_list_hierarchy_from_word_xml
+
+    blocks = [
+        {"id": 1, "text": "References", "metadata": {"context_zone": "BODY"}},
+        {
+            "id": 2,
+            "text": "Smith, J. (2020). A title.",
+            "metadata": {
+                "context_zone": "BODY",
+                "is_reference_zone": True,
+                "xml_list_level": 0,
+                "xml_num_id": 1,
+            },
+        },
+    ]
+    clfs = [
+        {"id": 1, "tag": "SRH1", "confidence": 0.95},
+        {"id": 2, "tag": "SR", "confidence": 0.88},
+    ]
+    result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+    assert result[1]["tag"] == "SR"
+    assert "list_preserved" not in result[1]
+
+
+def test_list_preservation_skips_context_zone_reference():
+    """REF-N entry with context_zone=REFERENCE survives list-preservation pass."""
+    from processor.list_preservation import enforce_list_hierarchy_from_word_xml
+
+    blocks = [
+        {
+            "id": 1,
+            "text": "Jones, A. (2019). Another title.",
+            "metadata": {
+                "context_zone": "REFERENCE",
+                "xml_list_level": 0,
+                "xml_num_id": 2,
+            },
+        },
+    ]
+    clfs = [{"id": 1, "tag": "REF-N", "confidence": 0.85}]
+    result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+    assert result[0]["tag"] == "REF-N"
+    assert "list_preserved" not in result[0]

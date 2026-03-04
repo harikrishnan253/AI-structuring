@@ -1,0 +1,621 @@
+{
+  "alignment_threshold": 0.85,
+  "global_summary": {
+    "total_pairs": 30,
+    "total_rows": 11496,
+    "high_quality_rows": 5489,
+    "aligned_ratio": 0.4775,
+    "unmapped_rows": 2169,
+    "unmapped_ratio": 0.1887
+  },
+  "temp_excluded": {
+    "manual": [
+      "~$roll9781975212643-ch227_tagged.docx"
+    ],
+    "tag": []
+  },
+  "unmatched": {
+    "manual": [
+      "Wheeler_92516_Ch15_tag.docx",
+      "White_188217_Ch15_tag.docx"
+    ],
+    "tag": []
+  },
+  "per_doc": [
+    {
+      "doc_id": "Acharya9781975261764-ch002_tag",
+      "total_paragraphs": 215,
+      "aligned": 204,
+      "aligned_ratio": 0.9488,
+      "unmapped": 11,
+      "unmapped_ratio": 0.0512,
+      "top_tags": {
+        "TXT-FLUSH": 56,
+        "H2": 51,
+        "PMI": 30,
+        "Normal": 11,
+        "UNMAPPED": 11,
+        "T1": 11,
+        "H1": 10,
+        "BL-MID": 7,
+        "TXT": 7,
+        "SR": 7
+      }
+    },
+    {
+      "doc_id": "Acharya9781975261764-ch005_tag",
+      "total_paragraphs": 129,
+      "aligned": 109,
+      "aligned_ratio": 0.845,
+      "unmapped": 19,
+      "unmapped_ratio": 0.1473,
+      "top_tags": {
+        "PMI": 28,
+        "UNMAPPED": 19,
+        "SR": 14,
+        "TXT-FLUSH": 10,
+        "BL-MID": 10,
+        "H1": 9,
+        "BL-FIRST": 9,
+        "BL-LAST": 8,
+        "Normal": 6,
+        "H2": 5
+      }
+    },
+    {
+      "doc_id": "Campo63387_Ch54_tag",
+      "total_paragraphs": 270,
+      "aligned": 247,
+      "aligned_ratio": 0.9148,
+      "unmapped": 21,
+      "unmapped_ratio": 0.0778,
+      "top_tags": {
+        "BulletList1": 64,
+        "Normal": 27,
+        "UNMAPPED": 21,
+        "Reference-Alphabetical": 18,
+        "Para-FL": 15,
+        "FE-01-BulletList1": 15,
+        "FigureCaption": 15,
+        "NumberList1": 13,
+        "ParaFirstLine-Ind": 13,
+        "FG-CAP": 13
+      }
+    },
+    {
+      "doc_id": "Cash_7E_83668_Ch20_tag",
+      "total_paragraphs": 809,
+      "aligned": 809,
+      "aligned_ratio": 1.0,
+      "unmapped": 0,
+      "unmapped_ratio": 0.0,
+      "top_tags": {
+        "Uc-AlphatList1": 241,
+        "NumberList2": 187,
+        "Head2": 82,
+        "Lc-AlphaList3": 60,
+        "CTG_Uc-Alphalist1": 53,
+        "CTG_Para-FL1": 43,
+        "Normal": 31,
+        "Lc-RomanList4": 18,
+        "REF-U": 16,
+        "CTG_Head1-Runin": 15
+      }
+    },
+    {
+      "doc_id": "Cuffe_187977_Ch08_tag",
+      "total_paragraphs": 207,
+      "aligned": 203,
+      "aligned_ratio": 0.9807,
+      "unmapped": 1,
+      "unmapped_ratio": 0.0048,
+      "top_tags": {
+        "TXT": 34,
+        "BL2-MID": 24,
+        "BL-MID": 18,
+        "TXT-FLUSH": 16,
+        "Normal": 11,
+        "BL-FIRST": 10,
+        "BL-LAST": 10,
+        "UL-MID": 10,
+        "EOC-REF": 10,
+        "H1": 9
+      }
+    },
+    {
+      "doc_id": "Douglas_188116_Ch11_tag",
+      "total_paragraphs": 340,
+      "aligned": 333,
+      "aligned_ratio": 0.9794,
+      "unmapped": 4,
+      "unmapped_ratio": 0.0118,
+      "top_tags": {
+        "Normal": 80,
+        "TXT-FLUSH": 30,
+        "REF-U": 30,
+        "PT-H2": 20,
+        "TXT": 20,
+        "H1": 15,
+        "H2": 15,
+        "H3": 10,
+        "BL-MID": 6,
+        "APTX": 6
+      }
+    },
+    {
+      "doc_id": "Duggan9781975244347-ch006_tag",
+      "total_paragraphs": 72,
+      "aligned": 49,
+      "aligned_ratio": 0.6806,
+      "unmapped": 22,
+      "unmapped_ratio": 0.3056,
+      "top_tags": {
+        "UNMAPPED": 22,
+        "REF-N": 16,
+        "Normal": 10,
+        "T1": 8,
+        "TXT": 6,
+        "PMI": 4,
+        "CN": 1,
+        "CT": 1,
+        "CAU": 1,
+        "TXT-FLUSH": 1
+      }
+    },
+    {
+      "doc_id": "Duggan9781975244347-ch010_tag",
+      "total_paragraphs": 63,
+      "aligned": 58,
+      "aligned_ratio": 0.9206,
+      "unmapped": 5,
+      "unmapped_ratio": 0.0794,
+      "top_tags": {
+        "TXT-FLUSH": 11,
+        "REF-N": 10,
+        "TXT": 9,
+        "H2": 8,
+        "UNMAPPED": 5,
+        "H1": 4,
+        "Normal": 4,
+        "PMI": 3,
+        "FIG-LEG": 2,
+        "FIG-SRC": 2
+      }
+    },
+    {
+      "doc_id": "ENA_188122_CH02_tag",
+      "total_paragraphs": 306,
+      "aligned": 233,
+      "aligned_ratio": 0.7614,
+      "unmapped": 54,
+      "unmapped_ratio": 0.1765,
+      "top_tags": {
+        "EOC_REF": 98,
+        "UNMAPPED": 54,
+        "TXL": 33,
+        "BL": 31,
+        "TX": 30,
+        "H2": 10,
+        "H1": 8,
+        "BLF": 8,
+        "BLL": 8,
+        "COBJ": 4
+      }
+    },
+    {
+      "doc_id": "ENA_188122_CH04_tag",
+      "total_paragraphs": 273,
+      "aligned": 175,
+      "aligned_ratio": 0.641,
+      "unmapped": 70,
+      "unmapped_ratio": 0.2564,
+      "top_tags": {
+        "EOC_REF": 77,
+        "UNMAPPED": 70,
+        "TX": 51,
+        "TXL": 31,
+        "H2": 13,
+        "H1": 9,
+        "H3": 6,
+        "COBJ": 3,
+        "FGS": 2,
+        "CW": 1
+      }
+    },
+    {
+      "doc_id": "Edwards9781975219314-ch006_tag",
+      "total_paragraphs": 590,
+      "aligned": 7,
+      "aligned_ratio": 0.0119,
+      "unmapped": 2,
+      "unmapped_ratio": 0.0034,
+      "top_tags": {
+        "BX1-TXT-FIRST": 187,
+        "OBJ-BL-MID": 147,
+        "OBJ-BL-LAST": 98,
+        "OBJ-BL-FIRST": 36,
+        "BL-MID": 23,
+        "CT": 22,
+        "SP-H1": 19,
+        "OBJ-TXT": 15,
+        "H1": 9,
+        "CN": 8
+      }
+    },
+    {
+      "doc_id": "Edwards9781975219314-ch013_tag",
+      "total_paragraphs": 415,
+      "aligned": 10,
+      "aligned_ratio": 0.0241,
+      "unmapped": 1,
+      "unmapped_ratio": 0.0024,
+      "top_tags": {
+        "PT": 156,
+        "CT": 97,
+        "OBJ-BL-FIRST": 51,
+        "OBJ-BL-MID": 45,
+        "OBJ-BL-LAST": 30,
+        "PMI": 10,
+        "CN": 9,
+        "PN": 3,
+        "BX1-TXT-FLUSH": 3,
+        "OBJ-TXT": 2
+      }
+    },
+    {
+      "doc_id": "Goroll9781975212643-ch032_tagged",
+      "total_paragraphs": 1003,
+      "aligned": 6,
+      "aligned_ratio": 0.006,
+      "unmapped": 100,
+      "unmapped_ratio": 0.0997,
+      "top_tags": {
+        "TFN": 849,
+        "UNMAPPED": 100,
+        "T1": 42,
+        "Normal": 6,
+        "APX-REF-N": 2,
+        "H4": 1,
+        "H2": 1,
+        "REFH2": 1,
+        "REF-N": 1
+      }
+    },
+    {
+      "doc_id": "Goroll9781975212643-ch227_tagged",
+      "total_paragraphs": 1306,
+      "aligned": 10,
+      "aligned_ratio": 0.0077,
+      "unmapped": 1211,
+      "unmapped_ratio": 0.9273,
+      "top_tags": {
+        "UNMAPPED": 1211,
+        "REFH2": 39,
+        "T1": 22,
+        "Normal": 9,
+        "TFN": 6,
+        "FIG-LEG": 4,
+        "TSN": 4,
+        "REFH1": 3,
+        "H3": 2,
+        "REFH2a": 2
+      }
+    },
+    {
+      "doc_id": "Howley9781975221171-ch071_tagged",
+      "total_paragraphs": 307,
+      "aligned": 42,
+      "aligned_ratio": 0.1368,
+      "unmapped": 60,
+      "unmapped_ratio": 0.1954,
+      "top_tags": {
+        "REF-N": 121,
+        "UNMAPPED": 60,
+        "PMI": 34,
+        "H1": 22,
+        "H2": 18,
+        "T1": 14,
+        "H3": 9,
+        "Normal": 8,
+        "TXT": 8,
+        "COUT-2": 4
+      }
+    },
+    {
+      "doc_id": "Jensen9781975266479-ch002_tag",
+      "total_paragraphs": 674,
+      "aligned": 673,
+      "aligned_ratio": 0.9985,
+      "unmapped": 0,
+      "unmapped_ratio": 0.0,
+      "top_tags": {
+        "NBX-BL-MID": 126,
+        "TXT-FLUSH": 79,
+        "TXT": 73,
+        "NBX-H2": 36,
+        "H3": 34,
+        "List Paragraph": 32,
+        "H2": 28,
+        "NBX-H1": 21,
+        "NBX-TXT": 18,
+        "KP-BL-MID": 17
+      }
+    },
+    {
+      "doc_id": "Jensen9781975266479-ch003_tag",
+      "total_paragraphs": 463,
+      "aligned": 460,
+      "aligned_ratio": 0.9935,
+      "unmapped": 3,
+      "unmapped_ratio": 0.0065,
+      "top_tags": {
+        "Normal": 48,
+        "TXT": 48,
+        "TXT-FLUSH": 38,
+        "RQ-LL2-MID": 26,
+        "BL-MID": 23,
+        "NBX-UL-MID": 20,
+        "PMI": 17,
+        "CJC-NN-TXT": 15,
+        "H3": 13,
+        "FIG-LEG": 11
+      }
+    },
+    {
+      "doc_id": "Kapu_6e_58895_Ch18_tag",
+      "total_paragraphs": 250,
+      "aligned": 190,
+      "aligned_ratio": 0.76,
+      "unmapped": 5,
+      "unmapped_ratio": 0.02,
+      "top_tags": {
+        "ReferenceAlphabetical": 74,
+        "ChapterTitle": 17,
+        "BulletList2": 17,
+        "Head2": 16,
+        "Normal": 16,
+        "Para-FL": 15,
+        "BulletList1_first": 14,
+        "BulletList1_last": 12,
+        "BulletList1": 10,
+        "Head1": 7
+      }
+    },
+    {
+      "doc_id": "Karayalcin_188273_Ch09_tag",
+      "total_paragraphs": 386,
+      "aligned": 277,
+      "aligned_ratio": 0.7176,
+      "unmapped": 109,
+      "unmapped_ratio": 0.2824,
+      "top_tags": {
+        "UNMAPPED": 109,
+        "TXT": 66,
+        "BL2-MID": 37,
+        "TXT-FLUSH": 30,
+        "Normal": 20,
+        "QUES-LL2-MID": 20,
+        "H2": 15,
+        "NL-MID": 11,
+        "QUES-NL-MID": 11,
+        "ANS-UL-MID": 11
+      }
+    },
+    {
+      "doc_id": "Karuppan_79753_Ch13_tag",
+      "total_paragraphs": 302,
+      "aligned": 298,
+      "aligned_ratio": 0.9868,
+      "unmapped": 3,
+      "unmapped_ratio": 0.0099,
+      "top_tags": {
+        "ParaFirstLine-Ind": 35,
+        "PMI": 31,
+        "Para-FL": 25,
+        "Reference-Alphabetical": 20,
+        "Head1": 19,
+        "NumberList1": 16,
+        "EOC-NumberList1": 16,
+        "Normal": 16,
+        "BulletList1": 13,
+        "TableCaption": 10
+      }
+    },
+    {
+      "doc_id": "Lynn9781975252823-ch004_tag",
+      "total_paragraphs": 234,
+      "aligned": 29,
+      "aligned_ratio": 0.1239,
+      "unmapped": 65,
+      "unmapped_ratio": 0.2778,
+      "top_tags": {
+        "UNMAPPED": 65,
+        "BX6-TXT-FIRST": 64,
+        "BX4-TTL": 32,
+        "BX6-TTL": 23,
+        "PMI": 22,
+        "BX6-TYPE": 14,
+        "Body text (3)1": 4,
+        "BX4-TYPE": 3,
+        "Body text (37)1": 2,
+        "OBJ1": 1
+      }
+    },
+    {
+      "doc_id": "Nash9781975260330-domain002_tag",
+      "total_paragraphs": 244,
+      "aligned": 8,
+      "aligned_ratio": 0.0328,
+      "unmapped": 81,
+      "unmapped_ratio": 0.332,
+      "top_tags": {
+        "BX1-QUES-TXT": 104,
+        "UNMAPPED": 81,
+        "QUES-TXT-FLUSH": 47,
+        "Normal": 8,
+        "CT": 3,
+        "SRH1": 1
+      }
+    },
+    {
+      "doc_id": "Nora_188365_Ch07_tag",
+      "total_paragraphs": 79,
+      "aligned": 67,
+      "aligned_ratio": 0.8481,
+      "unmapped": 10,
+      "unmapped_ratio": 0.1266,
+      "top_tags": {
+        "NL-MID": 15,
+        "UL-MID": 10,
+        "UNMAPPED": 10,
+        "H1": 7,
+        "TXT": 6,
+        "UL-FIRST": 4,
+        "H2": 4,
+        "UL-LAST": 3,
+        "NL-FIRST": 3,
+        "NL-LAST": 3
+      }
+    },
+    {
+      "doc_id": "Nora_188365_Ch17_tagged",
+      "total_paragraphs": 81,
+      "aligned": 80,
+      "aligned_ratio": 0.9877,
+      "unmapped": 0,
+      "unmapped_ratio": 0.0,
+      "top_tags": {
+        "TXT": 17,
+        "NL-MID": 11,
+        "H1": 7,
+        "UL-MID": 6,
+        "UL-FIRST": 4,
+        "H2": 4,
+        "NL-FIRST": 4,
+        "NL-LAST": 4,
+        "UL-LAST": 3,
+        "Normal": 3
+      }
+    },
+    {
+      "doc_id": "OConnell-187905_CH05_tag",
+      "total_paragraphs": 851,
+      "aligned": 424,
+      "aligned_ratio": 0.4982,
+      "unmapped": 206,
+      "unmapped_ratio": 0.2421,
+      "top_tags": {
+        "TX": 246,
+        "UNMAPPED": 206,
+        "TXL": 126,
+        "EOC_REF": 98,
+        "CO_KTL": 44,
+        "EOC_NLLL": 40,
+        "H3": 39,
+        "EOC_NL": 19,
+        "COBJ": 8,
+        "COUT2": 4
+      }
+    },
+    {
+      "doc_id": "Patton46762_Ch11_tag",
+      "total_paragraphs": 367,
+      "aligned": 285,
+      "aligned_ratio": 0.7766,
+      "unmapped": 24,
+      "unmapped_ratio": 0.0654,
+      "top_tags": {
+        "ParaFirstLine-Ind": 162,
+        "Reference-Alphabetical": 47,
+        "UNMAPPED": 24,
+        "ChapterTitle": 17,
+        "Para-FL": 17,
+        "EOC-NumberList1": 15,
+        "Head1": 9,
+        "FE-02-ParaFirstLine-Ind": 9,
+        "PMI": 7,
+        "Head2": 6
+      }
+    },
+    {
+      "doc_id": "Raupp-2E_188008 _Ch10_tag",
+      "total_paragraphs": 171,
+      "aligned": 156,
+      "aligned_ratio": 0.9123,
+      "unmapped": 14,
+      "unmapped_ratio": 0.0819,
+      "top_tags": {
+        "Para-FL": 27,
+        "ParaFirstLine-Ind": 25,
+        "Reference-Numbered": 24,
+        "UNMAPPED": 14,
+        "Head2": 12,
+        "Head1": 11,
+        "BulletList1": 11,
+        "PMI": 11,
+        "Normal": 9,
+        "BulletList1_First": 5
+      }
+    },
+    {
+      "doc_id": "Rawlins_59625_Ch07_tag",
+      "total_paragraphs": 586,
+      "aligned": 5,
+      "aligned_ratio": 0.0085,
+      "unmapped": 22,
+      "unmapped_ratio": 0.0375,
+      "top_tags": {
+        "FigureLegend": 544,
+        "UNMAPPED": 22,
+        "Normal": 5,
+        "Head2": 4,
+        "SP-Heading2": 3,
+        "Head1": 2,
+        "EOC-NumberList1": 2,
+        "LearningObj-BulletList1": 1,
+        "ChapterNumber": 1,
+        "LearningObj-BulletList1-last": 1
+      }
+    },
+    {
+      "doc_id": "Taylor9781975243678-ch008_tag",
+      "total_paragraphs": 104,
+      "aligned": 10,
+      "aligned_ratio": 0.0962,
+      "unmapped": 12,
+      "unmapped_ratio": 0.1154,
+      "top_tags": {
+        "BX4-TTL": 38,
+        "UNMAPPED": 12,
+        "H2": 8,
+        "H3": 8,
+        "RQ-LL2-MID": 7,
+        "TXT-FLUSH": 6,
+        "BL2-MID": 5,
+        "TXT": 3,
+        "REF-U": 3,
+        "BX1-H2": 2
+      }
+    },
+    {
+      "doc_id": "Wheeler92516_Ch08_tag",
+      "total_paragraphs": 399,
+      "aligned": 32,
+      "aligned_ratio": 0.0802,
+      "unmapped": 34,
+      "unmapped_ratio": 0.0852,
+      "top_tags": {
+        "REF-U": 84,
+        "Para-FL": 66,
+        "CaseStudy-BulletList1": 37,
+        "UNMAPPED": 34,
+        "Head2": 21,
+        "BulletList1": 20,
+        "UL-FL2": 18,
+        "Head3": 13,
+        "EOC-NumberList1": 13,
+        "UL-FL1_first": 10
+      }
+    }
+  ]
+}

@@ -78,7 +78,19 @@ def enforce_list_hierarchy_from_word_xml(blocks: Sequence[dict]) -> list[dict]:
 
         # Check for XML list level (ilvl extracted from Word numPr during ingestion)
         xml_level = meta.get("xml_list_level")
+
         if xml_level is None:
+            # Fallback: use detector-enriched list_style_prefix when OOXML numPr
+            # is absent (style-based or indent-only lists detected by
+            # _enrich_list_metadata in extract_blocks).
+            list_style_prefix = meta.get("list_style_prefix")
+            if not list_style_prefix:
+                continue
+            tag = f"{list_style_prefix}MID"  # e.g. "BL2-MID", "NL-MID"
+            block["lock_style"] = True
+            block["allowed_styles"] = [tag]
+            block["skip_llm"] = True
+            marked += 1
             continue
 
         # Determine list family from metadata hints

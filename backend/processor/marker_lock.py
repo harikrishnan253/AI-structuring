@@ -159,9 +159,12 @@ def relock_marker_classifications(
     - Overrides non-PMI tags back to PMI
 
     **Leak detection**:
-    - If a marker block has ``gated=False`` or ``reasoning`` field (LLM output),
-      it leaked to the LLM despite ``skip_llm=True`` flag
-    - Logs as ``leaked_to_llm`` metric
+    - Case A (true leak): block had ``skip_llm=True`` AND received LLM-generated
+      output (``gated=False`` or ``reasoning`` without ``rule_based=True``).
+      Logged as WARNING; counted in ``leaked_to_llm`` metric.
+    - Case B (no prior lock): marker identified by text pattern or ``_is_marker``
+      flag but without ``skip_llm=True`` metadata. Logged at DEBUG only; not
+      counted in ``leaked_to_llm`` metric.
 
     Parameters
     ----------
@@ -217,19 +220,35 @@ def relock_marker_classifications(
         markers_total += 1
 
         # Check if leaked to LLM.
-        # A marker block leaked if:
-        #   - gated is explicitly False (LLM path), OR
-        #   - has LLM-generated "reasoning" but was NOT deterministically gated
-        #     and was NOT classified by the rule learner (rule_based=True).
-        # Rule-based predictions also set "reasoning", so we exclude them to
-        # avoid false positives.
-        if (clf.get("gated") is False or clf.get("reasoning")) and not clf.get("rule_based"):
-            leaked_to_llm += 1
-            logger.warning(
-                "marker-lock: block %s leaked to LLM despite skip_llm flag (text=%r)",
-                clf_id,
-                text[:50],
-            )
+        # A block is "LLM-touched" if:
+        #   - llm_generated=True (set by _classify_chunk on true LLM outputs), OR
+        #   - gated is explicitly False (LLM path — backward compat signal).
+        # Presence of "reasoning" alone is NOT sufficient — rule-based and
+        # deterministic classifiers also set "reasoning".
+        # Two distinct cases once llm_touched is True:
+        #   Case A (true leak): block had skip_llm=True — log WARNING + count.
+        #   Case B (no prior lock): marker detected post-hoc without skip_llm
+        #     metadata — log DEBUG only, do not count in leaked_to_llm metric.
+        had_skip_llm = block.get("skip_llm") is True
+        llm_touched = (
+            (clf.get("llm_generated") is True or clf.get("gated") is False)
+            and not clf.get("rule_based")
+        )
+        if llm_touched:
+            if had_skip_llm:
+                leaked_to_llm += 1
+                logger.warning(
+                    "marker-lock: block %s leaked to LLM despite skip_llm flag (text=%r)",
+                    clf_id,
+                    text[:50],
+                )
+            else:
+                logger.debug(
+                    "marker-lock: block %s is a marker but had no skip_llm lock"
+                    " (text=%r); relocked to PMI",
+                    clf_id,
+                    text[:50],
+                )
 
         # Check if tag is already PMI
         current_tag = clf.get("tag", "")

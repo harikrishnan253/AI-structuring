@@ -162,6 +162,9 @@ backend/
 │   ├── test_integrity_trigger.py # 27 tests
 │   ├── test_force_llm.py         # 14 tests
 │   └── [other tests...]
+├── tools/
+│   ├── eval_generalization.py   # Offline ablation & generalization evaluation (no LLM)
+│   └── build_semantic_knowledge.py    # Offline semantic artifact builder (Phase 1)
 ├── app/
 │   ├── api/                     # Flask endpoints
 │   └── services/                # Business logic
@@ -172,6 +175,7 @@ ai_context/                      # Project documentation (this folder)
 ├── PROJECT_CONTEXT.md
 ├── INTEGRITY_INVARIANTS.md
 ├── TAG_SEMANTICS_CORPUS.md
+├── OFFLINE_PIPELINE_GUIDE.md   # Offline rule learning + generalization evaluation
 ├── SESSION_SNAPSHOT.md
 ├── DECISIONS_LOG.md
 └── KNOWN_ISSUES.md

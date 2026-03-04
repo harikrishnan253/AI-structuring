@@ -53,6 +53,36 @@ _ALIASES = _load_aliases()
 _ALLOWED_STYLES = _load_allowed_styles()
 
 
+def _build_casestudy_lookup(allowed: set[str]) -> dict[str, str]:
+    """Build a case-insensitive lookup for the CaseStudy/CaseBeg/CaseEnd style family.
+
+    For each matching entry in *allowed* (e.g. ``CaseStudy-Dialogue``,
+    ``CaseStudyTitle``), two lookup keys are stored:
+
+    * ``style.upper()``                   — e.g. ``"CASESTUDY-DIALOGUE"``
+    * ``style.upper().replace('_', '-')`` — e.g. ``"CASESTUDY-DIALOGUE-FIRST"``
+
+    This lets :func:`normalize_style` resolve LLM outputs such as
+    ``"CASESTUDY-DIALOGUE"`` or ``"CASESTUDYTITLE"`` to the correct mixed-case
+    canonical form without touching the fuzzy ``_find_closest_style`` fallback.
+
+    The function is deliberately agnostic about which canonical forms exist;
+    it derives everything from the live *allowed* set so it automatically
+    tracks additions to ``allowed_styles.json``.
+    """
+    lookup: dict[str, str] = {}
+    for style in sorted(allowed):  # sorted → deterministic precedence on conflicts
+        if style.lower().startswith(("casestudy", "casebeg", "caseend")):
+            key_exact = style.upper()
+            key_norm = key_exact.replace("_", "-")  # underscore → dash variant
+            lookup.setdefault(key_exact, style)
+            lookup.setdefault(key_norm, style)
+    return lookup
+
+
+_CASESTUDY_LOOKUP: dict[str, str] = _build_casestudy_lookup(_ALLOWED_STYLES)
+
+
 def _find_closest_style(tag: str, allowed_styles: set[str] | None = None, min_similarity: float = 0.6) -> str:
     """
     Find the closest valid style to the given tag using string similarity.
@@ -73,6 +103,25 @@ def _find_closest_style(tag: str, allowed_styles: set[str] | None = None, min_si
 
     if not tag:
         return "TXT"
+
+    # Box-prefix family guard: NBX-* and NBX1-* tags must stay within their
+    # own prefix family to prevent cross-family similarity drift
+    # (e.g. NBX-BL3-FIRST drifting to FN-BL-FIRST).
+    _tag_upper = tag.upper()
+    for _nbx_pfx in ("NBX-", "NBX1-"):
+        if _tag_upper.startswith(_nbx_pfx):
+            family = {s for s in allowed_styles if s.upper().startswith(_nbx_pfx)}
+            if family:
+                best_fm, best_fs = None, 0.0
+                for s in family:
+                    r = SequenceMatcher(None, _tag_upper, s.upper()).ratio()
+                    if r > best_fs:
+                        best_fs, best_fm = r, s
+                if best_fs >= min_similarity and best_fm:
+                    return best_fm
+            # No acceptable match within the NBX family — return TXT rather
+            # than allowing drift into an unrelated tag family.
+            return "TXT"
 
     best_match = None
     best_score = 0.0
@@ -186,6 +235,25 @@ def normalize_style(name: str, meta: dict | None = None, enforce_membership: boo
     text = str(name).strip().replace(NBSP, " ")
     # Collapse internal whitespace
     text = re.sub(r"\s+", " ", text)
+
+    # CaseStudy family: normalize all-caps / mixed-separator LLM variants to the
+    # canonical mixed-case style names from allowed_styles.json.
+    #
+    # Examples resolved here (not via fuzzy fallback):
+    #   "CASESTUDY-DIALOGUE"         → "CaseStudy-Dialogue"
+    #   "CASESTUDYTITLE"             → "CaseStudyTitle"
+    #   "CASESTUDY-PARAFIRSTLINE-IND"→ "CaseStudy-ParaFirstLine-Ind"
+    #   "CASESTUDY_DIALOGUE_FIRST"   → "CaseStudy-Dialogue_first"
+    #
+    # Placed BEFORE the vendor-prefix stripper so that inputs like
+    # "CASESTUDY_DIALOGUE" are not split into prefix=CASESTUDY + rest=DIALOGUE.
+    _text_upper = text.upper()
+    if _text_upper.startswith(("CASESTUDY", "CASEBEG", "CASEEND")):
+        _canon = _CASESTUDY_LOOKUP.get(_text_upper) or _CASESTUDY_LOOKUP.get(
+            _text_upper.replace("_", "-")
+        )
+        if _canon:
+            text = _canon
 
     # BX-style normalization (keep separate from general vendor prefixes)
     if "BX" in text:

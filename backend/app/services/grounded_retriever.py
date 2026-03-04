@@ -8,6 +8,7 @@ Provides few-shot examples to ground the LLM in actual manual-tagged data.
 from __future__ import annotations
 
 import json
+import os
 import re
 import hashlib
 import logging
@@ -20,6 +21,36 @@ logger = logging.getLogger(__name__)
 # Path to ground truth dataset
 ROOT = Path(__file__).resolve().parents[3]
 GROUND_TRUTH_PATH = ROOT / "backend" / "data" / "ground_truth.jsonl"
+
+# ---------------------------------------------------------------------------
+# Runtime toggle — controlled entirely by environment variables.
+#
+#   ENABLE_GROUNDED_RETRIEVER   default: false
+#       Master switch.  When false the retriever is never loaded and
+#       ground_truth.jsonl is never opened at runtime.
+#
+#   GROUNDED_RETRIEVER_MODE     default: prompt_examples
+#       What the retriever is used for (only relevant when enabled).
+#       Accepted values:
+#         off                 — load nothing (same effect as disabling master toggle)
+#         prompt_examples     — inject few-shot examples into the LLM prompt
+#         invalid_tag_fallback — apply similarity-based tag override for unknown tags
+# ---------------------------------------------------------------------------
+_ENABLE_RETRIEVER: bool = (
+    os.getenv("ENABLE_GROUNDED_RETRIEVER", "false").lower() in ("1", "true", "yes")
+)
+_RETRIEVER_MODE: str = os.getenv("GROUNDED_RETRIEVER_MODE", "prompt_examples").lower()
+
+
+def is_prompt_examples_enabled() -> bool:
+    """Return True if the retriever should inject few-shot examples into prompts."""
+    return _ENABLE_RETRIEVER and _RETRIEVER_MODE == "prompt_examples"
+
+
+def is_invalid_tag_fallback_enabled() -> bool:
+    """Return True if the retriever should be used as an invalid-tag fallback."""
+    return _ENABLE_RETRIEVER and _RETRIEVER_MODE == "invalid_tag_fallback"
+
 
 # Text normalization
 WS_RE = re.compile(r"\s+")
@@ -136,9 +167,11 @@ class GroundedRetriever:
 
     def _tokenize(self, text: str) -> list[str]:
         """Simple tokenization."""
-        # Split on word boundaries, keep alphanumeric
+        # Split on word boundaries, keep alphanumeric; discard pure-digit tokens
+        # (section/figure numbers like "3", "10", "2" carry no semantic meaning
+        # and cause false similarity matches between "Figure 10.2" and "Table 2.1").
         tokens = re.findall(r"\b\w+\b", text.lower())
-        return tokens
+        return [t for t in tokens if not t.isdigit()]
 
     def _cosine_similarity(self, vec1: dict[str, float], vec2: dict[str, float]) -> float:
         """Calculate cosine similarity between two TF-IDF vectors."""
@@ -184,7 +217,8 @@ class GroundedRetriever:
         k: int = 8,
         doc_id: str | None = None,
         zone: str | None = None,
-        canonical_tag: str | None = None
+        canonical_tag: str | None = None,
+        metadata: dict | None = None,
     ) -> list[dict[str, Any]]:
         """
         Retrieve top-k most similar examples from ground truth.
@@ -199,6 +233,10 @@ class GroundedRetriever:
         Returns:
             List of similar examples with scores
         """
+        # Allow callers to pass metadata dict instead of zone directly
+        if zone is None and metadata:
+            zone = metadata.get("context_zone")
+
         if not self.examples:
             logger.warning("No ground truth examples loaded")
             return []
@@ -283,6 +321,61 @@ class GroundedRetriever:
 
         return diverse[:k]
 
+    def suggest_teacher_forced_tag(
+        self,
+        text: str,
+        metadata: dict,
+        allowed_styles: set[str],
+    ) -> str | None:
+        """Return a high-confidence corpus-grounded tag suggestion, or None.
+
+        Retrieves the top-k most similar corpus examples and performs a
+        majority vote among those whose tag is present in *allowed_styles*.
+        Returns the winning tag only when:
+          - at least 2 of the top-k examples agree on the same tag, OR
+          - the single top-ranked example exceeds a 0.5 similarity threshold.
+
+        This is intentionally conservative — it is only for cases where the
+        corpus clearly and repeatedly maps the same pattern to a single tag.
+
+        Args:
+            text:           Paragraph text to classify.
+            metadata:       Block metadata dict (used for context_zone).
+            allowed_styles: Set of tags valid for this paragraph's zone.
+
+        Returns:
+            Canonical tag string if a high-confidence match is found,
+            otherwise None.
+        """
+        if not self.examples or not allowed_styles:
+            return None
+
+        zone = (metadata or {}).get("context_zone")
+        examples = self.retrieve_examples(text, k=5, zone=zone)
+
+        if not examples:
+            return None
+
+        # Majority vote among allowed tags
+        tag_votes: Counter[str] = Counter()
+        for ex in examples:
+            tag = ex.get("canonical_gold_tag", "")
+            if tag and tag in allowed_styles:
+                tag_votes[tag] += 1
+
+        if tag_votes:
+            top_tag, top_count = tag_votes.most_common(1)[0]
+            if top_count >= 2:
+                return top_tag
+
+        # Single-example fallback: only when similarity is high enough
+        top_tag = examples[0].get("canonical_gold_tag", "")
+        top_sim = examples[0].get("similarity_score", 0.0)
+        if top_tag in allowed_styles and top_sim >= 0.5:
+            return top_tag
+
+        return None
+
     def format_examples_for_prompt(self, examples: list[dict[str, Any]]) -> str:
         """
         Format retrieved examples for inclusion in LLM prompt.
@@ -340,8 +433,17 @@ class GroundedRetriever:
 _retriever_instance: GroundedRetriever | None = None
 
 
-def get_retriever() -> GroundedRetriever:
-    """Get or create singleton retriever instance."""
+def get_retriever() -> GroundedRetriever | None:
+    """
+    Return the singleton GroundedRetriever, or None when retrieval is disabled.
+
+    Disabled when ENABLE_GROUNDED_RETRIEVER is not set/false, or when
+    GROUNDED_RETRIEVER_MODE is 'off'.  In the disabled case ground_truth.jsonl
+    is never opened and there is no runtime dependency on the corpus file.
+    """
+    if not _ENABLE_RETRIEVER or _RETRIEVER_MODE == "off":
+        return None
+
     global _retriever_instance
 
     if _retriever_instance is None:
@@ -351,8 +453,11 @@ def get_retriever() -> GroundedRetriever:
 
 
 if __name__ == "__main__":
-    # Test retrieval
+    # Test retrieval — set ENABLE_GROUNDED_RETRIEVER=true to activate.
     retriever = get_retriever()
+    if retriever is None:
+        print("Retriever disabled. Set ENABLE_GROUNDED_RETRIEVER=true to run this test.")
+        raise SystemExit(0)
     print(f"Loaded {len(retriever.examples)} examples")
     print("\nRetriever stats:")
     stats = retriever.get_stats()

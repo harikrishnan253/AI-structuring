@@ -27,7 +27,7 @@ This document tracks known issues, limitations, and edge cases in the document p
 
 ### ISS-017: List Handling Accuracy Still Degrades Across Publisher-Specific Families and Nested Variants 🟡
 
-**Status:** 🟡 Known limitation (actively improving)
+**Status:** 🟡 Partially resolved (2026-02-25) — FIRST/MID/LAST corruption for nested and interrupted lists fixed; remaining work is additional corpus-driven family rules
 **Component:** `style_normalizer.py`, `validator.py`, list normalizers, classifier/allowed-style vocab
 
 **Observed Symptom:**
@@ -47,62 +47,95 @@ This document tracks known issues, limitations, and edge cases in the document p
 - Semantic list-family positional alignment in `validator.py`
 - Expanded allowed-style vocab/fallback valid tags from tagged corpus
 
+**Mitigations added 2026-03-04 (Tasks 1-8):**
+- `ANS-UL` and `ANS-NL` (unsuffixed) → resolved deterministically to `-MID` via `style_aliases.json` and validator Strategy 1.5
+- `TUL` and `TUL-LAST` → resolved to `TUL-MID` via `style_aliases.json`
+- `CJC-NN-BL-LAST`, `CJC-UL-FIRST`, `CJC-UL-LAST` added to allowed styles and TABLE-zone constraints
+- Log-level semantics split: WARNING only for generic hard fallbacks (`TXT`, `TXT-FLUSH`, `T`, `PMI`); INFO for specific family remaps
+
 **Remaining Work:**
-- Add more corpus-derived list-family rules (especially `OBJ-*`, `KT-*`, `EOC-*`, `RQ-*`, `ANS-*`)
+- Add more corpus-derived list-family rules (especially `OBJ-*`, `KT-*`, `EOC-*`, `RQ-*`)
 - Build list-heavy regression set from tagged corpus and track per-family accuracy
+- Fix `normalize_style("DIALOGUE")` returning "DIA" instead of "DIA-MID" — DIA is not in `LIST_BASES` so the normalizer strips the -MID suffix; requires either adding DIA to LIST_BASES or a normalizer-level alias special-case
 - Improve cross-row/cross-cell list semantics in table-adjacent structures where applicable
 
 ---
 
-### ISS-018: T4 Over-Assignment in Table First-Column Cells 🔴
+### ISS-018: T4 Over-Assignment in Table First-Column Cells ✅
 
-**Status:** 🔴 Active bug
-**Component:** `backend/prompts/system_prompt.txt` (Rule 9a), LLM classifier
+**Status:** ✅ RESOLVED (2026-02-26)
+**Component:** `backend/prompts/system_prompt.txt` (Rule 9a), `backend/processor/validator.py`, `backend/processor/ingestion.py`
 **Date Identified:** 2026-02-24
+**Date Resolved:** 2026-02-26
 
 **Observed Symptom:**
 - 43 table cells assigned `T4` in `ENA_188122_CH04` where the publisher uses plain `TB` (→ `T`)
 - All 43 T4 assignments map to `TB` (plain body) in the publisher-tagged file
 - LLM uses first-column position as T4 trigger even when cell content is multi-word body data, not a short category label
 
-**Impact:**
-- ~43 extra style mismatches per chapter compared to publisher output
-- T4 semantics are: short (1–4 word) categorical row label; applies to much wider set than intended
+**Resolution (3-layer fix):**
+1. **`system_prompt.txt` Rule 9a** — Rewrote to explicitly DEFAULT to `T` for first-column cells; T4 now requires all 5 conditions: short label (1–4 words, max 5), names/identifies entire row, no trailing punctuation, not a sentence/clause, not numeric data. Added explicit "when in doubt between T and T4, ALWAYS choose T."
+2. **`validator.py` stub-col heuristic** — Restricted `is_stub_col` → T4 promotion to require `_looks_like_t4_heading(text)` passing (conservative: all-caps strings or multi-word 70%+ title-case, ≤60 chars, no trailing punctuation, not numeric). Body data cells can no longer be promoted to T4 by the validator.
+3. **`ingestion.py` `_infer_table_style()`** — Removed 3 locations that blanket-defaulted first-column cells to T4 (for T/TableBody/GT style, UNT style, and position-infer fallback). All now return `T`; the classifier decides T vs T4 from content.
 
-**Root Cause:**
-- Rule 9a in the classifier prompt was tightened last session but remains insufficiently conservative
-- LLM needs an explicit "when in doubt, default to T" instruction for first-column cells
-
-**Fix Target:**
-- `backend/prompts/system_prompt.txt` — add to Rule 9a: "NEVER use T4 for cells with multi-word content (>6 words), numeric data, or any cell that is not unambiguously a 1–4 word categorical row label. When in doubt between T and T4, always output T."
+**Coverage:** `test_t4_and_sdt_fixes.py` (26 tests), `test_table_inference.py` (9 tests, updated)
 
 ---
 
-### ISS-019: SDT (Content Control) Paragraphs Absorb Surrounding Box Zone 🔴
+### ISS-019: SDT (Content Control) Paragraphs Absorb Surrounding Box Zone ✅
 
-**Status:** 🔴 Active bug
-**Component:** `backend/processor/blocks.py` or zone-tagging step
+**Status:** ✅ RESOLVED (2026-02-26)
+**Component:** `backend/processor/ingestion.py`
 **Date Identified:** 2026-02-24
+**Date Resolved:** 2026-02-26
 
 **Observed Symptom:**
 - In `ENA_188122_CH04`: ~28 body paragraphs that appear inside `sdt` (Word content controls) are assigned `BX1-*` or `BX2-*` zone tags
 - Publisher tags these same paragraphs as plain body text (`TXL` → `TXT-FLUSH`, `TX` → `TXT`)
 - The paragraphs are in standalone content controls (figures, callouts), not inside PMI-bounded box regions
 
-**Impact:**
-- ~28 style mismatches per chapter where body-zone text is tagged as box-zone content
-- Downstream style validation may trigger zone-restriction repairs unnecessarily
+**Resolution:**
+- Added `DocumentIngestion._build_sdt_para_set(doc)` static method: pre-computes `id(p_elem)` for all `<w:p>` elements that are direct children of `<w:sdtContent>` inside body-level `<w:sdt>` elements (i.e., only direct `<w:body>` children, not table-nested SDTs).
+- In `extract_paragraphs()`, looks up each paragraph's `id(para._p)` against the pre-computed set. If the paragraph is inside a body-level SDT AND the current zone is `BOX_*`, resets zone to `BODY` and clears `box_type`.
+- Adds `is_sdt=True` to paragraph metadata for downstream traceability.
 
-**Root Cause:**
-- During block extraction, paragraphs inside `sdt` elements inherit the zone context of the surrounding BODY region (e.g., if the preceding section is in a BOX zone, the SDT paragraphs get BOX zone)
-- Standalone content controls should reset zone context to BODY
-
-**Fix Target:**
-- `backend/processor/blocks.py` (block extraction / zone context propagation) — when entering an `sdt` element that is a direct child of `<w:body>` (not nested inside a PMI-bounded box), reset `context_zone` to `BODY` for its contained paragraphs
+**Coverage:** `test_t4_and_sdt_fixes.py` (5 SDT tests: `TestBuildSdtParaSet` + `TestSdtZoneReset`)
 
 ---
 
 ## Resolved Issues
+
+### ISS-018: T4 Over-Assignment in Table First-Column Cells ✅
+
+**Status:** ✅ RESOLVED
+**Component:** `backend/prompts/system_prompt.txt`, `backend/processor/validator.py`, `backend/processor/ingestion.py`
+**Date Resolved:** 2026-02-26
+
+**Problem:**
+43 table cells per chapter assigned `T4` instead of `T`. LLM used first-column position as a T4 trigger regardless of cell content.
+
+**Resolution:**
+Three-layer fix: (1) Rule 9a in system_prompt.txt now defaults first-column cells to T and requires 5 conditions for T4; (2) validator.py stub-col heuristic gated by `_looks_like_t4_heading()`; (3) `_infer_table_style()` in ingestion.py no longer returns T4 for any first-column cell by default.
+
+**Coverage:** `test_t4_and_sdt_fixes.py` (26 tests), `test_table_inference.py` (9 tests, updated)
+
+---
+
+### ISS-019: SDT (Content Control) Paragraphs Absorb Surrounding Box Zone ✅
+
+**Status:** ✅ RESOLVED
+**Component:** `backend/processor/ingestion.py`
+**Date Resolved:** 2026-02-26
+
+**Problem:**
+~28 paragraphs inside body-level Word `<w:sdt>` content controls inherited surrounding BOX zone instead of resetting to BODY zone.
+
+**Resolution:**
+Added `_build_sdt_para_set()` static method to `DocumentIngestion`; `extract_paragraphs()` resets zone to BODY for SDT paragraphs that would otherwise inherit a `BOX_*` zone. Adds `is_sdt=True` metadata flag for traceability.
+
+**Coverage:** `test_t4_and_sdt_fixes.py` (5 SDT tests)
+
+---
 
 ### ISS-005: Marker-Locked (`skip_llm`) Blocks Leaked into LLM Payload ✅
 
@@ -156,20 +189,31 @@ LLM output tags `COUT-BL-FIRST` and `COUT-BL-LAST` were not present in `allowed_
 
 ---
 
-### ISS-013: `relock_marker_classifications()` False Positive on Rule-Based Predictions ✅
+### ISS-013: `relock_marker_classifications()` Leak Diagnostic Precision ✅
 
-**Status:** ✅ RESOLVED
+**Status:** ✅ RESOLVED (extended 2026-03-02)
 **Component:** `backend/processor/marker_lock.py`
 **Date Identified:** 2026-02-24
-**Date Resolved:** 2026-02-24
+**Date Resolved (initial):** 2026-02-24 — excluded rule-based predictions from leak detection
+**Date Resolved (extended):** 2026-03-02 — distinguished Case A (true skip_llm leak) from Case B (post-hoc marker detection)
 
-**Problem:**
-The "leaked to LLM" detection check `clf.get("gated") is False or clf.get("reasoning")` was too broad. Rule-based predictions (from `_apply_rules()`) also set `reasoning`, so any marker block that got rule-classified would trigger a spurious LLM-leak warning.
+**Problem (initial, 2026-02-24):**
+The "leaked to LLM" check `clf.get("gated") is False or clf.get("reasoning")` was too broad. Rule-based predictions also set `reasoning`, so any rule-classified marker block triggered a spurious LLM-leak warning.
 
-**Resolution:**
-- Updated check to exclude rule-based classifications: `(clf.get("gated") is False or clf.get("reasoning")) and not clf.get("rule_based")`.
+**Resolution (initial):**
+Updated check to exclude rule-based classifications: `(clf.get("gated") is False or clf.get("reasoning")) and not clf.get("rule_based")`.
 
-**Coverage:** `tests/test_marker_lock.py` (65 tests, all pass).
+**Problem (extended, 2026-03-02):**
+Even with the rule-based exclusion, `leaked_to_llm` and the WARNING were firing for markers that arrived at the post-classification re-lock pass *without* a prior `skip_llm=True` flag (Case B: post-hoc marker detection by text pattern). These should not count as true leaks.
+
+**Resolution (extended):**
+Added `had_skip_llm = block.get("skip_llm") is True` guard:
+- **Case A** (true leak): block had `skip_llm=True` AND LLM-touched → WARNING + `leaked_to_llm` increment
+- **Case B** (post-hoc): marker detected without prior `skip_llm=True` → DEBUG only; not counted
+
+PMI re-lock behavior unchanged for both cases. See ADR-030.
+
+**Coverage:** `tests/test_marker_lock.py` (78 tests — 12 new tests in `TestLeakDiagnosticCorrectness`).
 
 ---
 
@@ -656,6 +700,71 @@ def enforce_style_only_mutation(input_path, output_path):
 
 ---
 
+## Accepted Non-Goals / Limitations
+
+These are known behaviors that are intentionally out of scope for the pipeline. They will not be fixed unless scope explicitly changes.
+
+### NGL-001: `prev_tag` Transition Rules Cannot Fire at Runtime Without Explicit Metadata Injection
+
+**Status:** 🟢 Handled (by design)
+**Date noted:** 2026-02-27
+
+`rule_learner.py` can learn rules with condition `prev_tag=X` from the training corpus (via `enrich_from_semantic_artifacts()` transition priors). However, `apply_rules()` calls `feature_extractor.extract_features(text, metadata)` internally, and `extract_features()` does not populate `prev_tag` from the `metadata` dict. As a result, `prev_tag=X` conditions never match at runtime.
+
+**Implication:** Transition-prior enriched rules are included in `learned_rules.json` and counted by eval tools, but have zero effective coverage in the runtime classifier path.
+
+**Accepted because:** Injecting `prev_tag` into every classification call would require the classifier to maintain per-document sequential state, which conflicts with the current batch/chunk architecture. The rules remain in the file and may become active if `extract_features()` is extended later.
+
+**Reference:** ADR-029.
+
+---
+
+### NGL-002: Dash-Prefixed False Positives Are an Ingestion-Layer Issue
+
+**Status:** 🟢 Handled (by design)
+**Date noted:** 2026-02-27
+
+Some DOCX files contain paragraphs whose raw text begins with a dash character (e.g., `- Item text`) that is part of the source content, not a list marker. These can produce false positives in `list_hierarchy.py` or `blocks.py` when the list-detection heuristic fires on dash-prefixed text.
+
+**Accepted because:** The pipeline's list-detection logic operates on extracted text and XML list markers. Distinguishing "dash-as-bullet-char" from "dash-as-content-prefix" requires publisher-specific knowledge that is not consistently available. Fixing this in the pipeline would require per-publisher ingestion overrides that are out of scope for the current architecture.
+
+**Workaround:** If a specific publisher uses dash-prefix content, add a publisher-specific alias or pre-processing rule in `style_aliases.json` or `blocks.py` ingestion logic.
+
+---
+
+### NGL-003: Paragraph-Index Drift in Holdout Reporting Is Not Tracked
+
+**Status:** 🟡 Known Limitation
+**Date noted:** 2026-02-27
+
+`eval_generalization.py` and `rule_learner.py` holdout evaluation reports paragraph-level metrics (accuracy, coverage, per-tag P/R). When the same document is split between train and holdout sets at the doc level, paragraph indices within each split are re-counted from zero. This means holdout report row counts will differ from the full-corpus counts.
+
+**Implication:** Holdout metrics are internally consistent and correct for generalization measurement. However, paragraph-level diagnostics (which specific paragraphs failed) cannot be cross-referenced with the full-corpus index without re-running evaluation on the full set.
+
+**Accepted because:** The primary purpose of holdout evaluation is aggregate generalization metrics, not per-paragraph debugging. Per-paragraph debugging should be done on the full training set or with specific document fixtures.
+
+---
+
+### NGL-004: Grounded Retriever Index Is Stale After Corpus Updates
+
+**Status:** 🟡 Known Limitation
+**Date noted:** 2026-03-02
+
+When `ENABLE_GROUNDED_RETRIEVER=true`, the classifier builds a TF-IDF index over `ground_truth.jsonl` at startup. If the corpus is updated (entries added, removed, or relabelled) while the service is running, the in-memory index becomes stale. The service does not detect corpus changes at classification time.
+
+**Implication:** Classifications made with a stale index may retrieve outdated example paragraphs. The mismatch between retrieved examples and current canonical labels could cause soft accuracy regressions without any error signal.
+
+**Accepted because:**
+- `ENABLE_GROUNDED_RETRIEVER` defaults to `false`; stale-index risk only materialises in development or research configurations.
+- Corpus updates in production follow the re-training checklist (OFFLINE_PIPELINE_GUIDE.md), which includes a service restart as its final step.
+- Adding a corpus file-watcher would require background threads and introduce complexity that is not justified for an optional research mode.
+
+**Workaround:** Restart the backend service after any `ground_truth.jsonl` update when `ENABLE_GROUNDED_RETRIEVER=true`.
+
+**Reference:** ADR-028 (runtime decoupling decision).
+
+---
+
 ## How to Use This Document
 
 1. **Before deployment:** Review Active Issues for production impact
@@ -678,7 +787,8 @@ def enforce_style_only_mutation(input_path, output_path):
 
 ---
 
-**Last Updated:** 2026-02-24
-**Total Active Issues:** 4 (ISS-017 list accuracy, ISS-018 T4 over-assignment, ISS-019 SDT zone leakage, OPS-001 environment-specific)
-**Total Resolved Issues:** 11 (ISS-001 through ISS-016, plus ISS-004/ISS-005)
+**Last Updated:** 2026-03-04
+**Total Active Issues:** 2 (ISS-017 list accuracy — partially mitigated, OPS-001 environment-specific)
+**Total Resolved Issues:** 13 (ISS-001 through ISS-019, plus ISS-004/ISS-005)
 **Total Edge Cases Documented:** 3
+**Accepted Non-Goals:** 4 (NGL-001 prev_tag runtime gap, NGL-002 dash-prefix false positives, NGL-003 holdout index drift, NGL-004 grounded retriever stale index)

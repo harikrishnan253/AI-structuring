@@ -16,13 +16,24 @@ def test_table_inference_header_row():
     assert repaired[0]["tag"] == "T2"
 
 
-def test_table_inference_stub_col():
+def test_table_inference_stub_col_heading_text():
+    """Stub-col with all-uppercase heading text → T4 (ISS-018)."""
+    blocks = [
+        {"id": 1, "text": "CAR T-CELLS", "metadata": {"context_zone": "TABLE", "is_header_row": False, "is_stub_col": True}},
+    ]
+    classifications = [{"id": 1, "tag": "T", "confidence": 0.8}]
+    repaired = validate_and_repair(classifications, blocks, allowed_styles={"T2", "T4", "T", "TFN"})
+    assert repaired[0]["tag"] == "T4"
+
+
+def test_table_inference_stub_col_plain_data():
+    """Stub-col with plain body data → T, not T4 (ISS-018 fix)."""
     blocks = [
         {"id": 1, "text": "Stub", "metadata": {"context_zone": "TABLE", "is_header_row": False, "is_stub_col": True}},
     ]
     classifications = [{"id": 1, "tag": "T", "confidence": 0.8}]
     repaired = validate_and_repair(classifications, blocks, allowed_styles={"T2", "T4", "T", "TFN"})
-    assert repaired[0]["tag"] == "T4"
+    assert repaired[0]["tag"] == "T"
 
 
 def test_table_inference_body_cell():

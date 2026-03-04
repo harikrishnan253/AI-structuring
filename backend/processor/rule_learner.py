@@ -35,6 +35,40 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 GROUND_TRUTH_PATH = DATA_DIR / "ground_truth.jsonl"
 LEARNED_RULES_PATH = DATA_DIR / "learned_rules.json"
 ALLOWED_STYLES_PATH = Path(__file__).parent.parent / "config" / "allowed_styles.json"
+SEMANTIC_KNOWLEDGE_PATH = DATA_DIR / "tag_semantics_knowledge.json"
+SEMANTIC_TRANSITIONS_PATH = DATA_DIR / "tag_transition_priors.json"
+
+
+def load_semantic_artifacts(
+    knowledge_path: Optional[Path] = None,
+    transitions_path: Optional[Path] = None,
+) -> dict:
+    """Load semantic artifact JSONs for offline enrichment.
+
+    Returns {} on missing files — callers degrade gracefully.
+    """
+    result: dict = {}
+    kp = knowledge_path or SEMANTIC_KNOWLEDGE_PATH
+    tp = transitions_path or SEMANTIC_TRANSITIONS_PATH
+
+    try:
+        if kp.exists():
+            with kp.open(encoding="utf-8") as f:
+                data = json.load(f)
+            result["zone_tag_priors"] = data.get("zone_tag_priors", {})
+            result["tag_families"] = data.get("tag_families", {})
+    except Exception as exc:
+        logger.debug("Semantic knowledge artifact not loaded: %s", exc)
+
+    try:
+        if tp.exists():
+            with tp.open(encoding="utf-8") as f:
+                data = json.load(f)
+            result["global_transitions"] = data.get("global_transitions", {})
+    except Exception as exc:
+        logger.debug("Transition priors artifact not loaded: %s", exc)
+
+    return result
 
 
 class MissingLearnedRulesError(FileNotFoundError):
@@ -317,6 +351,7 @@ class RuleLearner:
                     "label": gold_tag,
                     "text": text,
                     "doc_id": doc_id,
+                    "zone": metadata.get("context_zone", "BODY"),  # needed for holdout eval
                 })
 
                 # Update statistics
@@ -402,6 +437,164 @@ class RuleLearner:
             # Handle boolean features
             return bool(features.get(feature_key, False))
 
+    def split_holdout(
+        self,
+        ground_truth: Dict[str, List],
+        holdout_fraction: float = 0.2,
+        seed: int = 42,
+    ) -> Tuple[Dict, Dict, List[str]]:
+        """Split ground_truth into train and holdout at the document level.
+
+        Args:
+            ground_truth: {doc_id -> entries} from load_ground_truth()
+            holdout_fraction: fraction of docs to hold out (default 0.2 = ~6/30)
+            seed: RNG seed for reproducibility
+
+        Returns:
+            (train_gt, holdout_gt, holdout_doc_ids)
+        """
+        import random
+        rng = random.Random(seed)
+        doc_ids = sorted(ground_truth.keys())
+        n_holdout = max(1, round(len(doc_ids) * holdout_fraction))
+        holdout_ids = set(rng.sample(doc_ids, n_holdout))
+        train_gt = {k: v for k, v in ground_truth.items() if k not in holdout_ids}
+        holdout_gt = {k: v for k, v in ground_truth.items() if k in holdout_ids}
+        logger.info(
+            "Holdout split: %d train docs, %d holdout docs (%s)",
+            len(train_gt), len(holdout_gt), sorted(holdout_ids),
+        )
+        return train_gt, holdout_gt, sorted(holdout_ids)
+
+    def _count_rule_match(
+        self, examples: List[Dict], condition: str, tag: str
+    ) -> Tuple[int, int]:
+        """Count (support, total) for a candidate rule on examples."""
+        total = sum(1 for ex in examples if self._feature_matches(ex["features"], condition))
+        support = sum(
+            1 for ex in examples
+            if self._feature_matches(ex["features"], condition) and ex["label"] == tag
+        )
+        return support, total
+
+    def enrich_from_semantic_artifacts(
+        self,
+        examples: List[Dict],
+        artifacts: dict,
+        min_support_semantic: int = 5,
+        min_confidence: float = 0.80,
+        zone_prior_threshold: float = 0.25,
+        transition_prior_threshold: float = 0.70,
+    ) -> int:
+        """Add candidate rules derived from semantic artifact priors.
+
+        Checks each candidate against training data.  Rules that pass the
+        (lower) min_support_semantic + min_confidence thresholds are appended
+        to self.rules with semantic_enriched=True.
+
+        Returns count of new rules added.
+        """
+        existing_conditions = {r["condition"] for r in self.rules}
+        new_rules: List[dict] = []
+
+        # --- Zone-prior rules ---
+        for zone_key, zone_data in artifacts.get("zone_tag_priors", {}).items():
+            zone_feat = f"zone={zone_key}"
+            dist = zone_data.get("distribution", {})
+            for tag, stats in sorted(dist.items(), key=lambda x: -x[1].get("frequency", 0)):
+                if stats.get("frequency", 0) < zone_prior_threshold:
+                    break
+                if zone_feat in existing_conditions:
+                    continue
+                support, total = self._count_rule_match(examples, zone_feat, tag)
+                if support >= min_support_semantic and total > 0:
+                    confidence = support / total
+                    if confidence >= min_confidence:
+                        new_rules.append({
+                            "condition": zone_feat,
+                            "predicted_tag": tag,
+                            "support": support,
+                            "total": total,
+                            "confidence": confidence,
+                            "semantic_enriched": True,
+                        })
+                        existing_conditions.add(zone_feat)
+
+        # --- Transition-prior rules ---
+        for src_tag, trans_data in artifacts.get("global_transitions", {}).items():
+            prev_feat = f"prev_tag={src_tag}"
+            if prev_feat in existing_conditions:
+                continue
+            next_dist = trans_data.get("next_tag_distribution", {})
+            for next_tag, t_stats in sorted(
+                next_dist.items(),
+                key=lambda x: -x[1].get("probability", 0),
+            ):
+                if t_stats.get("probability", 0) < transition_prior_threshold:
+                    break
+                support, total = self._count_rule_match(examples, prev_feat, next_tag)
+                if support >= min_support_semantic and total > 0:
+                    confidence = support / total
+                    if confidence >= min_confidence:
+                        new_rules.append({
+                            "condition": prev_feat,
+                            "predicted_tag": next_tag,
+                            "support": support,
+                            "total": total,
+                            "confidence": confidence,
+                            "semantic_enriched": True,
+                        })
+                        existing_conditions.add(prev_feat)
+                break  # only try top-1 transition per source tag
+
+        self.rules.extend(new_rules)
+        self.rules.sort(key=lambda r: (r["confidence"], r["support"]), reverse=True)
+        logger.info("Semantic enrichment added %d new rules", len(new_rules))
+        return len(new_rules)
+
+    def evaluate_on_holdout(self, holdout_examples: List[Dict]) -> dict:
+        """Evaluate learned rules on holdout examples.
+
+        Returns a stats dict: coverage, precision, correct, total, per_tag.
+        """
+        per_tag: Dict[str, Dict] = defaultdict(lambda: {"tp": 0, "fp": 0, "fn": 0})
+        total = covered = correct = 0
+
+        for ex in holdout_examples:
+            gold = ex["label"]
+            total += 1
+            predicted = self.apply_rules(ex["text"], {"context_zone": ex.get("zone", "BODY")})
+            if predicted is not None:
+                covered += 1
+                if predicted == gold:
+                    correct += 1
+                    per_tag[gold]["tp"] += 1
+                else:
+                    per_tag[predicted]["fp"] += 1
+                    per_tag[gold]["fn"] += 1
+            else:
+                per_tag[gold]["fn"] += 1
+
+        coverage = covered / total if total else 0.0
+        precision = correct / covered if covered else 0.0
+        accuracy = correct / total if total else 0.0
+        return {
+            "total": total,
+            "covered": covered,
+            "correct": correct,
+            "coverage": coverage,
+            "precision": precision,
+            "accuracy": accuracy,
+            "per_tag": {
+                tag: {
+                    **stats,
+                    "precision": stats["tp"] / (stats["tp"] + stats["fp"]) if (stats["tp"] + stats["fp"]) else 0.0,
+                    "recall": stats["tp"] / (stats["tp"] + stats["fn"]) if (stats["tp"] + stats["fn"]) else 0.0,
+                }
+                for tag, stats in per_tag.items()
+            },
+        }
+
     def apply_rules(self, text: str, metadata: Dict[str, Any] = None) -> Optional[str]:
         """
         Apply learned rules to predict tag for given text.
@@ -428,18 +621,26 @@ class RuleLearner:
 
         return None
 
-    def save_rules(self, path: Optional[Path] = None):
-        """Save learned rules to JSON file."""
+    def save_rules(self, path: Optional[Path] = None, metadata: Optional[dict] = None):
+        """Save learned rules to JSON file.
+
+        Args:
+            path: Output path (defaults to LEARNED_RULES_PATH)
+            metadata: Optional training metadata dict stored as top-level key;
+                      ignored by load_rules() — backward-compatible.
+        """
         if path is None:
             path = LEARNED_RULES_PATH
 
         path.parent.mkdir(parents=True, exist_ok=True)
 
-        data = {
+        data: Dict[str, Any] = {
             "rules": self.rules,
             "num_rules": len(self.rules),
             "tag_stats": {tag: dict(stats) for tag, stats in self.tag_stats.items()},
         }
+        if metadata:
+            data["metadata"] = metadata  # ignored at runtime load — backward compat
 
         with path.open("w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
@@ -482,8 +683,22 @@ class RuleLearner:
         logger.info(f"Loaded {len(self.rules)} rules from {path}")
         return True
 
-    def generate_report(self) -> str:
-        """Generate a human-readable report of learned rules."""
+    def generate_report(
+        self,
+        holdout_stats: Optional[dict] = None,
+        holdout_doc_ids: Optional[List[str]] = None,
+        semantic_enriched_count: int = 0,
+    ) -> str:
+        """Generate a human-readable report of learned rules.
+
+        Args:
+            holdout_stats: Optional dict returned by evaluate_on_holdout()
+            holdout_doc_ids: Optional list of held-out doc IDs
+            semantic_enriched_count: Number of rules added by semantic enrichment
+
+        Returns:
+            Formatted report string
+        """
         if not self.rules:
             return "No rules learned yet."
 
@@ -499,9 +714,10 @@ class RuleLearner:
         ]
 
         for i, rule in enumerate(self.rules[:50], 1):
+            enriched_marker = " [semantic]" if rule.get("semantic_enriched") else ""
             report_lines.append(
                 f"{i:3d}. IF {rule['condition']:40s} THEN {rule['predicted_tag']:15s} "
-                f"(conf={rule['confidence']:.2%}, support={rule['support']}/{rule['total']})"
+                f"(conf={rule['confidence']:.2%}, support={rule['support']}/{rule['total']}){enriched_marker}"
             )
 
         report_lines.extend([
@@ -518,35 +734,143 @@ class RuleLearner:
             for feature, count in top_features:
                 report_lines.append(f"  - {feature}: {count} ({count/total:.1%})")
 
+        # --- Holdout evaluation section ---
+        if holdout_stats:
+            report_lines += [
+                "",
+                "=" * 80,
+                "HOLDOUT EVALUATION",
+                "=" * 80,
+                f"Holdout docs ({len(holdout_doc_ids or [])}): {', '.join(holdout_doc_ids or [])}",
+                f"Holdout paragraphs: {holdout_stats['total']}",
+                f"Coverage:  {holdout_stats['coverage']:.1%}  "
+                f"({holdout_stats['covered']}/{holdout_stats['total']} covered by rules)",
+                f"Precision: {holdout_stats['precision']:.1%}  "
+                f"({holdout_stats['correct']}/{holdout_stats['covered']} correct)",
+                f"Accuracy:  {holdout_stats['accuracy']:.1%}  "
+                f"({holdout_stats['correct']}/{holdout_stats['total']} total)",
+                "",
+                "Per-tag performance (holdout, top 30 by recall):",
+                "-" * 80,
+            ]
+            for tag, ts in sorted(
+                holdout_stats["per_tag"].items(),
+                key=lambda x: -x[1]["recall"],
+            )[:30]:
+                report_lines.append(
+                    f"  {tag:20s}  P={ts['precision']:.0%}  R={ts['recall']:.0%}"
+                    f"  tp={ts['tp']} fp={ts['fp']} fn={ts['fn']}"
+                )
+
+        # --- Semantic enrichment section ---
+        if semantic_enriched_count > 0:
+            semantic_rules = [r for r in self.rules if r.get("semantic_enriched")]
+            report_lines += [
+                "",
+                "=" * 80,
+                f"SEMANTIC ENRICHMENT: {semantic_enriched_count} rules added from artifacts",
+                "-" * 80,
+            ]
+            for r in semantic_rules[:20]:
+                report_lines.append(
+                    f"  IF {r['condition']:40s} THEN {r['predicted_tag']:15s}"
+                    f" (conf={r['confidence']:.2%}, support={r['support']}/{r['total']})"
+                )
+
         return "\n".join(report_lines)
 
 
-def train_rules():
-    """Train rule learner on ground truth dataset."""
-    logger.info("Starting rule learning...")
+def train_rules(
+    holdout_fraction: float = 0.2,
+    holdout_seed: int = 42,
+    enable_holdout: bool = True,
+    enable_semantic: bool = True,
+    min_support: int = 10,
+    min_confidence: float = 0.8,
+    report_file: Optional[str] = None,
+    semantic_knowledge_path: Optional[Path] = None,
+    semantic_transitions_path: Optional[Path] = None,
+):
+    """Train rule learner on ground truth dataset.
 
+    Args:
+        holdout_fraction: Fraction of docs to hold out (default 0.2)
+        holdout_seed: RNG seed for reproducible holdout split (default 42)
+        enable_holdout: Whether to perform holdout validation (default True)
+        enable_semantic: Whether to run semantic artifact enrichment (default True)
+        min_support: Minimum support for base rule learning (default 10)
+        min_confidence: Minimum confidence for rule inclusion (default 0.8)
+        report_file: Optional path to write the text report
+        semantic_knowledge_path: Override for tag_semantics_knowledge.json
+        semantic_transitions_path: Override for tag_transition_priors.json
+    """
+    logger.info("Starting rule learning...")
     learner = RuleLearner()
 
-    # Load ground truth
+    # Load all ground truth
     ground_truth = learner.load_ground_truth()
     if not ground_truth:
         logger.error("No ground truth data found. Exiting.")
         return
 
+    # Doc-level holdout split
+    holdout_doc_ids: List[str] = []
+    holdout_gt: Dict[str, List] = {}
+    if enable_holdout and len(ground_truth) >= 2:
+        train_gt, holdout_gt, holdout_doc_ids = learner.split_holdout(
+            ground_truth, holdout_fraction=holdout_fraction, seed=holdout_seed
+        )
+    else:
+        train_gt = ground_truth
+
     # Extract training examples
-    examples = learner.extract_training_examples(ground_truth)
+    examples = learner.extract_training_examples(train_gt)
     if not examples:
         logger.error("No training examples extracted. Exiting.")
         return
 
-    # Learn rules
-    rules = learner.learn_rules(examples, min_support=10, min_confidence=0.8)
+    # Learn base rules from training data
+    learner.learn_rules(examples, min_support=min_support, min_confidence=min_confidence)
 
-    # Save rules
-    learner.save_rules()
+    # Semantic enrichment (optional)
+    semantic_enriched_count = 0
+    if enable_semantic:
+        artifacts = load_semantic_artifacts(
+            knowledge_path=semantic_knowledge_path,
+            transitions_path=semantic_transitions_path,
+        )
+        if artifacts:
+            semantic_enriched_count = learner.enrich_from_semantic_artifacts(
+                examples, artifacts, min_confidence=min_confidence
+            )
+
+    # Save rules (with training metadata)
+    save_meta: Dict[str, Any] = {
+        "train_docs": sorted(train_gt.keys()),
+        "holdout_docs": holdout_doc_ids,
+        "holdout_fraction": holdout_fraction,
+        "holdout_seed": holdout_seed,
+        "min_support": min_support,
+        "min_confidence": min_confidence,
+        "semantic_enriched_count": semantic_enriched_count,
+    }
+    learner.save_rules(metadata=save_meta)
+
+    # Holdout evaluation
+    holdout_stats = None
+    if holdout_gt:
+        holdout_examples = learner.extract_training_examples(holdout_gt)
+        holdout_stats = learner.evaluate_on_holdout(holdout_examples)
 
     # Generate and print report
-    report = learner.generate_report()
+    report = learner.generate_report(
+        holdout_stats=holdout_stats,
+        holdout_doc_ids=holdout_doc_ids,
+        semantic_enriched_count=semantic_enriched_count,
+    )
+    if report_file:
+        Path(report_file).write_text(report, encoding="utf-8")
+        logger.info("Report written to %s", report_file)
     print(report)
 
     logger.info("Rule learning complete!")
@@ -561,6 +885,35 @@ def main():
     parser.add_argument("--report", action="store_true", help="Generate report of learned rules")
     parser.add_argument("--log-level", default="INFO", help="Logging level (DEBUG, INFO, WARNING, ERROR)")
 
+    # Holdout options
+    holdout_group = parser.add_mutually_exclusive_group()
+    holdout_group.add_argument("--holdout", dest="enable_holdout", action="store_true", default=True,
+                               help="Enable holdout validation (default: on)")
+    holdout_group.add_argument("--no-holdout", dest="enable_holdout", action="store_false",
+                               help="Disable holdout validation")
+    parser.add_argument("--holdout-fraction", type=float, default=0.2,
+                        help="Fraction of docs held out (default: 0.2)")
+    parser.add_argument("--holdout-seed", type=int, default=42,
+                        help="RNG seed for holdout split (default: 42)")
+
+    # Semantic enrichment options
+    parser.add_argument("--no-semantic", dest="enable_semantic", action="store_false", default=True,
+                        help="Disable semantic artifact enrichment")
+    parser.add_argument("--semantic-knowledge", type=Path, default=None,
+                        help="Override path for tag_semantics_knowledge.json")
+    parser.add_argument("--semantic-transitions", type=Path, default=None,
+                        help="Override path for tag_transition_priors.json")
+
+    # Rule quality options
+    parser.add_argument("--min-support", type=int, default=10,
+                        help="Minimum support for base rules (default: 10)")
+    parser.add_argument("--min-confidence", type=float, default=0.8,
+                        help="Minimum confidence for rules (default: 0.8)")
+
+    # Report output
+    parser.add_argument("--report-file", type=str, default=None,
+                        help="Write report to this file path")
+
     args = parser.parse_args()
 
     # Setup logging
@@ -570,7 +923,17 @@ def main():
     )
 
     if args.train:
-        train_rules()
+        train_rules(
+            holdout_fraction=args.holdout_fraction,
+            holdout_seed=args.holdout_seed,
+            enable_holdout=args.enable_holdout,
+            enable_semantic=args.enable_semantic,
+            min_support=args.min_support,
+            min_confidence=args.min_confidence,
+            report_file=args.report_file,
+            semantic_knowledge_path=args.semantic_knowledge,
+            semantic_transitions_path=args.semantic_transitions,
+        )
     elif args.report:
         learner = RuleLearner()
         learner.load_rules()

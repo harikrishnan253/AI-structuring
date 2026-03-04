@@ -155,6 +155,15 @@ MARKER_ONLY_TAG_RE = re.compile(r"^\s*<[^>]+>\s*$")
 SEMANTIC_LIST_POS_RE = re.compile(
     r"^(?P<prefix>.*?)(?P<base>(?:BL|NL|UL|LL)\d*)-(?P<pos>FIRST|MID|LAST)$"
 )
+# Matches unsuffixed list-family tags (no FIRST/MID/LAST), e.g. ANS-UL, KT-BL, OBJ-NL.
+# Used in fallback to prefer -MID deterministically over nondeterministic set iteration.
+_UNSUFFIXED_LIST_FAMILY_RE = re.compile(
+    r"^.+-(BL\d*|NL\d*|UL\d*|LL\d*|TBL\d*|TNL\d*|TUL\d*)$"
+)
+
+# Tags that represent generic hard fallbacks (true downgrades, not semantic repairs).
+# Only these get WARNING-level logs; all other remaps get INFO-level "semantic-repair".
+_HARD_FALLBACK_TAGS: frozenset[str] = frozenset({"TXT", "TXT-FLUSH", "T", "PMI"})
 
 BOX_PREFIX_BY_ZONE = {
     "BOX_NBX": "NBX",
@@ -262,6 +271,14 @@ def _find_closest_style(tag: str, allowed: set[str]) -> str | None:
         if norm_candidate in allowed:
             return norm_candidate
 
+    # Strategy 1.5: Unsuffixed positional family → prefer MID for deterministic output.
+    # e.g. ANS-UL → ANS-UL-MID (not ANS-UL-FIRST which is nondeterministic via set iteration)
+    if _UNSUFFIXED_LIST_FAMILY_RE.fullmatch(normalized):
+        for pos in ("MID", "FIRST", "LAST"):
+            candidate = f"{normalized}-{pos}"
+            if candidate in allowed:
+                return candidate
+
     # Strategy 2: Prefix-based matching
     # Try to find styles in same family (e.g., BX2-TXT -> BX2-*)
     if "-" in normalized:
@@ -270,8 +287,12 @@ def _find_closest_style(tag: str, allowed: set[str]) -> str | None:
         # Look for any style with same prefix
         prefix_matches = [s for s in allowed if s.startswith(prefix + "-")]
         if prefix_matches:
-            # Return shortest match (most generic in family)
-            prefix_matches.sort(key=len)
+            # Prefer -MID variant for deterministic output
+            mid_candidate = prefix + "-MID"
+            if mid_candidate in allowed:
+                return mid_candidate
+            # Fall back to shortest match, stable lexicographic sort for determinism
+            prefix_matches.sort(key=lambda s: (len(s), s))
             return prefix_matches[0]
 
     # Strategy 3: String similarity (conservative threshold)
@@ -685,14 +706,29 @@ def validate_and_repair(
 
             text_stripped = text.strip()
             text_lower = text_stripped.lower()
-            is_footnote = bool(
+            # Source attribution lines → TSN  (checked first — higher priority)
+            is_source = bool(
+                text_lower.startswith("source")
+                or text_lower.startswith("adapted from")
+                or text_lower.startswith("reproduced from")
+                or text_lower.startswith("reprinted from")
+                or text_lower.startswith("data from")
+                or text_lower.startswith("courtesy of")
+                or text_lower.startswith("with permission from")
+                or text_lower.startswith("from ")
+            )
+            # Note / symbol / letter footnotes → TFN
+            is_footnote = (not is_source) and bool(
                 text_lower.startswith("note")
-                or text_lower.startswith("source")
                 or text_stripped.startswith("*")
                 or text_stripped.startswith("†")
                 or re.match(r"^[a-z]\)", text_stripped, re.IGNORECASE)
             )
-            if is_footnote:
+            if is_source:
+                tag = "TSN"
+                changed = True
+                change_reason.append("zone-table-source")
+            elif is_footnote:
                 tag = "TFN"
                 changed = True
                 change_reason.append("zone-table-footnote")
@@ -712,7 +748,11 @@ def validate_and_repair(
                 if meta.get("is_header_row") and "T2" in allowed:
                     tag = "T2"
                     change_reason.append("zone-table-header-row")
-                elif meta.get("is_stub_col") and "T4" in allowed:
+                elif (
+                    meta.get("is_stub_col")
+                    and "T4" in allowed
+                    and _looks_like_t4_heading(text)
+                ):
                     tag = "T4"
                     change_reason.append("zone-table-stub-col")
                 elif (
@@ -860,7 +900,10 @@ def validate_and_repair(
             changed = True
             change_reason.append("not-allowed")
             metrics["invalid_styles"] += 1
-            logger.warning(f"Tag not allowed, downgraded: para {para_id} -> {tag}")
+            if tag in _HARD_FALLBACK_TAGS:
+                logger.warning(f"Tag not allowed, downgraded: para {para_id} -> {tag}")
+            else:
+                logger.info(f"Tag not allowed, semantic-repair: para {para_id} -> {tag}")
 
         if changed:
             confidence = min(confidence, 80)

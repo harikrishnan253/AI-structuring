@@ -716,6 +716,327 @@ Classify DNS/socket resolution failures and common transient network errors as r
 
 ---
 
+## ADR-025: Generic List-Position Normalizer — Depth-Transparent + PMI-Bridge + numId Grouping
+
+**Date:** 2026-02-25
+**Status:** ✅ Implemented
+
+### Decision
+
+Fix generic FIRST/MID/LAST corruption across all document types with four coordinated changes:
+
+1. **`allowed_styles.json`**: Add 15 missing FIRST/LAST variants (BL2-FIRST, BL3/BL4 full sets, NL2/NL3 full sets, KT-BL2-FIRST, RQ-LL2-FIRST/LAST, TNL-LAST).
+2. **`list_normalizer.py`**: Replace strict-contiguity algorithm with depth-transparent run grouping (`_is_deeper_family`) and recursive `_process_outer_run`. Add `_is_pmi_bridge` for transparent empty/marker PMI gaps.
+3. **`list_preservation.py`**: Make `_is_position_compatible` and `_coerce_expected_tag_preserving_position` prefix-aware so KT-BL-FIRST survives against expected BL-MID.
+4. **`blocks.py`**: `_compute_list_positions` groups XML-listed paras by `xml_num_id` for accurate metadata positions; style-based lists use legacy key.
+
+### Consequences
+
+✅ Nested lists get correct FIRST/MID/LAST on both outer and inner levels
+✅ Blank-paragraph-interrupted lists no longer fragment into all-FIRST runs
+✅ Prefixed families (KT-BL, OBJ-BL, EOC-NL) preserve prefix through list_preservation
+✅ NL2, BL2, BL3, BL4 positional tags now reachable (were previously silently suppressed)
+✅ 204 existing tests all pass; structure guard and integrity gates unaffected
+⚠️ PMI-bridge only activates for empty text or structural marker tokens
+
+---
+
+## ADR-026: ISS-018 — T4 Conservative Default (Three-Layer Fix)
+
+**Date:** 2026-02-26
+**Status:** ✅ Implemented
+**Context:** ~43 table cells per chapter were receiving `T4` instead of `T` because three independent code paths all defaulted first-column cells to T4 without checking cell content.
+
+### Decision
+
+Fix T4 over-assignment at all three layers simultaneously so no single path can restore the over-assignment behavior:
+
+1. **Prompt layer** (`system_prompt.txt` Rule 9a): Rewrite to explicitly "DEFAULT to T" for first-column cells; T4 only when all 5 conditions met simultaneously: short label (1–4 words, max 5), names/identifies entire row, no trailing punctuation, not a sentence/clause, not numeric data. Add "when in doubt between T and T4, ALWAYS choose T."
+2. **Validator layer** (`validator.py`): Gate stub-col T4 heuristic with `_looks_like_t4_heading(text)` — conservative function that accepts all-caps or multi-word 70%+ title-case strings ≤60 chars with no trailing punctuation and not purely numeric. Body data cells no longer promoted to T4.
+3. **Ingestion layer** (`ingestion.py` `_infer_table_style()`): Remove all 3 locations that returned `'T4'` for first-column cells (T/TableBody/GT branch, UNT branch, position-infer fallback). All return `'T'`; content-based T4 assignment is the classifier's responsibility.
+
+### Rationale
+
+- **Defense in depth**: If only the prompt is changed, the validator or ingestion could still over-assign. All three layers must agree.
+- **Conservative T**: T is a safe default; T4 has specific semantics (short categorical row label). Over-assigning T4 causes visible mismatches with publisher output.
+- **`_looks_like_t4_heading` gating**: The heuristic function correctly rejects single capitalized words ("Protein"), sentences, numeric data, and long text while accepting true category labels ("MACRONUTRIENTS", "Risk Factors").
+
+### Consequences
+
+✅ First-column cells classified as `T` by default; T4 requires conservative heuristic to pass
+✅ No regression on legitimate T4 cases (all-caps headings, multi-word title-case category labels)
+✅ Reduces ~43 T4 mismatches per chapter toward 0
+✅ Three-layer architecture means any single layer relaxation does not re-introduce the bug
+⚠️ Edge case: `N/A` passes `_looks_like_t4_heading` (all-caps pattern) — noted as known behavior
+
+---
+
+## ADR-027: ISS-019 — SDT Zone Reset via XML Element Identity
+
+**Date:** 2026-02-26
+**Status:** ✅ Implemented
+**Context:** Word `<w:sdt>` (Structured Document Tag / content control) paragraphs at body level were inheriting surrounding BOX zone because python-docx's `doc.paragraphs` flattens them into the same stream as regular paragraphs, losing the SDT wrapper context.
+
+### Decision
+
+Use XML element identity (`id(para._p)`) to detect SDT-contained paragraphs before the zone-tracking loop:
+
+1. Add `DocumentIngestion._build_sdt_para_set(doc) -> set[int]` static method that iterates direct `<w:body>` children, finds `<w:sdt>` elements, and collects `id(p_elem)` for every `<w:p>` inside their `<w:sdtContent>`. Only body-level SDTs (not table-nested ones) are included.
+2. In `extract_paragraphs()`, look up `id(para._p)` against the pre-computed set at each paragraph. If it's an SDT paragraph and current zone is `BOX_*`, reset zone to `BODY` and clear `box_type`.
+3. Set `metadata['is_sdt'] = True` for traceability in downstream stages.
+
+### Rationale
+
+- **XML identity is stable**: `id(para._p)` matches precisely because python-docx paragraph objects wrap the same lxml element that was iterated over during `_build_sdt_para_set`. No string matching required.
+- **Body-level only**: Table-nested SDTs (inside `<w:tc>`) are excluded intentionally — they should retain TABLE zone semantics. Only SDTs that are direct `<w:body>` children represent standalone content controls that should be BODY zone.
+- **Additive metadata**: `is_sdt=True` flag enables future stages to treat these paragraphs specially (e.g., zone enforcement, quality scoring) without requiring re-detection.
+- **Zero impact on non-SDT documents**: Pre-computation is O(n) over body children; if no SDTs exist, the set is empty and all lookups are O(1) misses.
+
+### Alternatives Considered
+
+1. **Style-name detection**: Rejected — SDT paragraphs can have any style; no reliable style marker.
+2. **Parse surrounding XML in paragraph loop**: Rejected — would require walking lxml ancestry for every paragraph (O(n×depth)); identity pre-computation is faster and cleaner.
+3. **python-docx InlineShape / ContentControl API**: Rejected — python-docx does not expose SDT elements through its high-level API in versions tested.
+
+### Consequences
+
+✅ ~28 SDT body paragraphs per chapter no longer assigned BOX zone
+✅ `is_sdt=True` metadata available for downstream audit/quality scoring
+✅ Table-nested SDTs unaffected (retain TABLE zone semantics)
+✅ Zero overhead when no SDT elements present
+⚠️ Object identity depends on in-process lxml element objects; must call `_build_sdt_para_set` on the same Document object passed to the paragraph loop (guaranteed by existing code structure)
+
+---
+
+## ADR-028: Runtime Decoupled from Corpus/Ground-Truth by Default
+
+**Date:** 2026-02-27
+**Status:** ✅ Implemented
+**Context:** The grounded retriever (`GroundedRetriever` in `classifier.py`) can load `ground_truth.jsonl` at classification time and inject similar labeled paragraphs into the prompt. This creates a direct dependency between production runtime and raw training data, and risks data leakage when the same corpus is used for offline evaluation.
+
+### Decision
+
+- `ENABLE_GROUNDED_RETRIEVER` environment variable defaults to `false`.
+- When disabled, `classifier.py` never loads or accesses `ground_truth.jsonl` during classification.
+- Semantic artifact files (`tag_semantics_knowledge.json`, `tag_transition_priors.json`) are loaded only by offline tools (`rule_learner.py`, `eval_generalization.py`), not at classification time.
+- `load_semantic_artifacts()` in `rule_learner.py` is module-level and offline-only.
+
+### Rationale
+
+- **Data leakage prevention**: Holdout evaluation in `eval_generalization.py` and `rule_learner.py` cannot be trusted if the runtime classifier reads the same ground-truth corpus.
+- **Operational simplicity**: Production classification depends only on `learned_rules.json` (optional) + LLM API; no training data files need to be present.
+- **Audit clarity**: Separation makes it unambiguous which inference paths are corpus-dependent and which are not.
+
+### Alternatives Considered
+
+1. **Always-on retriever**: Rejected — leaks training distribution into every classification; evaluation metrics become meaningless.
+2. **Retriever with holdout-doc exclusion**: Considered but deferred — requires per-request holdout metadata and adds runtime complexity for marginal gain.
+
+### Consequences
+
+✅ Offline evaluation metrics are trustworthy (no ground-truth leakage into classifier)
+✅ Production classifier is portable: only `learned_rules.json` and API key required
+✅ Retriever mode available for development/research via `ENABLE_GROUNDED_RETRIEVER=true`
+⚠️ `eval_generalization.py` retriever ablation mode explicitly labelled `[LEAKAGE]` in reports as a reminder
+
+---
+
+## ADR-029: Corpus as Offline Calibration Pipeline (Semantic Artifact Architecture)
+
+**Date:** 2026-02-27
+**Status:** ✅ Implemented
+**Context:** The manually tagged corpus (`ground_truth.jsonl`, 30 documents, ~11k entries) is a high-value calibration source, but loading it at runtime couples production inference to training data and prevents clean holdout evaluation.
+
+### Decision
+
+Establish a strictly offline calibration pipeline:
+
+1. **Build phase** (`build_semantic_knowledge.py`): Reads corpus, produces three artifact files in `backend/data/`:
+   - `tag_semantics_knowledge.json` — zone-tag frequency distributions and tag family groupings
+   - `tag_transition_priors.json` — sequential tag transition probabilities
+   - `style_alias_candidates.json` — publisher alias candidates (confidence ≥ 0.70)
+
+2. **Rule-learning phase** (`rule_learner.py --train`): Reads artifacts to enrich candidate rules (`enrich_from_semantic_artifacts()`); validates enriched rules against training split before adding. Produces `learned_rules.json`.
+
+3. **Evaluation phase** (`eval_generalization.py`): Reads artifacts to power semantic and alias predictor ablation modes on holdout splits. Never writes to `learned_rules.json`.
+
+4. **Runtime classifier** (`classifier.py`): Reads only `learned_rules.json` (optional). Receives generalized zone-prior hints via system prompt — not raw corpus paragraphs.
+
+### Rationale
+
+- **Clean separation**: Each phase consumes only the outputs of the phase before it; corpus docs never reach the classifier.
+- **Reproducibility**: Artifacts are deterministic builds; `rule_learner.py` uses a seeded holdout split (`--holdout-seed 42`).
+- **Graceful degradation**: `load_semantic_artifacts()` returns `{}` on missing files; the classifier, rule learner, and eval tool all work without the artifact files.
+
+### Consequences
+
+✅ Corpus knowledge propagates to runtime through stable artifact files, not raw training data
+✅ Holdout and ablation metrics are uncontaminated
+✅ Artifact files can be versioned and diffed in git
+✅ `learned_rules.json` backward-compatible: new optional `metadata` field ignored by `load_rules()`
+⚠️ `prev_tag` transition rules learned offline cannot fire through `apply_rules()` at runtime without explicit `prev_tag` metadata injection (current `extract_features()` does not populate `prev_tag` from metadata)
+
+---
+
+## ADR-030: Marker-Lock Leak Diagnostic — Case A vs Case B Distinction
+
+**Date:** 2026-03-02
+**Status:** ✅ Implemented
+**Context:** ISS-013 (2026-02-24) added `not clf.get("rule_based")` to the leaked-to-LLM predicate in `relock_marker_classifications()`. The fix correctly excluded rule-classified markers from the leak count. However, the WARNING and `leaked_to_llm` metric were still triggered for markers that arrived at the post-classification re-lock pass *without* a prior `skip_llm=True` flag — i.e., markers detected post-hoc by text pattern alone (Case B). These should not be counted as leaks because they were never subject to the pre-LLM lock in the first place.
+
+### Decision
+
+Distinguish two cases explicitly inside the leak-detection branch of `relock_marker_classifications()`:
+
+- **Case A (true leak):** Block had `skip_llm=True` (pre-LLM marker lock was set) AND the classification object contains LLM-generated signals (`gated is False` OR `reasoning` present) AND not rule-based. → Log WARNING; increment `leaked_to_llm` metric.
+- **Case B (post-hoc detection):** Marker identified by text pattern or `_is_marker` flag but `skip_llm=True` was never set on the block. → Log DEBUG only; do not increment `leaked_to_llm`.
+
+PMI re-lock behavior (overriding non-PMI tag to PMI) is unchanged for both cases.
+
+### Implementation
+
+```python
+had_skip_llm = block.get("skip_llm") is True
+llm_touched = (
+    (clf.get("gated") is False or clf.get("reasoning"))
+    and not clf.get("rule_based")
+)
+if llm_touched:
+    if had_skip_llm:          # Case A
+        leaked_to_llm += 1
+        logger.warning(...)
+    else:                     # Case B
+        logger.debug(...)
+```
+
+### Rationale
+
+- `leaked_to_llm` is intended to measure failures of the pre-LLM marker lock. A block that was never locked cannot leak.
+- Inflated Case B counts masked true Case A signal and caused spurious oncall alerts during high-volume evaluation runs.
+- DEBUG-level logging for Case B retains observability without metric pollution.
+
+### Consequences
+
+✅ `leaked_to_llm` is now a precise count of pre-LLM lock failures
+✅ Case B markers are still relocked to PMI (functional behavior unchanged)
+✅ 78/78 `test_marker_lock.py` tests pass (12 new tests in `TestLeakDiagnosticCorrectness`)
+⚠️ Existing tests that covered Case B scenarios needed `skip_llm=True` added to their block fixture to represent true Case A leaks; covered by test updates
+
+---
+
+## ADR-031: Eval Generalization Metric Extension
+
+**Date:** 2026-03-02
+**Status:** ✅ Implemented
+**Context:** `eval_generalization.py` previously reported 7 metrics per ablation mode: `accuracy`, `zone_violation`, `list_depth`, `table_sem`, `ref_accuracy`, `txt_fallback`, `unmapped_rate`. These did not capture: (1) the rate of predictions that would be rejected by `allowed_styles.json` at deployment; (2) the fraction of structurally sensitive entries where the predicted tag changed structural category (list↔non-list, heading↔non-heading), which is a proxy for Structure Guard failure probability; (3) a per-tag accuracy breakdown within the TABLE zone to distinguish errors on T, T2, T4, TFN, and TSN.
+
+### Decision
+
+Add three metrics to `compute_metrics()` and extend the report format:
+
+| New Metric | Definition | Gate Condition |
+|---|---|---|
+| `invalid_tag_rate` | % predictions not in `allowed_styles.json` | all holdout entries |
+| `structure_guard_fail_rate` | % entries where structural category (list/heading) changes between gold and predicted | gold is list OR heading |
+| `table_per_tag` | per-gold-tag accuracy dict | `zone == "TABLE"` OR `gold in table_styles` |
+
+### Implementation Notes
+
+- `_is_list_tag(tag)`: regex `r"(?:^|[-_])(BL|NL|UL)\d*(?:[-_]|$)"` — matches BL/NL/UL families at any nesting level; excludes TBL-* (table rows) because "TBL" does not match the required BL/NL/UL token boundary.
+- `_is_heading_tag(tag)`: regex `r"^(H[1-9]|TH[1-9]|CH)$"`.
+- `table_per_tag` gate aligns with the existing `table_total` gate to avoid divergence between the aggregate `table_sem` metric and the per-tag breakdown.
+- Report width extended from 110 to 120 columns. Delta headers use ASCII prefix (`dAccuracy`, `dZoneViol`, etc.) instead of Unicode for Windows CP-1252 terminal compatibility.
+- `TABLE SEMANTICS DETAIL` section appended to report; shows `_TABLE_FOCUS_TAGS` (`T`, `T1`, `T2`, `T4`, `TFN`, `TSN`) first, then remaining tags alphabetically.
+
+### Rationale
+
+- `invalid_tag_rate` directly predicts Stage 4.5 (`style_enforcement.py`) workload — high rates indicate classifier quality regression.
+- `structure_guard_fail_rate` surfaces regressions that would cause hard pipeline failures at the Structure Guard (Stage 5.5) without requiring a full pipeline run.
+- `table_per_tag` allows targeted per-tag debugging of TABLE-zone classification without running the live pipeline.
+
+### Consequences
+
+✅ Three new signals available for offline regression tracking without any LLM calls
+✅ `invalid_tag_rate` and `structure_guard_fail_rate` added to delta table for per-mode contribution tracking
+✅ Table breakdown section identifies high-error tags (e.g. T4 vs T confusion) directly from holdout
+⚠️ Report is wider (120 cols); terminals narrower than 120 chars will wrap delta rows
+⚠️ `structure_guard_fail_rate` is a simulation metric — actual SG failure rates depend on document-level sequential context not available during flat holdout evaluation
+
+---
+
+## ADR-032: Alias-First Tag Normalization + Validator Log-Level Semantics
+
+**Date:** 2026-03-04
+**Status:** ✅ Implemented
+**Context:** Several publisher-specific tag families (CJC-*, ANS-*, TUL) were producing false "Tag not allowed, downgraded" WARNING logs even when the target canonical form was a specific, semantically correct tag (e.g. ANS-UL → ANS-UL-MID). The validator also had nondeterministic fallback for unsuffixed list-family tags: Strategy 2 (prefix-family matching) could select ANS-UL-FIRST before ANS-UL-MID depending on allowed-set iteration order. All downgrade-level log messages used WARNING regardless of whether the remap was a generic fallback or a precise semantic repair.
+
+### Decision
+
+Apply changes at three layers to prevent false downgrades and improve log signal quality:
+
+**1. Alias layer (`style_aliases.json`)**
+
+Add six alias mappings that resolve publisher raw forms to their canonical equivalents before the validator's not-allowed path is reached:
+
+| Raw form | Canonical | Rationale |
+|---|---|---|
+| `DIALOGUE` | `DIA-MID` | Publisher alias for dialogue mid-position |
+| `CJC-NGN-BL-LAST` | `CJC-NN-BL-LAST` | Backward-compat alias (NGN → NN) |
+| `ANS-UL` | `ANS-UL-MID` | Unsuffixed → deterministic MID |
+| `ANS-NL` | `ANS-NL-MID` | Unsuffixed → deterministic MID |
+| `TUL` | `TUL-MID` | Unsuffixed → deterministic MID (TUL in LIST_BASES, suffix preserved) |
+| `TUL-LAST` | `TUL-MID` | No standalone LAST variant in this family |
+
+Tags that resolve via alias never reach the validator's not-allowed path, so no log message is emitted.
+
+**2. Validator fallback layer (`validator.py`)**
+
+- **Strategy 1.5** (new): `_UNSUFFIXED_LIST_FAMILY_RE` matches unsuffixed ANS-UL, ANS-NL, TUL directly. If matched and the corresponding `-MID` variant is in the allowed set, return it deterministically — no iteration order dependency.
+- **Strategy 2** (updated): After finding prefix-family candidates, check for `prefix + "-MID"` first before falling back to shortest-string sort. Sort key is `(len(s), s)` for stable lexicographic tie-breaking.
+
+**3. Log-level semantics (`validator.py`)**
+
+```python
+_HARD_FALLBACK_TAGS: frozenset[str] = frozenset({"TXT", "TXT-FLUSH", "T", "PMI"})
+```
+
+- If the repaired tag is in `_HARD_FALLBACK_TAGS` → log **WARNING** with `"downgraded"` (true hard fallback; operator should investigate)
+- Otherwise → log **INFO** with `"semantic-repair"` (specific family remap; expected behavior)
+
+**4. New canonical tags (`allowed_styles.json`)**
+
+Added: `DIALOGUE`, `CJC-NN-BL-LAST`, `CJC-UL-FIRST`, `CJC-UL-LAST` — these were valid publisher-output tags not present in the allowed set, triggering classifier self-heal retries.
+
+**5. TABLE-zone constraints (`zone_styles.py`, `classifier.py`)**
+
+Added `CJC-UL-FIRST`, `CJC-UL-LAST`, `CJC-NN-BL-LAST` to the TABLE-zone valid-style set so the zone enforcement gate does not reject them for CJC dialogue-in-table contexts.
+
+### Rationale
+
+- **Alias-first resolution**: A tag that aliases cleanly to a valid canonical should never be logged as a downgrade. Moving the normalization to the alias layer (before validation) is cleaner than special-casing it inside the validator.
+- **MID preference in Strategy 2**: Unsuffixed or mismapped positional tags are almost always meant to be the middle (continuation) case. Preferring `-MID` deterministically is both more correct and more predictable than alphabetic or length-based ordering.
+- **Log-level split**: WARNING-level "downgraded" messages are high-signal operational alerts. Flooding them with INFO-level semantic repairs (ANS-UL-FIRST → ANS-UL-MID) degrades their usefulness and can mask real problems. Separating the two makes `grep WARNING downgraded` a reliable production health check.
+- **`_HARD_FALLBACK_TAGS` frozenset**: Explicit and auditable definition of what counts as a "true downgrade" vs a "semantic repair". Adding a new generic fallback tag requires an intentional code change, not an implicit threshold.
+
+### Alternatives Considered
+
+1. **Suppress WARNING logs entirely for all non-TXT repairs**: Rejected — would hide genuine validator fallbacks where no better match exists.
+2. **Treat all positional-suffix mismatches as INFO**: Partially adopted — this is what the MID preference + INFO semantics achieves for suffix-only repairs within the same family.
+3. **Fix the DIALOGUE/DIA normalizer bug at the same time**: Out of scope for Tasks 1-8. The bug (DIA not in LIST_BASES → "-MID" stripped) requires a LIST_BASES extension or a normalizer-level special case; tracked as a pre-existing failure.
+
+### Consequences
+
+✅ `ANS-UL`, `ANS-NL`, `TUL`, `TUL-LAST` resolve deterministically via alias — no log messages emitted
+✅ `ANS-UL-FIRST` → `ANS-UL-MID` semantic repair logs INFO, not WARNING
+✅ `XYZZY-TOTALLY-UNKNOWN` → `TXT` hard downgrade still logs WARNING
+✅ `CJC-UL-FIRST/LAST`, `CJC-NN-BL-LAST`, `DIALOGUE` no longer trigger self-heal retries
+✅ 9/9 `test_allowed_styles_enforcement.py` tests pass (4 new regression tests including log-level checks)
+✅ 2 new TUL alias tests in `test_style_normalizer.py` pass
+⚠️ `normalize_style("DIALOGUE")` still returns "DIA" not "DIA-MID" due to pre-existing normalizer bug (DIA not in LIST_BASES); tracked separately
+⚠️ `_HARD_FALLBACK_TAGS` must be kept in sync if new generic fallback tags are added to `allowed_styles.json`
+
+---
+
 ## Future Decisions (To Be Made)
 
 ### FD-001: Deterministic Pre-LLM Gating
@@ -738,9 +1059,9 @@ Classify DNS/socket resolution failures and common transient network errors as r
 
 ## Decision Tracking
 
-**Total ADRs:** 24 implemented
+**Total ADRs:** 32 implemented
 **Pending Decisions:** 1 future item
-**Last Updated:** 2026-02-24
+**Last Updated:** 2026-03-04
 
 ---
 

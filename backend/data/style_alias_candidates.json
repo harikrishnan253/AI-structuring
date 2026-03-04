@@ -1,0 +1,1601 @@
+{
+  "candidates": [
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1BL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-BL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1BLBL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-BL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1BLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-BL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1BLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-BL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1T",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1TXL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1UNL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-UL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1UNLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-UL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX1UNLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX1-UL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2BLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-BL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2BLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-BL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2H1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2NL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-NL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2NLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-NL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2T",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2TX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX2TXL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX2-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3BL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-BL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3BLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-BL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3BLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-BL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3T",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3TX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3TXL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3UNL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-UL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3UNLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-UL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX3UNLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX3-UL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX4T",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX4-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BX4TXL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX4-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BodyText",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BulletList1first",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "BulletList1last",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList2",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BL2-MID",
+      "support": 26
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "CN0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CN",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "COBJ",
+      "recommendation": "add_alias",
+      "suggested_canonical": "COBJ",
+      "support": 15
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "COKTL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CO_KTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "CT0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "ChapterTitle0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Cn",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CN",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Ct",
+      "recommendation": "add_alias",
+      "suggested_canonical": "CT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-FIG",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-FIGURE",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-FIGURES",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-TAB",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-TABLE",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "E-TABLES",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFIG",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFIGURE",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFIGURES",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EFIG-LEG",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFP-BX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFP_BX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFP_BX-TTL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EFP_BX-TXT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOC-NumberLis1tfirst",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOC-NumberList1first",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOC-NumberList1last",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCH1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-H1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCNL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCNLF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCNLLL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EOC-NL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCREF",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EOCREFH",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "ETAB",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "ETABLE",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "ETABLES",
+      "recommendation": "add_alias",
+      "suggested_canonical": "ETAB-TTL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EXER-NL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "EXER-NL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU-BX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU_BX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU_BX-BL-FIRST",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-BL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU_BX-BL-LAST",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-BL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU_BX-H1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-H1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "EYU_BX-TXT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "BX-TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "FGC",
+      "recommendation": "add_alias",
+      "suggested_canonical": "FGC",
+      "support": 1
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "FGS",
+      "recommendation": "add_alias",
+      "suggested_canonical": "FGS",
+      "support": 2
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NBX1-H1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "NBX-H1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NBX1-TXT-FLUSH",
+      "recommendation": "add_alias",
+      "suggested_canonical": "NBX-TXT-FLUSH",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NBX1-UNT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "NBX-UNT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NoParagraphStyle",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NoSpacing",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NumberList1first",
+      "recommendation": "add_alias",
+      "suggested_canonical": "NL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "NumberList1last",
+      "recommendation": "add_alias",
+      "suggested_canonical": "NL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Pn",
+      "recommendation": "add_alias",
+      "suggested_canonical": "PN",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Pt",
+      "recommendation": "add_alias",
+      "suggested_canonical": "PT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "QUES_NUM",
+      "recommendation": "add_alias",
+      "suggested_canonical": "QUES-NL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "QUES_TXT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "QUES-TXT-FLUSH",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "REF-H1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH1",
+      "support": 3
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "REF-H2",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "REF-H2a",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2a",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "REF-N0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "REF-N1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "REFTXT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "REF_TXT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Ref-H1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "Ref-H2",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "Ref-H20",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "Ref-H2a",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2a",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "Ref-N",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-N",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "Ref-U",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REF-U",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "RefH1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "RefH2",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "RefH2a",
+      "recommendation": "add_alias",
+      "suggested_canonical": "REFH2a",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "SKILL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "SKILL",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "T-DIR",
+      "recommendation": "add_alias",
+      "suggested_canonical": "T",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "T0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "T",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "T10",
+      "recommendation": "add_alias",
+      "suggested_canonical": "T1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "T20",
+      "recommendation": "add_alias",
+      "suggested_canonical": "T2",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TB",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TB",
+      "support": 10
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TBL-FIRST0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TBL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TBL-FIRST1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TBL-FIRST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TBL-LAST0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TBL-LAST",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TBL-MID0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TBL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TBL-MID1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TBL-MID",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TCH",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TCH",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TCH1",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TCH1",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TT",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TX",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TX",
+      "support": 327
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": true,
+      "raw_style": "TXL",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXL",
+      "support": 190
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TXT-FLUSH0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 0
+    },
+    {
+      "already_in_aliases": true,
+      "confidence": 1.0,
+      "evidence": "existing entry in style_aliases.json",
+      "in_allowed_styles": false,
+      "raw_style": "TXT0",
+      "recommendation": "add_alias",
+      "suggested_canonical": "TXT",
+      "support": 0
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Box-01-BoxTitle",
+      "recommendation": "review",
+      "suggested_canonical": "BX1-TTL",
+      "support": 10
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Box-01-Para-FL",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 13
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "in allowed_styles.json + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Box-01-UN-TableBody",
+      "recommendation": "review",
+      "suggested_canonical": "T",
+      "support": 0
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList1",
+      "recommendation": "review",
+      "suggested_canonical": "BL-MID",
+      "support": 118
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList1_first",
+      "recommendation": "review",
+      "suggested_canonical": "BL-FIRST",
+      "support": 26
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList1_last",
+      "recommendation": "review",
+      "suggested_canonical": "BL-LAST",
+      "support": 17
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList3",
+      "recommendation": "review",
+      "suggested_canonical": "BL3-MID",
+      "support": 11
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "CaseStudy-BulletList1",
+      "recommendation": "review",
+      "suggested_canonical": "BL-MID",
+      "support": 37
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "CaseStudy-Para-FL",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 23
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "CaseStudy-ParaFirstLine-Ind",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 12
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "ChapterNumber",
+      "recommendation": "review",
+      "suggested_canonical": "CN",
+      "support": 16
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "ChapterTitle",
+      "recommendation": "review",
+      "suggested_canonical": "CT",
+      "support": 43
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "EOC-NumberList1",
+      "recommendation": "review",
+      "suggested_canonical": "NL-MID",
+      "support": 87
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "EOC-NumberList1_first",
+      "recommendation": "review",
+      "suggested_canonical": "NL-FIRST",
+      "support": 21
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "in allowed_styles.json + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Exhibit-TableBody",
+      "recommendation": "review",
+      "suggested_canonical": "T",
+      "support": 0
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FE-01-BulletList1",
+      "recommendation": "review",
+      "suggested_canonical": "BL-MID",
+      "support": 15
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FE-03-ParaFirstLine-Ind",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 12
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FigureCaption",
+      "recommendation": "review",
+      "suggested_canonical": "FIG-LEG",
+      "support": 15
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FigureLegend",
+      "recommendation": "review",
+      "suggested_canonical": "FIG-LEG",
+      "support": 25
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "LearningObj-BulletList1",
+      "recommendation": "review",
+      "suggested_canonical": "BL-MID",
+      "support": 14
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList1",
+      "recommendation": "review",
+      "suggested_canonical": "NL-MID",
+      "support": 55
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList2",
+      "recommendation": "review",
+      "suggested_canonical": "NL2-MID",
+      "support": 187
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "ParaFirstLine-Ind",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 291
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "ReferenceAlphabetical",
+      "recommendation": "review",
+      "suggested_canonical": "REF-N",
+      "support": 74
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "in allowed_styles.json + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "TableBody",
+      "recommendation": "review",
+      "suggested_canonical": "T",
+      "support": 0
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.75,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "TableCaption",
+      "recommendation": "review",
+      "suggested_canonical": "T1",
+      "support": 12
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.74,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Box-01-BulletList1",
+      "recommendation": "review",
+      "suggested_canonical": "BL-MID",
+      "support": 9
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.74,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FE-02-ParaFirstLine-Ind",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 9
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.72,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "EOC-Answer-Para-FL",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 7
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.72,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FigureSource",
+      "recommendation": "review",
+      "suggested_canonical": "FIG-SRC",
+      "support": 7
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "Box-01-BulletList1_first",
+      "recommendation": "review",
+      "suggested_canonical": "BL-FIRST",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "CaseStudy-Heading1",
+      "recommendation": "review",
+      "suggested_canonical": "H1",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "EOC-Head1",
+      "recommendation": "review",
+      "suggested_canonical": "H1",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList1-first",
+      "recommendation": "review",
+      "suggested_canonical": "NL-FIRST",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList1-last",
+      "recommendation": "review",
+      "suggested_canonical": "NL-LAST",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList1_first",
+      "recommendation": "review",
+      "suggested_canonical": "NL-FIRST",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.71,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "NumberList1_last",
+      "recommendation": "review",
+      "suggested_canonical": "NL-LAST",
+      "support": 6
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.7,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "BulletList1_First",
+      "recommendation": "review",
+      "suggested_canonical": "BL-FIRST",
+      "support": 5
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.7,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "EOC-NumberList1_last",
+      "recommendation": "review",
+      "suggested_canonical": "NL-LAST",
+      "support": 5
+    },
+    {
+      "already_in_aliases": false,
+      "confidence": 0.7,
+      "evidence": "corpus occurrence + pattern match",
+      "in_allowed_styles": true,
+      "raw_style": "FE-01-ParaFirstLine-Ind",
+      "recommendation": "review",
+      "suggested_canonical": "TXT-FLUSH",
+      "support": 5
+    }
+  ],
+  "extraction_params": {
+    "min_confidence": 0.7,
+    "note": "Report only — do NOT auto-merge into style_aliases.json without review."
+  },
+  "generated_at": "2026-02-27T09:23:57Z",
+  "input_paths": {
+    "allowed_styles": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\config\\allowed_styles.json",
+    "ground_truth": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\data\\ground_truth.jsonl",
+    "style_aliases": "C:\\Users\\harikrishnam\\Desktop\\AI-Structuring-main\\AI-structuring\\backend\\config\\style_aliases.json"
+  },
+  "schema_version": "1.0.0",
+  "summary": {
+    "already_in_aliases": 118,
+    "recommendation_add_alias": 118,
+    "recommendation_review": 40,
+    "total_candidates": 158
+  }
+}

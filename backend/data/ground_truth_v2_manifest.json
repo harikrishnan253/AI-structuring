@@ -1,0 +1,194 @@
+{
+  "total_pairs": 30,
+  "pairs": [
+    {
+      "doc_id": "Acharya9781975261764-ch002_tag",
+      "manual_file": "Acharya9781975261764-ch002_tag.docx",
+      "org_file": "Acharya9781975261764-ch002_org.docx",
+      "pair_method": "longest_common_stem:25:0.929"
+    },
+    {
+      "doc_id": "Acharya9781975261764-ch005_tag",
+      "manual_file": "Acharya9781975261764-ch005_tag.docx",
+      "org_file": "Acharya9781975261764-ch005_org.docx",
+      "pair_method": "longest_common_stem:25:0.929"
+    },
+    {
+      "doc_id": "Campo63387_Ch54_tag",
+      "manual_file": "Campo63387_Ch54_tag.docx",
+      "org_file": "Campo63387_Ch54_org.docx",
+      "pair_method": "longest_common_stem:14:0.882"
+    },
+    {
+      "doc_id": "Cash_7E_83668_Ch20_tag",
+      "manual_file": "Cash_7E_83668_Ch20_tag.docx",
+      "org_file": "Cash_7E_83668_Ch20_org.docx",
+      "pair_method": "longest_common_stem:15:0.889"
+    },
+    {
+      "doc_id": "Cuffe_187977_Ch08_tag",
+      "manual_file": "Cuffe_187977_Ch08_tag.docx",
+      "org_file": "Cuffe_187977_Ch08_org.docx",
+      "pair_method": "longest_common_stem:15:0.889"
+    },
+    {
+      "doc_id": "Douglas_188116_Ch11_tag",
+      "manual_file": "Douglas_188116_Ch11_tag.docx",
+      "org_file": "Douglas_188116_Ch11_org.docx",
+      "pair_method": "longest_common_stem:17:0.900"
+    },
+    {
+      "doc_id": "Duggan9781975244347-ch006_tag",
+      "manual_file": "Duggan9781975244347-ch006_tag.docx",
+      "org_file": "Duggan9781975244347-ch006_org.docx",
+      "pair_method": "longest_common_stem:24:0.926"
+    },
+    {
+      "doc_id": "Duggan9781975244347-ch010_tag",
+      "manual_file": "Duggan9781975244347-ch010_tag.docx",
+      "org_file": "Duggan9781975244347-ch010_org.docx",
+      "pair_method": "longest_common_stem:24:0.926"
+    },
+    {
+      "doc_id": "ENA_188122_CH02_tag",
+      "manual_file": "ENA_188122_CH02_tag.docx",
+      "org_file": "ENA_188122_CH02_org.docx",
+      "pair_method": "longest_common_stem:13:0.875"
+    },
+    {
+      "doc_id": "ENA_188122_CH04_tag",
+      "manual_file": "ENA_188122_CH04_tag.docx",
+      "org_file": "ENA_188122_CH04_org.docx",
+      "pair_method": "longest_common_stem:13:0.875"
+    },
+    {
+      "doc_id": "Edwards9781975219314-ch006_tag",
+      "manual_file": "Edwards9781975219314-ch006_tag.docx",
+      "org_file": "Goroll9781975212643-ch032_org.docx",
+      "pair_method": "longest_common_stem:9:0.545"
+    },
+    {
+      "doc_id": "Edwards9781975219314-ch013_tag",
+      "manual_file": "Edwards9781975219314-ch013_tag.docx",
+      "org_file": "Goroll9781975212643-ch227_org.docx",
+      "pair_method": "longest_common_stem:9:0.509"
+    },
+    {
+      "doc_id": "Goroll9781975212643-ch032_tagged",
+      "manual_file": "Goroll9781975212643-ch032_tagged.docx",
+      "org_file": "Taylor9781975243678-ch008_org.docx",
+      "pair_method": "longest_common_stem:8:0.561"
+    },
+    {
+      "doc_id": "Goroll9781975212643-ch227_tagged",
+      "manual_file": "Goroll9781975212643-ch227_tagged.docx",
+      "org_file": "Howley9781975221171-ch071_org.docx",
+      "pair_method": "longest_common_stem:8:0.526"
+    },
+    {
+      "doc_id": "Howley9781975221171-ch071_tagged",
+      "manual_file": "Howley9781975221171-ch071_tagged.docx",
+      "org_file": "Lynn9781975252823-ch004_org.docx",
+      "pair_method": "longest_common_stem:8:0.545"
+    },
+    {
+      "doc_id": "Jensen9781975266479-ch002_tag",
+      "manual_file": "Jensen9781975266479-ch002_tag.docx",
+      "org_file": "Jensen9781975266479-ch002_org.docx",
+      "pair_method": "longest_common_stem:24:0.926"
+    },
+    {
+      "doc_id": "Jensen9781975266479-ch003_tag",
+      "manual_file": "Jensen9781975266479-ch003_tag.docx",
+      "org_file": "Jensen9781975266479-ch003_org.docx",
+      "pair_method": "longest_common_stem:24:0.926"
+    },
+    {
+      "doc_id": "Kapu_6e_58895_Ch18_tag",
+      "manual_file": "Kapu_6e_58895_Ch18_tag.docx",
+      "org_file": "Kapu_6e_58895_Ch18_org.docx",
+      "pair_method": "longest_common_stem:15:0.889"
+    },
+    {
+      "doc_id": "Karayalcin_188273_Ch09_tag",
+      "manual_file": "Karayalcin_188273_Ch09_tag.docx",
+      "org_file": "Karayalcin_188273_Ch09_org.docx",
+      "pair_method": "longest_common_stem:20:0.913"
+    },
+    {
+      "doc_id": "Karuppan_79753_Ch13_tag",
+      "manual_file": "Karuppan_79753_Ch13_tag.docx",
+      "org_file": "Karuppan_79753_ch13_org.docx",
+      "pair_method": "longest_common_stem:17:0.900"
+    },
+    {
+      "doc_id": "Lynn9781975252823-ch004_tag",
+      "manual_file": "Lynn9781975252823-ch004_tag.docx",
+      "org_file": "Nash9781975260330-domain002_org.docx",
+      "pair_method": "longest_common_stem:8:0.481"
+    },
+    {
+      "doc_id": "Nash9781975260330-domain002_tag",
+      "manual_file": "Nash9781975260330-domain002_tag.docx",
+      "org_file": "Rawlins_59625_ch07_org.docx",
+      "pair_method": "longest_common_stem:2:0.208"
+    },
+    {
+      "doc_id": "Nora_188365_Ch07_tag",
+      "manual_file": "Nora_188365_Ch07_tag.docx",
+      "org_file": "Nora_188365_Ch07_org.docx",
+      "pair_method": "longest_common_stem:14:0.882"
+    },
+    {
+      "doc_id": "Nora_188365_Ch17_tagged",
+      "manual_file": "Nora_188365_Ch17_tagged.docx",
+      "org_file": "Nora_188365_Ch17_org.docx",
+      "pair_method": "longest_common_stem:14:0.811"
+    },
+    {
+      "doc_id": "OConnell-187905_CH05_tag",
+      "manual_file": "OConnell-187905_CH05_tag.docx",
+      "org_file": "OConnell-187905_CH05_org.docx",
+      "pair_method": "longest_common_stem:18:0.905"
+    },
+    {
+      "doc_id": "Patton46762_Ch11_tag",
+      "manual_file": "Patton46762_Ch11_tag.docx",
+      "org_file": "Patton46762_Ch11_org.docx",
+      "pair_method": "longest_common_stem:15:0.889"
+    },
+    {
+      "doc_id": "Raupp-2E_188008 _Ch10_tag",
+      "manual_file": "Raupp-2E_188008 _Ch10_tag.docx",
+      "org_file": "Raupp-2E_188008 _Ch10_org.docx",
+      "pair_method": "longest_common_stem:17:0.900"
+    },
+    {
+      "doc_id": "Rawlins_59625_Ch07_tag",
+      "manual_file": "Rawlins_59625_Ch07_tag.docx",
+      "org_file": "Wheeler_92516_R2_Ch08_org.docx",
+      "pair_method": "longest_common_stem:3:0.400"
+    },
+    {
+      "doc_id": "Taylor9781975243678-ch008_tag",
+      "manual_file": "Taylor9781975243678-ch008_tag.docx",
+      "org_file": "White_188217_Ch15_org.docx",
+      "pair_method": "longest_common_stem:2:0.178"
+    },
+    {
+      "doc_id": "Wheeler92516_Ch08_tag",
+      "manual_file": "Wheeler92516_Ch08_tag.docx",
+      "org_file": "Wheeler_92516_Ch15_org.docx",
+      "pair_method": "longest_common_stem:14:0.789"
+    }
+  ],
+  "unmatched_manual": [
+    "Wheeler_92516_Ch15_tag.docx",
+    "White_188217_Ch15_tag.docx"
+  ],
+  "unmatched_org": [],
+  "temp_excluded_manual": [
+    "~$roll9781975212643-ch227_tagged.docx"
+  ],
+  "temp_excluded_org": []
+}

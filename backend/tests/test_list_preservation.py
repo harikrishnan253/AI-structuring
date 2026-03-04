@@ -487,3 +487,86 @@ class TestLogging:
 
         # Should log with zeros
         assert any("list_paras=0" in record.message for record in caplog.records)
+
+
+# ===================================================================
+# Reference-zone exclusion
+# ===================================================================
+
+class TestReferenceZoneExclusion:
+    """Reference-zone list entries must not be coerced to BL-*/NL-*."""
+
+    def test_sr_entry_preserved_via_is_reference_zone(self):
+        """SR-tagged entry with is_reference_zone=True is not overwritten."""
+        blocks = [
+            _block(1, "References", context_zone="REFERENCE"),
+            _block(2, "Smith, J. (2020). Title.", xml_list_level=0, xml_num_id=1,
+                   has_bullet=True, is_reference_zone=True),
+        ]
+        clfs = [_clf(1, "SRH1"), _clf(2, "SR")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[1]["tag"] == "SR"
+
+    def test_ref_n_entry_preserved_via_is_reference_zone(self):
+        """REF-N entry in reference zone is not coerced."""
+        blocks = [
+            _block(1, "Bibliography", context_zone="REFERENCE"),
+            _block(2, "Jones, A. (2019).", xml_list_level=0, xml_num_id=2,
+                   has_bullet=True, is_reference_zone=True),
+        ]
+        clfs = [_clf(1, "SRH1"), _clf(2, "REF-N")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[1]["tag"] == "REF-N"
+
+    def test_sr_entry_preserved_via_context_zone_reference(self):
+        """SR entry with context_zone=REFERENCE (no is_reference_zone flag) is not coerced."""
+        blocks = [
+            _block(1, "References", context_zone="REFERENCE"),
+            _block(2, "Author, B. (2021).", xml_list_level=0, xml_num_id=3,
+                   has_bullet=True, context_zone="REFERENCE"),
+        ]
+        clfs = [_clf(1, "SRH1"), _clf(2, "SR")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[1]["tag"] == "SR"
+
+    def test_fallback_path_also_skipped_in_reference_zone(self):
+        """list_style_prefix fallback path is also skipped for reference-zone entries."""
+        blocks = [
+            _block(1, "References", context_zone="REFERENCE"),
+            _block(2, "Author, C. (2022).", list_style_prefix="BL-",
+                   is_reference_zone=True),
+        ]
+        clfs = [_clf(1, "SRH1"), _clf(2, "REF-U")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[1]["tag"] == "REF-U"
+
+    def test_bl_list_outside_reference_zone_still_coerced(self):
+        """Non-reference-zone list entries are still corrected as before."""
+        blocks = [
+            _block(1, "• Bullet item", xml_list_level=0, xml_num_id=1, has_bullet=True),
+        ]
+        clfs = [_clf(1, "TXT")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[0]["tag"] != "TXT"  # coerced to BL-* family
+
+    def test_mixed_body_and_reference_zones(self):
+        """Only reference-zone entries are skipped; body-zone entries are coerced."""
+        blocks = [
+            _block(1, "• Body bullet", xml_list_level=0, xml_num_id=1, has_bullet=True),
+            _block(2, "Smith, J. (2020).", xml_list_level=0, xml_num_id=2,
+                   is_reference_zone=True, has_bullet=True),
+        ]
+        clfs = [_clf(1, "TXT"), _clf(2, "SR")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[0]["tag"] != "TXT"  # body bullet coerced
+        assert result[1]["tag"] == "SR"   # reference entry left alone
+
+    def test_srh1_heading_not_coerced(self):
+        """SRH1 heading in reference zone is not coerced even if xml_list_level set."""
+        blocks = [
+            _block(1, "References", xml_list_level=0, xml_num_id=1,
+                   has_bullet=True, is_reference_zone=True),
+        ]
+        clfs = [_clf(1, "SRH1")]
+        result = enforce_list_hierarchy_from_word_xml(blocks, clfs)
+        assert result[0]["tag"] == "SRH1"

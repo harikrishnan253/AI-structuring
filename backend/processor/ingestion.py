@@ -409,12 +409,36 @@ class DocumentIngestion:
             return 'FRONT_MATTER'
         return zone
     
+    @staticmethod
+    def _build_sdt_para_set(doc) -> set[int]:
+        """Return a set of ``id(p_elem)`` for paragraphs inside body-level SDTs.
+
+        Word Structured Document Tags (``<w:sdt>``) are content-control
+        wrappers that appear as direct children of ``<w:body>``.  python-docx's
+        ``doc.paragraphs`` flattens them into the normal paragraph stream, so
+        they silently inherit whatever zone state is active.  This helper lets
+        ``extract_paragraphs`` identify them and reset their zone to BODY.
+        """
+        try:
+            from docx.oxml.ns import qn
+        except ImportError:
+            return set()
+
+        sdt_paras: set[int] = set()
+        for child in doc.element.body:
+            if child.tag == qn('w:sdt'):
+                sdt_content = child.find(qn('w:sdtContent'))
+                if sdt_content is not None:
+                    for p_elem in sdt_content.findall(qn('w:p')):
+                        sdt_paras.add(id(p_elem))
+        return sdt_paras
+
     def extract_paragraphs(self, docx_path: str | Path) -> list[dict]:
         """
         Extract all paragraphs from a DOCX file with context zone detection.
-        
+
         Zone flow: METADATA → FRONT_MATTER → BODY → BACK_MATTER
-        
+
         Args:
             docx_path: Path to the DOCX file
             
@@ -428,6 +452,11 @@ class DocumentIngestion:
         paragraphs = []
         para_id = 1
         self._current_box_type = None  # Reset box tracking
+
+        # Pre-compute which paragraphs are inside body-level SDT (content
+        # control) elements so their zone can be reset to BODY rather than
+        # inheriting the surrounding box/zone state.
+        sdt_para_ids = self._build_sdt_para_set(doc)
         
         # Determine starting zone based on first paragraph
         all_texts = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
@@ -474,10 +503,22 @@ class DocumentIngestion:
             
             # Detect zone (includes box tracking)
             current_zone, box_type = self._detect_zone(text, current_zone, is_table=False)
-            
+
+            # SDT (content control) paragraphs must reset to BODY.
+            # They are structural elements at the body level that should
+            # not inherit the surrounding box zone.
+            is_sdt_para = id(para._p) in sdt_para_ids
+            if is_sdt_para and current_zone.startswith('BOX_'):
+                current_zone = 'BODY'
+                box_type = None
+
             # Extract formatting metadata
             metadata = self._extract_formatting(para)
-            
+
+            # Record SDT origin for downstream traceability
+            if is_sdt_para:
+                metadata['is_sdt'] = True
+
             # Add zone information
             metadata['context_zone'] = current_zone
             metadata['box_type'] = box_type
@@ -600,12 +641,36 @@ class DocumentIngestion:
                     metadata['has_xml_list'] = True
         except Exception:
             pass  # Fail gracefully if XML access fails
-            
+
+        # Style-name-based list inference for paragraphs that use named list
+        # styles WITHOUT XML numbering properties (numPr absent).  Catches
+        # publisher templates that apply "List Bullet", "BulletList*",
+        # "List Number", "NumberList*" etc. without adding numPr elements.
+        #
+        # NOTE: The same bullet/number keyword check already runs inside the
+        # numPr block above (lines 634-637) for the numPr-present case; this
+        # block is its mirror for the no-numPr case.  The guard ensures we
+        # never overwrite a flag already set by text-regex or numPr detection.
+        if not metadata.get('has_bullet') and not metadata.get('has_numbering') \
+                and not metadata.get('has_xml_list'):
+            _sn = metadata.get('style_name', '').lower()
+            if 'bullet' in _sn:
+                metadata['has_bullet'] = True
+            elif 'number' in _sn:
+                metadata['has_numbering'] = True
+
         # Check paragraph format for indentation
         if para.paragraph_format.left_indent:
             indent_inches = para.paragraph_format.left_indent.inches
             metadata['indent_level'] = int(indent_inches / 0.25)  # Estimate level
-        
+            # Also store raw twips for the hierarchy detector (720 twips = 0.5 inch = typical Level 1)
+            metadata['indent_twips'] = int(indent_inches * 1440)
+
+        # Canonical alias: expose xml_list_level as ooxml_ilvl so the
+        # list_hierarchy_detector can find it without key-name mismatch.
+        if 'xml_list_level' in metadata:
+            metadata['ooxml_ilvl'] = metadata['xml_list_level']
+
         return metadata
     
     def _extract_tables(self, doc, start_id: int, current_zone: str = 'BODY') -> list[dict]:
@@ -703,9 +768,7 @@ class DocumentIngestion:
             style_upper = cell_style.upper()
             # Map common table styles
             if style_upper in ['T', 'TABLEBODY', 'GT']:
-                if is_first_col:
-                    return 'T4'  # Row header
-                return 'T'  # Body cell
+                return 'T'  # Body cell (classifier decides T vs T4 from content)
             elif style_upper in ['T2', 'TABLECOLUMNHEAD1', 'TABLEHEADER']:
                 return 'T2'  # Column header
             elif 'TBL' in style_upper or 'BULLET' in style_upper:
@@ -715,15 +778,11 @@ class DocumentIngestion:
             elif style_upper.startswith('UNT'):
                 if is_header:
                     return 'T2'
-                elif is_first_col:
-                    return 'T4'
-                return 'T'
+                return 'T'  # Body cell (classifier decides T vs T4 from content)
         
         # Infer from position
         if is_header:
             return 'T2'  # Header row
-        elif is_first_col:
-            return 'T4'  # Row header (first column)
         
         # Check if text looks like a list item
         if text.startswith(('•', '-', '●', '○', '\t•', '\t-', '	')):

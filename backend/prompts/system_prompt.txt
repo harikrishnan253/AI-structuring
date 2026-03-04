@@ -422,7 +422,7 @@ Each object must contain:
 - **NBX-H1/H2/H3**: Numbered Box headings
 - **NBX-L1**: Numbered Box list head
 - **NBX-BL-FIRST/MID/LAST**: Numbered Box bulleted list
-- **NBX-BL2-MID**: Numbered Box bulleted list, subentry
+- **NBX-BL2-MID**: Numbered Box bulleted list, subentry (nested level 2; FIRST/LAST variants do NOT exist — use MID only; NBX-BL3-* is not valid, use NBX-BL2-MID)
 - **NBX-NL-FIRST/MID/LAST**: Numbered Box numbered list
 - **NBX-UL-FIRST/MID/LAST**: Numbered Box unnumbered list
 - **NBX-EXT-ONLY**: Numbered Box extract
@@ -877,9 +877,15 @@ When you see markers like `<TABLE1,HEADER_ROW>` or `<TABLE1,FIRST_COL>` or `<TAB
 - Spanning/straddle headers → **T2-C**
 
 **First Column Content (FIRST_COL)**:
-- Row labels/identifiers that NAME a category → **T4**
-- Examples: "CAR T-Cells", "Initial lesion outbreak", "Emotional"
-- **IMPORTANT**: Use T4 ONLY when the content is a SHORT CATEGORY LABEL (1–5 words) that identifies the whole row. If the first-column content is a longer descriptive sentence or is bulleted, use **T** or **TBL-MID** instead.
+- **DEFAULT to T** for first-column cells. Only use T4 when ALL of these conditions are met:
+  1. The cell text is a SHORT category label (1–4 words, max 5)
+  2. It NAMES or IDENTIFIES the entire row (like a row header)
+  3. It has NO trailing punctuation (no period, colon, semicolon)
+  4. It is NOT a sentence, clause, or descriptive phrase
+  5. It is NOT numeric data, a measurement, or a dosage
+- T4 examples: "CAR T-Cells", "Macronutrients", "Low-Impact Activities"
+- NOT T4 (use T instead): "Administer 500 mg daily", "The patient should rest", "Stage III", "12.5 mg/dL", "Yes", "N/A", any cell >5 words
+- **When in doubt between T and T4, ALWAYS choose T.**
 
 **Body Cell Content (R#C#)**:
 - Regular data cells → **T**
@@ -896,6 +902,9 @@ When you see markers like `<TABLE1,HEADER_ROW>` or `<TABLE1,FIRST_COL>` or `<TAB
 - A body data cell that happens to be in the first column → **T**, not T4
 - A bullet-point list inside a non-header cell → **TBL-MID**, not T2 or T4
 - Short phrases in the second row onward that are not row category labels → **T**, not T4
+- Numeric or measurement values in first column → **T**, not T4
+- First-column cells with >5 words → **T**, not T4
+- Single-word answers like "Yes", "No", "N/A" → **T**, not T4
 
 **DO NOT** classify table cell content as TXT or TXT-FLUSH!
 Table cells should use T, T2, T4, T5, T6, TBL-*, or TNL-* tags.

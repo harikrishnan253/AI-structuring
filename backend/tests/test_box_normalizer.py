@@ -413,6 +413,66 @@ class TestRepairMetadata:
 # Multi-block integration
 # ===================================================================
 
+# ===================================================================
+# NBX-BL2/BL3 invalid-variant handling — no FN-* drift
+# ===================================================================
+
+class TestNBXBL2BL3InvalidVariants:
+    """NBX-BL2-FIRST/LAST and NBX-BL3-* have no BX1 equivalents.
+    box_normalizer must leave them unchanged (not map to FN-* or other
+    unrelated families).  The classifier's alias layer converts them to
+    NBX-BL2-MID before they reach this function; these tests verify the
+    box_normalizer itself is safe if the raw invalid tag arrives directly."""
+
+    def test_nbx_bl2_first_no_bx1_target_unchanged(self):
+        """NBX-BL2-FIRST has no BX1-BL2-FIRST → stays NBX-BL2-FIRST (not FN-*)."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL2-FIRST")]
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "NBX-BL2-FIRST"
+        assert not result[0]["tag"].startswith("FN-")
+
+    def test_nbx_bl2_last_no_bx1_target_unchanged(self):
+        """NBX-BL2-LAST has no BX1-BL2-LAST → stays NBX-BL2-LAST (not FN-*)."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL2-LAST")]
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "NBX-BL2-LAST"
+        assert not result[0]["tag"].startswith("FN-")
+
+    def test_nbx_bl3_first_no_bx1_target_unchanged(self):
+        """NBX-BL3-FIRST has no BX1-BL3-FIRST → unchanged (not FN-BL-FIRST)."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL3-FIRST")]
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "NBX-BL3-FIRST"
+        assert result[0]["tag"] != "FN-BL-FIRST"
+
+    def test_nbx_bl3_mid_no_bx1_target_unchanged(self):
+        """NBX-BL3-MID has no BX1-BL3-MID → unchanged (not FN-BL-MID)."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL3-MID")]
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "NBX-BL3-MID"
+        assert result[0]["tag"] != "FN-BL-MID"
+
+    def test_nbx_bl3_last_no_bx1_target_unchanged(self):
+        """NBX-BL3-LAST has no BX1-BL3-LAST → unchanged (not FN-BL-LAST)."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL3-LAST")]
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "NBX-BL3-LAST"
+        assert result[0]["tag"] != "FN-BL-LAST"
+
+    def test_nbx_bl2_mid_after_alias_maps_to_bx1_bl2_mid(self):
+        """After classifier alias maps NBX-BL2-FIRST → NBX-BL2-MID, box_normalizer
+        correctly remaps NBX-BL2-MID → BX1-BL2-MID."""
+        blocks = [_block(1)]
+        clfs = [_clf(1, "NBX-BL2-MID")]   # alias already applied by classifier
+        result = normalize_box_styles(blocks, clfs, BX1_STYLES)
+        assert result[0]["tag"] == "BX1-BL2-MID"
+
+
 class TestMultiBlock:
     def test_mixed_pipeline(self):
         blocks = [

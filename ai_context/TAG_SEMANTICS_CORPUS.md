@@ -2,6 +2,16 @@
 
 Source: `Tag files.zip` manually tagged corpus (32 usable DOCX files analyzed on 2026-02-24; 1 temp `~$` file excluded).
 
+**Offline artifacts produced (2026-02-27):** Corpus analysis now generates three pre-built artifact files in `backend/data/`:
+- `tag_semantics_knowledge.json` — zone-tag priors (`zone_tag_priors`) and tag family groupings (`tag_families`)
+- `tag_transition_priors.json` — sequential tag transition probabilities (`global_transitions`)
+- `style_alias_candidates.json` — publisher alias candidates with confidence ≥ 0.70
+
+These artifacts are built offline by `backend/tools/build_semantic_knowledge.py` and are **never loaded at classification time**. They are consumed by:
+- `backend/processor/rule_learner.py` — semantic enrichment of deterministic rules (`enrich_from_semantic_artifacts()`)
+- `backend/tools/eval_generalization.py` — ablation evaluation predictor modes
+- `backend/processor/classifier.py` — receives only generalized zone-prior hints in the prompt; never raw corpus docs
+
 ## Purpose
 
 This document captures *how tags are applied semantically* in the tagged corpus so the engine can make better deterministic repairs and normalization decisions.
@@ -10,7 +20,7 @@ It is not a replacement for `allowed_styles.json`; it is a behavior guide for:
 - `style_normalizer.py`
 - `validator.py`
 - list/zone normalizers
-- future rule-learning / grounded heuristics
+- offline rule-learning (`rule_learner.py`) and generalization evaluation (`eval_generalization.py`)
 
 ## Core Semantic Patterns
 
@@ -96,9 +106,19 @@ The corpus indicates list accuracy depends on three layers working together:
 Current high-value rule:
 - If a tag is already a semantic list family (`KT-BL-*`, `RQ-LL2-*`, `EOC-NL-*`, etc.), align only the positional suffix and preserve the family.
 
-## Recommended Next Improvements
+## What Has Been Done (as of 2026-03-02)
 
-1. Add a corpus-mined alias generation report (frequency-ranked unknown styles -> proposed canonical tag).
-2. Learn family-specific list transitions (`FIRST -> MID* -> LAST`) from the tagged corpus.
-3. Add section-family-aware list position inference (`KT`, `OBJ`, `EOC`, `RQ`, `ANS`) when `list_position` metadata is weak.
-4. Add DOCX-pair regressions for recurring list-heavy publishers (`Cuffe`, `Taylor`, `Jensen`, `Karayalcin`).
+The following items from the original "Recommended Next Improvements" are now implemented:
+
+1. **Alias generation report** — `style_alias_candidates.json` produced by `build_semantic_knowledge.py`; consumed by `eval_generalization.py` predictor chain (alias mode).
+2. **Family-specific list transitions** — `tag_transition_priors.json` records `global_transitions` per source tag; used by `rule_learner.py` `enrich_from_semantic_artifacts()` to propose `prev_tag=X` candidate rules.
+3. **Section-family-aware inference** — zone-prior distribution from `tag_semantics_knowledge.json` seeds candidate rules and semantic predictor in `eval_generalization.py`.
+4. **Generalization evaluation** — `backend/tools/eval_generalization.py` provides book-level and publisher-level holdout evaluation with five additive ablation modes.
+5. **Marker-lock diagnostic precision** — `relock_marker_classifications()` now distinguishes Case A (true `skip_llm=True` leak) from Case B (post-hoc marker detection without prior lock). Only Case A increments the `leaked_to_llm` metric and triggers a WARNING; Case B is logged at DEBUG only. PMI re-lock behavior unchanged. (ADR-030, 2026-03-02)
+6. **Eval generalization metric extension** — three new metrics added to `eval_generalization.py`: `invalid_tag_rate` (% predictions not in `allowed_styles.json`), `structure_guard_fail_rate` (% structural-category mismatches on list/heading entries, simulating SG failure probability), and `table_per_tag` (per-gold-tag accuracy breakdown for TABLE-zone entries). Report extended to 120 columns; TABLE SEMANTICS DETAIL section appended. (ADR-031, 2026-03-02)
+
+## Remaining Known Gaps
+
+- Publisher-pair regression tests for `Cuffe`, `Taylor`, `Jensen`, `Karayalcin` are not yet automated (require DOCX input fixtures).
+- `prev_tag` rules cannot fire via `apply_rules()` at classification time without explicit `prev_tag` metadata injection (see ADR-029, KNOWN_ISSUES.md).
+- `structure_guard_fail_rate` is a flat-holdout simulation metric and may diverge from actual Structure Guard outcomes for paragraphs at zone boundaries where sequential context matters.

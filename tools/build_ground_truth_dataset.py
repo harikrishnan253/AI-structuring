@@ -26,6 +26,8 @@ DEFAULT_STYLE_ALIASES = ROOT / "backend" / "config" / "style_aliases.json"
 INLINE_TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
 STEM_CLEAN_RE = re.compile(r"[^a-z0-9]+")
+# Word creates ~$*.docx lock/temp files when a document is open; exclude them.
+TEMP_LOCK_RE = re.compile(r"^~\$")
 
 
 @dataclass(frozen=True)
@@ -152,8 +154,18 @@ def extract_zip(zip_path: Path, target_dir: Path, force: bool = True) -> None:
             zf.extract(member, target_dir)
 
 
-def list_docx_files(root_dir: Path) -> list[Path]:
-    return sorted([p for p in root_dir.rglob("*.docx") if p.is_file()])
+def list_docx_files(root_dir: Path) -> tuple[list[Path], list[Path]]:
+    """Return (clean_files, temp_excluded_files) sorted by path."""
+    clean: list[Path] = []
+    temp: list[Path] = []
+    for p in sorted(root_dir.rglob("*.docx")):
+        if not p.is_file():
+            continue
+        if TEMP_LOCK_RE.match(p.name):
+            temp.append(p)
+        else:
+            clean.append(p)
+    return clean, temp
 
 
 def pair_docs(manual_files: list[Path], org_files: list[Path]) -> tuple[list[DocPair], list[Path], list[Path]]:
@@ -336,6 +348,98 @@ def print_summary(
         print(f"- Unmatched org docs: {len(unmatched_org)}")
 
 
+def write_manifest(
+    pairs: list[DocPair],
+    unmatched_manual: list[Path],
+    unmatched_org: list[Path],
+    temp_excluded_manual: list[Path],
+    temp_excluded_org: list[Path],
+    path: Path,
+) -> None:
+    """Write pairing manifest JSON: matched pairs + unmatched + temp-excluded."""
+    data = {
+        "total_pairs": len(pairs),
+        "pairs": [
+            {
+                "doc_id": p.doc_id,
+                "manual_file": p.manual_path.name,
+                "org_file": p.org_path.name,
+                "pair_method": p.pair_method,
+            }
+            for p in sorted(pairs, key=lambda x: x.doc_id)
+        ],
+        "unmatched_manual": [p.name for p in unmatched_manual],
+        "unmatched_org": [p.name for p in unmatched_org],
+        "temp_excluded_manual": [p.name for p in temp_excluded_manual],
+        "temp_excluded_org": [p.name for p in temp_excluded_org],
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Wrote pairing manifest: {path}")
+
+
+def write_alignment_report(
+    *,
+    pairs: list[DocPair],
+    per_doc_total: dict[str, int],
+    per_doc_aligned: dict[str, int],
+    per_doc_unmapped: dict[str, int],
+    per_doc_distribution: dict[str, Counter[str]],
+    total_rows: int,
+    high_quality_rows: int,
+    unmapped_rows: int,
+    align_threshold: float,
+    temp_excluded_manual: list[Path],
+    temp_excluded_org: list[Path],
+    unmatched_manual: list[Path],
+    unmatched_org: list[Path],
+    path: Path,
+) -> None:
+    """Write alignment diagnostics report JSON: per-doc ratios + global summary."""
+    global_aligned_ratio = round(high_quality_rows / total_rows, 4) if total_rows else 0.0
+    global_unmapped_ratio = round(unmapped_rows / total_rows, 4) if total_rows else 0.0
+
+    per_doc: list[dict] = []
+    for doc_id in sorted(per_doc_total):
+        total = per_doc_total[doc_id]
+        aligned = per_doc_aligned.get(doc_id, 0)
+        unmapped = per_doc_unmapped.get(doc_id, 0)
+        dist = per_doc_distribution.get(doc_id, Counter())
+        per_doc.append({
+            "doc_id": doc_id,
+            "total_paragraphs": total,
+            "aligned": aligned,
+            "aligned_ratio": round(aligned / total, 4) if total else 0.0,
+            "unmapped": unmapped,
+            "unmapped_ratio": round(unmapped / total, 4) if total else 0.0,
+            "top_tags": dict(dist.most_common(10)),
+        })
+
+    data = {
+        "alignment_threshold": align_threshold,
+        "global_summary": {
+            "total_pairs": len(pairs),
+            "total_rows": total_rows,
+            "high_quality_rows": high_quality_rows,
+            "aligned_ratio": global_aligned_ratio,
+            "unmapped_rows": unmapped_rows,
+            "unmapped_ratio": global_unmapped_ratio,
+        },
+        "temp_excluded": {
+            "manual": [p.name for p in temp_excluded_manual],
+            "tag": [p.name for p in temp_excluded_org],
+        },
+        "unmatched": {
+            "manual": [p.name for p in unmatched_manual],
+            "tag": [p.name for p in unmatched_org],
+        },
+        "per_doc": per_doc,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Wrote alignment diagnostics report: {path}")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build paragraph-level gold dataset by aligning manual-tagged DOCX to org DOCX."
@@ -348,6 +452,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--allowed-styles", type=Path, default=DEFAULT_ALLOWED_STYLES)
     parser.add_argument("--style-aliases", type=Path, default=DEFAULT_STYLE_ALIASES)
     parser.add_argument("--alignment-threshold", type=float, default=0.85)
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=None,
+        help="Optional path to write pairing manifest JSON (matched/unmatched/temp-excluded).",
+    )
+    parser.add_argument(
+        "--report",
+        type=Path,
+        default=None,
+        help="Optional path to write alignment diagnostics report JSON (per-doc aligned/unmapped ratios).",
+    )
     parser.add_argument(
         "--min-aligned-ratio",
         type=float,
@@ -381,8 +497,12 @@ def main() -> int:
     extract_zip(args.manual_zip, args.manual_dir, force=True)
     extract_zip(args.org_zip, args.org_dir, force=True)
 
-    manual_files = list_docx_files(args.manual_dir)
-    org_files = list_docx_files(args.org_dir)
+    manual_files, temp_excluded_manual = list_docx_files(args.manual_dir)
+    org_files, temp_excluded_org = list_docx_files(args.org_dir)
+    if temp_excluded_manual:
+        print(f"Excluded {len(temp_excluded_manual)} temp/lock file(s) from manual dir: {[p.name for p in temp_excluded_manual]}")
+    if temp_excluded_org:
+        print(f"Excluded {len(temp_excluded_org)} temp/lock file(s) from org/tag dir: {[p.name for p in temp_excluded_org]}")
     pairs, unmatched_manual, unmatched_org = pair_docs(manual_files, org_files)
 
     if not pairs:
@@ -394,6 +514,9 @@ def main() -> int:
     unmapped_rows = 0
     unmapped_counter: Counter[str] = Counter()
     per_doc_distribution: dict[str, Counter[str]] = defaultdict(Counter)
+    per_doc_total: dict[str, int] = defaultdict(int)
+    per_doc_aligned: dict[str, int] = defaultdict(int)
+    per_doc_unmapped: dict[str, int] = defaultdict(int)
 
     for pair in pairs:
         org_paragraphs = read_doc_paragraphs(pair.org_path, include_style=False)
@@ -427,10 +550,13 @@ def main() -> int:
                     style_key = normalize_style_name(gold_tag) or "[EMPTY_STYLE]"
                     unmapped_counter[style_key] += 1
 
+            per_doc_total[pair.doc_id] += 1
             if score >= args.alignment_threshold:
                 high_quality_rows += 1
+                per_doc_aligned[pair.doc_id] += 1
             if canonical_gold_tag == "UNMAPPED":
                 unmapped_rows += 1
+                per_doc_unmapped[pair.doc_id] += 1
 
             per_doc_distribution[pair.doc_id][canonical_gold_tag] += 1
             zone = zone_by_index.get(org_para["index"])
@@ -452,6 +578,35 @@ def main() -> int:
     write_jsonl(rows, args.output)
 
     total_rows = len(rows)
+
+    if args.manifest:
+        write_manifest(
+            pairs=pairs,
+            unmatched_manual=unmatched_manual,
+            unmatched_org=unmatched_org,
+            temp_excluded_manual=temp_excluded_manual,
+            temp_excluded_org=temp_excluded_org,
+            path=args.manifest,
+        )
+
+    if args.report:
+        write_alignment_report(
+            pairs=pairs,
+            per_doc_total=per_doc_total,
+            per_doc_aligned=per_doc_aligned,
+            per_doc_unmapped=per_doc_unmapped,
+            per_doc_distribution=per_doc_distribution,
+            total_rows=total_rows,
+            high_quality_rows=high_quality_rows,
+            unmapped_rows=unmapped_rows,
+            align_threshold=args.alignment_threshold,
+            temp_excluded_manual=temp_excluded_manual,
+            temp_excluded_org=temp_excluded_org,
+            unmatched_manual=unmatched_manual,
+            unmatched_org=unmatched_org,
+            path=args.report,
+        )
+
     print_summary(
         pairs=pairs,
         total_rows=total_rows,
